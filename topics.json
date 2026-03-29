@@ -1,0 +1,41 @@
+{
+  "SAS実践テクニック": [
+    {"title": "PROC MIXEDで反復測定データを解析する実践ガイド", "keyword": "PROC MIXED 反復測定 SAS", "score": 95},
+    {"title": "PROC PHREGでCox回帰を実装するステップバイステップ", "keyword": "PROC PHREG Cox回帰 SAS", "score": 92},
+    {"title": "SASマクロで解析プログラムを自動化する方法", "keyword": "SAS マクロ 自動化", "score": 88}
+  ],
+  "R for Clinical Trials": [
+    {"title": "admiralパッケージ入門 — ADaMデータセットをRで作成する", "keyword": "admiral R ADaM", "score": 94},
+    {"title": "rtablesで臨床試験の集計表を作成する完全ガイド", "keyword": "rtables R 臨床試験", "score": 91},
+    {"title": "TplyrとternでTLF（Table, Listing, Figure）を自動生成", "keyword": "Tplyr tern R TLF", "score": 87}
+  ],
+  "統計解析計画書・SAP": [
+    {"title": "SAP（統計解析計画書）の書き方テンプレート完全版", "keyword": "SAP 統計解析計画書 テンプレート", "score": 96},
+    {"title": "SAPに記載すべき解析手法の選定根拠と書き方", "keyword": "SAP 解析手法 選定根拠", "score": 90},
+    {"title": "ICH E9準拠のSAP作成チェックリスト", "keyword": "ICH E9 SAP チェックリスト", "score": 86}
+  ],
+  "生存時間解析": [
+    {"title": "Kaplan-Meier法の基礎とSAS/R実装ガイド", "keyword": "Kaplan-Meier SAS R 実装", "score": 93},
+    {"title": "ログランク検定 vs Wilcoxon検定 — 使い分けの判断基準", "keyword": "ログランク検定 Wilcoxon 使い分け", "score": 89},
+    {"title": "Cox比例ハザードモデルの仮定検証と対処法", "keyword": "Cox 比例ハザード 仮定検証", "score": 85}
+  ],
+  "混合効果モデル": [
+    {"title": "MMRMの理論と実装 — SAS PROC MIXEDとR mmrmパッケージ比較", "keyword": "MMRM SAS R 実装", "score": 94},
+    {"title": "欠測データ処理とMMRM — MAR仮定の理解と実践", "keyword": "MMRM 欠測データ MAR", "score": 90},
+    {"title": "PROC GLIMMIXで一般化線形混合モデルを実装する", "keyword": "PROC GLIMMIX SAS 一般化線形混合モデル", "score": 86}
+  ],
+  "ICH E9(R1) Estimand": [
+    {"title": "Estimandフレームワーク入門 — 5つの属性をわかりやすく解説", "keyword": "Estimand わかりやすく ICH E9 R1", "score": 97},
+    {"title": "Intercurrent Eventsの5つの戦略を具体例で理解する", "keyword": "Intercurrent Events 戦略 Estimand", "score": 93},
+    {"title": "EstimandとSAP — 統計解析計画書への落とし込み方", "keyword": "Estimand SAP 書き方", "score": 88}
+  ],
+  "臨床統計最新ニュース": [
+    {"title": "FDA統計ガイダンス最新アップデートまとめ", "keyword": "FDA 統計 ガイダンス 最新", "score": 91},
+    {"title": "PMDA統計関連通知の最新動向", "keyword": "PMDA 統計 通知 最新", "score": 87}
+  ],
+  "海外トレンド翻訳": [
+    {"title": "PSI 2026カンファレンスの注目発表を日本語で要約", "keyword": "PSI カンファレンス 2026 統計", "score": 92},
+    {"title": "ベイズ統計の臨床試験適用 — ASA最新ガイダンスを翻訳", "keyword": "ベイズ統計 臨床試験 ASA", "score": 89},
+    {"title": "アダプティブデザインの最新トレンド — PharmaSUGレビュー", "keyword": "アダプティブデザイン PharmaSUG", "score": 85}
+  ]
+}
