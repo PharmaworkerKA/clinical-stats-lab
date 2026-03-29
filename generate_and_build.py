@@ -7,6 +7,7 @@
 blog_engine共通モジュールを使用し、フォールバックとしてローカル実装を持つ。
 """
 import json
+import time
 import logging
 import sys
 from datetime import datetime
@@ -96,6 +97,8 @@ def run(cfg=None, prm=None):
                 response_text = response_text.strip()
 
             data = json.loads(response_text)
+            if isinstance(data, list):
+                data = data[0]
             category = data["category"]
             keyword = data["keyword"]
 
