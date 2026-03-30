@@ -110,21 +110,28 @@ def run(cfg=None, prm=None):
 
     # ステップ2: 記事生成
     logger.info("ステップ2: 記事生成")
-    try:
-        from article_generator import ArticleGenerator
-        from seo_optimizer import SEOOptimizer
+    max_retries = 3
+    article = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            from article_generator import ArticleGenerator
+            from seo_optimizer import SEOOptimizer
 
-        generator = ArticleGenerator(cfg)
-        article = generator.generate_article(keyword=keyword, category=category, prompts=prm)
-        logger.info("記事生成完了: %s", article.get("title", "不明"))
+            generator = ArticleGenerator(cfg)
+            article = generator.generate_article(keyword=keyword, category=category, prompts=prm)
+            logger.info("記事生成完了: %s", article.get("title", "不明"))
 
-        optimizer = SEOOptimizer(cfg)
-        seo_result = optimizer.check_seo_score(article)
-        logger.info("SEOスコア: %d/100 (グレード: %s)", seo_result.get("total_score", 0), seo_result.get("grade", "?"))
-
-    except Exception as e:
-        logger.error("記事生成失敗: %s", e)
-        sys.exit(1)
+            optimizer = SEOOptimizer(cfg)
+            seo_result = optimizer.check_seo_score(article)
+            logger.info("SEOスコア: %d/100 (グレード: %s)", seo_result.get("total_score", 0), seo_result.get("grade", "?"))
+            break
+        except Exception as e:
+            logger.warning("記事生成失敗 (試行%d/%d): %s", attempt, max_retries, e)
+            if attempt == max_retries:
+                logger.error("記事生成が%d回失敗しました。終了します。", max_retries)
+                sys.exit(1)
+            import time
+            time.sleep(5)
 
     # ステップ2.5: アフィリエイトリンク挿入
     logger.info("ステップ2.5: アフィリエイトリンク挿入")
