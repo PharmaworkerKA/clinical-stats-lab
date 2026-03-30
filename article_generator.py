@@ -77,18 +77,24 @@ JSON形式で生成してください。
 }}
 ```"""
 
+        @staticmethod
+        def _fix_invalid_escapes(text):
+            """JSON内の無効なエスケープシーケンスを修正"""
+            import re as _re
+            return _re.sub(r'\(?!["\bfnrtu/])', r'\\', text)
+
         def _parse_response(self, response_text):
             json_match = re.search(r"```json\s*(.*?)\s*```", response_text, re.DOTALL)
             try:
                 if json_match:
-                    data = json.loads(json_match.group(1), strict=False)
+                    data = json.loads(self._fix_invalid_escapes(json_match.group(1)), strict=False)
                 else:
                     cleaned = response_text.strip()
                     start = cleaned.find("{")
                     end = cleaned.rfind("}") + 1
                     if start >= 0 and end > start:
                         cleaned = cleaned[start:end]
-                    data = json.loads(cleaned, strict=False)
+                    data = json.loads(self._fix_invalid_escapes(cleaned), strict=False)
             except json.JSONDecodeError as e:
                 raise ValueError(f"JSONパース失敗: {e}") from e
 
