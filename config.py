@@ -88,3 +88,11 @@ ADSENSE_ENABLED = bool(ADSENSE_CLIENT_ID)
 
 DASHBOARD_HOST = "127.0.0.1"
 DASHBOARD_PORT = 8093
+
+# Google Analytics (GA4)
+GOOGLE_ANALYTICS_ID = "G-CSFVD34MKK"
+
+# Google Search Console 認証ファイル
+SITE_VERIFICATION_FILES = {
+    "googlea31edabcec879415.html": "google-site-verification: googlea31edabcec879415.html",
+}
