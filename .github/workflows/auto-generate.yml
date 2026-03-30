@@ -19,6 +19,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: blog_engineをチェックアウト
+        uses: actions/checkout@v4
+        with:
+          repository: MuscleLove-777/blog-engine
+          path: blog_engine
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
