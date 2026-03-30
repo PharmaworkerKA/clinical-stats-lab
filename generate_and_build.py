@@ -96,7 +96,7 @@ def run(cfg=None, prm=None):
                     response_text = response_text[4:]
                 response_text = response_text.strip()
 
-            data = json.loads(response_text)
+            data = json.loads(response_text, strict=False)
             if isinstance(data, list):
                 data = data[0]
             category = data["category"]
