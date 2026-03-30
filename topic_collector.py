@@ -56,6 +56,31 @@ class TopicCollector:
 
         logger.info("TopicCollector を初期化しました（ソース数: %d）", len(self.news_sources))
 
+    @staticmethod
+    def _robust_json_parse(text):
+        """堅牢なJSONパース: 不正エスケープ修復 + json_repairフォールバック"""
+        # 1. そのままパース
+        try:
+            return json.loads(text, strict=False)
+        except json.JSONDecodeError:
+            pass
+
+        # 2. 不正エスケープを修復してリトライ
+        fixed = re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', text)
+        try:
+            return json.loads(fixed, strict=False)
+        except json.JSONDecodeError:
+            pass
+
+        # 3. json_repairで修復
+        try:
+            import json_repair
+            return json_repair.loads(text)
+        except Exception:
+            pass
+
+        raise json.JSONDecodeError("全てのJSONパース手法が失敗", text, 0)
+
     def collect_all(self) -> list[dict]:
         """全ソースからトピックを収集する"""
         logger.info("=== トピック収集開始 ===")
@@ -225,8 +250,13 @@ class TopicCollector:
 スコア50未満の記事は含めないでください。"""
 
         try:
+            from google.genai import types as genai_types
             response = self.client.models.generate_content(
-                model=self.config.GEMINI_MODEL, contents=prompt
+                model=self.config.GEMINI_MODEL,
+                contents=prompt,
+                config=genai_types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                ),
             )
             response_text = response.text.strip()
 
@@ -237,7 +267,7 @@ class TopicCollector:
                     response_text = response_text[4:]
                 response_text = response_text.strip()
 
-            ranked = json.loads(response_text)
+            ranked = self._robust_json_parse(response_text)
 
             # 元のアイテムとマージ
             result = []

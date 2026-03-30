@@ -47,8 +47,13 @@ except ImportError:
             else:
                 prompt = self._build_default_prompt(keyword, category)
 
+            from google.genai import types as genai_types
             response = self.client.models.generate_content(
-                model=self.model_name, contents=prompt
+                model=self.model_name,
+                contents=prompt,
+                config=genai_types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                ),
             )
             article = self._parse_response(response.text)
             article["keyword"] = keyword
@@ -81,21 +86,48 @@ JSON形式で生成してください。
         def _fix_invalid_escapes(text):
             """JSON内の無効なエスケープシーケンスを修正"""
             import re as _re
+            # JSON標準で許可されているエスケープ: \" \\ \/ \b \f \n \r \t \uXXXX
             return _re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', text)
+
+        @staticmethod
+        def _robust_json_parse(text):
+            """堅牢なJSONパース: json_repairフォールバック付き"""
+            # 1. まず標準パースを試行
+            try:
+                return json.loads(text, strict=False)
+            except json.JSONDecodeError:
+                pass
+
+            # 2. 不正エスケープ修復後にリトライ
+            fixed = ArticleGenerator._fix_invalid_escapes(text)
+            try:
+                return json.loads(fixed, strict=False)
+            except json.JSONDecodeError:
+                pass
+
+            # 3. json_repairライブラリでの修復を試行
+            try:
+                import json_repair
+                return json_repair.loads(text)
+            except Exception:
+                pass
+
+            # 4. 全て失敗
+            raise json.JSONDecodeError("全てのJSONパース手法が失敗", text, 0)
 
         def _parse_response(self, response_text):
             json_match = re.search(r"```json\s*(.*?)\s*```", response_text, re.DOTALL)
             try:
                 if json_match:
-                    data = json.loads(self._fix_invalid_escapes(json_match.group(1)), strict=False)
+                    data = self._robust_json_parse(json_match.group(1).strip())
                 else:
                     cleaned = response_text.strip()
                     start = cleaned.find("{")
                     end = cleaned.rfind("}") + 1
                     if start >= 0 and end > start:
                         cleaned = cleaned[start:end]
-                    data = json.loads(self._fix_invalid_escapes(cleaned), strict=False)
-            except json.JSONDecodeError as e:
+                    data = self._robust_json_parse(cleaned)
+            except (json.JSONDecodeError, ValueError) as e:
                 raise ValueError(f"JSONパース失敗: {e}") from e
 
             required = ["title", "content", "meta_description", "tags", "slug"]

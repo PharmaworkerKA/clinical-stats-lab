@@ -7,6 +7,7 @@
 blog_engine共通モジュールを使用し、フォールバックとしてローカル実装を持つ。
 """
 import json
+import re
 import time
 import logging
 import sys
@@ -25,6 +26,31 @@ logger = logging.getLogger(__name__)
 
 import config
 import prompts
+
+
+def robust_json_parse(text):
+    """堅牢なJSONパース: 不正エスケープ修復 + json_repairフォールバック"""
+    # 1. そのままパース
+    try:
+        return json.loads(text, strict=False)
+    except json.JSONDecodeError:
+        pass
+
+    # 2. 不正エスケープを修復してリトライ
+    fixed = re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', text)
+    try:
+        return json.loads(fixed, strict=False)
+    except json.JSONDecodeError:
+        pass
+
+    # 3. json_repairで修復
+    try:
+        import json_repair
+        return json_repair.loads(text)
+    except Exception:
+        pass
+
+    raise json.JSONDecodeError("全てのJSONパース手法が失敗", text, 0)
 
 
 def run(cfg=None, prm=None):
@@ -87,7 +113,14 @@ def run(cfg=None, prm=None):
                     'JSON形式のみ: {"category": "カテゴリ名", "keyword": "キーワード"}'
                 )
 
-            response = client.models.generate_content(model=cfg.GEMINI_MODEL, contents=prompt)
+            from google.genai import types as genai_types
+            response = client.models.generate_content(
+                model=cfg.GEMINI_MODEL,
+                contents=prompt,
+                config=genai_types.GenerateContentConfig(
+                    response_mime_type="application/json",
+                ),
+            )
             response_text = response.text.strip()
 
             if "```" in response_text:
@@ -96,7 +129,7 @@ def run(cfg=None, prm=None):
                     response_text = response_text[4:]
                 response_text = response_text.strip()
 
-            data = json.loads(response_text, strict=False)
+            data = robust_json_parse(response_text)
             if isinstance(data, list):
                 data = data[0]
             category = data["category"]
@@ -110,7 +143,7 @@ def run(cfg=None, prm=None):
 
     # ステップ2: 記事生成
     logger.info("ステップ2: 記事生成")
-    max_retries = 3
+    max_retries = 5
     article = None
     for attempt in range(1, max_retries + 1):
         try:
