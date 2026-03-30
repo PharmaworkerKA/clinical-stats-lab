@@ -81,7 +81,7 @@ JSON形式で生成してください。
         def _fix_invalid_escapes(text):
             """JSON内の無効なエスケープシーケンスを修正"""
             import re as _re
-            return _re.sub(r'\(?!["\bfnrtu/])', r'\\', text)
+            return _re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', text)
 
         def _parse_response(self, response_text):
             json_match = re.search(r"```json\s*(.*?)\s*```", response_text, re.DOTALL)
