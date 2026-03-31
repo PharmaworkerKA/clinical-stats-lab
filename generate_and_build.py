@@ -176,6 +176,29 @@ def run(cfg=None, prm=None):
     except Exception as e:
         logger.warning("アフィリエイト挿入スキップ: %s", e)
 
+    # ステップ2.7: アイキャッチ画像挿入
+    logger.info("ステップ2.7: アイキャッチ画像挿入")
+    try:
+        eyecatch_path = str(Path(__file__).parent.parent)
+        if eyecatch_path not in sys.path:
+            sys.path.insert(0, eyecatch_path)
+        from eyecatch import add_eyecatch_to_article
+        article = add_eyecatch_to_article(article, cfg.BLOG_NAME)
+        logger.info("アイキャッチ画像: %s", article.get("eyecatch_url", "なし")[:80])
+    except Exception as e:
+        logger.warning("アイキャッチ画像挿入スキップ: %s", e)
+
+    # ステップ2.8: 記事JSON再保存（アイキャッチ・アフィリエイト追加後）
+    try:
+        file_path = article.get("file_path")
+        if file_path:
+            save_data = {k: v for k, v in article.items() if k != "file_path"}
+            with open(file_path, "w", encoding="utf-8") as f:
+                json.dump(save_data, f, ensure_ascii=False, indent=2)
+            logger.info("記事を再保存: %s", file_path)
+    except Exception as e:
+        logger.warning("記事の再保存スキップ: %s", e)
+
     # ステップ3: サイトビルド
     logger.info("ステップ3: サイトビルド")
     try:
