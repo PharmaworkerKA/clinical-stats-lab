@@ -6,7 +6,7 @@ SEO最適化: JSON-LD (BlogPosting, FAQPage, BreadcrumbList), robots.txt, sitema
 import sys
 from pathlib import Path
 
-_engine_path = str(Path(__file__).parent.parent)
+_engine_path = str(Path(__file__).parent)
 if _engine_path not in sys.path:
     sys.path.insert(0, _engine_path)
 
@@ -51,7 +51,7 @@ except ImportError:
             self.base_dir = Path(config.BASE_DIR)
 
             # テンプレートディレクトリ: blog_engineから
-            template_dir = Path(__file__).parent.parent / "blog_engine" / "templates"
+            template_dir = Path(__file__).parent / "blog_engine" / "templates"
             if not template_dir.exists():
                 template_dir = Path(__file__).parent / "templates"
             self.env = Environment(
