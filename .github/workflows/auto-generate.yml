@@ -25,7 +25,7 @@ jobs:
       - name: Checkout blog_engine
         uses: actions/checkout@v6
         with:
-          repository: MuscleLove-777/blog-engine
+          repository: PharmaworkerKA/blog-engine
           path: blog_engine
 
       - name: Set up Python

@@ -10,11 +10,11 @@ BLOG_DESCRIPTION = (
     "海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を"
     "日本語で翻訳・要約し実践的に解説。"
 )
-BLOG_URL = "https://musclelove-777.github.io/clinical-stats-lab"
+BLOG_URL = "https://pharmaworkerka.github.io/clinical-stats-lab"
 BLOG_TAGLINE = "臨床統計の実務情報をSAS/Rコード付きで発信"
 BLOG_LANGUAGE = "ja"
 
-GITHUB_REPO = "MuscleLove-777/clinical-stats-lab"
+GITHUB_REPO = "PharmaworkerKA/clinical-stats-lab"
 GITHUB_BRANCH = "gh-pages"
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 
