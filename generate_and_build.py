@@ -182,9 +182,6 @@ def run(cfg=None, prm=None):
     # ステップ2.7: アイキャッチ画像挿入
     logger.info("ステップ2.7: アイキャッチ画像挿入")
     try:
-        eyecatch_path = str(Path(__file__).parent.parent)
-        if eyecatch_path not in sys.path:
-            sys.path.insert(0, eyecatch_path)
         from eyecatch import add_eyecatch_to_article
         article = add_eyecatch_to_article(article, cfg.BLOG_NAME)
         logger.info("アイキャッチ画像: %s", article.get("eyecatch_url", "なし")[:80])
