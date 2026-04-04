@@ -1,0 +1,1275 @@
+
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <title>R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践 | 臨床統計ラボ</title>
+
+    
+    <meta name="description" content="">
+    <meta name="author" content="臨床統計ラボ">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html">
+
+    
+    <meta property="og:site_name" content="臨床統計ラボ">
+    <meta property="og:title" content="R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html">
+    <meta property="og:locale" content="ja_JP">
+
+    
+    <meta property="og:image" content="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSFVD34MKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CSFVD34MKK');
+    </script>
+    
+
+    
+    
+
+    
+    
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践",
+    "description": "",
+    "datePublished": "2026-04-04",
+    "dateModified": "2026-04-04",
+    "author": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html"}
+    ,"image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "R言語, 生物統計, 予測モデリング, 時系列解析, 臨床試験"
+}
+</script>
+
+
+    <style>
+        /* =============================================
+           CSS変数: テーマカラー（config.THEMEから注入）
+           ============================================= */
+        :root {
+            --color-dark-bg: #0f0a1e;
+            --color-dark-surface: #16213e;
+            --color-primary: #7c3aed;
+            --color-accent: #5b21b6;
+            --color-text-dark: #eeeeee;
+            --color-text-muted-dark: #a0aec0;
+
+            --color-light-bg: #f5f0ff;
+            --color-light-surface: #ffffff;
+            --color-text-light: #1a202c;
+            --color-text-muted-light: #64748b;
+
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --max-width: 1280px;
+            --sidebar-width: 320px;
+            --header-height: 64px;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-pill: 9999px;
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--color-dark-bg);
+            --surface: var(--color-dark-surface);
+            --text: var(--color-text-dark);
+            --text-muted: var(--color-text-muted-dark);
+            --border: rgba(255,255,255,0.08);
+            --code-bg: rgba(255,255,255,0.06);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--color-light-bg);
+            --surface: var(--color-light-surface);
+            --text: var(--color-text-light);
+            --text-muted: var(--color-text-muted-light);
+            --border: rgba(0,0,0,0.08);
+            --code-bg: #f1f5f9;
+        }
+
+        @media (prefers-color-scheme: light) {
+            [data-theme="auto"] {
+                --bg: var(--color-light-bg);
+                --surface: var(--color-light-surface);
+                --text: var(--color-text-light);
+                --text-muted: var(--color-text-muted-light);
+                --border: rgba(0,0,0,0.08);
+                --code-bg: #f1f5f9;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            [data-theme="auto"] {
+                --bg: var(--color-dark-bg);
+                --surface: var(--color-dark-surface);
+                --text: var(--color-text-dark);
+                --text-muted: var(--color-text-muted-dark);
+                --border: rgba(255,255,255,0.08);
+                --code-bg: rgba(255,255,255,0.06);
+            }
+        }
+
+        /* =============================================
+           リセット・基本
+           ============================================= */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* =============================================
+           流体タイポグラフィ
+           ============================================= */
+        h1 { font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem); font-weight: 800; line-height: 1.3; }
+        h2 { font-size: clamp(1.35rem, 1.8vw + 0.8rem, 1.75rem); font-weight: 700; line-height: 1.35; }
+        h3 { font-size: clamp(1.1rem, 1.2vw + 0.6rem, 1.35rem); font-weight: 600; line-height: 1.4; }
+        h4 { font-size: 1.1rem; font-weight: 600; }
+        p { margin-bottom: 1em; }
+
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.2s, opacity 0.2s; }
+        a:hover { opacity: 0.85; text-decoration: underline; }
+        img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
+
+        code {
+            font-family: var(--font-mono);
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 1.25em;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; }
+
+        blockquote {
+            border-left: 4px solid var(--color-accent);
+            padding: 0.75em 1.25em;
+            margin: 1.5em 0;
+            color: var(--text-muted);
+            background: var(--code-bg);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+        th, td { padding: 0.75em 1em; border: 1px solid var(--border); text-align: left; }
+        th { background: var(--code-bg); font-weight: 600; }
+
+        /* =============================================
+           レイアウト
+           ============================================= */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        .layout-main { display: flex; gap: 2.5rem; margin-top: 2rem; margin-bottom: 3rem; }
+        .content-area { flex: 1; min-width: 0; }
+        .sidebar { width: var(--sidebar-width); flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+            .layout-main { flex-direction: column; }
+            .sidebar { width: 100%; }
+        }
+
+        /* =============================================
+           ヘッダー
+           ============================================= */
+        .site-header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+        .site-logo a {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .site-logo a:hover { opacity: 1; text-decoration: none; }
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .site-nav { display: flex; align-items: center; gap: 1.25rem; }
+        .site-nav a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .site-nav a:hover { color: var(--color-accent); text-decoration: none; }
+
+        /* ダークモード切替ボタン */
+        .theme-toggle {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            padding: 6px 10px;
+            font-size: 1.1rem;
+            line-height: 1;
+            color: var(--text);
+            transition: background 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover { background: var(--color-primary); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px auto;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .site-nav {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0; right: 0;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+            }
+            .site-nav.open { display: flex; }
+            .site-nav a { padding: 10px 0; min-height: 44px; display: flex; align-items: center; }
+        }
+
+        /* =============================================
+           Bentoカードグリッド
+           ============================================= */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+
+        .card-thumb {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-thumb-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card-body { padding: 1.25rem 1.5rem; }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-title a { color: var(--text); }
+        .card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+        .card-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .card-excerpt {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+        /* モバイル: カード横型 */
+        @media (max-width: 640px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .card { display: flex; flex-direction: row; }
+            .card-thumb { aspect-ratio: 1 / 1; width: 120px; min-height: 120px; flex-shrink: 0; }
+            .card-body { padding: 1rem; flex: 1; min-width: 0; }
+            .card-title { font-size: 0.95rem; }
+            .card-excerpt { -webkit-line-clamp: 2; }
+        }
+
+        /* =============================================
+           タグ（ピル型バッジ）
+           ============================================= */
+        .tag {
+            display: inline-block;
+            padding: 0.2em 0.65em;
+            font-size: 0.75rem;
+            background: var(--code-bg);
+            color: var(--text-muted);
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .tag:hover { background: var(--color-accent); color: #fff; text-decoration: none; }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+        }
+        .category-badge:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(233,69,96,0.12);
+            color: var(--color-accent);
+            border-radius: var(--radius-pill);
+        }
+
+        /* =============================================
+           パンくず・記事本文・目次
+           ============================================= */
+        .breadcrumb {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+            margin-bottom: 1.5rem; flex-wrap: wrap;
+        }
+        .breadcrumb a { color: var(--text-muted); }
+        .breadcrumb a:hover { color: var(--color-accent); }
+        .breadcrumb-sep { color: var(--text-muted); opacity: 0.5; }
+
+        .article-header { margin-bottom: 2rem; }
+        .article-title {
+            font-size: clamp(1.5rem, 3vw + 0.5rem, 2.2rem);
+            font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem;
+        }
+        .article-meta {
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+            color: var(--text-muted); font-size: 0.88rem;
+        }
+
+        .article-body { font-size: 1rem; line-height: 1.9; }
+        .article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.4em; border-bottom: 2px solid var(--color-accent); }
+        .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+        .article-body ul, .article-body ol { margin: 1em 0; padding-left: 1.5em; }
+        .article-body li { margin-bottom: 0.4em; }
+
+        .toc-container {
+            background: var(--code-bg); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+        }
+        .toc-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-accent); }
+        .toc-container ul { list-style: none; padding-left: 0; margin: 0; }
+        .toc-container li { margin-bottom: 0.3em; }
+        .toc-container ul ul { padding-left: 1.25em; }
+        .toc-container a { color: var(--text-muted); font-size: 0.88rem; }
+        .toc-container a:hover { color: var(--color-accent); }
+
+        /* =============================================
+           SNSシェア・ページネーション
+           ============================================= */
+        .share-buttons { display: flex; gap: 0.6rem; margin: 2rem 0; flex-wrap: wrap; }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5em 1em; border-radius: var(--radius-sm);
+            font-size: 0.82rem; font-weight: 600; color: #fff;
+            text-decoration: none; transition: opacity 0.2s; min-height: 44px;
+        }
+        .share-btn:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+        .share-btn-twitter { background: #1DA1F2; }
+        .share-btn-facebook { background: #1877F2; }
+        .share-btn-hatena { background: #00A4DE; }
+        .share-btn-line { background: #06C755; }
+
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 2.5rem 0; }
+        .pagination a, .pagination span {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 44px; height: 44px; padding: 0 0.5em;
+            border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500;
+            text-decoration: none; transition: background 0.2s, color 0.2s;
+        }
+        .pagination a { color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); }
+        .pagination a:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); text-decoration: none; }
+        .pagination .current { background: var(--color-accent); color: #fff; border: 1px solid var(--color-accent); }
+
+        /* =============================================
+           サイドバー
+           ============================================= */
+        .sidebar-widget {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .sidebar-widget-title {
+            font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-accent);
+        }
+        .sidebar-category-list { list-style: none; padding: 0; }
+        .sidebar-category-list li { margin-bottom: 0.3rem; }
+        .sidebar-category-list a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0; color: var(--text-muted); font-size: 0.88rem;
+            border-bottom: 1px solid var(--border); text-decoration: none; min-height: 44px;
+        }
+        .sidebar-category-list a:hover { color: var(--color-accent); text-decoration: none; }
+        .sidebar-category-count {
+            font-size: 0.78rem; background: var(--code-bg);
+            padding: 0.15em 0.5em; border-radius: var(--radius-pill);
+        }
+
+        .adsense-slot { margin: 1.5rem 0; text-align: center; }
+
+        /* =============================================
+           フッター
+           ============================================= */
+        .site-footer {
+            background: var(--surface); border-top: 1px solid var(--border);
+            padding: 2.5rem 0; margin-top: 3rem;
+        }
+        .footer-inner {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; flex-wrap: wrap; gap: 2rem;
+        }
+        .footer-section h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 0.3rem; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .footer-copyright {
+            text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);
+        }
+
+        /* =============================================
+           ユーティリティ
+           ============================================= */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .empty-state { text-align: center; padding: 4rem 1rem; color: var(--text-muted); }
+        .empty-state p { font-size: 1.1rem; }
+
+        /* =============================================
+           ヒーロー画像（CSS生成・コスト0）
+           ============================================= */
+        .article-hero {
+            position: relative;
+            aspect-ratio: 21 / 9;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .article-hero-emoji {
+            font-size: clamp(4rem, 8vw, 8rem);
+            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            animation: hero-float 3s ease-in-out infinite;
+        }
+        @keyframes hero-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .article-hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(255,255,255,0.06) 0%, transparent 40%);
+            z-index: 1;
+        }
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        /* セクション見出しの絵文字装飾 */
+        .article-body h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 強調ボックス（blockquote内の💡⚠️✅） */
+        .article-body blockquote {
+            position: relative;
+            padding: 1rem 1.5rem;
+            margin: 1.5em 0;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+        .article-body blockquote p { margin-bottom: 0.3em; }
+        .article-body blockquote p:last-child { margin-bottom: 0; }
+
+        /* インデックスカードのサムネイルにも絵文字 */
+        .card-thumb-emoji {
+            font-size: 3rem;
+            z-index: 2;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+
+        /* テーブル装飾強化 */
+        .article-body table {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .article-body th {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #fff;
+            font-weight: 600;
+        }
+        .article-body tr:nth-child(even) td {
+            background: var(--code-bg);
+        }
+
+        /* 番号付きリスト装飾 */
+        .article-body ol {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .article-body ol > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+        }
+        .article-body ol > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="site-logo">
+                <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">臨床統計ラボ</a>
+            </div>
+
+            <div class="header-right">
+                <nav class="site-nav" id="siteNav">
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+                    
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSS</a>
+                </nav>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライト切替">
+                    <span id="themeIcon">&#9790;</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="メニュー" onclick="document.getElementById('siteNav').classList.toggle('open')">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <main class="container">
+        
+<div class="layout-main">
+    <div class="content-area">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <span>R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践</span>
+        </nav>
+
+        <article>
+            
+            
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+                <div class="article-hero-overlay"></div>
+            </div>
+            
+
+            <header class="article-header">
+                <h1 class="article-title">R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践</h1>
+                <div class="article-meta">
+                    <span>2026-04-04</span>
+                    <span class="reading-time">3分で読める</span>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
+                </div>
+                <div class="card-tags mt-1"><span class="tag">R言語</span><span class="tag">生物統計</span><span class="tag">予測モデリング</span><span class="tag">時系列解析</span><span class="tag">臨床試験</span></div>
+            </header>
+
+            
+
+            
+            <details class="toc-container" open>
+                <summary class="toc-title" style="cursor:pointer;user-select:none;">目次</summary>
+                <div class="toc"><span class="toctitle">目次</span><ul>
+<li><a href="#_1">この記事でわかること</a></li>
+<li><a href="#_2">結論から言うと</a></li>
+<li><a href="#_3">臨床試験における予測モデリングと時系列解析とは？</a><ul>
+<li><a href="#predictive-modeling">予測モデリング（Predictive Modeling）</a></li>
+<li><a href="#time-series-analysis">時系列解析（Time Series Analysis）</a></li>
+<li><a href="#_4">バイオインフォマティクスとの連携</a></li>
+</ul>
+</li>
+<li><a href="#_5">統計的背景・理論</a><ul>
+<li><a href="#_6">予測モデリングの統計理論</a></li>
+<li><a href="#_7">時系列解析の統計理論</a></li>
+</ul>
+</li>
+<li><a href="#sasr">SAS/Rコード実装</a><ul>
+<li><a href="#r_1">サンプルデータの生成（R）</a></li>
+<li><a href="#coxr">予測モデリング：Cox比例ハザードモデル（R）</a></li>
+<li><a href="#r_2">時系列解析：線形混合効果モデル（R）</a></li>
+<li><a href="#sas">SASコード実装（比較用）</a></li>
+</ul>
+</li>
+<li><a href="#_8">実務での活用場面</a></li>
+<li><a href="#_9">海外の最新動向</a></li>
+<li><a href="#faq">よくある質問（FAQ）</a><ul>
+<li><a href="#q1-rsas">Q1: Rは製薬業界でSASの代替になりますか？</a></li>
+<li><a href="#q2">Q2: 予測モデルの解釈性はどう担保しますか？</a></li>
+<li><a href="#q3">Q3: 時系列解析で欠損データはどう扱いますか？</a></li>
+<li><a href="#q4-admiral">Q4: admiralパッケージの学習コストは高いですか？</a></li>
+<li><a href="#q5">Q5: バイオインフォマティクスと生物統計の連携はどのように進みますか？</a></li>
+</ul>
+</li>
+<li><a href="#_10">臨床統計スキルを磨くためのリソース</a></li>
+<li><a href="#_11">まとめ</a></li>
+</ul>
+</div>
+
+            </details>
+            
+
+            <div class="article-body"><h1 id="r">R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践</h1>
+<p><img alt="R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+<p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
+<h2 id="_1">この記事でわかること</h2>
+<ul>
+<li>R言語を使った臨床試験における予測モデリングの基本とその応用</li>
+<li>時系列解析手法の生物統計学的な利用例と実務での活用法</li>
+<li><code>admiral</code>や<code>rtables</code>など、臨床試験向けのRパッケージの具体的な活用術</li>
+<li>SASとRの実装コードを比較し、それぞれのメリットと使い分け</li>
+<li>海外の最新トレンドを把握し、日本の臨床統計業務へ取り入れるヒント</li>
+</ul>
+<h2 id="_2">結論から言うと</h2>
+<p>R言語は、現代のライフサイエンス分野、特に臨床試験における予測モデリングや時系列解析において、その柔軟性と豊富なパッケージエコシステムにより強力なツールとなっています。<code>admiral</code>や<code>rtables</code>といった専門パッケージを深く活用することで、ADaMデータセット（解析用データセット）の生成から解析結果の報告書作成まで、一貫した統計解析プロセスを効率的に構築・実行できます。これにより、新薬開発プロセスの加速、データ駆動型意思決定の強化、そして最終的にはより良い患者ケアの実現に貢献できるでしょう。</p>
+<h2 id="_3">臨床試験における予測モデリングと時系列解析とは？</h2>
+<p>臨床試験の分野では、膨大な患者データから有用な知見を引き出し、未来を予測する能力が極めて重要です。ここでは、その中心となる「予測モデリング」と「時系列解析」について解説します。</p>
+<h3 id="predictive-modeling">予測モデリング（Predictive Modeling）</h3>
+<p>予測モデリングとは、過去の臨床試験データや患者特性（共変量）を基に、将来のイベント発生確率や治療への反応などを統計的・機械学習的に予測する手法の総称です。例えば、ある患者が特定の新薬を投与された際に、病状が悪化するリスクや、特定の副作用を発現する確率を予測するといったケースが挙げられます。</p>
+<ul>
+<li><strong>例1：疾患の進行予測</strong><ul>
+<li>糖尿病患者のHbA1c値の推移から、将来の合併症（腎症、網膜症など）発症リスクを予測。</li>
+</ul>
+</li>
+<li><strong>例2：治療効果の反応予測</strong><ul>
+<li>がん患者の遺伝子プロファイルやバイオマーカーレベルから、特定の抗がん剤が奏功するかどうかを予測。</li>
+</ul>
+</li>
+<li><strong>例3：イベント発生までの時間予測</strong><ul>
+<li>心疾患患者において、心血管イベント（心臓発作、脳卒中など）が発生するまでの時間を予測する生存時間解析。</li>
+</ul>
+</li>
+</ul>
+<p>これらの予測モデルは、患者の層別化（サブグループ解析）、適応的デザイン（Adaptive Design）による試験プロトコルの最適化、早期終了基準の検討などに活用され、効率的かつ倫理的な臨床試験の実施をサポートします。R言語は、多種多様な予測モデル（線形回帰、ロジスティック回帰、Cox比例ハザードモデル、機械学習モデルなど）を構築するための豊富なパッケージ群を提供しており、複雑なモデリングにも柔軟に対応できます。</p>
+<h3 id="time-series-analysis">時系列解析（Time Series Analysis）</h3>
+<p>時系列解析とは、時間経過とともに繰り返し測定されるデータ（時系列データ）のパターンやトレンド、季節性、周期性などを分析し、将来の値を予測したり、変動要因を特定したりする統計的手法です。臨床試験においては、患者のバイタルサイン（血圧、心拍数など）、検査値（肝機能値、腎機能値など）、バイオマーカー（炎症マーカー、薬物濃度など）の経時的な変化を分析する際に頻繁に用いられます。</p>
+<ul>
+<li><strong>例1：薬物動態（PK）データの解析</strong><ul>
+<li>血中薬物濃度が時間とともにどのように変化するかをモデル化し、適切な投与量を決定。</li>
+</ul>
+</li>
+<li><strong>例2：疾患活動性のモニタリング</strong><ul>
+<li>関節リウマチ患者の疾患活動性スコア（例: DAS28）の経時的変化を追跡し、治療効果を評価。</li>
+</ul>
+</li>
+<li><strong>例3：安全性シグナルの検出</strong><ul>
+<li>特定の検査値の異常なトレンドやスパイクを早期に検出し、安全性上の懸念を特定。</li>
+</ul>
+</li>
+</ul>
+<p>時系列解析は、治療効果の持続性評価、安全性評価における異常値の検出、投与設計の最適化などに寄与します。R言語の<code>forecast</code>や<code>lme4</code>といったパッケージは、ARIMAモデルや線形混合効果モデルなど、様々な時系列データに適した解析手法を提供し、生物統計家が高い精度でデータを解釈することを可能にします。</p>
+<h3 id="_4">バイオインフォマティクスとの連携</h3>
+<p>バイオインフォマティクスは、ゲノミクス、プロテオミクス、メタボロミクスといった「オミクスデータ」を情報科学的手法で解析する分野です。R言語はバイオコンダクター（Bioconductor）などのエコシステムを通じて、これらの膨大なバイオインフォマティクスデータを扱うための強力なツールを提供しています。臨床試験において、バイオインフォマティクスの手法で特定されたバイオマーカーは、予測モデリングの重要な説明変数となり、より個別化された医療（Precision Medicine）の実現に不可欠な情報源となります。例えば、遺伝子発現プロファイルから治療反応を予測するモデルを構築する際には、両分野の連携が不可欠です。</p>
+<h2 id="_5">統計的背景・理論</h2>
+<p>ここでは、臨床試験で頻繁に用いられる予測モデリングと時系列解析の主要な統計的手法について、その背景と理論を解説します。</p>
+<h3 id="_6">予測モデリングの統計理論</h3>
+<h4 id="1-logistic-regression-model">1. ロジスティック回帰モデル (Logistic Regression Model)</h4>
+<p>二値の結果変数（例: イベント発生/非発生、治療奏功/非奏功）を予測する際に用いられます。イベント発生の確率を予測するために、ロジット関数を用いて線形予測子を変換します。</p>
+<p>$P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \dots + \beta_p X_p)}}$</p>
+<p>ここで、$P(Y=1|X)$ は共変量 $X$ が与えられたときのイベント発生確率、$\beta_i$ は回帰係数です。オッズ比（Odds Ratio）を直接的に解釈できるため、臨床的な解釈が容易です。</p>
+<h4 id="2-cox-cox-proportional-hazards-model">2. Cox比例ハザードモデル (Cox Proportional Hazards Model)</h4>
+<p>イベント発生までの時間（生存時間）を分析する際に用いられます。患者の共変量がハザード（単位時間あたりにイベントが発生する瞬間的な確率）に与える影響を評価します。特徴は、ベースラインハザード関数 $h_0(t)$ を特定せず、共変量の効果のみを推定するセミパラメトリックモデルである点です。</p>
+<p>$h(t|X) = h_0(t) \exp(\beta_1 X_1 + \dots + \beta_p X_p)$</p>
+<p>ここで、$h(t|X)$ は共変量 $X$ が与えられた時点 $t$ でのハザード、$h_0(t)$ はベースラインハザード関数、$\exp(\beta_i)$ はハザード比（Hazard Ratio）を示します。生存時間解析は、新薬の有効性評価において主要な解析手法の一つです。</p>
+<h4 id="3">3. 機械学習アプローチ</h4>
+<p>近年、臨床統計分野でもランダムフォレスト（Random Forest）、勾配ブースティング（Gradient Boosting Machines; GBM）、サポートベクターマシン（Support Vector Machines; SVM）などの機械学習手法が注目されています。これらの手法は、複雑な非線形関係や多数の共変量を持つデータに対して高い予測性能を発揮しますが、モデルの解釈性（なぜそのような予測になったのか）が課題となることがあります。SHAP値やLIMEなどの説明可能なAI（XAI）手法と組み合わせることで、臨床的な洞察を得る試みが進んでいます。</p>
+<h3 id="_7">時系列解析の統計理論</h3>
+<h4 id="1-linear-mixed-effects-model-lmem">1. 線形混合効果モデル (Linear Mixed-Effects Model; LMEM)</h4>
+<p>臨床試験では、同じ患者から異なる時点で繰り返し測定されるデータ（反復測定データ）が頻繁に発生します。線形混合効果モデルは、このようなデータ構造に適しており、個体内の相関（同じ患者の測定値は相関する）と個体間の異質性（患者によってベースライン値や反応が異なる）を同時に考慮できる柔軟なモデルです。</p>
+<p>一般的に、$Y_{ij} = (\beta_0 + b_{0i}) + (\beta_1 + b_{1i}) \text{Time}<em>{ij} + \epsilon</em>{ij}$</p>
+<p>ここで、$Y_{ij}$ は $i$ 番目の患者の $j$ 時点での測定値、$Time_{ij}$ は $j$ 時点、$b_{0i}$ と $b_{1i}$ は $i$ 番目の患者固有のランダム切片およびランダム傾き（これらが患者間の異質性を表現）、$\epsilon_{ij}$ は残差誤差です。ランダム効果（$b$）と固定効果（$\beta$）を分離して推定することで、より適切な治療効果や時間推移を評価できます。</p>
+<h4 id="2-arima">2. 自己回帰移動平均モデル (ARIMAモデル)</h4>
+<p>ARIMA（Autoregressive Integrated Moving Average）モデルは、単一の時系列データにおいて、過去の値と過去の予測誤差の両方を用いて将来の値を予測するモデルです。自己回帰（AR）成分は過去の観測値への依存を、移動平均（MA）成分は過去の予測誤差への依存を表します。差分（I）を取ることで、非定常な時系列データを定常化し、分析を可能にします。</p>
+<p>$Y_t = c + \phi_1 Y_{t-1} + \dots + \phi_p Y_{t-p} + \theta_1 \epsilon_{t-1} + \dots + \theta_q \epsilon_{t-q} + \epsilon_t$</p>
+<p>これはAR(p)MA(q)モデルの簡略形であり、より複雑なパターンを持つ時系列データの分析に活用されます。ただし、臨床試験データのように複数の患者からの時系列データを扱う場合は、LMEMのような階層モデルがより適していることが多いです。</p>
+<h2 id="sasr">SAS/Rコード実装</h2>
+<p>ここでは、R言語（特に<code>tidyverse</code>, <code>admiral</code>, <code>rtables</code>パッケージ）とSASを用いた、予測モデリング（Cox回帰）と時系列解析（線形混合効果モデル）の実装例を紹介します。ADaMデータセットの操作例も盛り込みます。</p>
+<h3 id="r_1">サンプルデータの生成（R）</h3>
+<p>まず、仮想のADaM（Analysis Data Model）ライクなデータセットをRで生成します。今回は、主要なADaMデータセットである<code>ADSL</code> (Subject-Level Analysis Dataset) と <code>ADTTE</code> (Time-to-Event Analysis Dataset)、そして時系列バイオマーカーデータとして<code>ADLB</code> (Laboratory Analysis Dataset) を想定します。</p>
+<pre><code class="language-R"># 必要なパッケージのインストールと読み込み
+# install.packages(c(&quot;tidyverse&quot;, &quot;survival&quot;, &quot;lme4&quot;, &quot;rtables&quot;, &quot;admiral&quot;))
+library(tidyverse)
+library(survival) # Cox回帰用
+library(lme4)     # 線形混合効果モデル用
+library(rtables)  # レポートテーブル作成用
+library(admiral)  # ADaMデータセット生成補助用
+
+# --- 1. ADSL (Subject-Level Analysis Dataset) 仮想データの生成 ---
+set.seed(123) # 再現性のためシード固定
+n_subjects &lt;- 100 # 被験者数
+
+ADSL &lt;- tibble(
+  USUBJID = paste0(&quot;SUBJ-&quot;, str_pad(1:n_subjects, 3, pad = &quot;0&quot;)),
+  SITEID = sample(paste0(&quot;SITE-&quot;, 1:10), n_subjects, replace = TRUE),
+  TRT01A = sample(c(&quot;Placebo&quot;, &quot;Drug A&quot;), n_subjects, replace = TRUE, prob = c(0.5, 0.5)),
+  SEX = sample(c(&quot;M&quot;, &quot;F&quot;), n_subjects, replace = TRUE, prob = c(0.5, 0.5)),
+  AGE = sample(20:70, n_subjects, replace = TRUE),
+  RACE = sample(c(&quot;Asian&quot;, &quot;Caucasian&quot;, &quot;Other&quot;), n_subjects, replace = TRUE, prob = c(0.4, 0.5, 0.1))
+) %&gt;%
+  mutate(TRTP = TRT01A) # TRTPは治験薬投与群 (Treated Group)
+
+print(ADSL)
+
+# --- 2. ADTTE (Time-to-Event Analysis Dataset) 仮想データの生成 ---
+# admiralパッケージの関数を使って、ADSLからADTTEを作成するプロセスを模倣
+# derive_vars_event_flagなどを使ってイベントフラグや最終観測日などを導出
+
+# 簡易的なADTTEデータ生成（イベント発生と追跡期間）
+ADTTE &lt;- ADSL %&gt;%
+  mutate(
+    # イベント発生までの時間 (日)
+    AVAL = rgamma(n_subjects, shape = ifelse(TRTP == &quot;Drug A&quot;, 8, 5), rate = 0.1), 
+    # イベントフラグ (0 = censored, 1 = event)
+    CNSR = rbinom(n_subjects, 1, prob = ifelse(TRTP == &quot;Drug A&quot;, 0.2, 0.4)) 
+  ) %&gt;%
+  # イベント発生までの時間と打ち切り時間を比較し、最小値を取る
+  mutate(
+    ADT = round(AVAL * 30), # 日数に変換
+    CNSR = ifelse(ADT &gt; 365, 0, CNSR), # 1年で打ち切り
+    ADT = pmin(ADT, 365) # 最大追跡期間を365日とする
+  ) %&gt;%
+  # derive_vars_event_flag()の概念を模倣
+  mutate(
+    # AVALがイベント発生までの時間、CNSRが打ち切りフラグと解釈
+    # ADTTE_ANL_EVENT = CNSR # 例: admiralではイベントフラグを導出する
+  ) %&gt;% 
+  select(USUBJID, TRTP, AVAL = ADT, CNSR)
+
+print(ADTTE)
+
+# --- 3. ADLB (Laboratory Analysis Dataset) 仮想データの生成 ---
+# 患者ごとのバイオマーカー経時データ
+ADLB &lt;- ADSL %&gt;%
+  select(USUBJID, TRTP) %&gt;%
+  rowwise() %&gt;%
+  # 複数時点で測定値を生成
+  mutate( 
+    AVISIT = list(paste0(&quot;Week &quot;, c(0, 4, 8, 12, 24, 36, 48))),
+    AVISITN = list(c(0, 4, 8, 12, 24, 36, 48))
+  ) %&gt;%
+  unnest(cols = c(AVISIT, AVISITN)) %&gt;%
+  mutate(
+    # バイオマーカー値の変動（治療群間で異なるトレンド）
+    AVAL = rnorm(1, mean = 50 - AVISITN * 0.5 * (TRTP == &quot;Drug A&quot;) + AVISITN * 0.2 * (TRTP == &quot;Placebo&quot;), sd = 5),
+    PARAM = &quot;BioMarker X&quot;,
+    PARAMCD = &quot;BM_X&quot;
+  ) %&gt;%
+  ungroup() %&gt;% 
+  # 少しだけ欠損値を混ぜる
+  sample_n(size = nrow(.), replace = FALSE) %&gt;%
+  slice_head(prop = 0.98) # 2%の欠損
+
+print(ADLB)
+
+# admiralでのADaM作成の概念
+# admiralは、SDTMからADaMを効率的に生成するための関数群を提供します。
+# 例えば、ADTTEの作成には以下のような関数を使用します。
+# ADTTE_derived &lt;- derive_vars_event_flag(ADTTE, 
+#   dataset_name = &quot;ADTTE&quot;, 
+#   event_var = AVAL, 
+#   event_condition = CNSR == 1,
+#   ...)
+# これらの関数群は、臨床試験データハンドリングの標準化と自動化を強力に推進します。
+
+</code></pre>
+<h3 id="coxr">予測モデリング：Cox比例ハザードモデル（R）</h3>
+<p><code>ADTTE</code>データセットを用いて、治療群（<code>TRTP</code>）がイベント発生までの時間に与える影響をCoxモデルで解析します。<code>survival</code>パッケージの<code>Surv()</code>関数と<code>coxph()</code>関数を使用します。</p>
+<pre><code class="language-R"># Cox比例ハザードモデルのR実装
+
+# 1. 生存オブジェクトの作成
+# Surv(時間, イベントフラグ) で生存時間を定義します。
+# イベントフラグは0=打ち切り, 1=イベント発生です。
+Surv_obj &lt;- Surv(time = ADTTE$AVAL, event = ADTTE$CNSR)
+
+# 2. Cox比例ハザードモデルの構築
+# TRTP (治療群) を説明変数としてモデルを構築します。
+model_cox &lt;- coxph(Surv_obj ~ TRTP, data = ADTTE)
+
+# 3. モデル結果の表示
+summary(model_cox)
+
+# --- rtablesを用いた結果表示の例 ---
+# rtablesは、臨床試験の報告書で使用されるような形式のテーブルをRで簡単に作成できるパッケージです。
+# ここでは、簡潔にハザード比と95%信頼区間を表示する例を示します。
+
+# モデルから結果を抽出
+cox_summary &lt;- as.data.frame(summary(model_cox)$conf.int)
+
+hazard_ratio &lt;- round(cox_summary[&quot;TRTPDrug A&quot;, &quot;exp(coef)&quot;], 2)
+lower_ci &lt;- round(cox_summary[&quot;TRTPDrug A&quot;, &quot;lower .95&quot;], 2)
+upper_ci &lt;- round(cox_summary[&quot;TRTPDrug A&quot;, &quot;upper .95&quot;], 2)
+p_value &lt;- round(summary(model_cox)$coefficients[&quot;TRTPDrug A&quot;, &quot;Pr(&gt;|z|)&quot;], 3)
+
+# rtablesで報告書用テーブルを作成
+build_table(ADSL, 
+  # TRTPごとの患者数とイベント数を集計
+  header_row(&quot;治療群ごとのCoxモデル解析結果&quot;),
+  split_cols_by(&quot;TRTP&quot;),
+  analyze(&quot;USUBJID&quot;, 
+          function(x, .ref_group) {
+            in_ref &lt;- x == .ref_group
+            overall_n &lt;- length(x)
+            ref_n &lt;- sum(in_ref)
+            trt_n &lt;- overall_n - ref_n
+
+            rrow(&quot;症例数 (N)&quot;, c(ref_n, trt_n))
+          },
+          custom_col_stats_fn = function(x, .var) { # ダミー関数。実際にはADSLから直接取得
+            if (.var == &quot;USUBJID&quot;) { 
+               c(sum(ADSL$TRTP == &quot;Placebo&quot;), sum(ADSL$TRTP == &quot;Drug A&quot;)) 
+            } else { NA }
+          }
+
+  ),
+  analyze(&quot;USUBJID&quot;, 
+          function(x, .ref_group) {
+            rrow(&quot;ハザード比 (95% CI)&quot;, 
+                 sprintf(&quot;%.2f (%.2f - %.2f)&quot;, hazard_ratio, lower_ci, upper_ci), 
+                 format = &quot;xx.xx (xx.xx - xx.xx)&quot;)
+          },
+          custom_col_stats_fn = function(x, .var) {
+            if (.var == &quot;USUBJID&quot;) {
+              c(&quot;Reference&quot;, sprintf(&quot;%.2f (%.2f - %.2f)&quot;, hazard_ratio, lower_ci, upper_ci))
+            } else { NA }
+          }
+  ),
+  analyze(&quot;USUBJID&quot;, 
+          function(x, .ref_group) {
+            rrow(&quot;p値&quot;, sprintf(&quot;%.3f&quot;, p_value), format = &quot;x.xxx&quot;)
+          },
+          custom_col_stats_fn = function(x, .var) {
+            if (.var == &quot;USUBJID&quot;) {
+              c(&quot; &quot;, sprintf(&quot;%.3f&quot;, p_value))
+            } else { NA }
+          }
+  )
+) %&gt;%
+  build() # テーブル構築
+</code></pre>
+<p><strong>結果の解釈</strong>: <code>summary(model_cox)</code>の結果から、<code>TRTPDrug A</code>の<code>exp(coef)</code>がハザード比（Hazard Ratio; HR）を示します。例えば、HRが0.75であれば、治験薬A群はプラセボ群と比較してイベント発生のリスクが25%減少したことを意味します。95%信頼区間が1を含まなければ統計的に有意であると判断します。</p>
+<h3 id="r_2">時系列解析：線形混合効果モデル（R）</h3>
+<p><code>ADLB</code>データセットを用いて、バイオマーカー<code>BM_X</code>の経時変化に対する治療群（<code>TRTP</code>）の影響を線形混合効果モデルで解析します。<code>lme4</code>パッケージの<code>lmer()</code>関数を使用します。</p>
+<pre><code class="language-R"># 線形混合効果モデルのR実装
+
+# 1. モデルの構築
+# AVAL (バイオマーカー値) を目的変数とし、
+# AVISITN (訪問番号、時間効果)、TRTP (治療群)、TRTPとAVISITNの交互作用を固定効果とします。
+# (1|USUBJID) は、被験者ごとに切片が異なる（ランダム切片）ことを意味します。
+# (AVISITN|USUBJID) は、被験者ごとに傾きも異なる（ランダム傾き）ことを意味します。
+
+model_lmer &lt;- lmer(AVAL ~ AVISITN * TRTP + (AVISITN|USUBJID), data = ADLB)
+
+# 2. モデル結果の表示
+summary(model_lmer)
+
+# 3. 推定された固定効果の表示
+fixef(model_lmer)
+
+# 4. 推定されたランダム効果の分散成分の表示
+VarCorr(model_lmer)
+
+# ADLBデータセットの概要テーブル (rtablesの活用例)
+build_table(ADLB, 
+  header_row(&quot;バイオマーカーXのベースラインおよび週次要約統計量&quot;),
+  split_cols_by(&quot;TRTP&quot;),
+  split_rows_by(&quot;AVISIT&quot;, page_by = FALSE) %&gt;%
+    summarize_row_groups(), # グループごとの要約行を表示
+  analyze(&quot;AVAL&quot;, 
+          stats = c(&quot;n&quot;, &quot;mean&quot;, &quot;sd&quot;, &quot;min&quot;, &quot;max&quot;),
+          format = list(n = &quot;xx&quot;, mean = &quot;xx.x&quot;, sd = &quot;xx.x&quot;, min = &quot;xx.x&quot;, max = &quot;xx.x&quot;))
+) %&gt;% 
+  build()
+</code></pre>
+<p><strong>結果の解釈</strong>: <code>summary(model_lmer)</code>の結果から、固定効果（Fixed Effects）の<code>TRTPDrug A</code>は治療群間の平均的な差、<code>AVISITN</code>は時間経過に伴うバイオマーカーの変化、<code>AVISITN:TRTPDrug A</code>はその時間変化が治療群間で異なるかどうかを示します。ランダム効果（Random Effects）は、被験者ごとのバイオマーカー値の変動パターンが異なる度合いを示し、個々の患者の多様性をモデルに組み込むことができます。</p>
+<h3 id="sas">SASコード実装（比較用）</h3>
+<p>同じ解析をSASで行う場合のコード例も示します。SASは製薬業界で長年使われてきた信頼性の高いツールです。特にデータハンドリングと安定したプロシージャが強みです。</p>
+<pre><code class="language-SAS">/* --- 1. サンプルデータ生成 (SAS) --- */
+/* ADSLデータセット */
+data ADSL;
+  call streaminit(123);
+  do i = 1 to 100;
+    USUBJID = catt('SUBJ-', put(i, z3.));
+    SITEID = catt('SITE-', ceil(rand('UNIFORM')*10));
+    if rand('UNIFORM') &lt; 0.5 then TRT01A = 'Placebo'; else TRT01A = 'Drug A';
+    if rand('UNIFORM') &lt; 0.5 then SEX = 'M'; else SEX = 'F';
+    AGE = floor(rand('UNIFORM') * 51) + 20; /* 20-70歳 */
+    race_val = rand('UNIFORM');
+    if race_val &lt; 0.4 then RACE = 'Asian';
+    else if race_val &lt; 0.9 then RACE = 'Caucasian';
+    else RACE = 'Other';
+    TRTP = TRT01A;
+    output;
+  end;
+run;
+
+/* ADTTEデータセット */
+data ADTTE;
+  set ADSL;
+  call streaminit(123);
+  if TRTP = 'Drug A' then AVAL = rand('GAMMA', 8) / 0.1;
+  else AVAL = rand('GAMMA', 5) / 0.1;
+  if TRTP = 'Drug A' then CNSR = rand('BERNOULLI', 0.2);
+  else CNSR = rand('BERNOULLI', 0.4);
+
+  ADT = round(AVAL * 30);
+  if ADT &gt; 365 then do; CNSR = 0; ADT = 365; end;
+  AVAL = ADT;
+  drop i race_val;
+run;
+
+/* ADLBデータセット */
+data ADLB;
+  set ADSL;
+  call streaminit(123);
+  do AVISITN = 0, 4, 8, 12, 24, 36, 48;
+    AVISIT = catt('Week ', AVISITN);
+    AVAL_mean = 50 - AVISITN * 0.5 * (TRTP = 'Drug A') + AVISITN * 0.2 * (TRTP = 'Placebo');
+    AVAL = AVAL_mean + rand('NORMAL', 0, 5);
+    PARAM = 'BioMarker X';
+    PARAMCD = 'BM_X';
+    if rand('UNIFORM') &gt; 0.98 then delete; /* 2%欠損 */
+    output;
+  end;
+  drop i race_val AVAL_mean;
+run;
+
+/* --- 2. 予測モデリング：Cox比例ハザードモデル (SAS) --- */
+proc phreg data=ADTTE;
+  class TRTP / param=ref ref='Placebo'; /* 治療群を変数として指定し、参照群をPlaceboに設定 */
+  model AVAL*CNSR(0) = TRTP; /* AVAL:イベント発生時間, CNSR:イベントフラグ(0=打ち切り) */
+  hazardratio TRTP; /* ハザード比を計算 */
+run;
+
+/* --- 3. 時系列解析：線形混合効果モデル (SAS) --- */
+proc mixed data=ADLB;
+  class USUBJID TRTP AVISITN; /* カテゴリ変数指定 */
+  model AVAL = AVISITN TRTP AVISITN*TRTP / s ddfm=kr; /* 固定効果モデル */
+  random AVISITN / subject=USUBJID type=un g; /* ランダム効果 (被験者ごとの切片とAVISITNの傾き) */
+  repeated AVISITN / subject=USUBJID type=ar(1); /* 反復測定内の相関構造 (AR(1)を指定) */
+  lsmeans TRTP*AVISITN / adjust=tukey plots=meanplot(cl); /* 調整済み平均値とプロット */
+run;
+</code></pre>
+<p><strong>SASコードの解説</strong>: <code>PROC PHREG</code>はCox比例ハザードモデルを、<code>PROC MIXED</code>は線形混合効果モデルを実装するための主要なプロシージャです。<code>CLASS</code>ステートメントでカテゴリ変数を指定し、<code>MODEL</code>ステートメントで固定効果、<code>RANDOM</code>ステートメントでランダム効果を定義します。<code>REPEATED</code>ステートメントは反復測定データにおける残差の相関構造を指定する際に非常に強力です。</p>
+<h2 id="_8">実務での活用場面</h2>
+<p>予測モデリングと時系列解析は、臨床試験の各フェーズで多岐にわたる実用的な応用が可能です。R言語の活用は、これらの場面でより柔軟かつ迅速な解析を可能にします。</p>
+<ol>
+<li>
+<p><strong>患者層別化とサブグループ解析の最適化</strong></p>
+<ul>
+<li><strong>予測モデリング</strong>: 患者のベースライン特性（遺伝子情報、バイオマーカー、人口統計学的因子など）を用いて、特定の治療薬に対する反応性が高い患者群を事前に予測します。これにより、臨床試験のデザイン段階でターゲット患者群を絞り込んだり、解析段階で治療効果が顕著なサブグループを特定したりすることが可能になります。</li>
+<li><strong>R言語の利点</strong>: <code>glmnet</code>（正則化回帰）、<code>ranger</code>（ランダムフォレスト）、<code>xgboost</code>（勾配ブースティング）など、様々な機械学習アルゴリズムをRで利用し、複雑な患者層別化モデルを構築できます。</li>
+</ul>
+</li>
+<li>
+<p><strong>早期終了基準の検討と適応的デザイン</strong></p>
+<ul>
+<li><strong>予測モデリング</strong>: 試験途中のデータを用いて、最終的な治療効果や安全性イベントの発生を予測し、試験の早期終了やサンプルサイズの再推定など、適応的デザインの意思決定をサポートします。これにより、無駄なリソースを削減し、患者への負担を軽減できます。</li>
+<li><strong>R言語の利点</strong>: <code>RBesT</code>（ベイズ統計）、<code>rpact</code>（適応的デザイン）などのパッケージは、複雑な適応的デザインのシミュレーションと実装を支援します。</li>
+</ul>
+</li>
+<li>
+<p><strong>バイオマーカー探索と評価</strong></p>
+<ul>
+<li><strong>時系列解析・予測モデリング</strong>: 血液や組織から得られるバイオマーカー値の経時変化を時系列解析で評価し、疾患の進行や治療効果との関連を調べます。また、これらのバイオマーカーが治療反応の予測因子となりうるかを予測モデリングで検証します。</li>
+<li><strong>R言語の利点</strong>: <code>limma</code>（差次的発現解析）、<code>survival</code>（生存解析）など、バイオインフォマティクスと生物統計学の両分野で強力なパッケージがRには豊富にあり、オミクスデータから臨床エンドポイントへの橋渡しをスムーズに行えます。</li>
+</ul>
+</li>
+<li>
+<p><strong>投与量最適化のためのPK/PDモデリング</strong></p>
+<ul>
+<li><strong>時系列解析</strong>: 薬物動態（Pharmacokinetics; PK）データ（血中薬物濃度）や薬力学（Pharmacodynamics; PD）データ（薬効指標）の経時的変化を解析し、最適な投与量・投与間隔を決定します。線形混合効果モデルや非線形混合効果モデルが活用されます。</li>
+<li><strong>R言語の利点</strong>: <code>nlme</code>, <code>lme4</code>は線形・非線形混合効果モデルを柔軟に扱え、<code>mrgsolve</code>などのパッケージはPK/PDシミュレーションをサポートします。</li>
+</ul>
+</li>
+<li>
+<p><strong>リアルワールドエビデンス（RWE）と長期予後予測</strong></p>
+<ul>
+<li><strong>予測モデリング・時系列解析</strong>: 電子カルテやレジストリデータなどのリアルワールドデータ（RWD）を用いたRWE研究において、患者の長期的な予後や医療経済的アウトカムを予測します。時系列データから、介入後の患者の状態変化を長期的に追跡・予測することが可能です。</li>
+<li><strong>R言語の利点</strong>: 大規模なRWDのハンドリングには<code>data.table</code>や<code>dplyr</code>のような効率的なデータ操作パッケージが不可欠です。また、因果推論のための<code>CausalImpact</code>などのパッケージも活用できます。</li>
+</ul>
+</li>
+</ol>
+<p>これらの活用場面において、R言語の柔軟性と拡張性は、製薬企業やCROの生物統計家にとって非常に強力なツールとなり、より高度な解析と効率的な意思決定を可能にします。特に{{internal_link:臨床試験における統計的解析計画}}の策定段階からRの活用を検討することで、解析の透明性と再現性を高めることができます。</p>
+<h2 id="_9">海外の最新動向</h2>
+<p>R言語は、臨床統計およびライフサイエンス分野において、海外の主要なコミュニティや規制当局でもその重要性が増しています。PSI (Statisticians in the Pharmaceutical Industry)、ASA (American Statistical Association)、PHUSE (Pharmaceutical Users Software Exchange) などの国際的な団体がRの活用を積極的に推進しています。</p>
+<ol>
+<li>
+<p><strong>Rethink Clinical Trials InitiativeとRの活用</strong></p>
+<ul>
+<li>近年、製薬業界では「Rethink Clinical Trials」のようなイニシアチブが推進され、臨床試験の効率化、コスト削減、迅速化が求められています。その中で、Rはオープンソースであり、最新の統計手法や機械学習アルゴリズムを迅速に取り入れられることから、革新的な解析ツールの中心となっています。</li>
+</ul>
+</li>
+<li>
+<p><strong>FDA/EMAとリアルワールドエビデンス（RWE）</strong></p>
+<ul>
+<li>米国食品医薬品局（FDA）や欧州医薬品庁（EMA）は、医薬品の承認プロセスにおいてリアルワールドエビデンス（RWE）の活用を推奨しています。RWEの解析には、大規模で複雑なデータセットを扱う高度な統計的手法や機械学習が不可欠であり、R言語がその主要なツールとして位置づけられています。</li>
+<li><strong>参考</strong>: FDA Guidances: Real-World Evidence <a href="https://www.fda.gov/drugs/guidance-compliance-regulatory-information/real-world-evidence">https://www.fda.gov/drugs/guidance-compliance-regulatory-information/real-world-evidence</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Clinical Trial用Rパッケージのエコシステム拡大</strong></p>
+<ul>
+<li><code>admiral</code> (ADaMデータセット生成), <code>rtables</code> (臨床試験報告書用テーブル作成), <code>Tplyr</code> (TLF自動生成), <code>tern</code> (探索的解析テーブル) など、特定の臨床試験解析のワークフローに特化したRパッケージが活発に開発・維持されています。これらは、SASベースのワークフローに匹敵する、あるいはそれ以上の効率性と柔軟性を提供することを目指しています。PHUSEやR Consortiumは、これらのパッケージの標準化と普及を支援しています。</li>
+<li>これらのパッケージ群は、SDTM（Standard Data Tabulation Model）からADaMを生成し、そのADaMデータを使って解析・結果報告までをRのみで完結させる「end-to-end」のワークフローを可能にします。これにより、SASへの依存度を低減し、より柔軟な解析環境を実現できます。</li>
+</ul>
+</li>
+<li>
+<p><strong>ベイズ統計と適応的デザインの浸透</strong></p>
+<ul>
+<li>PSIやASAのカンファレンスでは、ベイズ統計を用いた予測モデリングや適応的デザインに関する発表が毎年多数を占めます。Rには<code>JAGS</code>, <code>Stan</code>（ベイジアン推論）、<code>RBesT</code>（ベイズ統計的最適化）など、高度なベイズ解析ツールが充実しており、これらの最先端手法を臨床試験に適用する動きが加速しています。</li>
+</ul>
+</li>
+<li>
+<p><strong>ICH E9(R1) と estimands</strong></p>
+<ul>
+<li>国際調和会議（ICH）のガイドラインE9(R1)「Addendum on Estimands and Sensitivity Analysis in Clinical Trials」は、臨床試験における解析の目的（estimand）を明確化することの重要性を強調しています。予測モデリングや時系列解析は、これらのestimandに基づいた感度分析やシナリオ分析を行う上で不可欠なツールとして位置づけられています。Rは、複雑なデータ生成メカニズムやモデルをシミュレートするのに非常に適しており、estimandの文脈での解析に貢献します。</li>
+</ul>
+</li>
+</ol>
+<p>海外の専門家たちは、Rのオープンソース性、最新手法への対応力、そして活発なコミュニティによるサポートを高く評価しており、日本の臨床統計担当者もこれらの動向を積極的に取り入れ、Rのスキルを磨くことが求められています。特に、{{internal_link:SASからRへの移行ガイド}}のようなリソースも参考にしながら、自社の業務にRを組み込む検討を進めることが重要です。</p>
+<h2 id="faq">よくある質問（FAQ）</h2>
+<h3 id="q1-rsas">Q1: Rは製薬業界でSASの代替になりますか？</h3>
+<p>A1: 完全な代替というよりも、補完的な関係として進化しています。多くの製薬企業やCROでは、規制当局への提出要件や既存のインフラからSASが依然として主流ですが、探索的解析、最新の統計手法の導入、機械学習、そしてADaM生成・報告書作成の効率化といった領域でRの採用が急速に進んでいます。特に<code>admiral</code>や<code>rtables</code>のような臨床試験に特化したRパッケージの登場により、Rだけで一連の解析を完結させる「end-to-end」ソリューションが現実味を帯びてきています。今後は、両者を使い分けるハイブリッドな環境が一般的になると考えられます。</p>
+<h3 id="q2">Q2: 予測モデルの解釈性はどう担保しますか？</h3>
+<p>A2: 機械学習ベースの予測モデルは「ブラックボックス」と批判されることがありますが、その解釈性を高めるための手法が発展しています。SHAP (SHapley Additive exPlanations) 値やLIME (Local Interpretable Model-agnostic Explanations) などの説明可能なAI (XAI) 手法を用いることで、各予測にどの変数がどれだけ寄与したかを定量的に評価できます。Rには<code>DALEX</code>や<code>iml</code>といったパッケージがあり、これらのXAI手法を容易に実装できます。臨床的な専門知識と組み合わせて、モデルの予測が妥当であるかを多角的に検証することが重要です。</p>
+<h3 id="q3">Q3: 時系列解析で欠損データはどう扱いますか？</h3>
+<p>A3: 時系列データにおける欠損値は一般的な問題です。単純な欠損値除去はバイアスを生む可能性があるため、適切な対処が必要です。主な方法としては、多重代入法（Multiple Imputation; MI）、LOCF（Last Observation Carried Forward）、または線形混合効果モデルのように欠損値を直接扱える統計モデルを使用することが挙げられます。多重代入法は、複数の補完されたデータセットを作成し、それぞれで解析を行った後、結果を統合する方法で、Rの<code>mice</code>パッケージなどで実装できます。どの方法を選ぶかは、欠損のメカニズム（MCAR, MAR, MNAR）と解析の目的に応じて慎重に検討する必要があります。</p>
+<h3 id="q4-admiral">Q4: <code>admiral</code>パッケージの学習コストは高いですか？</h3>
+<p>A4: <code>admiral</code>は、<code>tidyverse</code>のエコシステムに基づいているため、既に<code>dplyr</code>や<code>tidyr</code>などの<code>tidyverse</code>の知識がある方にとっては比較的学習しやすいでしょう。しかし、ADaMの仕様（CDISC ADaM IG）と臨床試験のワークフローに関する深い理解が前提となります。パッケージ自体は高機能ですが、提供されるチュートリアルやドキュメントが充実しており、コミュニティも活発です。最初は既存の<code>admiral</code>テンプレートを参考にしながら、徐々にカスタマイズしていくのが良い学習方法です。一度習得すれば、ADaMデータセットの生成プロセスを大幅に効率化し、ミスを削減できる強力なツールとなります。</p>
+<h3 id="q5">Q5: バイオインフォマティクスと生物統計の連携はどのように進みますか？</h3>
+<p>A5: バイオインフォマティクスと生物統計の連携は、精密医療（Precision Medicine）の実現に不可欠です。バイオインフォマティクスが、大量のオミクスデータ（ゲノミクス、プロテオミクスなど）から有望なバイオマーカーやパスウェイを同定するのに対し、生物統計はこれらの候補が臨床アウトカム（疾患進行、治療反応など）と統計的に有意な関連があるか、またその予測能はどの程度かを評価します。両分野の専門家が協力し、データ生成から解析、臨床応用までを一貫して進める「トランスレーショナル・リサーチ」が主流となっています。Rは、<code>Bioconductor</code>パッケージ群を通じて、この連携を強力にサポートするプラットフォームです。</p>
+<h2 id="_10">臨床統計スキルを磨くためのリソース</h2>
+<p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
+<ul>
+<li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
+<li><strong><a href="https://www.udemy.com">Udemy SAS/R講座</a></strong> - 動画で学ぶSAS/R統計プログラミング</li>
+<li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
+</ul>
+<p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p>
+<h2 id="_11">まとめ</h2>
+<p>本記事では、R言語が臨床試験における予測モデリングと時系列解析においていかに強力なツールであるか、その統計的背景から具体的なRコードの実装、実務での活用場面、そして海外の最新動向までを包括的に解説しました。</p>
+<p>R言語は、<code>tidyverse</code>によるデータ操作の効率性、<code>survival</code>や<code>lme4</code>といった基本的な統計解析パッケージの豊富さ、そして<code>admiral</code>や<code>rtables</code>といった臨床試験に特化したパッケージ群の進化により、生物統計家にとって不可欠なツールとなっています。特に、ADaMデータセットの生成から、高度な予測モデルの構築、時系列データの詳細な分析、そして最終的な報告書の作成まで、Rのみで一貫したワークフローを構築できることは、業務の効率化と解析の質の向上に大きく貢献します。</p>
+<p>製薬業界は、データ駆動型意思決定と個別化医療の時代へと移行しており、R言語を活用した最新の統計解析手法は、新薬開発の成功確率を高め、患者さんにより良い治療を届けるための鍵となります。私たち臨床統計ラボは、今後もR言語と生物統計の最先端情報を日本の臨床統計担当者の皆様にお届けし、日々の業務の一助となることを願っています。</p>
+<p>ぜひ、この記事を参考に、R言語を用いた予測モデリングと時系列解析を自身の業務に取り入れてみてください。より複雑な解析やRの活用事例については、{{internal_link:Rを用いた統計解析の応用例}}の記事もご参照ください。</p></div>
+
+            
+
+            <div class="share-buttons">
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html&text=R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html&title=R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html" target="_blank" rel="noopener noreferrer">LINE</a>
+            </div>
+        </article>
+
+        
+    </div>
+</div>
+
+    </main>
+
+    
+    
+
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-section">
+                    <h4>臨床統計ラボ</h4>
+                    <p class="text-muted" style="font-size:0.85rem;max-width:300px;">臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>カテゴリ</h4>
+                    <ul class="footer-links"></ul>
+                </div>
+                <div class="footer-section">
+                    <h4>リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/sitemap.xml">サイトマップ</a></li>
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSSフィード</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">&copy; 2026 臨床統計ラボ. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var toggle = document.getElementById('themeToggle');
+        var icon = document.getElementById('themeIcon');
+        var html = document.documentElement;
+        function getStored() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
+        function setTheme(t) {
+            html.setAttribute('data-theme', t);
+            icon.textContent = t === 'light' ? '\u2600' : '\u263E';
+            try { localStorage.setItem('theme', t); } catch(e) {}
+        }
+        var s = getStored(); if (s) setTheme(s);
+        toggle.addEventListener('click', function() {
+            setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+    })();
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="http"]').forEach(function(l) {
+            if (l.hostname !== window.location.hostname) {
+                l.setAttribute('target', '_blank');
+                l.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
