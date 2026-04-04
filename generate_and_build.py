@@ -143,7 +143,8 @@ def run(cfg=None, prm=None):
 
     # ステップ2: 記事生成
     logger.info("ステップ2: 記事生成")
-    max_retries = 5
+    max_retries = 3
+    base_delay = 5
     article = None
     for attempt in range(1, max_retries + 1):
         try:
@@ -164,7 +165,9 @@ def run(cfg=None, prm=None):
                 logger.error("記事生成が%d回失敗しました。終了します。", max_retries)
                 sys.exit(1)
             import time
-            time.sleep(5)
+            wait = base_delay * (2 ** (attempt - 1))
+            logger.info("エクスポーネンシャルバックオフ: %d秒待機", wait)
+            time.sleep(wait)
 
     # ステップ2.5: アフィリエイトリンク挿入
     logger.info("ステップ2.5: アフィリエイトリンク挿入")
