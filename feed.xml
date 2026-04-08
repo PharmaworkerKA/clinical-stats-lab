@@ -5,7 +5,7 @@
     <link>https://pharmaworkerka.github.io/clinical-stats-lab</link>
     <description>臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</description>
     <language>ja</language>
-    <lastBuildDate>Tue, 07 Apr 2026 05:06:19 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 05:08:51 +0900</lastBuildDate>
     <atom:link href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践</title>
@@ -13,7 +13,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Tue, 07 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>R for Clinical Trials: admiralとADaMで臨床試験データ解析を加速</title>
@@ -21,7 +21,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-admiral-adam.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Tue, 07 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>admiral RでADaM作成！臨床試験プログラマーのAI活用術</title>
@@ -29,7 +29,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Tue, 07 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング</title>
@@ -37,7 +37,15 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Tue, 07 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>admiralとRで臨床試験を加速！ADaM自動生成とAI活用の新時代</title>
+      <link>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-ai.html</link>
+      <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-ai.html</guid>
+      <description></description>
+      <category>R for Clinical Trials</category>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0900</pubDate>
     </item>
   </channel>
 </rss>
