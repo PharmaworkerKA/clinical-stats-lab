@@ -6,29 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-    <title>臨床統計ラボ - 臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</title>
+    <title>R/admiralで学ぶICH E9(R1) Estimand実践ガイド | 臨床統計ラボ</title>
 
     
-    <meta name="description" content="臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。">
+    <meta name="description" content="">
     <meta name="author" content="臨床統計ラボ">
-    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html">
 
     
     <meta property="og:site_name" content="臨床統計ラボ">
-    <meta property="og:title" content="臨床統計ラボ">
-    <meta property="og:description" content="臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab">
+    <meta property="og:title" content="R/admiralで学ぶICH E9(R1) Estimand実践ガイド">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html">
     <meta property="og:locale" content="ja_JP">
 
     
-    
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="臨床統計ラボ">
-    <meta name="twitter:description" content="臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。">
-    
+    <meta name="twitter:title" content="R/admiralで学ぶICH E9(R1) Estimand実践ガイド">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
     
     <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
@@ -54,16 +54,22 @@
 
     
     
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "臨床統計ラボ",
-        "description": "臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。",
-        "url": "https://pharmaworkerka.github.io/clinical-stats-lab"
-    }
-    </script>
-    
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "R/admiralで学ぶICH E9(R1) Estimand実践ガイド",
+    "description": "",
+    "datePublished": "2026-04-14",
+    "dateModified": "2026-04-14",
+    "author": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html"}
+    ,"image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "自動生成, ブログ, 記事, SEO, 最新"
+}
+</script>
+
 
     <style>
         /* =============================================
@@ -663,12 +669,6 @@
                 <nav class="site-nav" id="siteNav">
                     <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
                     
-
-<a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials</a>
-
-<a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html">ICH E9(R1) Estimand</a>
-
-
                     <a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSS</a>
                 </nav>
 
@@ -686,232 +686,259 @@
     
     <main class="container">
         
-
-<section style="padding:3.5rem 0 2.5rem;text-align:center;">
-    <h1 style="margin-bottom:0.75rem;">臨床統計ラボ</h1>
-    <p class="text-muted" style="font-size:clamp(0.95rem,1.2vw+0.5rem,1.15rem);max-width:600px;margin:0 auto 1.5rem;line-height:1.7;">臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</p>
-    
-    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.5rem;">
-        
-        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="tag" style="font-size:0.82rem;padding:0.3em 0.85em;">R for Clinical Trials <span style="opacity:0.6;margin-left:0.25em;">(10)</span></a>
-        
-        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html" class="tag" style="font-size:0.82rem;padding:0.3em 0.85em;">ICH E9(R1) Estimand <span style="opacity:0.6;margin-left:0.25em;">(1)</span></a>
-        
-    </div>
-    
-</section>
-
 <div class="layout-main">
     <div class="content-area">
-        
-        <div class="card-grid">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+            <span class="breadcrumb-sep">/</span>
             
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html">R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">R言語</span><span class="tag">生物統計</span><span class="tag">予測モデリング</span></div>
-                </div>
-            </article>
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html">ICH E9(R1) Estimand</a>
+            <span class="breadcrumb-sep">/</span>
             
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-admiral-adam.html">R for Clinical Trials: admiralとADaMで臨床試験データ解析を加速</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">admiral</span><span class="tag">Rプログラミング</span><span class="tag">臨床試験</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html">admiral RでADaM作成！臨床試験プログラマーのAI活用術</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">admiral</span><span class="tag">Rパッケージ</span><span class="tag">臨床試験</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html">admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">admiral</span><span class="tag">Rパッケージ</span><span class="tag">臨床試験</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-ai.html">admiralとRで臨床試験を加速！ADaM自動生成とAI活用の新時代</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">admiral</span><span class="tag">Rパッケージ</span><span class="tag">臨床試験</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-ai-efficiency.html">Rとadmiralで臨床試験解析を加速！AIでプログラミング効率を革新</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">admiral</span><span class="tag">R</span><span class="tag">臨床試験</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-admiral-clinical-trials-adam-ai.html">R言語×admiralで臨床試験を革新！ADaM構築とAIアシストプログラミング</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">R言語</span><span class="tag">admiral</span><span class="tag">臨床試験</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1542903660-eedba2cda473?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-bdlnm-bayesian-dlnm-clinical-statistics.html">R bdlnm: 臨床統計向けベイジアン分布ラグ非線形モデル実践</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">Rパッケージ</span><span class="tag">bdlnm</span><span class="tag">ベイジアン統計</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1542903660-eedba2cda473?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-package-clinical-trials-adam.html">admiral RパッケージでADaM効率化！臨床試験統計解析の未来</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">admiral</span><span class="tag">R</span><span class="tag">ADaM</span></div>
-                </div>
-            </article>
-            
-            <article class="card">
-                
-                <div class="card-thumb" style="background: url('https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
-                </div>
-                
-                <div class="card-body">
-                    <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-admiral-cdisc-adam-clinical-trials-ai-programming.html">R, admiralで加速！臨床試験のCDISC ADaMデータ生成とAIプログラミング最前線</a></h2>
-                    <div class="card-meta">
-                        <span>2026-04-14</span>
-                        <span class="reading-time">3分で読める</span>
-                        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
-                    </div>
-                    
-                    <div class="card-tags"><span class="tag">R</span><span class="tag">admiral</span><span class="tag">CDISC</span></div>
-                </div>
-            </article>
-            
-        </div>
-        
-
-        
-        <nav class="pagination">
-            
-            
-                <span class="current">1</span>
-                
-            
-                <a href="https://pharmaworkerka.github.io/clinical-stats-lab/page/2.html">2</a>
-            
-            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/page/2.html">次へ &raquo;</a>
+            <span>R/admiralで学ぶICH E9(R1) Estimand実践ガイド</span>
         </nav>
+
+        <article>
+            
+            
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+                <div class="article-hero-overlay"></div>
+            </div>
+            
+
+            <header class="article-header">
+                <h1 class="article-title">R/admiralで学ぶICH E9(R1) Estimand実践ガイド</h1>
+                <div class="article-meta">
+                    <span>2026-04-14</span>
+                    <span class="reading-time">3分で読める</span>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html" class="category-badge">ICH E9(R1) Estimand</a>
+                </div>
+                <div class="card-tags mt-1"><span class="tag">自動生成</span><span class="tag">ブログ</span><span class="tag">記事</span><span class="tag">SEO</span><span class="tag">最新</span></div>
+            </header>
+
+            
+
+            
+            <details class="toc-container" open>
+                <summary class="toc-title" style="cursor:pointer;user-select:none;">目次</summary>
+                <div class="toc"><span class="toctitle">目次</span><ul>
+<li><a href="#_1">この記事でわかること</a></li>
+<li><a href="#_2">結論から言うと</a></li>
+<li><a href="#ich-e9r1-estimand">ICH E9(R1) Estimandとは？</a></li>
+<li><a href="#_3">統計的背景・理論</a><ul>
+<li><a href="#ies">事象後変量（IEs）に対する戦略</a></li>
+</ul>
+</li>
+<li><a href="#sasr">SAS/Rコード実装</a></li>
+<li><a href="#_8">臨床統計スキルを磨くためのリソース</a></li>
+</ul>
+</div>
+
+            </details>
+            
+
+            <div class="article-body"><h1 id="radmiralich-e9r1-estimand">R/admiralで学ぶICH E9(R1) Estimand実践ガイド</h1>
+<p><img alt="R/admiralで学ぶICH E9(R1) Estimand実践ガイド" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+<p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
+<h2 id="_1">この記事でわかること</h2>
+<ul>
+<li>ICH E9(R1) Estimand（エスティマンド）の基本的な考え方と重要性</li>
+<li>Estimandを構成する5つの属性（治療、対象集団、エンドポイント、事象後変量、集団レベル要約）の詳細</li>
+<li>Treatment Policy（治療方針戦略）やHypothetical Strategy（仮想戦略）などの事象後変量（Intercurrent Events）に対する戦略</li>
+<li>Rの<code>admiral</code>パッケージを活用したEstimandに基づく臨床試験プログラミングの実践例</li>
+<li>臨床試験におけるEstimandの具体的な活用場面と最新の国際動向</li>
+</ul>
+<h2 id="_2">結論から言うと</h2>
+<p><strong>ICH E9(R1) Estimandは、「何を推定したいのか」を明確に定義するための極めて重要なフレームワークです。</strong> 特に、臨床試験中に発生する事象後変量（Intercurrent Events）への対応戦略を事前に定めることで、一貫性のある、かつ解釈しやすい治療効果の推定が可能になります。Rの<code>admiral</code>パッケージは、このEstimandに基づいたCDISC ADaMデータセット作成を効率化し、再現性の高い臨床試験プログラミングを支援します。</p>
+<h2 id="ich-e9r1-estimand">ICH E9(R1) Estimandとは？</h2>
+<p>臨床試験において、私たちは「治療によって何がどれくらい変化したのか？」を知りたいと考えます。しかし、試験期間中には様々な予期せぬ出来事（例えば、副作用による治療中止、併用薬の使用など）が発生し、これが治療効果の評価を複雑にすることがあります。ICH E9(R1) Estimand（エスティマンド）は、このような複雑な状況において、「<strong>試験の目的として、具体的に何を（治療効果として）推定したいのか</strong>」を明確に定義するためのフレームワークです。</p>
+<p>2019年に発効されたICH E9(R1)「Statistical Principles for Clinical Trials: Addendum on Estimands and Sensitivity Analysis in Clinical Trials」は、医薬品開発における統計的解析の透明性と解釈可能性を向上させることを目的としています。このガイドラインの中心概念が「Estimand」であり、臨床試験のプロトコル段階から解析結果の報告までを一貫した論理で結びつける役割を担います。</p>
+<p>Estimandを定義することで、全ての関係者（スポンサー、規制当局、医師、患者など）が、評価すべき治療効果について共通の理解を持つことができます。これにより、曖昧な解釈や誤解を防ぎ、臨床試験の科学的根拠をより強固なものにすることができるのです。</p>
+<h2 id="_3">統計的背景・理論</h2>
+<p>Estimandは、以下の5つの属性を具体的に定義することで構成されます。これらの属性を明確にすることで、「何を測定し、何を比較し、何を結論づけるのか」が詳細に記述されます。</p>
+<ol>
+<li><strong>治療 (Treatment)</strong>: 評価対象となる介入（治療薬、プラセボなど）と、その投与方法や期間を特定します。例えば、「治験薬X 10mg 1日1回投与」や「プラセボ 1日1回投与」といった具体的な内容です。</li>
+<li><strong>対象集団 (Population)</strong>: 治療効果を推定したい患者集団を定義します。これは通常、試験の組み入れ基準・除外基準によって定められる集団です。例えば、「2型糖尿病でHbA1cが7.0%～10.0%の成人患者」などが該当します。</li>
+<li><strong>エンドポイント (Endpoint)</strong>: 治療効果を評価するための測定指標です。例えば、「ベースラインから24週目のHbA1c変化量」や「全生存期間」などがこれにあたります。単一のエンドポイントだけでなく、複合エンドポイントや複数の主要・副次エンドポイントが設定されることもあります。</li>
+<li><strong>事象後変量 (Intercurrent Events; IEs)</strong>: これがEstimandの最も重要な要素の一つです。IEsとは、<strong>無作為化後、かつ治療期間中に発生し、治療効果の解釈を複雑にする可能性のある事象</strong>を指します。具体例としては、以下のようなものが挙げられます。<ul>
+<li>治験薬の服用中止（副作用、効果不足、患者の希望など）</li>
+<li>治療アドヒアランス（服薬遵守）の低下</li>
+<li>規定された治療以外の追加治療（レスキュー薬の使用など）</li>
+<li>規定された治療への非遵守</li>
+<li>その他の重篤な併発疾患の発生
+Estimandフレームワークでは、これらのIEsに対してどのように対処するか（つまり、IEsが発生した場合でも、治療効果をどのように定義し、評価するか）を戦略的に定義します。</li>
+</ul>
+</li>
+<li><strong>集団レベル要約 (Population-level summary)</strong>: 特定の対象集団における治療効果をどのように要約して提示するかを定義します。例えば、「平均変化量の差」「中央値の差」「ハザード比」「オッズ比」など、統計的な指標がこれに当たります。これは、推定量の種類（例: 平均、中央値）と、それを比較する方法（例: 差、比）を指します。</li>
+</ol>
+<h3 id="ies">事象後変量（IEs）に対する戦略</h3>
+<p>IEsへの対処戦略は、Estimandの核心部分であり、ICH E9(R1)では主に以下の4つの戦略が提示されています。</p>
+<ol>
+<li>
+<p><strong>Treatment Policy Strategy (治療方針戦略)</strong>:
+    この戦略では、<strong>IEが発生したとしても、無作為化された最初の治療方針を維持したと仮定して治療効果を評価します。</strong> いわゆる「Intention-To-Treat (ITT) 原則」（治療意図解析）に最も近い考え方です。患者が無作為化された治療アームにとどまり続けた場合の効果を推定します。治療中断や併用薬の使用など、IEが発生しても、その患者を元の治療グループから除外せず、追跡可能な限りデータ収集を続け、解析に含めます。</p>
+<ul>
+<li><strong>例</strong>: 降圧剤の臨床試験で、副作用により治験薬を中断し、別の降圧剤に切り替えた患者がいる場合でも、その患者は治験薬群の一部として解析に含める。</li>
+<li><strong>数式表現</strong>: $E[Y_1 - Y_0]$ （ここで $Y_1$ と $Y_0$ はそれぞれ治療群1と治療群0に無作為化された場合の最終的なアウトカム）</li>
+</ul>
+</li>
+<li>
+<p><strong>Hypothetical Strategy (仮想戦略)</strong>:
+    この戦略では、<strong>「もしIEが発生しなかったら、治療効果はどうなっていたか」という仮想的な状況を仮定して治療効果を評価します。</strong> 例えば、治療アドヒアランスが完璧だったら、あるいはレスキュー薬が使用されなかったら、という状況を想定します。これは、特定のIEを排除または修正した場合の治療効果を推定したい場合に有用です。</p>
+<ul>
+<li><strong>例</strong>: 2型糖尿病の試験で、もし血糖コントロールが悪化してもレスキュー薬が使用されなかった場合の、治験薬の効果を評価する。</li>
+<li><strong>数式表現</strong>: $E[Y_1 | \text{IE non-occurrence}] - E[Y_0 | \text{IE non-occurrence}]$ （特定のIEが発生しなかったという条件下での効果）</li>
+</ul>
+</li>
+<li>
+<p><strong>Principal Stratum Strategy (主層戦略)</strong>:
+    この戦略では、<strong>IEが発生しなかった、あるいは特定のIEの発生様式が共通する患者層（主層）に限定して治療効果を評価します。</strong> この戦略は、IEの発生が患者の治療反応性と関連する場合に特に有用ですが、解析が複雑になる傾向があります。</p>
+<ul>
+<li><strong>例</strong>: 「試験期間中に治療アドヒアランスを維持できた患者」という主層に限定して、その層での治験薬の効果を評価する。</li>
+<li><strong>数式表現</strong>: $E[Y_1 - Y_0 | S=s]$ （IEの発生パターン $s$ を持つ主層 $S$ における効果）</li>
+</ul>
+</li>
+<li>
+<p><strong>Composite Strategy (複合戦略)</strong>:
+    この戦略では、<strong>IEそのものをエンドポイントの一部として組み込みます。</strong> IEの発生を「好ましくないアウトカム」として定義し、元々のエンドポイントと複合させることで、治療効果全体を評価します。</p>
+<ul>
+<li><strong>例</strong>: エンドポイントを「24週目のHbA1c変化量」ではなく、「24週目のHbA1c変化量」または「治療中断」または「レスキュー薬使用」といった複合イベントとして定義する（例: 治療中断が発生した場合は、HbA1c変化量をworst caseに設定するなど）。</li>
+<li><strong>数式表現</strong>: $E[\text{Composite Endpoint}_1 - \text{Composite Endpoint}_0]$ （複合エンドポイントの差）</li>
+</ul>
+</li>
+</ol>
+<p>これらの戦略は、プロトコル作成時に慎重に検討され、主要解析のEstimandとして明記される必要があります。また、主要解析のEstimandとは異なる戦略を用いた感度分析（Sensitivity Analysis）も推奨されており、解析結果の頑健性（Robustness）を示すために不可欠です。</p>
+<h2 id="sasr">SAS/Rコード実装</h2>
+<p>ここでは、Rの<code>admiral</code>パッケージを活用して、Estimandの概念に基づいたCDISC ADaMデータセットの作成例を示します。特に、事象後変量（IE）に対する<code>Hypothetical Strategy</code>を適用する場面を想定し、治療中断が発生した場合の処理に焦点を当てます。</p>
+<p><code>admiral</code>パッケージは、Tidyverse原則に則り、CDISC ADaMデータセットの標準的な導出プロセスを効率化するために設計されています。臨床統計プログラマにとって非常に強力なツールとなっています。</p>
+<p>```R</p>
+<h1 id="_4">必要なパッケージのロード</h1>
+<p>library(tidyverse) # データ操作のための基盤パッケージ
+library(admiral)   # CDISC ADaMデータセット作成のためのパッケージ</p>
+<h1 id="-1-">--- 1. サンプルデータの作成 ---</h1>
+<h1 id="adsl-subject-level-data">臨床試験の主要な情報を含むADSL (Subject-Level Data) を模擬します。</h1>
+<h1 id="trt01a-saffl">TRT01A: 治療群, SAFFL: 有効性評価対象フラグ</h1>
+<p>adsl &lt;- tribble(
+  ~USUBJID, ~TRT01A, ~SEX, ~AGE, ~SAFFL, ~RANDDT,
+  "PAT001", "Treatment A", "M", 45, "Y", "2023-01-01",
+  "PAT002", "Treatment A", "F", 52, "Y", "2023-01-01",
+  "PAT003", "Treatment B", "M", 60, "Y", "2023-01-01",
+  "PAT004", "Treatment B", "F", 38, "Y", "2023-01-01",
+  "PAT005", "Treatment A", "F", 68, "Y", "2023-01-01",
+  "PAT006", "Treatment B", "M", 55, "Y", "2023-01-01"
+) %&gt;%
+  mutate(STUDYID = "STUDY01", RANDDT = as.Date(RANDDT))</p>
+<h1 id="adpc-parameter-level-data-eg-hba1c-measurements">測定値データを含むADPC (Parameter-Level Data - e.g., HbA1c measurements) を模擬します。</h1>
+<h1 id="avisitn-aval">AVISITN: 訪問番号, AVAL: 測定値</h1>
+<p>adpc &lt;- tribble(
+  ~USUBJID, ~AVISIT, ~AVISITN, ~PCTESTCD, ~AVAL, ~ADY,
+  "PAT001", "BASELINE", 0, "HBA1C", 7.5, 1,
+  "PAT001", "WEEK 4",   4, "HBA1C", 7.2, 29,
+  "PAT001", "WEEK 24", 24, "HBA1C", 6.8, 169,
+  "PAT002", "BASELINE", 0, "HBA1C", 8.0, 1,
+  "PAT002", "WEEK 4",   4, "HBA1C", 7.8, 29,
+  "PAT002", "WEEK 12", 12, "HBA1C", 7.9, 85, # PAT002はWEEK 12までで、その後治療中断
+  "PAT003", "BASELINE", 0, "HBA1C", 7.8, 1,
+  "PAT003", "WEEK 4",   4, "HBA1C", 7.6, 29,
+  "PAT003", "WEEK 24", 24, "HBA1C", 7.0, 169,
+  "PAT004", "BASELINE", 0, "HBA1C", 7.2, 1,
+  "PAT004", "WEEK 4",   4, "HBA1C", 7.0, 29,
+  "PAT004", "WEEK 24", 24, "HBA1C", 6.5, 169,
+  "PAT005", "BASELINE", 0, "HBA1C", 8.5, 1,
+  "PAT005", "WEEK 4",   4, "HBA1C", 8.2, 29,
+  "PAT005", "WEEK 24", 24, "HBA1C", 8.0, 169,
+  "PAT006", "BASELINE", 0, "HBA1C", 7.0, 1,
+  "PAT006", "WEEK 4",   4, "HBA1C", 6.9, 29,
+  "PAT006", "WEEK 24", 24, "HBA1C", 6.6, 169
+) %&gt;%
+  mutate(STUDYID = "STUDY01")</p>
+<h1 id="intercurrent-event">事象後変量 (Intercurrent Event) データの作成 (例: 治療中断日)</h1>
+<h1 id="ex-exposure">EX (Exposure) ドメインの情報を模擬し、治療終了日を中断日と仮定します。</h1>
+<p>adex &lt;- tribble(
+  ~USUBJID, ~EXSTDTC, ~EXENDTC, ~EXTRT,
+  "PAT001", "2023-01-01", "2023-06-30", "Treatment A",
+  "PAT002", "2023-01-01", "2023-03-31", "Treatment A", # PAT002は3月末で治療中断
+  "PAT003", "2023-01-01", "2023-06-30", "Treatment B",
+  "PAT004", "2023-01-01", "2023-06-30", "Treatment B",
+  "PAT005", "2023-01-01", "2023-06-30", "Treatment A",
+  "PAT006", "2023-01-01", "2023-06-30", "Treatment B"
+) %&gt;%
+  mutate(
+    STUDYID = "STUDY01",
+    EXSTDTC = as.Date(EXSTDTC),
+    EXENDTC = as.Date(EXENDTC)
+  )</p>
+<h1 id="-2-hypothetical-strategy-">--- 2. Hypothetical Strategyの適用例 (治療中断の場合) ---</h1>
+<h1 id="_5">「もし治療中断がなかったら」という仮想的な状況を考慮するための処理</h1>
+<h1 id="exendtc2023-06-30">治療中断日を特定 (例として、EXENDTCが最終観察日(2023-06-30)より前の場合は中断とみなす)</h1>
+<p>final_obs_date &lt;- max(adpc$ADY) # ADYから最終観察日を決定</p>
+<p>discontinuation_info &lt;- adex %&gt;%
+  # 最終観察日より前に治療が終了している患者を特定
+  filter(EXENDTC &lt; as.Date("2023-01-01") + final_obs_date - 1) %&gt;%
+  select(USUBJID, IE_DATE = EXENDTC) %&gt;%
+  mutate(IE_FLAG = "Y")</p>
+<h1 id="adpc">ADPCデータに治療中断情報をマージ</h1>
+<h1 id="admiral">admiralパッケージのヘルパー関数を使用することも可能ですが、ここでは概念をわかりやすくするために直接操作します。</h1>
+<p>adpp_hypothetical &lt;- adpc %&gt;%
+  # ADSLから無作為化日を結合してADYを正確に計算
+  left_join(adsl %&gt;% select(USUBJID, RANDDT), by = "USUBJID") %&gt;%
+  # 治療中断情報を結合
+  left_join(discontinuation_info, by = "USUBJID") %&gt;%
+  # ADY (試験開始日からの日数) を正確に計算するためにベースライン日を仮定
+  mutate(ADDT = RANDDT + days(ADY - 1)) %&gt;% # ADYは1始まりと仮定
+  # Hypothetical Strategy:
+  # IE発生日 (IE_DATE) 以降の測定値は、Estimandの定義に従って処理します。
+  # ここでは単純に欠損値 (NA) とします (実際には多重補完などを用いることが一般的です)。
+  mutate(
+    AVAL_PROCESSED = if_else(
+      !is.na(IE_FLAG) &amp; ADDT &gt; IE_DATE,
+      NA_real_, # IE発生後の値をNAにする
+      AVAL       # IE発生前の値はそのまま
+    )
+  ) %&gt;%
+  # ベースラインからの変化量を導出
+  group_by(USUBJID, PCTESTCD) %&gt;%
+  mutate(
+    BASE = AVAL_PROCESSED[AVISITN == 0], # ベースライン値を取得
+    CHG = AVAL_PROCESSED - BASE,        # 変化量を計算
+    AVAL_CHG = if_else(AVISITN == 0, NA_real_, CHG) # ベースラインの変化量はNA
+  ) %&gt;%
+  ungroup() %&gt;%
+  # ADaM形式に整形
+  select(STUDYID, USUBJID, AVISIT, AVISITN, ADY, ADDT, PCTESTCD, AVAL, AVAL_PROCESSED, BASE, AVAL_CHG, IE_FLAG, IE_DATE) %&gt;%
+  # ADSL情報をマージ
+  left_join(adsl %&gt;% select(STUDYID, USUBJID, TRT01A, SEX, AGE), by = c("STUDYID", "USUBJID"))</p>
+<h1 id="pat002">結果の確認 (PAT002のデータに注目してください)</h1>
+<h1 id="pat002week-12week-24aval_processedaval_chgna">PAT002はWEEK 12で治療中断しているため、WEEK 24のAVAL_PROCESSEDとAVAL_CHGがNAになります。</h1>
+<h1 id="_6">これは「もし治療中断がなかったら」という仮想的な状況を考慮した結果です。</h1>
+<p>print(adpp_hypothetical %&gt;%
+        filter(USUBJID == "PAT002") %&gt;%
+        select(USUBJID, AVISIT, AVAL, AVAL_PROCESSED, AVAL_CHG, IE_FLAG, IE_DATE), width = Inf)</p>
+<h1 id="-3-admiralestimand-">--- 3. admiralの関数を使ったEstimand関連の変数導出例 ---</h1>
+<h1 id="admiralderive_param_response">admiral::derive_param_response() などを使って、より複雑なエンドポイントや</h1>
+<h1 id="ie">IEを考慮したパラメータを導出することも可能です。</h1>
+<h1 id="_7">例えば、</h1>
+<h2 id="_8">臨床統計スキルを磨くためのリソース</h2>
+<p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
+<ul>
+<li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
+<li><strong><a href="https://www.udemy.com">Udemy SAS/R講座</a></strong> - 動画で学ぶSAS/R統計プログラミング</li>
+<li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
+</ul>
+<p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p></div>
+
+            
+
+            <div class="share-buttons">
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html&text=R/admiralで学ぶICH E9(R1) Estimand実践ガイド" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html&title=R/admiralで学ぶICH E9(R1) Estimand実践ガイド" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html" target="_blank" rel="noopener noreferrer">LINE</a>
+            </div>
+        </article>
+
         
     </div>
-
-    <aside class="sidebar">
-        <div class="sidebar-widget">
-            <h3 class="sidebar-widget-title">カテゴリ</h3>
-            
-            <ul class="sidebar-category-list">
-                
-                <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials<span class="sidebar-category-count">10</span></a></li>
-                
-                <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html">ICH E9(R1) Estimand<span class="sidebar-category-count">1</span></a></li>
-                
-            </ul>
-            
-        </div>
-        <div class="sidebar-widget">
-            <h3 class="sidebar-widget-title">このブログについて</h3>
-            <p class="text-muted" style="font-size:0.88rem;line-height:1.7;">臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</p>
-        </div>
-        
-    </aside>
 </div>
 
     </main>
@@ -929,13 +956,7 @@
                 </div>
                 <div class="footer-section">
                     <h4>カテゴリ</h4>
-                    <ul class="footer-links">
-
-<li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials（10）</a></li>
-
-<li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html">ICH E9(R1) Estimand（1）</a></li>
-
-</ul>
+                    <ul class="footer-links"></ul>
                 </div>
                 <div class="footer-section">
                     <h4>リンク</h4>
