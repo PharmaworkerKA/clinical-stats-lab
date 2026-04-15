@@ -1,0 +1,193 @@
+{
+  "collected_at": "2026-04-15T05:18:46.524865",
+  "total_count": 17,
+  "topics": [
+    {
+      "title": "New R Package {bdlnm} Released on CRAN: Bayesian Distributed Lag Non-Linear Models in R via INLA",
+      "url": "https://www.r-bloggers.com/2026/04/new-r-package-bdlnm-released-on-cran-bayesian-distributed-lag-non-linear-models-in-r-via-inla/",
+      "summary": "<p>CRAN, GitHub TL;DR: {bdlnm} brings Bayesian Distributed Lag Non-Linear Models (B-DLNMs) to R using INLA, allowing to model complex DLNMs, quantify uncertainty, and produce rich visualizations. Background Climate change is increasing exposure to extreme environmental conditions such as heatwaves a",
+      "published": "Fri, 10 Apr 2026 17:14:30 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 95,
+      "category": "生物統計学・応用統計学",
+      "blog_title": "CRANの最新Rパッケージ {bdlnm}：ベイズ分布ラグ非線形モデルで複雑な生物統計データを解析",
+      "keyword": "Rパッケージ, ベイズ統計, 分布ラグ非線形モデル, INLA, 生物統計, 疫学, 時系列解析, 高度統計解析"
+    },
+    {
+      "title": "Collaborating between Bioconductor and R-universe on Development of Common Infrastructure",
+      "url": "https://www.r-bloggers.com/2026/04/collaborating-between-bioconductor-and-r-universe-on-development-of-common-infrastructure-2/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>This article is cross-posted on rOpenSci and R-Consortium blogs.<br />\nFor more than two decades, the Bioconductor project has been a cornerstone of the R ecosystem, providing high-quality, peer-reviewed tools for bioinformatics and co",
+      "published": "Wed, 08 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 90,
+      "category": "R for Clinical Trials",
+      "blog_title": "R/Bioconductorエコシステムの未来：R-universeとの協業がもたらす開発基盤の進化",
+      "keyword": "Bioconductor, R-universe, Rパッケージ, 共通基盤, 開発協力, バイオインフォマティクス, オープンソース"
+    },
+    {
+      "title": "Developer Engagement and Bioconductor",
+      "url": "https://www.r-bloggers.com/2026/04/developer-engagement-and-bioconductor/",
+      "summary": "<p>Introduction<br />\nDuring the Chan Zuckerberg Institute’s Essential Open Source Software for Science cycle 6 funding round, the Bioconductor Community Manager, Maria Doyle, secured a grant to fund a developer engagement position for Bioconductor, and...</p>\n<strong>Continue reading</strong>: <a h",
+      "published": "Thu, 09 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 88,
+      "category": "R for Clinical Trials",
+      "blog_title": "バイオインフォマティクスR開発の要：Bioconductorコミュニティへの貢献と活用",
+      "keyword": "Bioconductor, Rパッケージ, バイオインフォマティクス, 開発者コミュニティ, 生物統計, ゲノム解析"
+    },
+    {
+      "title": "[한국데이터정보과학회 - SAS Korea] 제2회 데이터 분석 경진대회 결과 발표",
+      "url": "https://blogs.sas.com/content/saskorea/2026/04/06/%ed%95%9c%ea%b5%ad%eb%8d%b0%ec%9d%b4%ed%84%b0%ec%a0%95%eb%b3%b4%ea%b3%bc%ed%95%99%ed%9a%8c-sas-korea-%ec%a0%9c2%ed%9a%8c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%eb%b6%84%ec%84%9d-%ea%b2%bd%ec%a7%84%eb%8c%80/",
+      "summary": "<p>안녕하세요? 한국데이터정보과학회가 주관하고 SAS 코리아가 후원하는 '제 2회 데이터 분석 경진대회'에 참가해 주신 모든 분들께 감사드립니다. 130 여 개 팀의 열띤 참가 속에서 진행되고 있는 이번 대회의 중간 심사 결과를 아래에 발표합니다. [1차 심사 결과] : 결과 보기 [2차 심사 결과] : 결과 보기 &#160; *한국데이터정보과학회 홈페이지 공지사항(경진대회 개요)을 꼭 확인하시고 [...]</p>\n<p>The post <a href=\"https://blogs.sas.com/content/saskorea/2026/",
+      "published": "Mon, 06 Apr 2026 00:55:42 +0000",
+      "source": "SAS Blogs",
+      "score": 85,
+      "category": "SAS実践テクニック",
+      "blog_title": "SASを活用したデータ分析の最前線：韓国データ分析コンペティションに見るトレンド",
+      "keyword": "SAS, データ分析, 競進大会, 韓国, 実践事例, 臨床統計コミュニティ"
+    },
+    {
+      "title": "reviser: Analyzing Real-Time Data Revisions in R",
+      "url": "https://www.r-bloggers.com/2026/04/reviser-analyzing-real-time-data-revisions-in-r/",
+      "summary": "<p>Economic data are rarely static.<br />\nGross domestic product (GDP), inflation, employment, and other official statistics arrive as early estimates, then get revised as new source data arrive, seasonal adjustment is updated, or benchmarking changes are appl...</p>\n<strong>Continue reading</strong",
+      "published": "Mon, 13 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 85,
+      "category": "R for Clinical Trials",
+      "blog_title": "Rパッケージ `reviser` を使ったリアルタイム臨床データ修正履歴の追跡と分析",
+      "keyword": "Rパッケージ, データ修正, リアルタイムデータ, 臨床データ管理, データガバナンス, 監査証跡"
+    },
+    {
+      "title": "On monitoring the convergence of Monte Carlo simulations",
+      "url": "https://blogs.sas.com/content/iml/2026/04/13/monitor-convergence-monte-carlo.html",
+      "summary": "<p>A previous article discusses Welford's one-pass method for computing the sample mean and variance. The article mentions that a useful application of Welford's formulas is to monitor the convergence of a Monte Carlo simulation. This article shows how to implement that strategy in SAS. The Goldiloc",
+      "published": "Mon, 13 Apr 2026 09:27:00 +0000",
+      "source": "SAS Blogs",
+      "score": 80,
+      "category": "生物統計学・応用統計学",
+      "blog_title": "ベイズ法や臨床試験におけるモンテカルロシミュレーションの収束監視",
+      "keyword": "モンテカルロシミュレーション, 収束診断, ベイズ統計, 臨床統計, 統計的精度"
+    },
+    {
+      "title": "Programming with LLMs in R & Python",
+      "url": "https://www.r-bloggers.com/2026/04/programming-with-llms-in-r-python/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Working with LLMs in Practice<br />\nLarge Language Models are becoming part of everyday data science work. But using them through chat interfaces is only one part of the picture.<br />\nIn this upcoming webinar, we focus on how to work ",
+      "published": "Tue, 14 Apr 2026 23:59:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 78,
+      "category": "R for Clinical Trials",
+      "blog_title": "RとPythonでLLMを活用：臨床データ分析プログラミングの効率化",
+      "keyword": "Rプログラミング, Python, LLM, 大規模言語モデル, データ分析, 効率化"
+    },
+    {
+      "title": "Do AI coding agents save scientists time?",
+      "url": "https://www.r-bloggers.com/2026/04/do-ai-coding-agents-save-scientists-time/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>I’m often asked if using AI coding agents saves time. Yes they write code very quickly and can complete entire ecological data analyses.</p>\n<p>Do agents really help when the deadlines are approaching?</p>\n<p>Do agents really help when",
+      "published": "Mon, 13 Apr 2026 14:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "臨床統計プログラマ必見：AIコーディングエージェントは本当に作業時間を節約できるのか？",
+      "keyword": "AIプログラミング, コーディング効率, 統計プログラマ, SAS, R, 時間短縮"
+    },
+    {
+      "title": "`mlS3` — A Unified S3 Machine Learning Interface in R",
+      "url": "https://www.r-bloggers.com/2026/04/mls3-a-unified-s3-machine-learning-interface-in-r/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> Introduction to `mlS3` — A Unified S3 Machine Learning Interface in R</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: both;\"></div>\n<strong>Continue reading</strong>: <a href=\"https://www.r-bl",
+      "published": "Sun, 12 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "Rにおける機械学習モデル開発を効率化：統一S3インターフェース `mlS3` の紹介",
+      "keyword": "Rパッケージ, 機械学習, S3メソッド, 臨床研究, 予測モデル, 統計モデリング"
+    },
+    {
+      "title": "Machine Learning Frameworks in R",
+      "url": "https://www.r-bloggers.com/2026/04/machine-learning-frameworks-in-r/",
+      "summary": "<p>R’s ecosystem offers a rich selection of machine learning frameworks, each with distinct design philosophies and strengths. This post is a side-by-side comparison of five ML frameworks in R that provide unified interfaces over multiple algorithms...</p>\n<strong>Continue reading</strong>: <a href=",
+      "published": "Sat, 11 Apr 2026 18:30:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "臨床研究に役立つRの主要な機械学習フレームワークを徹底比較",
+      "keyword": "Rプログラミング, 機械学習, フレームワーク, 臨床研究, 予測モデル, データサイエンス"
+    },
+    {
+      "title": "One interface, (Almost) Every Classifier: unifiedml v0.2.1",
+      "url": "https://www.r-bloggers.com/2026/04/one-interface-almost-every-classifier-unifiedml-v0-2-1/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> A new version of `unifiedml` is out; available on CRAN. `unifiedml` is an effort to offer a unified interface to R's machine learning models.</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: bo",
+      "published": "Sat, 04 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "臨床研究における分類問題：Rパッケージ `unifiedml` による多様な機械学習モデルの統一的利用",
+      "keyword": "Rパッケージ, 機械学習, 分類器, 統一インターフェース, 予測モデル, 臨床研究"
+    },
+    {
+      "title": "One-pass formulas for mean and variance",
+      "url": "https://blogs.sas.com/content/iml/2026/04/06/welford-mean-var.html",
+      "summary": "<p>In statistical programming, we often assume that the data are stored in a matrix or a data set and can be read at will. For example, if you want to compute a sample mean or standard deviation, you simply pass a vector to a built-in function, and the software spits [...]</p>\n<p>The post <a href=\"h",
+      "published": "Mon, 06 Apr 2026 09:23:31 +0000",
+      "source": "SAS Blogs",
+      "score": 70,
+      "category": "SAS実践テクニック",
+      "blog_title": "臨床データ解析における平均と分散の効率的な計算方法：ワンパスアルゴリズム",
+      "keyword": "平均, 分散, 統計計算, アルゴリズム, データ解析"
+    },
+    {
+      "title": "A Better R Programming Experience Thanks to Tree-sitter",
+      "url": "https://www.r-bloggers.com/2026/04/a-better-r-programming-experience-thanks-to-tree-sitter/",
+      "summary": "<p>A little bit less than two years ago, building on work by Jim Hester and Kevin Ushey, Davis Vaughan completed a very impactful JavaScript file for the R community: an R grammar for the Tree-sitter parsing generator. He even got a round of applause for...</p>\n<strong>Continue reading</strong>: <a ",
+      "published": "Thu, 02 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 70,
+      "category": "R for Clinical Trials",
+      "blog_title": "臨床統計Rプログラマのための開発効率向上：Tree-sitterがもたらすR体験",
+      "keyword": "Rプログラミング, Tree-sitter, 開発環境, 効率化, コード解析, RStudio"
+    },
+    {
+      "title": "Test & Roll: Why Smaller A/B Tests Can Make More Money",
+      "url": "https://www.r-bloggers.com/2026/04/test-roll-why-smaller-a-b-tests-can-make-more-money/",
+      "summary": "<p>Short practical advice on A/B testing:</p>\n<p>    Stop sizing tests only for statistical significance - In finite campaigns, your goal is profit, not perfect inference.</p>\n<p>    Treat testing as a trade-off - Every extra test exposure buys learning but ...</p>\n<strong>Continue reading</strong>:",
+      "published": "Sun, 12 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 65,
+      "category": "統計解析計画書・SAP",
+      "blog_title": "効率的なA/Bテスト設計のヒント：少数のサンプルで最大の洞察を得る方法",
+      "keyword": "A/Bテスト, 実験計画法, サンプルサイズ, 統計的検出力, 臨床試験デザイン"
+    },
+    {
+      "title": "AI agents can create convincing ecological models, but you still need to know what you’re doing",
+      "url": "https://www.r-bloggers.com/2026/04/ai-agents-can-create-convincing-ecological-models-but-you-still-need-to-know-what-youre-doing/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Agentic AI tools like Claude Code can write and run code, fix its own errors, and produce a formatted report with figures. I wanted to know whether that translates into reliable ecological modelling, so we ran a test: three fisheries t",
+      "published": "Thu, 02 Apr 2026 13:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 60,
+      "category": "臨床統計最新動向",
+      "blog_title": "臨床研究におけるAIモデルの信頼性：人間による評価と統計的妥当性の重要性",
+      "keyword": "AIモデル, 信頼性, 妥当性, 統計的判断, 専門知識, 臨床研究, データサイエンス倫理"
+    },
+    {
+      "title": "Using R to Teach R: Lessons for Software Development",
+      "url": "https://www.r-bloggers.com/2026/04/using-r-to-teach-r-lessons-for-software-development/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>As we approach the decennial (10-year) anniversary since Jumping Rivers was founded in 2016, it’s a good time to reflect on what we have achieved in that time and share some lessons learned.<br />\nIf you have read our blogs previously ",
+      "published": "Thu, 09 Apr 2026 23:59:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 55,
+      "category": "R for Clinical Trials",
+      "blog_title": "臨床統計RプログラマのためのRを使った教育とソフトウェア開発のベストプラクティス",
+      "keyword": "Rプログラミング, ソフトウェア開発, 教育, ベストプラクティス, プログラミング教育"
+    },
+    {
+      "title": "Hold On Hope: publication lag times at cell biology journals",
+      "url": "https://www.r-bloggers.com/2026/04/hold-on-hope-publication-lag-times-at-cell-biology-journals/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> I’ve posted about publication lag times previously. The “lag” refers to the time from submitting a paper and it appearing in a journal. Publication lag times are still a frustration for researchers. Although preprints circumvent the delay",
+      "published": "Thu, 09 Apr 2026 11:22:53 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 50,
+      "category": "臨床統計最新動向",
+      "blog_title": "臨床研究の成果発表を阻む壁？細胞生物学ジャーナルの出版ラグタイムを考える",
+      "keyword": "出版ラグ, 学術ジャーナル, 臨床研究, 論文発表, 科学コミュニケーション"
+    }
+  ]
+}
