@@ -2,103 +2,115 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-admiral-adam.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-ai.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-ai-efficiency.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-admiral-clinical-trials-adam-ai.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-bdlnm-bayesian-dlnm-clinical-statistics.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-package-clinical-trials-adam.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-admiral-cdisc-adam-clinical-trials-ai-programming.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/rinladlnm.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-statistics-sap-r-inla-bayes-nonlinear-model.html</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/category/R-for-Clinical-Trials.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH-E9%28R1%29-Estimand.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://pharmaworkerka.github.io/clinical-stats-lab/category/%E7%94%9F%E7%89%A9%E7%B5%B1%E8%A8%88%E5%AD%A6%E3%83%BB%E5%BF%9C%E7%94%A8%E7%B5%B1%E8%A8%88%E5%AD%A6.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://pharmaworkerka.github.io/clinical-stats-lab/category/%E7%B5%B1%E8%A8%88%E8%A7%A3%E6%9E%90%E8%A8%88%E7%94%BB%E6%9B%B8%E3%83%BBSAP.html</loc>
+    <lastmod>2026-04-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
