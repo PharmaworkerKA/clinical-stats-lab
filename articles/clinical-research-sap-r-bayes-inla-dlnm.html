@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-    <title>admiral RでADaM作成！臨床試験プログラマーのAI活用術 | 臨床統計ラボ</title>
+    <title>臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用 | 臨床統計ラボ</title>
 
     
     <meta name="description" content="">
     <meta name="author" content="臨床統計ラボ">
-    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html">
 
     
     <meta property="og:site_name" content="臨床統計ラボ">
-    <meta property="og:title" content="admiral RでADaM作成！臨床試験プログラマーのAI活用術">
+    <meta property="og:title" content="臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用">
     <meta property="og:description" content="">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html">
     <meta property="og:locale" content="ja_JP">
 
     
@@ -26,7 +26,7 @@
 
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="admiral RでADaM作成！臨床試験プログラマーのAI活用術">
+    <meta name="twitter:title" content="臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用">
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
@@ -58,15 +58,15 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "admiral RでADaM作成！臨床試験プログラマーのAI活用術",
+    "headline": "臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用",
     "description": "",
     "datePublished": "2026-04-20",
     "dateModified": "2026-04-20",
     "author": {"@type": "Organization", "name": "臨床統計ラボ"},
     "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html"}
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html"}
     ,"image": "https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
-    ,"keywords": "admiral, Rパッケージ, 臨床試験, ADaM, 生物統計プログラマー"
+    ,"keywords": "R, ベイズ統計, INLA, 分布ラグ非線形モデル, 統計解析計画書"
 }
 </script>
 
@@ -692,10 +692,10 @@
             <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
             <span class="breadcrumb-sep">/</span>
             
-            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials</a>
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/統計解析計画書・SAP.html">統計解析計画書・SAP</a>
             <span class="breadcrumb-sep">/</span>
             
-            <span>admiral RでADaM作成！臨床試験プログラマーのAI活用術</span>
+            <span>臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用</span>
         </nav>
 
         <article>
@@ -707,13 +707,13 @@
             
 
             <header class="article-header">
-                <h1 class="article-title">admiral RでADaM作成！臨床試験プログラマーのAI活用術</h1>
+                <h1 class="article-title">臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用</h1>
                 <div class="article-meta">
                     <span>2026-04-20</span>
                     <span class="reading-time">3分で読める</span>
-                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/統計解析計画書・SAP.html" class="category-badge">統計解析計画書・SAP</a>
                 </div>
-                <div class="card-tags mt-1"><span class="tag">admiral</span><span class="tag">Rパッケージ</span><span class="tag">臨床試験</span><span class="tag">ADaM</span><span class="tag">生物統計プログラマー</span></div>
+                <div class="card-tags mt-1"><span class="tag">R</span><span class="tag">ベイズ統計</span><span class="tag">INLA</span><span class="tag">分布ラグ非線形モデル</span><span class="tag">統計解析計画書</span></div>
             </header>
 
             
@@ -724,238 +724,264 @@
                 <div class="toc"><span class="toctitle">目次</span><ul>
 <li><a href="#_1">この記事でわかること</a></li>
 <li><a href="#_2">結論から言うと</a></li>
-<li><a href="#admiral">admiralとは？</a></li>
-<li><a href="#_3">統計的背景・理論</a></li>
+<li><a href="#sap">統計解析計画書（SAP）とは？</a></li>
+<li><a href="#inladlnm">ベイズ統計、INLA、分布ラグ非線形モデル（DLNM）の統計的背景・理論</a><ul>
+<li><a href="#inla">ベイズ統計の基礎とINLA</a></li>
+<li><a href="#dlnm">分布ラグ非線形モデル（DLNM）</a></li>
+</ul>
+</li>
 <li><a href="#sasr">SAS/Rコード実装</a><ul>
-<li><a href="#r">サンプルデータ生成（R）</a></li>
-<li><a href="#radamadmiral">RコードによるADaM作成（admiral）</a></li>
-<li><a href="#sasadam">SASコードによるADaM作成（比較）</a></li>
-<li><a href="#rtables">rtablesとの連携例</a></li>
+<li><a href="#rdlnminla">Rコード：分布ラグ非線形モデル（DLNM）とINLAの組み合わせ</a></li>
+<li><a href="#sas">SASコード：一般的な線形混合モデル</a></li>
 </ul>
 </li>
-<li><a href="#_4">実務での活用場面</a></li>
-<li><a href="#_5">海外の最新動向</a></li>
+<li><a href="#_3">実務での活用場面</a></li>
+<li><a href="#_4">海外の最新動向</a></li>
 <li><a href="#faq">よくある質問（FAQ）</a><ul>
-<li><a href="#q1-admiralsas">Q1: admiralパッケージは、SASに完全に置き換わるものですか？</a></li>
-<li><a href="#q2-admiraladam">Q2: admiralで作成したADaMデータセットは、規制当局に提出できますか？</a></li>
-<li><a href="#q3-admiral">Q3: admiralを学ぶ上で、どのような前提知識が必要ですか？</a></li>
-<li><a href="#q4-sasadmiral">Q4: SASマクロとadmiralの主な違いは何ですか？</a></li>
+<li><a href="#q1-sap">Q1: SAPはいつ作成し、誰が承認するのですか？</a></li>
+<li><a href="#q2-sap">Q2: プロトコルとSAPの主な違いは何ですか？</a></li>
+<li><a href="#q3-rsas">Q3: RとSAS、どちらで解析計画を記述すべきですか？</a></li>
+<li><a href="#q4-dlnmsap">Q4: ベイズ統計やDLNMをSAPに含める際の注意点は？</a></li>
+<li><a href="#q5-dlnm">Q5: 分布ラグ非線形モデル（DLNM）はどのようなデータに適用できますか？</a></li>
 </ul>
 </li>
-<li><a href="#_6">臨床統計スキルを磨くためのリソース</a></li>
-<li><a href="#_7">まとめ</a></li>
+<li><a href="#_5">臨床統計スキルを磨くためのリソース</a></li>
+<li><a href="#_6">まとめ</a></li>
 </ul>
 </div>
 
             </details>
             
 
-            <div class="article-body"><h1 id="admiral-radamai">admiral RでADaM作成！臨床試験プログラマーのAI活用術</h1>
-<p><img alt="admiral RでADaM作成！臨床試験プログラマーのAI活用術" src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+            <div class="article-body"><h1 id="sapr-inladlnm">臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用</h1>
+<p><img alt="臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用" src="https://images.unsplash.com/photo-1543286386-713bdd548da4?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
 <p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
-<p>こんにちは、臨床統計ラボの[あなたの名前]です。10年以上にわたり、生物統計の最前線で臨床試験の統計解析に携わってきました。
-製薬企業やCROでの経験を通じて、データから価値ある知見を引き出すことの重要性を痛感しています。</p>
-<p>近年、<strong>Rパッケージ</strong>の進化は目覚ましく、特に<strong>臨床試験</strong>データ解析の領域では、<code>admiral</code>（アドミラル）のようなパッケージが<strong>ADaM</strong>（Analysis Data Model）データセット作成のゲームチェンジャーとなっています。
-AI技術の発展とともに、<strong>生物統計プログラマー</strong>の役割も変化する中で、効率的かつ高品質なADaM作成は不可欠です。
-この記事では、<code>admiral</code>を活用したADaMデータセットの作成方法に焦点を当て、実務に役立つ情報をお届けします。</p>
+<p>皆さん、こんにちは！「臨床統計ラボ」の管理人です。10年以上にわたり、製薬企業やCROで数多くの臨床試験の統計解析に携わってきました。</p>
+<p>臨床研究の信頼性と透明性を確保する上で、統計解析計画書（SAP: Statistical Analysis Plan）の作成は非常に重要です。そして近年、<strong>R</strong>を用いた高度な解析手法、特に<strong>ベイズ統計</strong>、<strong>INLA</strong>（Integrated Nested Laplace Approximation）、そして<strong>分布ラグ非線形モデル</strong>（DLNM: Distributed Lag Non-linear Model）が<strong>生物統計</strong>の分野、特に<strong>臨床研究</strong>で注目されています。この記事では、ICH E9ガイドラインに準拠したSAPの作成方法から、これらの最新かつ強力な統計手法をSAPにどのように組み込むかまで、実践的に解説していきます。</p>
 <h2 id="_1">この記事でわかること</h2>
 <ul>
-<li><code>admiral</code> Rパッケージの基本的な概念と機能</li>
-<li>臨床試験におけるADaMデータセット作成の重要性</li>
-<li><code>admiral</code>を用いたADaM作成の具体的なRコード実装</li>
-<li><code>admiral</code>と<code>rtables</code>、<code>tidyverse</code>を組み合わせた効率的なワークフロー</li>
-<li>製薬業界における<code>admiral</code>の最新動向と将来性</li>
+<li>ICH E9ガイドラインに準拠した統計解析計画書（SAP）の基本構成と記載のポイント</li>
+<li>ベイズ統計の基礎と、計算効率の高いINLAを用いた解析計画の立て方</li>
+<li>曝露の遅延効果や非線形性を評価する分布ラグ非線形モデル（DLNM）の臨床研究への適用方法</li>
+<li>RとSASを用いた具体的な統計解析手法のコード例とSAPでの記述方法</li>
+<li>SAP作成における実務的なヒントと海外の最新動向</li>
 </ul>
 <h2 id="_2">結論から言うと</h2>
-<p><code>admiral</code> Rパッケージは、臨床試験におけるADaMデータセットの標準化・自動化を強力に推進します。
-これにより、生物統計プログラマーは作業効率を大幅に向上させ、解析の再現性と品質を確保できます。
-SAS中心のワークフローからRへの移行を検討している方にとって、<code>admiral</code>はAI時代のデータハンドリングを支える鍵となるでしょう。</p>
-<h2 id="admiral">admiralとは？</h2>
-<p><code>admiral</code>は、<strong>Rパッケージ</strong>エコシステムの一部であり、特に<strong>臨床試験</strong>の文脈で<strong>ADaM</strong>（Analysis Data Model）データセットを作成するために設計されています。ADaMは、FDA（米国食品医薬品局）やPMDA（医薬品医療機器総合機構）などの規制当局への申請に必要な、標準化された解析用データセットの構造です。</p>
-<p>従来のADaM作成は、複雑なSASマクロや手作業に頼ることが多く、時間と労力がかかり、エラーのリスクも伴いました。しかし、<code>admiral</code>は、<code>tidyverse</code>の思想に基づいて開発され、<strong>一貫性のある記述</strong>と<strong>高い可読性</strong>でADaM作成プロセスを簡素化します。これは、<code>pharmaverse</code>と呼ばれる製薬業界向けのRパッケージ群の中核をなすもので、データサイエンスの力で臨床開発を加速させることを目指しています。</p>
-<p><code>admiral</code>の主な目的は、CDISC ADaM IG（Implementation Guide）に準拠したADaMデータセットの作成を支援することです。具体的には、以下のような機能を提供します。</p>
-<ul>
-<li><strong>ヘルパー関数</strong>: ADSL（Subject-Level Analysis Dataset）やADPC（Pharmacokinetics Concentration Analysis Dataset）などの標準ADaMデータセットの変数を導出する関数を提供します。</li>
-<li><strong>トレーサビリティ</strong>（Traceability）: 変数の導出過程を明確にし、ソースデータから最終的なADaMデータセットまで、データの流れを追跡しやすくします。これは規制当局への説明責任を果たす上で非常に重要です。</li>
-<li><strong>再利用性</strong>: モジュール化された関数により、異なる試験間でコードの再利用が可能となり、開発効率が向上します。</li>
-</ul>
-<h2 id="_3">統計的背景・理論</h2>
-<p><code>admiral</code>は直接的に高度な統計理論を実装するものではありませんが、その背後には<strong>臨床試験のデータサイエンスにおける品質と再現性</strong>という重要な原則があります。
-統計解析を行う前のデータ準備段階で、データの正確性、一貫性、そして解析への適合性を保証することは、<strong>統計的推論の妥当性</strong>に直結します。</p>
-<p>ADaMデータセットが求められるのは、以下の統計的・規制的要件を満たすためです。</p>
-<ol>
-<li><strong>標準化</strong>: CDISC（Clinical Data Interchange Standards Consortium）によって定められたADaMは、<strong>解析結果の比較可能性</strong>と<strong>規制当局によるレビューの効率化</strong>を目的としています。例えば、ADSLにおける年齢変数（AGE）は、特定のルールに基づいて導出されることが推奨されています。</li>
-<li><strong>トレーサビリティ</strong>（Traceability）: 解析用変数が、どのSDTM（Study Data Tabulation Model）変数から、どのようなロジックで導出されたかを明確にすることです。これは、$Y = f(X_1, X_2, \dots, X_n)$ のような関数関係で表現されることが多いですが、<code>admiral</code>の関数は、この$f$を<strong>記述的かつ検証可能</strong>な形で提供します。これにより、解析の透明性が高まり、後続の統計解析（例: 共変量調整モデル）の信頼性が向上します。</li>
-<li><strong>再現性</strong>（Reproducibility）: 同じデータとコードを用いれば、常に同じADaMデータセットが生成されることを保証します。これは、現代のデータサイエンスにおいて<strong>研究の信頼性</strong>を担保する上で不可欠です。</li>
-</ol>
-<p><code>admiral</code>は、これらの原則を具現化し、生物統計プログラマーが<strong>解析の基盤となる高品質なデータセット</strong>を効率的に構築するための強力なツールです。解析に先立つデータ準備の品質を高めることは、最終的な統計解析結果の<strong>頑健性</strong>（Robustness）と<strong>解釈可能性</strong>を高めることに他なりません。</p>
+<p>統計解析計画書（SAP）は、臨床試験の結果の信頼性と透明性を担保するために不可欠な文書です。ICH E9（統計的原則）に則り、主要評価項目や副次評価項目に対する解析手法、感度分析などを詳細かつ明確に記述することが求められます。近年では、Rを活用したベイズ統計、特にINLAや、曝露の遅延効果を捉えるDLNMといった先進的な解析手法を計画段階から適切に検討しSAPに組み込むことで、より深い臨床的洞察と効率的な解析が可能になります。</p>
+<h2 id="sap">統計解析計画書（SAP）とは？</h2>
+<p>統計解析計画書（SAP: Statistical Analysis Plan）とは、臨床試験のプロトコルで規定された統計解析の方針を、より詳細に記述した文書のことです。臨床試験の実施前に作成され、試験デザイン、データ収集方法、主要評価項目（Primary Endpoint）、副次評価項目（Secondary Endpoint）などに対する具体的な統計解析手法を明確にします。これにより、解析における恣意性（しいてきせい）を排除し、解析結果の客観性と信頼性を保証します。</p>
+<p>ICH E9ガイドライン「臨床試験のための統計的原則」（Statistical Principles for Clinical Trials）は、SAP作成の国際的な標準となっています。このガイドラインでは、解析対象集団（Analysis Set）、欠測データ（Missing Data）の取り扱い、多重性（Multiplicity）の調整方法、サブグループ解析（Subgroup Analysis）など、SAPに記載すべき項目が具体的に示されています。</p>
+<p>SAPはプロトコルと密接に関連していますが、プロトコルが試験全体の計画を示すのに対し、SAPは特に「統計解析」の部分に特化して詳細を詰めます。プロトコルで大枠が決定された後、統計家が中心となってSAPを作成し、最終的には治験依頼者や規制当局の合意を得て確定されます。</p>
+<h2 id="inladlnm">ベイズ統計、INLA、分布ラグ非線形モデル（DLNM）の統計的背景・理論</h2>
+<h3 id="inla">ベイズ統計の基礎とINLA</h3>
+<p>従来の頻度論的統計学（Frequentist Statistics）が、観察されたデータの下で仮説の確率を評価するのに対し、ベイズ統計（Bayesian Statistics）は、事前情報（事前分布: Prior Distribution）とデータから得られる情報（尤度: Likelihood）を統合して、より新しい情報（事後分布: Posterior Distribution）を導き出す統計的枠組みです。ベイズの定理は次のように表されます。</p>
+<p>$$P(\theta | D) = \frac{P(D | \theta) P(\theta)}{P(D)}$$</p>
+<p>ここで、$P(\theta | D)$ はデータ $D$ が与えられたときのパラメータ $\theta$ の事後分布、$P(D | \theta)$ は尤度、$P(\theta)$ は事前分布、$P(D)$ はデータの周辺尤度（規格化定数）です。</p>
+<p>臨床研究において、過去の知見や専門家の意見を事前分布として組み込める点は大きなメリットです。特に、希少疾患や小規模試験、リアルワールドデータ（RWD）解析など、データが限られている状況で、よりロバストな推論を可能にします。しかし、複雑なモデルの事後分布を計算するには、MCMC（Markov Chain Monte Carlo）法などのサンプリング手法が用いられ、計算に時間がかかることが課題でした。</p>
+<p>そこで注目されているのが、<strong>INLA</strong>（Integrated Nested Laplace Approximation）です。INLAは、MCMCのようなサンプリングに頼らず、ラプラス近似（Laplace Approximation）を用いて事後分布を直接的に近似する手法です。これにより、MCMCに比べて格段に高速で、大規模なデータセットや複雑な階層モデル（Hierarchical Models）に対しても効率的にベイズ推論を行うことができます。SAPに「ベイズモデルを使用するが、計算効率と実用性を考慮し、INLAを用いて推定を行う」と記載することで、解析の妥当性を高めることが可能です。</p>
+<h3 id="dlnm">分布ラグ非線形モデル（DLNM）</h3>
+<p>多くの臨床現象では、曝露（Exposure）の影響が即座に現れるとは限りません。例えば、ある薬剤を服用してから副作用が現れるまでに時間差があったり、PM2.5のような環境因子が健康に与える影響が、曝露後数日〜数週間にわたって遅れて現れたりすることがあります。また、その影響は線形ではなく、曝露量に応じて非線形に変化することも少なくありません。</p>
+<p><strong>分布ラグ非線形モデル</strong>（DLNM: Distributed Lag Non-linear Model）は、このような「曝露の遅延効果（Lag Effect）」と「曝露-反応関係の非線形性（Non-linear Relationship）」を同時にモデリングするための強力な統計手法です。DLNMは、曝露の時系列における各時点での効果を結合し、特定の曝露レベルに対する累積的な反応を評価することを可能にします。</p>
+<p>DLNMのコアとなるのは、曝露量とラグ期間の2つの次元で定義される「クロスベーシス関数（Cross-basis Function）」です。これは、曝露の遅延効果と非線形効果を柔軟に表現できる基底関数（Basis Functions）の組み合わせであり、一般的に次のように表現されます。</p>
+<p>$$Y_t \sim \text{Poisson}(\mu_t)$$
+$$\log(\mu_t) = \alpha + s(\text{Exposure}<em>t, \text{lag}_0) + s(\text{Exposure}</em>{t-1}, \text{lag}<em>1) + \dots + s(\text{Exposure}</em>{t-L}, \text{lag}_L) + \text{covariates}_t$$ </p>
+<p>ここで、$Y_t$ は時点 $t$ におけるアウトカム、$s(\cdot, \cdot)$ は曝露とラグ期間に対する非線形関数、$L$ は最大ラグ期間です。このモデルは、時間依存性のあるアウトカム、特に感染症の発生率や死亡率、副作用の遅延発現など、様々な臨床研究に応用可能です。SAPにおいては、「薬剤曝露の遅延効果および非線形性を評価するため、分布ラグ非線形モデル（DLNM）を適用する」といった形で、解析手法の選定根拠とともに記述します。</p>
 <h2 id="sasr">SAS/Rコード実装</h2>
-<p>それでは、<code>admiral</code>とSASを比較しながら、具体的なADaMデータセットの作成例を見ていきましょう。
-ここでは、ADSLデータセットの簡単なデモとして、年齢（AGE）と年齢群（AGEGR1）を導出するケースを考えます。</p>
-<p>まずは、サンプルデータを作成します。</p>
-<h3 id="r">サンプルデータ生成（R）</h3>
-<pre><code class="language-R">library(tidyverse)
-library(lubridate) # 日付操作に便利
-library(admiral)   # ADaMデータセット作成の中核パッケージ
+<p>ここでは、SAPで記述する解析手法の例として、Rを用いたDLNMとINLAの組み合わせ、およびSASを用いた一般的な線形混合モデルのコード例を示します。実際のSAPには、具体的なコードを記載する代わりに、どのような解析手法を用いるかを詳細に記述します。</p>
+<h3 id="rdlnminla">Rコード：分布ラグ非線形モデル（DLNM）とINLAの組み合わせ</h3>
+<p>Rの<code>dlnm</code>パッケージでクロスベーシス関数を生成し、<code>INLA</code>パッケージでベイズ推定を行います。ここでは、架空の時系列データ（例：日ごとの薬剤曝露量と副作用報告数）を用いて、曝露の遅延効果と非線形性を評価する例を示します。</p>
+<pre><code class="language-R"># 必要なパッケージのインストールと読み込み
+# install.packages(c(&quot;dlnm&quot;, &quot;INLA&quot;, &quot;tidyverse&quot;, &quot;splines&quot;))
+library(dlnm)
+library(INLA)
+library(tidyverse)
+library(splines)
 
-# サンプル元のSDTM-likeデータを作成
-adsl_raw &lt;- tribble(
-  ~STUDYID, ~USUBJID, ~BRTHDT,       ~RFENDT,
-  &quot;STUDY01&quot;, &quot;SUBJ001&quot;, &quot;1980-05-15&quot;, &quot;2023-01-01&quot;,
-  &quot;STUDY01&quot;, &quot;SUBJ002&quot;, &quot;1992-11-20&quot;, &quot;2023-01-01&quot;,
-  &quot;STUDY01&quot;, &quot;SUBJ003&quot;, &quot;1975-03-01&quot;, &quot;2023-01-01&quot;,
-  &quot;STUDY01&quot;, &quot;SUBJ004&quot;, &quot;2000-07-25&quot;, &quot;2023-01-01&quot;
+# --- 1. サンプルデータの生成 ---
+set.seed(123)
+n_days &lt;- 365 # 1年間のデータ
+
+# 時系列データ
+df_data &lt;- tibble(
+  date = seq(as.Date(&quot;2023-01-01&quot;), by = &quot;day&quot;, length.out = n_days),
+  # 架空の薬剤曝露量（例：日ごとの投与量）
+  exposure = pmax(0, rnorm(n_days, mean = 10, sd = 3)),
+  # 気温など、共変量として扱う可能性のある因子
+  temperature = rnorm(n_days, mean = 20, sd = 5)
 ) %&gt;%
-  mutate(
-    BRTHDT = as.Date(BRTHDT), # 誕生日を日付型に変換
-    RFENDT = as.Date(RFENDT)  # 参考終了日を日付型に変換
-  )
+  # 遅延効果をシミュレートするため、曝露量を少し遅らせて効果があるように設定
+  mutate(true_effect_lag1 = lag(exposure, 1) * 0.5, # 1日遅れの線形効果
+         true_effect_lag3 = lag(exposure, 3)^1.2 * 0.01) %&gt;% # 3日遅れの非線形効果
+  replace_na(list(true_effect_lag1 = 0, true_effect_lag3 = 0)) %&gt;%
+  # アウトカム（例：副作用報告数） - ポアソン分布に従うと仮定
+  mutate(log_mu = 1 + 0.1 * temperature + true_effect_lag1 + true_effect_lag3) %&gt;%
+  mutate(outcome = rpois(n_days, exp(log_mu)))
 
-print(adsl_raw)
-</code></pre>
-<pre><code># A tibble: 4 × 4
-  STUDYID USUBJID BRTHDT     RFENDT
-  &lt;chr&gt;   &lt;chr&gt;   &lt;date&gt;     &lt;date&gt;
-1 STUDY01 SUBJ001 1980-05-15 2023-01-01
-2 STUDY01 SUBJ002 1992-11-20 2023-01-01
-3 STUDY01 SUBJ003 1975-03-01 2023-01-01
-4 STUDY01 SUBJ004 2000-07-25 2023-01-01
-</code></pre>
-<h3 id="radamadmiral">RコードによるADaM作成（admiral）</h3>
-<p>このサンプルデータから、<code>admiral</code>を使って年齢（AGE）とその年齢群（AGEGR1）を導出するADSLデータセットを作成します。
-<code>admiral</code>は、日付変数を数値に変換するヘルパー関数や、年齢を計算する関数を提供しています。</p>
-<pre><code class="language-R"># admiralでの年齢計算には、日付をISO 8601フォーマットまたは数値表現に変換することが推奨されます。
-# ここでは、簡略化のためRのDate型をそのまま利用し、derive_var_age_years()に渡します。
-# admiralのderive_var_age_years()は、内部で日付計算を適切に処理します。
+# データの一部表示
+print(head(df_data))
 
-adsl &lt;- adsl_raw %&gt;%
-  # derive_vars_dtm() はSDTMのDTC変数から日時変数を作成する際に便利ですが、
-  # この例ではBRTHDTとRFENDTがDate型なので直接利用します。
-  derive_var_age_years(
-    new_var = AGE, # AGE変数を新規作成
-    date_var = RFENDT, # どの時点の年齢かを示す日付変数
-    age_var = BRTHDT # 誕生日変数
-  ) %&gt;%
-  # 年齢群 (AGEGR1) を作成
-  mutate(
-    AGEGR1 = case_when(
-      AGE &lt; 20 ~ &quot;&lt;20&quot;,
-      AGE &gt;= 20 &amp; AGE &lt; 40 ~ &quot;20-39&quot;,
-      AGE &gt;= 40 &amp; AGE &lt; 60 ~ &quot;40-59&quot;,
-      TRUE ~ &quot;&gt;=60&quot;
-    )
-  ) %&gt;%
-  # 最終的なADSL形式に整えるため、選択する変数を明示
-  select(STUDYID, USUBJID, BRTHDT, RFENDT, AGE, AGEGR1)
-
-print(adsl)
-</code></pre>
-<pre><code># A tibble: 4 × 6
-  STUDYID USUBJID BRTHDT     RFENDT       AGE AGEGR1
-  &lt;chr&gt;   &lt;chr&gt;   &lt;date&gt;     &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;
-1 STUDY01 SUBJ001 1980-05-15 2023-01-01    42 40-59
-2 STUDY01 SUBJ002 1992-11-20 2023-01-01    30 20-39
-3 STUDY01 SUBJ003 1975-03-01 2023-01-01    47 40-59
-4 STUDY01 SUBJ004 2000-07-25 2023-01-01    22 20-39
-</code></pre>
-<p>上記のコードでは、<code>admiral</code>の<code>derive_var_age_years()</code>関数を使って、誕生日（BRTHDT）と参考終了日（RFENDT）から年齢（AGE）を計算しています。
-その後、<code>dplyr::mutate()</code>関数で年齢群（AGEGR1）を作成しています。
-<code>admiral</code>の関数はパイプ演算子（<code>%&gt;%</code>）と親和性が高く、データの流れを直感的に記述できるのが特徴です。</p>
-<h3 id="sasadam">SASコードによるADaM作成（比較）</h3>
-<p>次に、同じ処理をSASで行う場合のコードを見てみましょう。</p>
-<pre><code class="language-SAS">/* サンプルデータ生成 (SAS) */
-data adsl_raw_sas;
-  informat BRTHDT RFENDT date9.;
-  format BRTHDT RFENDT date9.;
-  input STUDYID $ USUBJID $ BRTHDT RFENDT;
-  datalines;
-STUDY01 SUBJ001 15MAY1980 01JAN2023
-STUDY01 SUBJ002 20NOV1992 01JAN2023
-STUDY01 SUBJ003 01MAR1975 01JAN2023
-STUDY01 SUBJ004 25JUL2000 01JAN2023
-;
-run;
-
-/* ADSLデータセット作成 (SAS) */
-data adsl_sas;
-  set adsl_raw_sas;
-
-  /* 年齢 (AGE) の導出 */
-  /* INTCK関数で年数を計算し、誕生日が参照日よりも後かどうかで調整 */
-  AGE = int(intck('YEAR', BRTHDT, RFENDT) - (month(BRTHDT)*100 + day(BRTHDT) &gt; month(RFENDT)*100 + day(RFENDT)));
-
-  /* 年齢群 (AGEGR1) の導出 */
-  if AGE &lt; 20 then AGEGR1 = '&lt;20';
-  else if AGE &gt;= 20 and AGE &lt; 40 then AGEGR1 = '20-39';
-  else if AGE &gt;= 40 and AGE &lt; 60 then AGEGR1 = '40-59';
-  else AGEGR1 = '&gt;=60';
-
-  label AGE = 'Age in Years';
-  label AGEGR1 = 'Pooled Age Group';
-run;
-
-proc print data=adsl_sas;
-  var STUDYID USUBJID BRTHDT RFENDT AGE AGEGR1;
-  format BRTHDT RFENDT yymmdd10.; /* 表示形式の指定 */
-run;
-</code></pre>
-<p>SASコードでは、<code>intck</code>関数を用いた年齢計算や、<code>if-then-else</code>構文による年齢群の作成が行われています。Rの<code>admiral</code>と比較すると、SASでは日付計算のロジックを自力で記述する必要がある場面が多いことがわかります。<code>admiral</code>の関数は、このような標準的な導出ロジックを<strong>カプセル化</strong>（Encapsulation）しているため、より簡潔でエラーの少ないコードを書くことが可能です。</p>
-<h3 id="rtables"><code>rtables</code>との連携例</h3>
-<p><code>admiral</code>で作成したADaMデータセットは、<code>rtables</code>などのパッケージと組み合わせることで、そのまま治験総括報告書（CSR）向けのテーブル（表）を生成できます。{{internal_link:rtablesの使い方}}について詳しくはこちらもご覧ください。</p>
-<pre><code class="language-R">library(rtables) # 臨床試験テーブル作成パッケージ
-
-# ADSLデータセットから年齢層別の被験者数を集計するテーブルを作成
-table_adsl &lt;- build_table(
-  df = adsl, # admiralで作成したADSLデータセット
-  # テーブル構造を定義
-  ## 行の定義: AGEGR1（年齢群）を行として、各年齢群のNを計算
-  rtables::r_align(rtables::r_grp_strata(col = &quot;AGEGR1&quot;)) %&gt;%
-  rtables::r_count(col = &quot;AGEGR1&quot;, label = &quot;被験者数N&quot;)
+# --- 2. クロスベーシス関数の定義 ---
+# 曝露量の基底関数: cubic B-spline（自然スプライン）で非線形性を表現
+# knots: 曝露量の特定のパーセンタイルにノット（結び目）を配置
+# df_exposure: 自由度。ノットの数+1.
+exposure_basis &lt;- crossbasis(
+  df_data$exposure,
+  argvar = list(fun = &quot;ns&quot;, df = 4), # Natural Splineで自由度4
+  arglag = list(fun = &quot;ns&quot;, df = 3, knots = c(1, 3, 7)) # ラグもNatural Splineで自由度3, 1, 3, 7日でノット
 )
 
-# 生成されたテーブルを表示
-print(table_adsl)
-</code></pre>
-<pre><code>Table 1.1: 被験者数N
+# クロスベーシス関数の次元を確認
+print(dim(exposure_basis))
 
-           AGEGR1
-           &lt;20   20-39 40-59 &gt;=60  Total
-           ------ ------ ------ ------ ------
- 被験者数N       0      2      2      0      4
+# --- 3. INLAモデルの構築と推定 ---
+# INLAで使用するデータフレームを準備
+inla_data &lt;- df_data %&gt;%
+  mutate(day_index = 1:n())
+
+# INLAのモデル式
+# outcome ~ exposure_basis（DLNMの項） + temperature（共変量）
+# + f(day_index, model = &quot;ar1&quot;)：時間による自己相関（AR(1)モデル）をINLAのランダム効果で表現
+# family = &quot;poisson&quot;：アウトカムがカウントデータ（ポアソン分布）の場合
+
+formula_inla &lt;- outcome ~ exposure_basis + temperature + 
+                f(day_index, model = &quot;ar1&quot;, hyper = list(theta = list(prior = &quot;loggamma&quot;, param = c(1, 0.01))))
+
+# INLAによるモデル推定
+# verbose = TRUEで詳細な出力
+model_inla &lt;- inla(formula_inla, 
+                   family = &quot;poisson&quot;, 
+                   data = inla_data, 
+                   control.compute = list(dic = TRUE, waic = TRUE, cpo = TRUE, config = TRUE), 
+                   control.predictor = list(compute = TRUE), 
+                   verbose = TRUE)
+
+# モデルサマリーの表示
+print(summary(model_inla))
+
+# --- 4. 結果の可視化 (DLNMの効果曲線) ---
+# クロスベーシス関数の予測値を生成
+pred_exposure &lt;- crossbasis(
+  x = seq(min(df_data$exposure), max(df_data$exposure), length = 20),
+  argvar = list(fun = &quot;ns&quot;, df = 4),
+  arglag = list(fun = &quot;ns&quot;, df = 3, knots = c(1, 3, 7))
+)
+
+# 予測結果を取得
+pred_fit &lt;- predict(model_inla, 
+                    exposure_basis = pred_exposure, 
+                    ci = TRUE, 
+                    type = &quot;response&quot;, 
+                    interval = &quot;HPD&quot;) # HPD (Highest Posterior Density) 信頼区間
+
+# 特定の曝露量に対する累積効果をプロット（例：exposure=15のときのラグ効果）
+# plot(pred_fit, &quot;overall&quot;) # 全体的な効果
+# plot(pred_fit, &quot;lag&quot;, var = 15) # 曝露量15におけるラグ効果
+# plot(pred_fit, &quot;var&quot;, lag = 3) # ラグ3における曝露量効果
+
+# 簡易的な可視化例：特定の曝露量での累積効果
+# この部分の描画は複雑になるため、ここでは省略し、
+# SAPでは「最終的な効果曲線はプロットで示す」と記述するに留めます。
 </code></pre>
-<p>このように、<code>admiral</code>で整備されたADaMデータセットは、<code>rtables</code>のような専用のパッケージと組み合わせることで、<strong>データ解析から報告書作成までの一連のワークフロー</strong>をR上で完結させることができ、<strong>生物統計プログラマー</strong>の生産性を大幅に向上させます。</p>
-<h2 id="_4">実務での活用場面</h2>
-<p><code>admiral</code>は、臨床試験の様々なフェーズでその真価を発揮します。</p>
+<p><strong>SAPでの記述例：</strong></p>
+<blockquote>
+<p><strong>主要評価項目に対する解析手法</strong>
+疼痛スコアの変化量（連続量）の解析には、ベイズ階層モデルを適用する。具体的には、薬剤曝露量と反応の遅延効果および非線形性を評価するため、分布ラグ非線形モデル（DLNM）を構築し、INLA（Integrated Nested Laplace Approximation）を用いて事後分布を推定する。曝露量の基底関数には自然スプライン（自由度X）、ラグ期間の基底関数には自然スプライン（自由度Y）を使用する。モデルには、患者ごとのランダム効果および時間トレンドを考慮する。欠測データは、多重代入法（Multiple Imputation）により処理する。</p>
+</blockquote>
+<h3 id="sas">SASコード：一般的な線形混合モデル</h3>
+<p>SAPで記述する解析手法として、最も一般的なものの1つである線形混合モデル（Linear Mixed Model）のSASコード例です。反復測定デザインのデータ解析などに用いられます。</p>
+<pre><code class="language-sas">/* --- 1. サンプルデータの生成 --- */
+DATA ADPC;
+  CALL STREAMINIT(12345);
+  DO USUBJID = 1 TO 50; /* 50人の被験者 */
+    TRT = IFCN(RANUNI(0) &lt; 0.5, 'Placebo', 'Drug A'); /* 治療群 */
+    DO VISIT = 1 TO 5; /* 5回の測定時点 */
+      AVISITN = VISIT;
+      AVISIT = CATS('Visit ',VISIT);
+      RSPT = RANNORM(0); /* ベースラインからの個体差 */
+
+      /* 治療効果をシミュレート */
+      IF TRT = 'Drug A' THEN DO;
+        IF VISIT = 1 THEN CHG = RANNORM(0)*2; /* ベースラインの変動 */
+        ELSE CHG = 5 + 0.5 * VISIT + RSPT + RANNORM(0)*2; /* 治療薬群の経時的な改善 */
+      END; 
+      ELSE DO;
+        IF VISIT = 1 THEN CHG = RANNORM(0)*2;
+        ELSE CHG = 0.2 * VISIT + RSPT + RANNORM(0)*2; /* プラセボ群のわずかな改善 */
+      END;
+      OUTPUT;
+    END;
+  END;
+RUN;
+
+/* データの一部表示 */
+PROC PRINT DATA=ADPC(OBS=10);
+  TITLE 'ADPCデータセットの例';
+RUN;
+
+/* --- 2. 線形混合モデルの解析 --- */
+PROC MIXED DATA=ADPC METHOD=REML;
+  CLASS USUBJID TRT AVISIT;
+  MODEL CHG = TRT AVISIT TRT*AVISIT / DDFM=KENWARDROGER;
+  RANDOM USUBJID / TYPE=VC;
+  REPEATED AVISIT / SUBJECT=USUBJID TYPE=UN;
+  LSMEANS TRT*AVISIT / DIFF ADJUST=TUKEY SLICE=AVISIT PDIFF=ALL CL;
+  ESTIMATE 'Overall Drug A vs Placebo' TRT 1 -1 / CL;
+  TITLE '反復測定データに対する線形混合モデル解析';
+RUN;
+</code></pre>
+<p><strong>SAPでの記述例：</strong></p>
+<blockquote>
+<p><strong>副次評価項目に対する解析手法</strong>
+ベースラインからの平均収縮期血圧の変化量（連続量）の解析には、線形混合モデル（Linear Mixed Model for Repeated Measures; MMRM）を適用する。モデルには、固定効果として治療群（Treatment）、来院（Visit）、および治療群と来院の交互作用項（Treatment × Visit）を含める。被験者内の相関構造には非構造型（Unstructured）を仮定し、被験者ごとのランダム切片（Random Intercept）を含める。自由度の計算にはKenward-Roger法を用いる。各来院時点での治療群間差は最小二乗平均（Least Squares Means; LSMEANS）を用いて推定し、多重比較の調整にはTukey法を適用する。</p>
+</blockquote>
+<h2 id="_3">実務での活用場面</h2>
+<p>これらの先進的な統計手法は、SAP作成の各項目で以下のように具体的に活用できます。</p>
 <ol>
-<li><strong>プロトコル作成・統計解析計画書（SAP）作成フェーズ</strong>: プロトコルやSAPで定義された解析変数の導出ロジックを、<code>admiral</code>の関数を用いて具体的なRコードとして早期に検討できます。これにより、仕様の曖昧さをなくし、統計家とプログラマー間の認識齟齬を防ぎます。</li>
-<li><strong>ADaMデータセット作成フェーズ</strong>: CDISC ADaM IGに準拠したADaMデータセットを効率的かつ標準化された方法で作成します。特に、ADSL（被験者レベル解析データセット）、ADPC（薬物濃度解析データセット）、ADEG（心電図解析データセット）など、頻繁に利用されるADaMの導出に強みを発揮します。{{internal_link:ADaMデータセットの基本}}についてもっと詳しく知りたい方はこちら。</li>
-<li><strong>解析・報告フェーズ</strong>: <code>admiral</code>で作成されたADaMは、<code>rtables</code>や<code>Tplyr</code>、<code>tern</code>といった他の<code>pharmaverse</code>パッケージと連携し、治験総括報告書（CSR）向けのテーブル、リスト、フィギュア（TLF）を自動生成するための基盤となります。これにより、手作業によるミスを減らし、報告書の作成期間を短縮できます。</li>
-<li><strong>承認申請フェーズ</strong>: 規制当局へのデータ提出において、<code>admiral</code>が提供するトレーサビリティは非常に重要です。データリネージ（Data Lineage）が明確に記述されたコードは、データ提出時の透明性を高め、スムーズなレビューに貢献します。</li>
-</ol>
-<p><strong>AI時代</strong>において、ルーティンワークの自動化は必須です。<code>admiral</code>は、ADaM作成という反復的かつ規則的な作業を自動化することで、<strong>生物統計プログラマー</strong>がより高度な統計解析や新たな手法の検討といった、付加価値の高い業務に集中できる環境を提供します。</p>
-<h2 id="_5">海外の最新動向</h2>
-<p><code>admiral</code>を含む<code>pharmaverse</code>プロジェクトは、PSI（Statisticians in the Pharmaceutical Industry）、ASA（American Statistical Association）、PHUSE（Pharmaceutical Users Software Exchange）といった主要な国際的なコミュニティで活発に議論され、その普及が進んでいます。</p>
+<li>
+<p><strong>主要評価項目・副次評価項目に対する解析手法：</strong></p>
 <ul>
-<li><strong>PHUSE CSS（Computational Science Symposium）</strong>: 毎年開催されるPHUSEのCSSでは、<code>pharmaverse</code>に関するセッションが数多く設けられ、新しいパッケージの紹介、機能拡張の議論、そして実務適用例の共有が行われています。</li>
-<li><strong>PSI / ASA</strong>: これらの学会では、Rを用いた臨床試験データ解析のベストプラクティスに関する発表が増加しており、<code>admiral</code>がADaM作成の「デファクトスタンダード」となりつつあることが示唆されています。特に、FDAもRの利用を積極的に推奨しており、Rにおけるデータ提出の準備が着実に進んでいます。<ul>
-<li>FDAによるRの利用促進に関する情報: <a href="https://www.fda.gov/media/132711/download">https://www.fda.gov/media/132711/download</a></li>
+<li><strong>DLNMの適用：</strong> 薬剤曝露後の副作用発現までの遅延期間が臨床的に重要である場合、例えば「特定の有害事象の累積発生率に対する薬剤曝露の分布ラグ非線形効果を評価する」とSAPに明記します。これにより、従来の即時効果のみを評価するモデルでは見逃されがちな、時間遅れを伴う複雑な薬物動態学的・薬力学的関係性を捉えることができます。</li>
+<li><strong>INLAによるベイズ推定：</strong> 特に早期臨床試験（例：Phase I/II）での用量設定研究や、希少疾患を対象とした試験で、既存の知見を事前分布として組み込み、より確実な推論を行いたい場合に有効です。「用量反応関係の推定にはベイズ階層モデル（INLAを用いた推定）を適用する」と記述し、計算効率のメリットも強調できます。</li>
+</ul>
+</li>
+<li>
+<p><strong>感度分析（Sensitivity Analysis）：</strong></p>
+<ul>
+<li>モデルの仮定が結果に与える影響を評価するために、DLNMの基底関数の選び方（自由度やノットの位置）やINLAの事前分布の選択について、異なる仮定を用いた感度分析をSAPに計画します。これは、ICH E9 R1（Estimand and Sensitivity Analysis）が重視する、解析の頑健性（Robustness）を示す上で非常に重要です。</li>
+</ul>
+</li>
+<li>
+<p><strong>探索的解析（Exploratory Analysis）：</strong></p>
+<ul>
+<li>主要・副次評価項目以外の、より複雑な時間依存性データや、複数の曝露因子が関与する解析において、DLNMやベイズ統計（INLA）は強力なツールとなります。例えば、「特定の生体指標の経時的変化に影響を与える複数の治療関連因子の分布ラグ効果を探索的に評価する」といった記述が考えられます。</li>
+</ul>
+</li>
+</ol>
+<p>SAPにこれらの高度な解析手法を記述する際は、なぜその手法が必要なのか、どのような臨床的意義があるのかを明確にすることが肝要です。{{internal_link:SAP作成の基本とICH E9ガイドライン}}も参考にしてください。</p>
+<h2 id="_4">海外の最新動向</h2>
+<p>欧米の臨床統計コミュニティ、例えばPSI（Statisticians in the Pharmaceutical Industry）、ASA（American Statistical Association）、PHUSE（Pharmaceutical Users Software Exchange）などでは、ベイズ統計やRWD（Real World Data）解析における先進的な統計手法の活用が活発に議論されています。</p>
+<p>特に、ICH E9 R1の「Estimandと感度分析」の枠組みの導入により、解析計画の透明性と柔軟性がこれまで以上に求められています。この中で、ベイズ統計は事前情報を活用できる柔軟性から、特にレギュラトリーサイエンスの分野で注目度が高まっています。FDAやEMAなどの規制当局も、特定の状況下でのベイズ統計の使用をガイドラインで認めるようになってきています。</p>
+<p>また、計算負荷の高いMCMC法の代替としてINLAが広く受け入れられつつあり、特に公衆衛生分野での環境疫学研究（PM2.5と健康影響など）ではDLNMとINLAを組み合わせた解析が標準的になりつつあります。この流れは、臨床研究においても、複雑な薬剤動態や疾患進展パターンをより正確にモデリングするために加速すると考えられます。</p>
+<p>これらの動向は、最新の統計ソフトウェア（R, Stanなど）の発展によって加速されています。{{internal_link:RとSASの比較と使い分け}}に関する議論も盛んです。例えば、PHUSEやPSIの年次カンファレンスでは、Rやベイズ統計、機械学習を用いた臨床解析事例が多数発表されており、日本の臨床統計担当者もこれらの情報にアンテナを張ることが重要です。</p>
+<ul>
+<li><strong>参考文献・ガイドライン:</strong><ul>
+<li>ICH E9: <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a></li>
+<li>FDA Guidance on Bayesian Methods: <a href="https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-use-bayesian-statistics-medical-device-clinical-trials">https://www.fda.gov/regulatory-information/search-fda-guidance-documents/guidance-industry-use-bayesian-statistics-medical-device-clinical-trials</a></li>
 </ul>
 </li>
 </ul>
-<p>海外の主要な製薬企業やCROでは、SASとRのハイブリッドなワークフローが一般的になりつつあり、新規プロジェクトではRが積極的に採用されるケースも増えています。
-これは、Rの持つ<strong>オープンソース</strong>としての柔軟性、最新統計手法への対応速度、そして強力なコミュニティサポートが評価されているためです。</p>
-<p>AI技術の進化は、統計解析プロセスにさらなる効率化と自動化をもたらすと期待されています。例えば、モデルに基づくシミュレーションやリアルワールドデータ（RWD）の活用において、Rの柔軟性は極めて重要です。
-<code>admiral</code>は、これらの高度な解析のための<strong>高品質なデータ基盤</strong>を提供する上で、ますますその重要性を増していくでしょう。</p>
 <h2 id="faq">よくある質問（FAQ）</h2>
-<h3 id="q1-admiralsas">Q1: <code>admiral</code>パッケージは、SASに完全に置き換わるものですか？</h3>
-<p>A1: 現時点では、完全に置き換わるというよりは、<strong>SASとRを組み合わせたハイブリッドなワークフロー</strong>が主流です。特に、ADaMデータセットの作成においては、<code>admiral</code>が高い生産性と品質を提供しますが、既存のSAS資産や規制要件、社内のスキルセットに応じて、最適なツールを選択することが重要です。長期的な視点では、Rへの移行が加速すると考えられます。</p>
-<h3 id="q2-admiraladam">Q2: <code>admiral</code>で作成したADaMデータセットは、規制当局に提出できますか？</h3>
-<p>A2: はい、可能です。<code>admiral</code>はCDISC ADaM IGに準拠したデータセット作成を支援するように設計されており、適切なバリデーション（検証）プロセスとドキュメンテーション（文書化）があれば、規制当局に提出できます。FDAはR言語で作成された解析プログラムやデータセットを受け入れる方針を示しており、今後、Rベースの提出事例は増加していくでしょう。</p>
-<h3 id="q3-admiral">Q3: <code>admiral</code>を学ぶ上で、どのような前提知識が必要ですか？</h3>
-<p>A3: <code>admiral</code>は<code>tidyverse</code>のエコシステム上に構築されているため、<code>dplyr</code>や<code>magrittr</code>（パイプ演算子）といった<code>tidyverse</code>の基本的な知識があるとスムーズに学習できます。また、CDISC ADaMの概念や臨床試験データの構造に関する理解も不可欠です。Rの基本から学びたい場合は、<code>R for Data Science</code>などの入門書から始めることをお勧めします。</p>
-<h3 id="q4-sasadmiral">Q4: SASマクロと<code>admiral</code>の主な違いは何ですか？</h3>
-<p>A4: SASマクロは柔軟性が高い反面、可読性やメンテナンス性が課題となることがあります。一方、<code>admiral</code>は<code>tidyverse</code>の関数型プログラミングの思想に基づき、<strong>モジュール化された関数</strong>を提供することで、<strong>可読性と再利用性</strong>を大幅に向上させています。また、<code>admiral</code>はCDISC ADaMのベストプラクティスを内包しているため、より標準化されたコードを記述しやすいという利点があります。</p>
-<h2 id="_6">臨床統計スキルを磨くためのリソース</h2>
+<h3 id="q1-sap">Q1: SAPはいつ作成し、誰が承認するのですか？</h3>
+<p>A1: SAPは、プロトコルが確定した後、通常は最初の被験者組み入れ前までに作成されます。作成は統計家が中心となって行いますが、治験依頼者（スポンサー）や、必要に応じて規制当局の合意・承認を得て最終化されます。試験開始後にSAPを変更する場合は、プロトコル改訂と同様に適切な手続きが必要です。</p>
+<h3 id="q2-sap">Q2: プロトコルとSAPの主な違いは何ですか？</h3>
+<p>A2: プロトコルは、臨床試験の全体的な計画（目的、試験デザイン、被験者の選択基準、介入、評価項目など）を記載する文書です。一方、SAPはプロトコルで大枠が示された「統計解析」の部分を、より詳細かつ具体的に記述した文書です。SAPでは、解析対象集団の定義、主要評価項目・副次評価項目に対する具体的な統計手法、欠測データの取り扱い、多重性調整、サブグループ解析、統計ソフトウェアの使用バージョンなどが明記されます。</p>
+<h3 id="q3-rsas">Q3: RとSAS、どちらで解析計画を記述すべきですか？</h3>
+<p>A3: どちらのソフトウェアで解析するかは、その企業の標準やプロジェクトの要件によります。SASは製薬業界で長く使われてきた実績があり、規制当局への提出資料の作成において依然として主流です。Rは、最新の統計手法の実装が早く、柔軟性が高いという利点があります。SAPでは、どちらのソフトウェアを用いるか、およびそのバージョンを明記します。例えば、「主要解析はSAS（バージョンX.Y）を用いて実施し、探索的解析や感度分析の一部にはR（バージョンZ.W）を用いる」といった記述が考えられます。</p>
+<h3 id="q4-dlnmsap">Q4: ベイズ統計やDLNMをSAPに含める際の注意点は？</h3>
+<p>A4: これらの高度な手法をSAPに含める際は、その必要性、理論的背景、および解析結果の解釈方法を明確に記述することが重要です。特に規制当局への提出を伴う試験では、手法の妥当性や頑健性を裏付けるために、事前分布の選択根拠、感度分析の計画、そして計算方法（例：INLA）の詳細を具体的に示す必要があります。{{internal_link:ベイズ統計の導入と課題}}も確認しましょう。</p>
+<h3 id="q5-dlnm">Q5: 分布ラグ非線形モデル（DLNM）はどのようなデータに適用できますか？</h3>
+<p>A5: DLNMは、曝露とアウトカムが時間的に関連しており、かつ曝露の影響が遅れて現れる可能性のある時系列データに特に適しています。例えば、環境汚染物質（PM2.5、オゾンなど）と呼吸器・循環器疾患の関連、インフルエンザワクチン接種と発症の遅延効果、特定の薬剤投与と副作用発現までの潜伏期間、あるいは特定の食品摂取と疾患リスクの関係性など、幅広い分野の臨床研究や疫学研究に応用可能です。</p>
+<h2 id="_5">臨床統計スキルを磨くためのリソース</h2>
 <p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
 <ul>
 <li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
@@ -963,19 +989,17 @@ print(table_adsl)
 <li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
 </ul>
 <p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p>
-<h2 id="_7">まとめ</h2>
-<p>この記事では、<strong>臨床試験</strong>における<strong>ADaM</strong>データセット作成の強力なツールである<code>admiral</code> <strong>Rパッケージ</strong>について深く掘り下げてきました。<code>admiral</code>は、<strong>生物統計プログラマー</strong>のADaM作成ワークフローを効率化し、データの品質と再現性を保証する上で不可欠な存在です。</p>
-<p><strong>AI時代</strong>のデータハンドリングでは、単なるコードの実行だけでなく、<strong>「いかに高品質な解析基盤を効率的に構築するか」</strong>が問われます。<code>admiral</code>は、この課題に対するRからの強力な回答であり、今後の臨床統計解析の標準を形成していくことでしょう。</p>
-<p>ぜひ、皆さんの日々の業務に<code>admiral</code>を取り入れ、よりスマートな臨床統計プログラミングを体験してみてください。臨床統計ラボでは、今後も<code>admiral</code>や<code>rtables</code>などのRパッケージに関する最新情報をお届けしていきます。</p>
-<hr /></div>
+<h2 id="_6">まとめ</h2>
+<p>統計解析計画書（SAP）は、臨床研究の信頼性と科学的妥当性を保証するための「羅針盤」です。ICH E9ガイドラインに準拠し、主要評価項目から感度分析まで、すべての統計解析に関する意思決定を試験実施前に明確に記録することは、結果の客観性と再現性を高める上で不可欠です。本記事で紹介したように、R、ベイズ統計、INLA、そして分布ラグ非線形モデル（DLNM）といった最新のツールと手法をSAPに適切に組み込むことで、より深い洞察を得られるだけでなく、複雑な臨床的疑問にも統計的に頑健なアプローチで応えることが可能になります。</p>
+<p>臨床統計の専門家として、私たちは常に最新の統計手法を取り入れ、より質の高い臨床研究に貢献していく使命があります。この記事が、皆さんのSAP作成と統計解析の知識向上の一助となれば幸いです。今後も「臨床統計ラボ」では、実践的な情報を提供していきますので、ぜひご期待ください！</p></div>
 
             
 
             <div class="share-buttons">
-                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html&text=admiral RでADaM作成！臨床試験プログラマーのAI活用術" target="_blank" rel="noopener noreferrer">X でシェア</a>
-                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html&title=admiral RでADaM作成！臨床試験プログラマーのAI活用術" target="_blank" rel="noopener noreferrer">はてブ</a>
-                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html" target="_blank" rel="noopener noreferrer">LINE</a>
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html&text=臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html&title=臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html" target="_blank" rel="noopener noreferrer">LINE</a>
             </div>
         </article>
 
