@@ -5,7 +5,7 @@
     <link>https://pharmaworkerka.github.io/clinical-stats-lab</link>
     <description>臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</description>
     <language>ja</language>
-    <lastBuildDate>Mon, 20 Apr 2026 05:36:41 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2026 05:24:04 +0900</lastBuildDate>
     <atom:link href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>R言語で加速する臨床試験：予測モデリングと時系列解析の生物統計実践</title>
@@ -13,7 +13,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-predictive-time-series.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>R for Clinical Trials: admiralとADaMで臨床試験データ解析を加速</title>
@@ -21,7 +21,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trials-admiral-adam.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>admiral RでADaM作成！臨床試験プログラマーのAI活用術</title>
@@ -29,7 +29,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-adam-clinical-trials-ai-programmer.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング</title>
@@ -37,7 +37,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>admiralとRで臨床試験を加速！ADaM自動生成とAI活用の新時代</title>
@@ -45,7 +45,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-ai.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>Rとadmiralで臨床試験解析を加速！AIでプログラミング効率を革新</title>
@@ -53,7 +53,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-ai-efficiency.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>R言語×admiralで臨床試験を革新！ADaM構築とAIアシストプログラミング</title>
@@ -61,7 +61,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-admiral-clinical-trials-adam-ai.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>R bdlnm: 臨床統計向けベイジアン分布ラグ非線形モデル実践</title>
@@ -69,7 +69,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-bdlnm-bayesian-dlnm-clinical-statistics.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>admiral RパッケージでADaM効率化！臨床試験統計解析の未来</title>
@@ -77,7 +77,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-package-clinical-trials-adam.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>R, admiralで加速！臨床試験のCDISC ADaMデータ生成とAIプログラミング最前線</title>
@@ -85,7 +85,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-admiral-cdisc-adam-clinical-trials-ai-programming.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>R/admiralで学ぶICH E9(R1) Estimand実践ガイド</title>
@@ -93,7 +93,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html</guid>
       <description></description>
       <category>ICH E9(R1) Estimand</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>RとINLAで拓くベイズ時系列解析：DLNMによる生物統計・疫学応用</title>
@@ -101,7 +101,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/rinladlnm.html</guid>
       <description></description>
       <category>生物統計学・応用統計学</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡</title>
@@ -109,7 +109,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>臨床統計SAPにおけるR/INLA活用術：ベイズ非線形モデル実践ガイド</title>
@@ -117,7 +117,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-statistics-sap-r-inla-bayes-nonlinear-model.html</guid>
       <description></description>
       <category>統計解析計画書・SAP</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>Rパッケージで加速するベイジアン時系列解析: 疫学とINLA活用術【生物統計】</title>
@@ -125,7 +125,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-package-bayesian-time-series-inla-biostatistics-epidemiology.html</guid>
       <description></description>
       <category>生物統計</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>RパッケージINLAで臨床統計のベイズ非線形モデル解析：最新動向と実践</title>
@@ -133,7 +133,7 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-package-inla-bayes-nonlinear-model-clinical-statistics-latest-trends.html</guid>
       <description></description>
       <category>R for Clinical Trials</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
     <item>
       <title>臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用</title>
@@ -141,7 +141,15 @@
       <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html</guid>
       <description></description>
       <category>統計解析計画書・SAP</category>
-      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>RとINLAで拓くベイズ分布ラグ非線形モデル(bdlnm)解析：生物統計の最前線</title>
+      <link>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-inla-bayesian-distributed-lag-nonlinear-model-bdlnm-biostatistics.html</link>
+      <guid>https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-inla-bayesian-distributed-lag-nonlinear-model-bdlnm-biostatistics.html</guid>
+      <description></description>
+      <category>R for Clinical Trials</category>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0900</pubDate>
     </item>
   </channel>
 </rss>
