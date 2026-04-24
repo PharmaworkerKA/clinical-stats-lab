@@ -1,0 +1,160 @@
+{
+  "collected_at": "2026-04-24T05:30:10.440435",
+  "total_count": 14,
+  "topics": [
+    {
+      "title": "reviser: Analyzing Real-Time Data Revisions in R",
+      "url": "https://www.r-bloggers.com/2026/04/reviser-analyzing-real-time-data-revisions-in-r/",
+      "summary": "<p>Economic data are rarely static.<br />\nGross domestic product (GDP), inflation, employment, and other official statistics arrive as early estimates, then get revised as new source data arrive, seasonal adjustment is updated, or benchmarking changes are appl...</p>\n<strong>Continue reading</strong",
+      "published": "Mon, 13 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 92,
+      "category": "R for Clinical Trials",
+      "blog_title": "Rパッケージ`reviser`によるリアルタイムデータ改訂の分析：臨床試験のデータガバナンス強化",
+      "keyword": "reviser, R, リアルタイムデータ, データ改訂, 臨床試験, データ管理"
+    },
+    {
+      "title": "The sample median is a biased estimator for skewed distributions",
+      "url": "https://blogs.sas.com/content/iml/2026/04/20/sample-median-bias.html",
+      "summary": "<p>Did you know that, for skewed distributions, the sample median is a biased estimator of the population median? You can show this in two ways. For any distribution, you can run a Monte Carlo simulation that reveals the bias. And, for some distributions (such as the exponential distribution), you c",
+      "published": "Mon, 20 Apr 2026 09:21:21 +0000",
+      "source": "SAS Blogs",
+      "score": 90,
+      "category": "生物統計",
+      "blog_title": "歪んだ分布における標本中央値の偏り：生物統計学における重要な考察",
+      "keyword": "標本中央値, 偏り, 歪んだ分布, 推定量, 生物統計学"
+    },
+    {
+      "title": "Why Most Time Series Models Fail Before They Start",
+      "url": "https://www.r-bloggers.com/2026/04/why-most-time-series-models-fail-before-they-start/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>1 A model can run and still be fundamentally wrong<br />\nMany time series models fail before they even begin. Not because the software crashes. Not because the code is wrong. But because the data entering the model violate one of the m",
+      "published": "Wed, 15 Apr 2026 21:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 90,
+      "category": "生物統計",
+      "blog_title": "時系列モデルが失敗する主な理由と臨床試験データ解析での注意点",
+      "keyword": "時系列モデル, 統計モデリング, 失敗要因, 臨床試験, データ解析"
+    },
+    {
+      "title": "Dealing with correlation in designed field experiments: part II",
+      "url": "https://www.r-bloggers.com/2026/04/dealing-with-correlation-in-designed-field-experiments-part-ii-4/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>With field experiments, studying the correlation between the observed traits may not be an easy task. For example, we can consider a genotype experiment, laid out in randomised complete blocks, with 27 wheat genotypes and three replica",
+      "published": "Wed, 15 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 88,
+      "category": "生物統計",
+      "blog_title": "計画された実験における相関への対処法：臨床試験デザインへの応用（後編）",
+      "keyword": "相関, 実験計画法, 臨床試験デザイン, 生物統計学, 統計解析"
+    },
+    {
+      "title": "The modern statistical computing environment is changing everything",
+      "url": "https://blogs.sas.com/content/sascom/2026/04/16/the-modern-sce-has-arrived-and-its-changing-everything/",
+      "summary": "<p>When we published our Five Tips for Choosing a Statistical Computing Environment back in 2023, the conversation was about what to look for. If you’re evaluating how to select a statistical computing environment, start with this overview. The following post focuses on what has changed and what a m",
+      "published": "Thu, 16 Apr 2026 10:00:24 +0000",
+      "source": "SAS Blogs",
+      "score": 85,
+      "category": "臨床統計最新ニュース",
+      "blog_title": "現代の統計コンピューティング環境が臨床試験にもたらす変革",
+      "keyword": "統計コンピューティング, R, SAS, 臨床試験, 最新トレンド"
+    },
+    {
+      "title": "What’s new in R 4.6.0?",
+      "url": "https://www.r-bloggers.com/2026/04/whats-new-in-r-4-6-0/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>R 4.6.0 (“Because it was There”) is set for release on April 24th 2026. Here we summarise some of<br />\nthe more interesting changes that have been introduced. In previous blog posts, we have discussed<br />\nthe new features introduced",
+      "published": "Thu, 16 Apr 2026 23:59:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 85,
+      "category": "R for Clinical Trials",
+      "blog_title": "R 4.6.0の新機能：臨床統計プログラミングにどう影響するか",
+      "keyword": "R, R言語, 新機能, 臨床統計, プログラミング"
+    },
+    {
+      "title": "`mlS3` — A Unified S3 Machine Learning Interface in R",
+      "url": "https://www.r-bloggers.com/2026/04/mls3-a-unified-s3-machine-learning-interface-in-r/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> Introduction to `mlS3` — A Unified S3 Machine Learning Interface in R</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: both;\"></div>\n<strong>Continue reading</strong>: <a href=\"https://www.r-bl",
+      "published": "Sun, 12 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 85,
+      "category": "R for Clinical Trials",
+      "blog_title": "Rにおける統一MLインターフェース`mlS3`：臨床研究への機械学習導入を加速",
+      "keyword": "mlS3, R, 機械学習, 臨床研究, 予測モデル"
+    },
+    {
+      "title": "Visualize the placement of knots for regression splines",
+      "url": "https://blogs.sas.com/content/iml/2026/04/22/viz-knots-splines.html",
+      "summary": "<p>Splines are useful tools for fitting regression models to data. A spline replaces a single variable (call it X) with several other variables, which are a spline basis for X. When using a spline basis, the shape and location of the basis functions depend on the placement of knots. Knots [...]</p>\n",
+      "published": "Wed, 22 Apr 2026 09:29:19 +0000",
+      "source": "SAS Blogs",
+      "score": 80,
+      "category": "R for Clinical Trials",
+      "blog_title": "回帰スプラインのノット配置をRで視覚化するテクニック：モデル選択の洞察",
+      "keyword": "回帰スプライン, ノット配置, R, 統計モデリング, 可視化"
+    },
+    {
+      "title": "logrittr: A Verbose Pipe Operator for Logging dplyr Pipelines",
+      "url": "https://www.r-bloggers.com/2026/04/logrittr-a-verbose-pipe-operator-for-logging-dplyr-pipelines/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>  dplyr verbs are descriptive: let’s make them more verbose!</p>\n<p>  Yet another pipe for R.</p>\n<p>Motivation</p>\n<p>In SAS, every DATA step prints a log:</p>\n<p>NOTE: There were 120000 observations read from WORK.SALES.<br />\nNOTE: ",
+      "published": "Wed, 15 Apr 2026 08:05:50 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 80,
+      "category": "R for Clinical Trials",
+      "blog_title": "Rの`logrittr`でdplyrパイプラインを詳細にログ記録：再現性とデバッグの強化",
+      "keyword": "R, dplyr, パイプ演算子, ログ記録, 臨床データ処理, プログラミング"
+    },
+    {
+      "title": "Programming with LLMs in R & Python",
+      "url": "https://www.r-bloggers.com/2026/04/programming-with-llms-in-r-python/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Working with LLMs in Practice<br />\nLarge Language Models are becoming part of everyday data science work. But using them through chat interfaces is only one part of the picture.<br />\nIn this upcoming webinar, we focus on how to work ",
+      "published": "Tue, 14 Apr 2026 23:59:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 78,
+      "category": "R for Clinical Trials",
+      "blog_title": "R/PythonでLLMを活用した臨床統計プログラミング：AIがもたらす変革",
+      "keyword": "LLM, R, Python, AIプログラミング, 臨床統計, 効率化"
+    },
+    {
+      "title": "Do AI coding agents save scientists time?",
+      "url": "https://www.r-bloggers.com/2026/04/do-ai-coding-agents-save-scientists-time/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>I’m often asked if using AI coding agents saves time. Yes they write code very quickly and can complete entire ecological data analyses.</p>\n<p>Do agents really help when the deadlines are approaching?</p>\n<p>Do agents really help when",
+      "published": "Mon, 13 Apr 2026 14:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 78,
+      "category": "臨床統計最新ニュース",
+      "blog_title": "AIコーディングエージェントは臨床研究者の時間を節約できるか？生産性向上への期待と課題",
+      "keyword": "AI, コーディングエージェント, プログラミング効率, 臨床統計, 生産性"
+    },
+    {
+      "title": "Analyzing Ecological Data with Detection Error",
+      "url": "https://www.r-bloggers.com/2026/04/analyzing-ecological-data-with-detection-error/",
+      "summary": "<p>This course is for researchers who analyze field observations. These data are often inconsistent because sampling protocols can change across projects, over time, or when older data are combined with new recordings.</p>\n<strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/0",
+      "published": "Sun, 19 Apr 2026 06:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "生物統計",
+      "blog_title": "検出誤差を伴うデータの解析：臨床試験における測定誤差への示唆",
+      "keyword": "検出誤差, データ解析, 統計手法, R, 生物統計"
+    },
+    {
+      "title": "Fun pictures with ggplot2 and scico packages",
+      "url": "https://www.r-bloggers.com/2026/04/fun-pictures-with-ggplot2-and-scico-packages/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>This wonderful post from Jonathan Caroll give me idea to play with ggplot2 code and<br />\nscico color palettes:</p>\n<p>Also see this toot from<br />\nStefan Siegert, inspiring!</p>\n<p>I took the code from the toot mentioned above, modif",
+      "published": "Sat, 18 Apr 2026 09:05:05 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 70,
+      "category": "R for Clinical Trials",
+      "blog_title": "ggplot2とscicoパッケージで魅力的かつ情報量の多い臨床データを可視化する",
+      "keyword": "ggplot2, scico, R, データ可視化, 臨床試験レポート"
+    },
+    {
+      "title": "Stage II OSCC — Health Economics Model",
+      "url": "https://www.r-bloggers.com/2026/04/stage-ii-oscc-health-economics-model/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Most health care economics models are constructed from the perspective of a managed health care system such as those offered in Canada and several European countries, or from the perspective of some other third party such as an insuran",
+      "published": "Thu, 16 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 65,
+      "category": "臨床試験全般に関連する記事",
+      "blog_title": "ステージII口腔扁平上皮癌における医療経済モデル：臨床的意思決定への貢献",
+      "keyword": "医療経済モデル, OSCC, 臨床試験, 費用対効果, 意思決定"
+    }
+  ]
+}
