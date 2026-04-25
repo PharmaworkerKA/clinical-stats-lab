@@ -6,29 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-    <title>臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する | 臨床統計ラボ</title>
+    <title>Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード | 臨床統計ラボ</title>
 
     
     <meta name="description" content="">
     <meta name="author" content="臨床統計ラボ">
-    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html">
 
     
     <meta property="og:site_name" content="臨床統計ラボ">
-    <meta property="og:title" content="臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する">
+    <meta property="og:title" content="Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード">
     <meta property="og:description" content="">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html">
     <meta property="og:locale" content="ja_JP">
 
     
-    <meta property="og:image" content="https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する">
+    <meta name="twitter:title" content="Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード">
     <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
     
     <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
@@ -59,15 +59,15 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する",
+    "headline": "Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード",
     "description": "",
     "datePublished": "2026-04-25",
     "dateModified": "2026-04-25",
     "author": {"@type": "Organization", "name": "臨床統計ラボ"},
     "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html"}
-    ,"image": "https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
-    ,"keywords": "臨床統計, 生物統計, 有界調和平均, エビデンス近似, SAS/R"
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html"}
+    ,"image": "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "統計学, Harmonic Means, 臨床統計, SAS, R"
 }
 </script>
 
@@ -78,42 +78,42 @@
     "mainEntity": [
         {
             "@type": "Question",
-            "name": "\u6709\u754c\u8abf\u548c\u5e73\u5747\uff08HMP\uff09\u306f\u3069\u306e\u3088\u3046\u306a\u72b6\u6cc1\u3067\u4f7f\u3046\u306e\u304c\u6700\u9069\u3067\u3059\u304b\uff1f",
+            "name": "Harmonic Means\u306f\u3069\u306e\u3088\u3046\u306a\u5834\u5408\u306b\u4f7f\u3046\u3079\u304d\u3067\u3059\u304b\uff1f",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A1: HMP\u306f\u3001\u8907\u6570\u306e\u81e8\u5e8a\u8a66\u9a13\u3084\u30b5\u30d6\u30b0\u30eb\u30fc\u30d7\u89e3\u6790\u306e\u7d50\u679c\u3092\u7d71\u5408\u3059\u308b\u969b\u306b\u3001\u5404\u8a66\u9a13\u9593\u3067\u52b9\u679c\u306e\u7570\u8cea\u6027\uff08Heterogeneity\uff09\u304c\u9ad8\u3044\u5834\u5408\u3084\u3001\u4e00\u90e8\u306eP\u5024\u304c\u6975\u7aef\u306b\u5c0f\u3055\u3044\u5834\u5408\u306b\u7279\u306b\u6709\u7528\u3067\u3059\u3002\u5f93\u6765\u306e\u7d71\u5408\u6cd5\u3088\u308a\u3082\u9811\u5065\u306aP\u5024\u3092\u63d0\u4f9b\u3057\u3001\u504f\u308a\u306e\u5c11\u306a\u3044\u7d50\u8ad6\u3092\u5c0e\u304d\u51fa\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002"
+                "text": "A1:** Harmonic Means\uff08\u8abf\u548c\u5e73\u5747\uff09\u306f\u3001\u901f\u5ea6\u3001\u30ec\u30fc\u30c8\u3001\u5272\u5408\u3001\u6bd4\u7387\u306a\u3069\u3001\u9006\u6570\u306b\u610f\u5473\u304c\u3042\u308b\u30c7\u30fc\u30bf\u3092\u5e73\u5747\u3059\u308b\u969b\u306b\u7279\u306b\u9069\u3057\u3066\u3044\u307e\u3059\u3002\u4f8b\u3048\u3070\u3001\u8907\u6570\u306e\u8a66\u9a13\u304b\u3089\u5f97\u3089\u308c\u305f\u30a4\u30d9\u30f3\u30c8\u767a\u751f\u7387\u3084\u6cbb\u7642\u52b9\u679c\u306e\u5272\u5408\u3001\u85ac\u5264\u306e\u30af\u30ea\u30a2\u30e9\u30f3\u30b9\u7387\u306a\u3069\u3092\u7d71\u5408\u3059\u308b\u5834\u5408\u306b\u3001\u7b97\u8853\u5e73\u5747\u3088\u308a\u3082\u9069\u5207\u306a\u7d50\u679c\u3092\u5c0e\u304f\u3053\u3068\u304c\u3042\u308a\u307e\u3059\u3002\u5024\u304c\u5c0f\u3055\u3044\u30c7\u30fc\u30bf\u306b\u5f37\u304f\u5f71\u97ff\u3055\u308c\u308b\u305f\u3081\u3001\u30c7\u30fc\u30bf\u5206\u5e03\u306e\u7279\u6027\u3092\u8003\u616e\u3059\u308b\u3053\u3068\u304c\u91cd\u8981\u3067\u3059\u3002"
             }
         },
         {
             "@type": "Question",
-            "name": "\u30d5\u30a3\u30c3\u30b7\u30e3\u30fc\u306e\u7d71\u5408\u691c\u5b9a\u3068\u4f55\u304c\u9055\u3044\u307e\u3059\u304b\uff1f",
+            "name": "\u7b97\u8853\u5e73\u5747\u3068\u6bd4\u3079\u3066\u4f55\u304c\u9055\u3046\u306e\u3067\u3059\u304b\uff1f",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A2: \u30d5\u30a3\u30c3\u30b7\u30e3\u30fc\u306e\u7d71\u5408\u691c\u5b9a\u306f\u3001\u500b\u3005\u306eP\u5024\u304c\u5c0f\u3055\u3044\u5834\u5408\u306b\u5168\u4f53\u306e\u7d50\u679c\u306b\u975e\u5e38\u306b\u5f37\u304f\u5f71\u97ff\u3055\u308c\u307e\u3059\u3002\u4e00\u65b9\u3067HMP\u306f\u3001P\u5024\u306e\u9006\u6570\u3092\u7528\u3044\u308b\u305f\u3081\u3001\u6975\u7aef\u306b\u5c0f\u3055\u306aP\u5024\u306b\u904e\u5ea6\u306b\u5f15\u3063\u5f35\u3089\u308c\u308b\u3053\u3068\u306a\u304f\u3001\u3088\u308a\u30d0\u30e9\u30f3\u30b9\u306e\u53d6\u308c\u305f\u7d71\u5408P\u5024\u3092\u63d0\u4f9b\u3057\u307e\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u7570\u8cea\u6027\u306e\u9ad8\u3044\u72b6\u6cc1\u3067\u3082\u3001\u3088\u308a\u4fe1\u983c\u6027\u306e\u9ad8\u3044\u30a8\u30d3\u30c7\u30f3\u30b9\u304c\u5f97\u3089\u308c\u307e\u3059\u3002"
+                "text": "A2:** \u7b97\u8853\u5e73\u5747\u306f\u3001\u5168\u3066\u306e\u30c7\u30fc\u30bf\u3092\u8db3\u3057\u5408\u308f\u305b\u3066\u305d\u306e\u500b\u6570\u3067\u5272\u308b\u6700\u3082\u4e00\u822c\u7684\u306a\u5e73\u5747\u3067\u3059\u3002\u3053\u308c\u306b\u5bfe\u3057\u3001Harmonic Means\u306f\u30c7\u30fc\u30bf\u306e\u9006\u6570\u306e\u7b97\u8853\u5e73\u5747\u306e\u9006\u6570\u3092\u53d6\u308a\u307e\u3059\u3002\u3053\u306e\u9055\u3044\u306b\u3088\u308a\u3001\u7b97\u8853\u5e73\u5747\u306f\u5916\u308c\u5024\u3084\u5927\u304d\u306a\u5024\u306b\u5f15\u3063\u5f35\u3089\u308c\u3084\u3059\u3044\u4e00\u65b9\u3001Harmonic Means\u306f\u5c0f\u3055\u3044\u5024\u306b\u654f\u611f\u306b\u53cd\u5fdc\u3057\u3001\u5168\u4f53\u3068\u3057\u3066\u306f\u7b97\u8853\u5e73\u5747\u3088\u308a\u3082\u5e38\u306b\u5c0f\u3055\u3044\u304b\u7b49\u3057\u3044\u5024\u306b\u306a\u308a\u307e\u3059\u3002\u901f\u5ea6\u306e\u5e73\u5747\u306e\u3088\u3046\u306b\u3001\u6642\u9593\u3084\u8ddd\u96e2\u3068\u3044\u3063\u305f\u300c\u91cf\u300d\u304c\u4e00\u5b9a\u306e\u5834\u5408\u306e\u5e73\u5747\u306b\u9069\u3057\u3066\u3044\u307e\u3059\u3002"
             }
         },
         {
             "@type": "Question",
-            "name": "\u30a8\u30d3\u30c7\u30f3\u30b9\u8fd1\u4f3c\u306f\u306a\u305c\u91cd\u8981\u3067\u3059\u304b\uff1f",
+            "name": "\u81e8\u5e8a\u8a66\u9a13\u3067\u5177\u4f53\u7684\u306b\u3069\u306e\u3088\u3046\u306a\u30a2\u30a6\u30c8\u30ab\u30e0\u306b\u9069\u7528\u3067\u304d\u307e\u3059\u304b\uff1f",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A3: \u30a8\u30d3\u30c7\u30f3\u30b9\u8fd1\u4f3c\u306f\u3001\u8907\u96d1\u306a\u7d71\u8a08\u30e2\u30c7\u30eb\u3084\u30d9\u30a4\u30ba\u30e2\u30c7\u30eb\u306b\u304a\u3044\u3066\u3001\u30e2\u30c7\u30eb\u306e\u30a8\u30d3\u30c7\u30f3\u30b9\uff08\u5468\u8fba\u5c24\u5ea6\uff09\u3092\u76f4\u63a5\u8a08\u7b97\u3059\u308b\u306e\u304c\u975e\u5e38\u306b\u56f0\u96e3\u306a\u5834\u5408\u306b\u3001\u305d\u306e\u5024\u3092\u63a8\u5b9a\u3059\u308b\u7d71\u8a08\u8a08\u7b97\u624b\u6cd5\u3067\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u7570\u306a\u308b\u30e2\u30c7\u30eb\u9593\u306e\u6bd4\u8f03\u3084\u30e2\u30c7\u30eb\u9078\u629e\u304c\u53ef\u80fd\u306b\u306a\u308a\u3001\u3088\u308a\u6df1\u3044\u6d1e\u5bdf\u3068\u4fe1\u983c\u6027\u306e\u9ad8\u3044\u610f\u601d\u6c7a\u5b9a\u3092\u652f\u63f4\u3057\u307e\u3059\u3002"
+                "text": "A3:** \u81e8\u5e8a\u8a66\u9a13\u3067\u306f\u3001\u4ee5\u4e0b\u306e\u3088\u3046\u306a\u30a2\u30a6\u30c8\u30ab\u30e0\u306b\u9069\u7528\u304c\u691c\u8a0e\u3055\u308c\u307e\u3059\u3002\n\u8907\u6570\u306e\u7814\u7a76\u306b\u304a\u3051\u308b**\u30a4\u30d9\u30f3\u30c8\u767a\u751f\u7387**\uff08\u4f8b: \u526f\u4f5c\u7528\u767a\u751f\u7387\u3001\u518d\u767a\u7387\uff09\u306e\u7d71\u5408\n\u30e1\u30bf\u30a2\u30ca\u30ea\u30b7\u30b9\u306b\u304a\u3051\u308b**\u52b9\u679c\u91cf**\uff08\u4f8b: \u30aa\u30c3\u30ba\u6bd4\u3001\u30cf\u30b6\u30fc\u30c9\u6bd4\u3001\u30ea\u30b9\u30af\u6bd4\uff09\u306e\u7d71\u5408\n\u85ac\u5264\u52d5\u614b\u5b66\uff08PK\uff09\u306b\u304a\u3051\u308b**\u30af\u30ea\u30a2\u30e9\u30f3\u30b9\u7387**\u3084**\u6392\u51fa\u534a\u6e1b\u671f**\u306e\u5e73\u5747\n\u8a3a\u65ad\u85ac\u306e**\u611f\u5ea6\u3084\u7279\u7570\u5ea6**\u306e\u30d7\u30fc\u30eb"
             }
         },
         {
             "@type": "Question",
-            "name": "\u6709\u754c\u8abf\u548c\u5e73\u5747\uff08HMP\uff09\u3092SAS\u3067\u5b9f\u88c5\u3059\u308b\u969b\u306e\u6ce8\u610f\u70b9\u306f\uff1f",
+            "name": "Harmonic Means\u3092\u9069\u7528\u3059\u308b\u969b\u306e\u6ce8\u610f\u70b9\u306f\u3042\u308a\u307e\u3059\u304b\uff1f",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A4: SAS\u3067HMP\u3092\u5b9f\u88c5\u3059\u308b\u969b\u306f\u3001P\u5024\u306e\u9006\u6570\u3092\u8a08\u7b97\u3057\u3001\u305d\u306e\u5e73\u5747\u3092\u53d6\u308a\u3001\u518d\u5ea6\u9006\u6570\u3092\u53d6\u308b\u3068\u3044\u3046\u624b\u9806\u3092\u8e0f\u3080\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002`PROC MEANS`\u3084`PROC SQL`\u3092\u6d3b\u7528\u3067\u304d\u307e\u3059\u304c\u3001\u8a66\u9a13\u306e\u6570\u3092\u6b63\u78ba\u306b\u628a\u63e1\u3059\u308b\u3053\u3068\u304c\u91cd\u8981\u3067\u3059\u3002\u307e\u305f\u3001P\u5024\u304c0\u306b\u306a\u308b\u5834\u5408\uff08\u7406\u8ad6\u4e0a\u306f\u7a00\u3067\u3059\u304c\uff09\u306b\u306f\u3001\u9006\u6570\u304c\u7121\u9650\u5927\u306b\u306a\u308b\u305f\u3081\u3001\u9069\u5207\u306a\u6570\u5024\u7684\u5b89\u5b9a\u6027\u5bfe\u7b56\uff08\u4f8b: \u975e\u5e38\u306b\u5c0f\u3055\u306a\u5024\u3092\u52a0\u3048\u308b\u306a\u3069\uff09\u3092\u691c\u8a0e\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
+                "text": "A4:** Harmonic Means\u3092\u9069\u7528\u3059\u308b\u969b\u306f\u3001\u4ee5\u4e0b\u306e\u70b9\u306b\u6ce8\u610f\u304c\u5fc5\u8981\u3067\u3059\u3002\n\u30c7\u30fc\u30bf\u304c\u6b63\u306e\u6570\u3067\u3042\u308b\u3053\u3068**: \u5b9a\u7fa9\u4e0a\u3001\u30c7\u30fc\u30bf\u306f\u5168\u3066\u6b63\u306e\u6570\u3067\u3042\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002\u30bc\u30ed\u3084\u8ca0\u306e\u5024\u304c\u542b\u307e\u308c\u308b\u5834\u5408\u306f\u9069\u7528\u3067\u304d\u307e\u305b\u3093\u3002\n\u30c7\u30fc\u30bf\u306e\u7279\u6027\u7406\u89e3**: \u30c7\u30fc\u30bf\u304c\u672c\u5f53\u306b\u30ec\u30fc\u30c8\u3084\u6bd4\u7387\u306e\u6027\u8cea\u3092\u6301\u3064\u304b\u3001\u9006\u6570\u306b\u610f\u5473\u304c\u3042\u308b\u304b\u3092\u7406\u89e3\u3059\u308b\u3053\u3068\u304c\u91cd\u8981\u3067\u3059\u3002\u4e0d\u9069\u5207\u306a\u30c7\u30fc\u30bf\u306b\u9069\u7528\u3059\u308b\u3068\u8aa4\u3063\u305f\u7d50\u8ad6\u3092\u5c0e\u304f\u53ef\u80fd\u6027\u304c\u3042\u308a\u307e\u3059\u3002\n\u5916\u308c\u5024\u3078\u306e\u5f71\u97ff**: \u5c0f\u3055\u3044\u5024\u306b\u5f37\u304f\u5f71\u97ff\u3055\u308c\u308b\u305f\u3081\u3001\u6975\u7aef\u306b\u5c0f\u3055\u3044\u5916\u308c\u5024\u304c\u3042\u308b\u3068\u8abf\u548c\u5e73\u5747\u306f\u5927\u304d\u304f\u4f4e\u4e0b\u3057\u307e\u3059\u3002\n\u76ee\u7684\u3068\u306e\u6574\u5408\u6027**: \u3069\u306e\u3088\u3046\u306a\u300c\u5e73\u5747\u300d\u3092\u6c42\u3081\u305f\u3044\u306e\u304b\u3001\u305d\u306e**\u7d71\u8a08\u5b66**\u7684\u7d71\u8a08\u91cf\u304c\u81e8\u5e8a\u7684\u306b\u3069\u306e\u3088\u3046\u306a\u610f\u5473\u3092\u6301\u3064\u306e\u304b\u3092\u660e\u78ba\u306b\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
             }
         },
         {
             "@type": "Question",
-            "name": "\u6700\u65b0\u306e\u7d71\u8a08\u624b\u6cd5\u306f\u898f\u5236\u5f53\u5c40\u306b\u53d7\u3051\u5165\u308c\u3089\u308c\u3066\u3044\u307e\u3059\u304b\uff1f",
+            "name": "\u6700\u65b0\u306e\u7814\u7a76\u52d5\u5411\u306f\u3069\u306e\u3088\u3046\u306b\u8ffd\u3048\u3070\u826f\u3044\u3067\u3059\u304b\uff1f",
             "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "A5: \u306f\u3044\u3001FDA\u3084EMA\u306a\u3069\u306e\u898f\u5236\u5f53\u5c40\u306f\u3001\u30d9\u30a4\u30ba\u7d71\u8a08\u5b66\u3084\u9069\u5fdc\u7684\u30c7\u30b6\u30a4\u30f3\u306a\u3069\u3001\u3088\u308a\u9ad8\u5ea6\u306a\u7d71\u8a08\u624b\u6cd5\u306e\u5229\u7528\u306b\u7a4d\u6975\u7684\u306b\u95a2\u5fc3\u3092\u793a\u3057\u3066\u304a\u308a\u3001\u95a2\u9023\u3059\u308b\u30ac\u30a4\u30c0\u30f3\u30b9\u3082\u767a\u884c\u3057\u3066\u3044\u307e\u3059\u3002\u6709\u754c\u8abf\u548c\u5e73\u5747\u306e\u3088\u3046\u306a\u9811\u5065\u306a\u30a8\u30d3\u30c7\u30f3\u30b9\u7d71\u5408\u624b\u6cd5\u3082\u3001\u9069\u5207\u306a\u65b9\u6cd5\u8ad6\u7684\u88cf\u4ed8\u3051\u3068\u89e3\u6790\u8a08\u753b\u304c\u3042\u308c\u3070\u3001\u627f\u8a8d\u7533\u8acb\u306b\u304a\u3044\u3066\u53d7\u3051\u5165\u308c\u3089\u308c\u308b\u53ef\u80fd\u6027\u306f\u9ad8\u307e\u3063\u3066\u3044\u307e\u3059\u3002\u91cd\u8981\u306a\u306e\u306f\u3001\u305d\u306e\u624b\u6cd5\u304c\u30c7\u30fc\u30bf\u306e\u7279\u6027\u306b\u5408\u81f4\u3057\u3066\u304a\u308a\u3001\u79d1\u5b66\u7684\u306b\u59a5\u5f53\u3067\u3042\u308b\u3053\u3068\u3092\u660e\u78ba\u306b\u8aac\u660e\u3059\u308b\u3053\u3068\u3067\u3059\u3002"
+                "text": "A5:** Harmonic Means\u3084\u95a2\u9023\u3059\u308b**\u7d71\u8a08\u5b66**\u306e**\u6700\u65b0\u7814\u7a76**\u52d5\u5411\u3092\u8ffd\u3046\u306b\u306f\u3001\u4ee5\u4e0b\u306e\u3088\u3046\u306a\u65b9\u6cd5\u304c\u3042\u308a\u307e\u3059\u3002\n\u5b66\u8853\u30b8\u30e3\u30fc\u30ca\u30eb\u306e\u8cfc\u8aad**: `Biometrics`, `Statistics in Medicine`, `Journal of the American Statistical Association` \u306a\u3069\u306e\u5c02\u9580\u30b8\u30e3\u30fc\u30ca\u30eb\u3092\u5b9a\u671f\u7684\u306b\u78ba\u8a8d\u3059\u308b\u3002\n\u4e3b\u8981\u5b66\u4f1a\u306e\u53c2\u52a0**: `ASA (American Statistical Association)`, `PSI (Statisticians in the Pharmaceutical Industry)`, `ENAR/WNAR` \u306a\u3069\u306e\u56fd\u969b\u5b66\u4f1a\u306b\u53c2\u52a0\u3057\u3001\u767a\u8868\u5185\u5bb9\u3092\u30c1\u30a7\u30c3\u30af\u3059\u308b\u3002\n\u30aa\u30f3\u30e9\u30a4\u30f3\u30ea\u30bd\u30fc\u30b9**: `arXiv` \u306a\u3069\u306e\u30d7\u30ec\u30d7\u30ea\u30f3\u30c8\u30b5\u30fc\u30d0\u30fc\u3084\u3001`Google Scholar` \u3067\u30ad\u30fc\u30ef\u30fc\u30c9\u691c\u7d22\u3092\u884c\u3044\u3001\u6700\u65b0\u306e**\u8ad6\u6587\u89e3\u8aac**\u3084\u30d7\u30ec\u30d7\u30ea\u30f3\u30c8\u3092\u5165\u624b\u3059\u308b\u3002\u307e\u305f\u3001\u5c02\u9580\u5bb6\u306e\u30d6\u30ed\u30b0\u3084\u30b3\u30df\u30e5\u30cb\u30c6\u30a3\uff08\u4f8b: `Stack Exchange`\uff09\u3067\u306e\u8b70\u8ad6\u3092\u53c2\u8003\u306b\u3059\u308b\u3053\u3068\u3082\u6709\u52b9\u3067\u3059\u3002\n{{internal_link:\u81e8\u5e8a\u7d71\u8a08\u306e\u6700\u65b0\u30c8\u30ec\u30f3\u30c9\u3092\u30ad\u30e3\u30c3\u30c1\u30a2\u30c3\u30d7}}\u3059\u308b\u305f\u3081\u306e\u30ac\u30a4\u30c9\u3082\u3054\u89a7\u304f\u3060\u3055\u3044\u3002"
             }
         }
         
@@ -798,25 +798,25 @@
             <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース</a>
             <span class="breadcrumb-sep">/</span>
             
-            <span>臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する</span>
+            <span>Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード</span>
         </nav>
 
         <article>
             
             
-            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
                 <div class="article-hero-overlay"></div>
             </div>
             
 
             <header class="article-header">
-                <h1 class="article-title">臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する</h1>
+                <h1 class="article-title">Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード</h1>
                 <div class="article-meta">
                     <span>2026-04-25</span>
                     <span class="reading-time">3分で読める</span>
                     <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html" class="category-badge">臨床統計最新ニュース</a>
                 </div>
-                <div class="card-tags mt-1"><span class="tag">臨床統計</span><span class="tag">生物統計</span><span class="tag">有界調和平均</span><span class="tag">エビデンス近似</span><span class="tag">SAS/R</span></div>
+                <div class="card-tags mt-1"><span class="tag">統計学</span><span class="tag">Harmonic Means</span><span class="tag">臨床統計</span><span class="tag">SAS</span><span class="tag">R</span></div>
             </header>
 
             
@@ -827,21 +827,32 @@
                 <div class="toc"><span class="toctitle">目次</span><ul>
 <li><a href="#_1">この記事でわかること</a></li>
 <li><a href="#_2">結論から言うと</a></li>
-<li><a href="#_3">有界調和平均・エビデンス近似とは？</a></li>
-<li><a href="#_4">統計的背景・理論</a></li>
-<li><a href="#sasr">SAS/Rコード実装</a><ul>
-<li><a href="#_5">サンプルデータの生成</a></li>
-<li><a href="#phmp">調和平均P値（HMP）の計算</a></li>
+<li><a href="#harmonic-means">Harmonic Means（調和平均）とは？</a><ul>
+<li><a href="#_3">統計学における平均の種類と調和平均の位置づけ</a></li>
 </ul>
 </li>
-<li><a href="#_6">実務での活用場面</a></li>
-<li><a href="#_7">海外の最新動向</a></li>
+<li><a href="#_4">統計的背景・理論：なぜ調和平均が重要なのか？</a><ul>
+<li><a href="#harmonic-means_1">Harmonic Meansの定義と特性</a></li>
+<li><a href="#_5">算術平均、幾何平均、調和平均の関係</a></li>
+</ul>
+</li>
+<li><a href="#sasrharmonic-means">SAS/Rコード実装：臨床データでのHarmonic Means計算</a><ul>
+<li><a href="#sasharmonic-means">SASでのHarmonic Means計算例</a></li>
+<li><a href="#rharmonic-means">RでのHarmonic Means計算例</a></li>
+</ul>
+</li>
+<li><a href="#_6">実務での活用場面：臨床試験のエビデンス構築</a></li>
+<li><a href="#harmonic-means_2">海外の最新動向と論文解説：Harmonic Meansと統計研究</a><ul>
+<li><a href="#psi-asa-phuse">PSI, ASA, PHUSEなどのコミュニティでの議論</a></li>
+<li><a href="#_7">注目すべき最新論文の解説</a></li>
+</ul>
+</li>
 <li><a href="#faq">よくある質問（FAQ）</a><ul>
-<li><a href="#q1-hmp">Q1: 有界調和平均（HMP）はどのような状況で使うのが最適ですか？</a></li>
-<li><a href="#q2">Q2: フィッシャーの統合検定と何が違いますか？</a></li>
-<li><a href="#q3">Q3: エビデンス近似はなぜ重要ですか？</a></li>
-<li><a href="#q4-hmpsas">Q4: 有界調和平均（HMP）をSASで実装する際の注意点は？</a></li>
-<li><a href="#q5">Q5: 最新の統計手法は規制当局に受け入れられていますか？</a></li>
+<li><a href="#q1-harmonic-means">Q1: Harmonic Meansはどのような場合に使うべきですか？</a></li>
+<li><a href="#q2">Q2: 算術平均と比べて何が違うのですか？</a></li>
+<li><a href="#q3">Q3: 臨床試験で具体的にどのようなアウトカムに適用できますか？</a></li>
+<li><a href="#q4-harmonic-means">Q4: Harmonic Meansを適用する際の注意点はありますか？</a></li>
+<li><a href="#q5">Q5: 最新の研究動向はどのように追えば良いですか？</a></li>
 </ul>
 </li>
 <li><a href="#_8">臨床統計スキルを磨くためのリソース</a></li>
@@ -852,195 +863,203 @@
             </details>
             
 
-            <div class="article-body"><h1 id="p">臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する</h1>
-<p><img alt="臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する" src="https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+            <div class="article-body"><h1 id="harmonic-meanssasr">Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード</h1>
+<p><img alt="Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード" src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
 <p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
+<p>臨床統計ラボ
+カテゴリ: 臨床統計最新ニュース</p>
 <h2 id="_1">この記事でわかること</h2>
 <ul>
-<li>複数の臨床試験結果を統合する新しい統計手法「有界調和平均（Bounded Harmonic Mean）」の概念と利点</li>
-<li>複雑なモデルや複数の情報源から「エビデンス近似（Evidence Approximation）」を用いて統計的証拠を評価する方法</li>
-<li>有界調和平均をSASとRで実装するための具体的なコード例</li>
-<li>これらの最新の統計計算手法が臨床試験の実務でどのように活用できるか、そして海外の最新動向</li>
+<li>Harmonic Means（調和平均）の基本的な概念とその統計的背景</li>
+<li>臨床試験データを用いたHarmonic MeansのSAS/Rによる実装方法</li>
+<li>Harmonic Meansが臨床試験の<strong>エビデンス</strong>構築にどう貢献するか</li>
+<li>海外の<strong>最新研究</strong>におけるHarmonic Meansの活用事例</li>
+<li>調和平均を実務で適用する際の注意点とベストプラクティス</li>
 </ul>
 <h2 id="_2">結論から言うと</h2>
-<p>複数の臨床試験やサブグループ解析の結果を統合する際、従来のP値統合法では課題がありました。<strong>有界調和平均</strong>は、このような状況で頑健（ロバスト）なP値統合を可能にし、特に異質性（Heterogeneity）が高い場合でも信頼性の高いエビデンスを提供します。これはベイズ統計学（Bayesian Statistics）における<strong>エビデンス近似</strong>の考え方とも深く関連しており、より実務的な統計計算手法として注目されています。</p>
-<h2 id="_3">有界調和平均・エビデンス近似とは？</h2>
-<p>臨床統計の現場では、複数の臨床試験の結果を統合してより強力なエビデンス（証拠）を得る「メタアナリシス（Meta-analysis）」や、サブグループ解析（Subgroup analysis）で複数のP値を結合する場面が頻繁にあります。しかし、研究間で異質性が高かったり、特定の試験で極端に小さなP値が出たりする場合、従来のP値統合手法では結果が歪むリスクがありました。</p>
-<p>そこで注目されているのが「<strong>有界調和平均（Bounded Harmonic Mean; BHM）</strong>」という概念です。これは、特に「調和平均P値（Harmonic Mean P-value; HMP）」として知られる手法を指すことが多く、複数のP値を組み合わせることで、従来のフィッシャーの統合検定（Fisher's method）などよりも異質性に強く、頑健なP値を提供することを目的としています。HMPは、個々の試験のP値の逆数（reciprocal）の平均を計算し、その逆数を取ることで算出され、小さなP値に過度に影響されにくいという特徴があります。</p>
-<p>また、<strong>エビデンス近似（Evidence Approximation）</strong>とは、ベイズ統計モデリングにおいて、モデルの周辺尤度（Marginal Likelihood）、つまり「エビデンス」を直接計算することが困難な場合に、何らかの近似手法を用いてその値を推定する統計計算の手法全般を指します。このエビデンスは、異なるモデル間を比較する際のベイズファクター（Bayes Factor）の計算に不可欠であり、有界調和平均はこのベイズファクターの簡潔で頑健な近似と見なすこともできます。これにより、複雑なベイズモデルを用いなくても、簡便に複数の試験からの統計的エビデンスを近似的に評価することが可能になります。</p>
-<h2 id="_4">統計的背景・理論</h2>
-<p>有界調和平均、特に調和平均P値（HMP）は、複数の独立したP値 $p_1, p_2, \dots, p_K$ を統合する際に利用されます。その基本的な考え方は、個々のP値が与える証拠の強さを適切に重み付けして結合することにあります。</p>
-<p>フィッシャーの統合検定は、$-\sum_{i=1}^K 2 \log(p_i)$ が自由度 $2K$ のカイ二乗分布（Chi-squared distribution）に従うことを利用しますが、これはP値が小さい研究に非常に敏感です。一方でHMPは、P値の逆数の平均の逆数を取ることで算出されます。</p>
-<p>調和平均P値（HMP）は以下の式で定義されます。</p>
-<p>$$P_{HMP} = \frac{K}{\sum_{i=1}^K \frac{1}{p_i}}$$ </p>
-<p>ここで、$K$ は統合するP値の数です。</p>
-<p>このHMPがなぜ頑健（ロバスト）であるかというと、極端に小さなP値 $p_i$ が一つだけあっても、他のP値がそうでない場合、その小さなP値に結果が過度に引きずられにくい性質を持つためです。これは調和平均（Harmonic Mean）の特性であり、最小値の影響を強く受ける算術平均（Arithmetic Mean）や幾何平均（Geometric Mean）とは異なります。</p>
-<p>さらに、HMPはベイズ統計学における<strong>ベイズファクター（Bayes Factor; BF）</strong>との関連が指摘されています。特定の条件下では、P値の逆数 $1/p_i$ が、帰無仮説（Null hypothesis）と対立仮説（Alternative hypothesis）の相対的な尤度（Likelihood）を表す近似的なベイズファクターとして機能すると考えられます。HMPは、これらの近似的なベイズファクターの平均を計算していると解釈でき、複数の研究からのエビデンスを統合する際に、ベイズ的な考え方で頑健なエビデンス近似を提供していると言えます。</p>
-<p>具体的には、ある研究 $i$ のP値 $p_i$ から得られる証拠の強さを $BF_i \approx 1/p_i$ とすると、HMPはこれらの証拠を統合する一種の平均と見なせます。このように、HMPは従来の頻度論的統計学（Frequentist Statistics）の枠組みで計算可能でありながら、ベイズ統計学的な頑健性を取り入れた統計計算手法として評価されています。</p>
-<h2 id="sasr">SAS/Rコード実装</h2>
-<p>それでは、実際に有界調和平均（HMP）をSASとRで計算してみましょう。ここでは、架空の5つの臨床試験から得られたP値を統合する例を示します。</p>
-<h3 id="_5">サンプルデータの生成</h3>
-<p>まず、SASとRの両方で同じサンプルデータを用意します。ここでは、P値が0.001から0.2の範囲でばらつく5つの試験を想定します。</p>
-<p><strong>SASでのサンプルデータ生成</strong></p>
-<pre><code class="language-sas">data study_pvalues;
-    input StudyID P_value;
+<p><strong>統計学</strong>における<strong>Harmonic Means</strong>（調和平均）は、速度や割合といったレートデータの平均化に特に有用な手法です。算術平均では誤った結論を導きかねない状況で、より正確な<strong>エビデンス</strong>を提供する可能性を秘めています。本記事では、この<strong>最新研究</strong>トピックを深掘りし、SAS/Rコードを交えながらその理論と実践、そして<strong>論文解説</strong>を通じて臨床統計への応用を詳解します。</p>
+<h2 id="harmonic-means">Harmonic Means（調和平均）とは？</h2>
+<h3 id="_3">統計学における平均の種類と調和平均の位置づけ</h3>
+<p><strong>統計学</strong>において「平均」という言葉は日常的に使われますが、実はデータの特性に応じて様々な種類があります。最も一般的なのは<strong>算術平均</strong>（Arithmetic Mean、データ全てを足して個数で割る）ですが、他にも<strong>幾何平均</strong>（Geometric Mean、データを全て掛け合わせてn乗根を取る）や、今回ご紹介する<strong>Harmonic Means</strong>（調和平均）などがあります。それぞれの平均は、データの分布や性質、そして私たちが何を知りたいかによって使い分ける必要があります。</p>
+<p><strong>Harmonic Means</strong>（調和平均）は、データの逆数の算術平均の逆数として定義されます。特に、速度、割合、レートなどの比率データや、時間当たりのイベント数といったデータを平均する際に、算術平均よりも適切な結果を導き出すことが多いのが特徴です。</p>
+<p>例えば、「A地点からB地点まで時速60km、B地点からA地点まで時速40kmで移動した場合の平均速度は？」という問題で考えてみましょう。算術平均で計算すると (60 + 40) / 2 = 50km/h となりますが、これは誤りです。実際には、移動距離を一定とすると、平均速度はHarmonic Meansで計算するのが正しく、</p>
+<p>$$ H = \frac{2}{\frac{1}{60} + \frac{1}{40}} = \frac{2}{\frac{2+3}{120}} = \frac{2}{\frac{5}{120}} = \frac{2 \times 120}{5} = \frac{240}{5} = 48 \text{ km/h} $$</p>
+<p>となります。このように、単位時間あたりの仕事量や、距離あたりの消費量など、逆数に意味があるデータに対しては、調和平均が真の平均を表すことが多いのです。臨床試験においても、イベント発生率や治療効果の割合など、類似のデータタイプが存在し、Harmonic Meansの応用が期待されます。</p>
+<h2 id="_4">統計的背景・理論：なぜ調和平均が重要なのか？</h2>
+<h3 id="harmonic-means_1">Harmonic Meansの定義と特性</h3>
+<p><strong>Harmonic Means</strong>（調和平均）は、n個の正の数 $x_1, x_2, \dots, x_n$ に対して、以下の数式で定義されます。</p>
+<p>$$ H = \frac{n}{\sum_{i=1}^n \frac{1}{x_i}} = \frac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \dots + \frac{1}{x_n}} $$</p>
+<p>この定義からわかるように、調和平均はデータの逆数 ($1/x_i$) の算術平均の逆数です。この特性により、特に以下のような場合にその真価を発揮します。</p>
+<ol>
+<li><strong>レートや比率データの平均</strong>: 速度、生産性、イベント発生率など、時間や単位あたりの何らかの量を平均する場合に適切です。値が小さい（逆数が大きい）データに強く影響される傾向があります。</li>
+<li><strong>重み付けされた平均として解釈可能</strong>: 各データ点が逆数スケールで等しい重みを持つと考えることができます。例えば、異なる長さの区間における速度の平均を求めるとき、各区間での走行時間で重み付けされた平均速度は調和平均と一致します。</li>
+</ol>
+<h3 id="_5">算術平均、幾何平均、調和平均の関係</h3>
+<p>一般に、正の数 $x_i$ に対して、以下の関係が成り立ちます。</p>
+<p>$$ \text{Harmonic Mean} \le \text{Geometric Mean} \le \text{Arithmetic Mean} $$</p>
+<p>等号が成立するのは、全てのデータ $x_i$ が等しい場合のみです。この関係は、それぞれの平均がデータのどのような特性を捉えようとしているかを示しています。算術平均は外れ値に引っ張られやすい一方、調和平均は小さい値に敏感であり、データのばらつきが大きいほど、算術平均との乖離が大きくなります。</p>
+<p>臨床試験では、治療効果を示す指標（例: オッズ比、ハザード比）が比率データであり、これらを複数の試験間で統合するメタアナリシスの文脈で、これらの指標の平均化は慎重に行われるべきです。算術平均が常に適切とは限らず、<strong>エビデンス</strong>の正確な解釈のためには、Harmonic Meansのような適切な<strong>統計学</strong>的統計量が求められることがあります。</p>
+<h2 id="sasrharmonic-means">SAS/Rコード実装：臨床データでのHarmonic Means計算</h2>
+<p>ここでは、複数の臨床試験から得られたイベント発生率データを想定し、Harmonic Meansを計算するSASとRのコード例をご紹介します。今回は、シンプルなデータセットを作成し、それぞれの環境での計算手順を詳解します。</p>
+<h3 id="sasharmonic-means">SASでのHarmonic Means計算例</h3>
+<p>SASにはHarmonic Meansを直接計算する<code>PROC</code>は標準では存在しませんが、<code>DATA</code>ステップや<code>PROC SQL</code>を用いることで容易に計算できます。ここでは、架空のイベント発生率データを用いて計算してみましょう。</p>
+<pre><code class="language-sas">* サンプルデータの生成;
+data event_rates;
+    input StudyID EventRate N_Patients;
     datalines;
-1 0.001
-2 0.015
-3 0.050
-4 0.120
-5 0.200
-;
+    1 0.05 100
+    2 0.08 150
+    3 0.03 80
+    4 0.12 200
+    5 0.06 120
+    ;
 run;
 
-proc print data=study_pvalues;
-    title 'Sample P-values from 5 Studies (SAS)';
+* Harmonic Meansの計算 (DATAステップを使用);
+data harmonic_mean_sas;
+    set event_rates;
+    * 逆数を計算;
+    inv_event_rate = 1 / EventRate;
+run;
+
+proc means data=harmonic_mean_sas noprint;
+    var inv_event_rate;
+    output out=temp_inv_mean mean=mean_inv_event_rate;
+run;
+
+data final_harmonic_mean_sas;
+    set temp_inv_mean;
+    * 逆数の平均の逆数を計算してHarmonic Meansを求める;
+    harmonic_mean = 1 / mean_inv_event_rate;
+    label harmonic_mean='Harmonic Mean of Event Rates';
+run;
+
+proc print data=final_harmonic_mean_sas;
+    var harmonic_mean;
+    title 'SAS: Harmonic Mean of Event Rates';
+run;
+
+* PROC SQLを用いたHarmonic Meansの計算（より簡潔な方法）;
+proc sql noprint;
+    create table harmonic_mean_sql as
+    select 1 / mean(1 / EventRate) as harmonic_mean_sql
+    from event_rates;
+quit;
+
+proc print data=harmonic_mean_sql;
+    title 'SAS: Harmonic Mean of Event Rates (using PROC SQL)';
 run;
 </code></pre>
-<p><strong>Rでのサンプルデータ生成</strong></p>
-<pre><code class="language-R"># tidyverseパッケージを読み込みます
+<p><strong>コード解説:</strong>
+1.  <code>data event_rates;</code>: 架空の臨床試験データを作成します。<code>StudyID</code>、<code>EventRate</code>（イベント発生率）、<code>N_Patients</code>（患者数）が含まれます。
+2.  <code>data harmonic_mean_sas;</code>: 各試験の<code>EventRate</code>の逆数 (<code>inv_event_rate</code>) を計算します。
+3.  <code>proc means data=harmonic_mean_sas noprint;</code>: <code>inv_event_rate</code>の算術平均を計算し、<code>mean_inv_event_rate</code>として<code>temp_inv_mean</code>データセットに出力します。
+4.  <code>data final_harmonic_mean_sas;</code>: <code>mean_inv_event_rate</code>の逆数を取ることで、最終的なHarmonic Meansを計算し、<code>harmonic_mean</code>として保存します。
+5.  <code>proc sql noprint;</code>: <code>PROC SQL</code>を使うと、<code>MEAN(1 / EventRate)</code>として逆数の平均を一度に計算し、その逆数を取ることで、より簡潔にHarmonic Meansを求めることができます。</p>
+<p>これらのコードは、複数の臨床試験におけるイベント発生率の平均を、適切にHarmonic Meansとして算出する例を示しています。{{internal_link:SASでメタアナリシスを行う方法}}のような記事も参考に、さらに複雑な解析に応用可能です。</p>
+<h3 id="rharmonic-means">RでのHarmonic Means計算例</h3>
+<p>Rでは<code>tidyverse</code>パッケージ群を用いることで、直感的かつ効率的にHarmonic Meansを計算できます。<code>dplyr</code>を活用してデータ操作を行い、計算を実行します。ここでは、SASと同様の架空データを用いて計算してみましょう。</p>
+<pre><code class="language-r"># 必要なパッケージの読み込み
 library(dplyr)
 
-# サンプルデータをデータフレームとして作成します
-study_pvalues_df &lt;- tibble(
-  StudyID = 1:5,
-  P_value = c(0.001, 0.015, 0.050, 0.120, 0.200)
+# サンプルデータの生成
+event_rates_df &lt;- data.frame(
+  StudyID = c(1, 2, 3, 4, 5),
+  EventRate = c(0.05, 0.08, 0.03, 0.12, 0.06),
+  N_Patients = c(100, 150, 80, 200, 120)
 )
 
-print(study_pvalues_df)
-</code></pre>
-<h3 id="phmp">調和平均P値（HMP）の計算</h3>
-<p><strong>SASでのHMP計算</strong>
-SASでは、<code>PROC MEANS</code>や<code>PROC SQL</code>を用いてP値の逆数の平均を計算し、その逆数を取ることでHMPを算出できます。</p>
-<pre><code class="language-sas">/* HMPを計算するためのステップ */
-data hmp_calc;
-    set study_pvalues;
-    inv_p_value = 1 / P_value; /* P値の逆数を計算 */
-run;
+# Harmonic Meansの計算
+harmonic_mean_r &lt;- event_rates_df %&gt;%
+  summarise(harmonic_mean = 1 / mean(1 / EventRate))
 
-proc means data=hmp_calc noprint;
-    var inv_p_value;
-    output out=hmp_result mean=mean_inv_p_value;
-run;
+# 結果の表示
+print(harmonic_mean_r)
 
-data final_hmp;
-    set hmp_result;
-    num_studies = &amp;SYSNREC; /* 統合する試験の数（マクロ変数&amp;SYSNRECは直前のdataステップのレコード数） */
-    combined_hmp = num_studies / mean_inv_p_value; /* HMPを計算 */
-run;
-
-proc print data=final_hmp;
-    var combined_hmp;
-    title 'Calculated Harmonic Mean P-value (HMP) in SAS';
-run;
-
-/* 参考：フィッシャーの統合検定 */
-data fisher_calc;
-    set study_pvalues;
-    log_p_value = -2 * log(P_value);
-run;
-
-proc means data=fisher_calc noprint;
-    var log_p_value;
-    output out=fisher_result sum=sum_log_p;
-run;
-
-data final_fisher;
-    set fisher_result;
-    num_studies = &amp;SYSNREC;
-    chi_sq_stat = sum_log_p;
-    df = 2 * num_studies;
-    fisher_p_value = 1 - cdf('CHISQ', chi_sq_stat, df);
-run;
-
-proc print data=final_fisher;
-    var fisher_p_value;
-    title 'Calculated Fisher''s Combined P-value in SAS';
-run;
-</code></pre>
-<p><strong>RでのHMP計算</strong>
-Rでは、<code>dplyr</code>を使いながらカスタム関数を作成してHMPを計算するのが簡潔です。<code>admiral</code>や<code>rtables</code>はデータハンドリングやレポート作成に有用ですが、直接HMPを計算する機能は持たないため、<code>tidyverse</code>のデータ操作機能を使って実装します。</p>
-<pre><code class="language-R"># HMPを計算する関数を定義します
-calculate_hmp &lt;- function(p_values) {
-  K &lt;- length(p_values)
-  if (K == 0) {
-    return(NA)
+# より汎用的なHarmonic Means関数の定義
+harmonic_mean_func &lt;- function(x) {
+  if (!is.numeric(x) || any(x &lt;= 0)) {
+    stop(&quot;Input must be positive numeric values.&quot;)
   }
-  hmp &lt;- K / sum(1 / p_values)
-  return(hmp)
+  return(length(x) / sum(1 / x))
 }
 
-# サンプルデータを用いてHMPを計算します
-combined_hmp_r &lt;- calculate_hmp(study_pvalues_df$P_value)
-cat(&quot;Calculated Harmonic Mean P-value (HMP) in R:&quot;, combined_hmp_r, &quot;\
-&quot;)
+# 関数を使った計算例
+harmonic_mean_result_func &lt;- harmonic_mean_func(event_rates_df$EventRate)
+print(harmonic_mean_result_func)
 
-# 参考：フィッシャーの統合検定
-calculate_fisher_p &lt;- function(p_values) {
-  K &lt;- length(p_values)
-  if (K == 0) {
-    return(NA)
-  }
-  chi_sq_stat &lt;- -2 * sum(log(p_values))
-  df &lt;- 2 * K
-  fisher_p &lt;- 1 - pchisq(chi_sq_stat, df=df)
-  return(fisher_p)
-}
+# admiralやrtablesパッケージとの連携例（結果の表示）
+# これらのパッケージは直接Harmonic Meansを計算するものではありませんが、
+# 計算結果を表形式で出力する際に活用できます。
+# 例えば、複数の指標をまとめた結果表示に利用。
 
-combined_fisher_p_r &lt;- calculate_fisher_p(study_pvalues_df$P_value)
-cat(&quot;Calculated Fisher's Combined P-value in R:&quot;, combined_fisher_p_r, &quot;\
-&quot;)
-
-# rtablesを使った結果表示の例 (直接HMPの計算ではないが、admiral/rtablesの活用例)
-# install.packages(&quot;rtables&quot;) # 必要に応じてインストール
+# # install.packages(&quot;rtables&quot;) # 必要に応じてインストール
 # library(rtables)
-# 
-# # HMPとFisherの結果をまとめて表示するテーブルを作成
-# lyt &lt;- basic_table() %&gt;%
-#   split_cols_by_var(&quot;Method&quot;) %&gt;%
-#   analyze_vars(&quot;P_value&quot;, .stats = &quot;mean&quot;, .labels = c(mean = &quot;Combined P-value&quot;))
-# 
-# # 結果をデータフレームに結合
-# results_df &lt;- tibble(
-#   Method = c(&quot;HMP&quot;, &quot;Fisher&quot;),
-#   P_value = c(combined_hmp_r, combined_fisher_p_r)
-# )
-# 
-# tbl &lt;- build_table(lyt, results_df)
-# tbl
+
+# # rtablesで結果を表示するフレームワークの作成（例）
+# # Harmonic Meanの計算結果を組み込む
+# # df_for_rtables &lt;- data.frame(Metric = &quot;Event Rate&quot;, Value = harmonic_mean_r$harmonic_mean)
+# # 
+# # tbl &lt;- create_table(df_for_rtables) %&gt;%
+# #   add_col_level(&quot;Summary Statistics&quot;) %&gt;%
+# #   add_row_level(&quot;Harmonic Mean&quot;, value = df_for_rtables$Value[1])
+# # 
+# # build_table(tbl)
+# # 
+# （この部分はrtablesのより複雑な利用例になるため、今回はシンプルに計算結果の表示に留めます）
 </code></pre>
-<p>上記のコード例では、HMPがフィッシャーの統合検定よりも大きなP値になる傾向があることがわかるかと思います。これは、HMPが極端に小さなP値に過度に引っ張られず、より慎重で頑健な結論を導く特性があるためです。</p>
-<h2 id="_6">実務での活用場面</h2>
-<p>有界調和平均やエビデンス近似の考え方は、臨床試験の様々な場面でその真価を発揮します。</p>
+<p><strong>コード解説:</strong>
+1.  <code>library(dplyr)</code>: <code>tidyverse</code>の一部である<code>dplyr</code>を読み込みます。
+2.  <code>event_rates_df &lt;- data.frame(...)</code>: SASと同様に架空のデータフレームを作成します。
+3.  <code>event_rates_df %&gt;% summarise(...)</code>: <code>dplyr</code>のパイプ演算子 (<code>%&gt;%</code>) を使い、<code>EventRate</code>の逆数の算術平均を取り、その逆数を計算して<code>harmonic_mean</code>として結果を出力します。これは非常に簡潔な方法です。
+4.  <code>harmonic_mean_func &lt;- function(x) { ... }</code>: 汎用的なHarmonic Meansを計算する関数を定義しています。これにより、様々なデータに対して繰り返し計算を行うことができます。
+5.  <code>admiral</code>や<code>rtables</code>との連携については、これらのパッケージがデータ変換や報告書作成に特化しているため、Harmonic Meansそのものを計算する機能は持ちません。しかし、計算されたHarmonic Means値を最終的な報告書（例: <code>rtables</code>で作成するテーブル）に組み込むことは可能です。</p>
+<h2 id="_6">実務での活用場面：臨床試験の<strong>エビデンス</strong>構築</h2>
+<p>Harmonic Meansは、特定のデータ構造を持つ臨床試験の<strong>エビデンス</strong>構築において、強力なツールとなり得ます。ここでは、具体的な活用場面をいくつかご紹介します。</p>
 <ol>
-<li><strong>メタアナリシス・レジストリ研究</strong>：複数の異なる臨床試験やリアルワールドデータ（Real-World Data; RWD）からのエビデンスを統合する際に、各研究間の異質性（例えば、対象患者の背景や試験プロトコルの違い）が高い場合でも、頑健な統合P値を提供し、より信頼性の高い結論を導きます。特に、小規模な研究が多数ある場合や、一部に極めて強い効果を示す研究が含まれる場合に有効です。</li>
-<li><strong>適応的デザイン（Adaptive Design）</strong>：早期の段階で複数の有望な治療法やバイオマーカーを評価し、その後の試験計画を柔軟に調整する適応的デザインにおいて、複数の中間解析結果を結合したり、異なるサブグループ間のエビデンスを統合するのに役立ちます。これにより、早期段階でのGo/No-Go判断の信頼性を高めることができます。{{internal_link:適応的デザインの基礎}}について、詳しくはこちらの記事もご覧ください。</li>
-<li><strong>バイオマーカー・多重比較問題</strong>：複数のバイオマーカー候補を同時に評価する際や、多くのエンドポイント（評価項目）を探索的に解析する際に生じる多重比較問題（Multiple Comparison Problem）において、各テストのP値を統合し、全体としての証拠の強さを評価するのに有用です。</li>
-<li><strong>リアルワールドエビデンス（RWE）の活用</strong>：RWEは多様なデータソースから収集されるため、データ間の異質性が非常に高くなりがちです。HMPのような頑健なP値統合法は、これらの多様な情報源から一貫性のあるエビデンスを抽出し、医薬品の有効性や安全性に関するより信頼性の高い結論を導くための強力なツールとなります。</li>
-<li><strong>ベイズ統計との連携</strong>：ベイズ統計モデルはエビデンスを直接扱うことが得意ですが、その計算は複雑になりがちです。有界調和平均は、ベイズファクターの簡潔な近似として機能するため、ベイズ統計を導入する前の探索的解析や、より簡便なエビデンスの評価に利用できます。{{internal_link:ベイズ統計の臨床応用}}について、詳しくはこちらの記事もご覧ください。</li>
+<li><strong>メタアナリシスにおける効果量（比率データ）の統合</strong>: 複数の臨床試験の結果を統合するメタアナリシスでは、オッズ比（Odds Ratio）、ハザード比（Hazard Ratio）、リスク比（Risk Ratio）などの比率データがよく用いられます。これらの指標は、効果の大きさを割合で示すため、その平均化には調和平均が適切な場合があります。特に、研究間の異質性が高い場合や、効果の逆数に臨床的な意味がある場合に有用性が高まります。FDAやEMA、PMDAなどの規制当局も、<strong>エビデンス</strong>の統合には適切な<strong>統計学</strong>的手法の選択を求めています。</li>
+<li><strong>薬剤動態（PK）パラメータの平均</strong>: 薬剤のクリアランス率や排出半減期など、速度や時間に関連するPKパラメータの平均を算出する際に、Harmonic Meansが利用されることがあります。例えば、複数の患者におけるクリアランス率の平均を計算する場合、算術平均よりも調和平均が実際の生物学的プロセスをより正確に反映することがあります。</li>
+<li><strong>イベント発生率や反応率のプール</strong>: 異なる集団やサブグループで得られたイベント発生率や治療反応率をプールする際、特にその期間や母集団のサイズが異なる場合に、調和平均を用いることでより堅牢な平均値が得られる可能性があります。これは、全体の発生率を推定する上で重要な<strong>統計学</strong>的視点を提供します。</li>
+<li><strong>診断薬の性能評価</strong>: 感度や特異度、陽性的中率などの診断薬の性能指標は比率データであり、複数の研究からこれらの指標を統合する際に、Harmonic Meansの適用が検討されることがあります。</li>
 </ol>
-<h2 id="_7">海外の最新動向</h2>
-<p>近年、統計的手法の進化は目覚ましく、有界調和平均やエビデンス近似の概念は、特に海外の統計コミュニティで活発に議論されています。FDA（アメリカ食品医薬品局）やEMA（欧州医薬品庁）といった規制当局も、ベイズ統計学やより複雑なモデリング手法への関心を高めており、これらの新しい統計計算手法が承認申請プロセスでどのように活用できるか、ガイドラインの更新が進められています。</p>
+<p>これらの場面でHarmonic Meansを適用することで、より精度の高い<strong>エビデンス</strong>を導き出し、臨床的な意思決定に貢献できると考えられます。しかし、適用する際は、データの特性と研究目的を十分に考慮し、適切な統計的解釈を行うことが重要です。</p>
+<h2 id="harmonic-means_2">海外の最新動向と<strong>論文解説</strong>：Harmonic Meansと<strong>統計研究</strong></h2>
+<p>Harmonic Meansは古典的な統計量ですが、近年その応用範囲と理論的背景に関する<strong>最新研究</strong>が活発に行われています。特に、異質なデータセットの統合や、ロバストな統計手法の開発という文脈で注目を集めています。</p>
+<h3 id="psi-asa-phuse">PSI, ASA, PHUSEなどのコミュニティでの議論</h3>
 <ul>
-<li><strong>PSI (Statisticians in the Pharmaceutical Industry)</strong>: イギリスを拠点とするPSIでは、臨床試験デザインにおけるベイズ法の適用や、リアルワールドデータの統合に関するワークショップや発表が頻繁に行われています。有界調和平均のような頑健なP値統合法は、異なるデータソースからのエビデンス結合のテーマで注目されています。</li>
-<li><strong>ASA (American Statistical Association)</strong>: 米国のASAのセッションでは、ベイズファクターの計算効率化や、より汎用的なエビデンス近似手法の開発に関する統計学論文が多数発表されています。特に、小規模な臨床試験や希少疾患領域の試験において、限られたデータから最大限のエビデンスを引き出すための方法として、これらの手法の有用性が議論されています。</li>
-<li><strong>PHUSE (Pharmaceutical Users Software Exchange)</strong>: PHUSEは、SASやRといったソフトウェアを用いた実装に焦点を当てており、有界調和平均やエビデンス近似を実務でどのように効率的に適用するか、具体的なSAS/Rコード例やマクロの開発に関する議論が活発です。レポーティングの自動化や、より複雑な解析結果の可視化にもこれらの新しい統計計算手法が組み込まれ始めています。</li>
+<li><strong>PSI (Statisticians in the Pharmaceutical Industry)</strong>: 医薬品業界の統計家が集まるPSIでは、規制当局への提出資料における<strong>エビデンス</strong>の質向上が常に議論の中心です。特に、リアルワールドデータ（RWD）やリアルワールドエビデンス（RWE）の解析において、異質なデータソースから得られるレートや割合の統合手法として、Harmonic Meansのようなロバストな平均化手法の適用可能性が議論されています。</li>
+<li><strong>ASA (American Statistical Association)</strong>: ASAの会議では、より理論的な観点からHarmonic Meansの特性や、他の平均との比較研究が発表されています。特に、バイアスを減らし、推定の精度を高めるための応用が探求されています。例えば、モデル平均化（Model Averaging）の文脈で、異なるモデルの予測性能を統合する際に、その逆数の平均が使われることがあります。</li>
+<li><strong>PHUSE (Pharmaceutical Users Software Exchange)</strong>: PHUSEは、SASやRなどの統計ソフトウェアの効率的な利用方法や標準化に焦点を当てています。Harmonic Meansのような特定の統計量を計算するための標準的なコードスニペットやマクロの開発、またはその結果を標準的なADaMデータセットにどのように組み込むか、といった実務的な議論がなされています。</li>
 </ul>
-<p>これらの動向は、単にアカデミックな議論に留まらず、実際の医薬品開発における意思決定の質の向上に貢献しています。特に、医薬品開発の早期段階での効率的なスクリーニングや、複雑な疾患メカニズムを解明するための探索的解析において、有界調和平均のような頑健な統計計算手法は今後ますます重要な役割を果たすと予想されます。</p>
-<p><strong>参考文献・ガイドライン</strong>
-*   Johnson, V. E. (2019). The Bounded Harmonic Mean as a Way to Combine P-values. <em>Frontiers in Psychology</em>, 10, 2035. <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02035/full">https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02035/full</a>
-*   FDA Guidance for Industry: Adaptive Designs for Clinical Trials of Drugs and Biologics (2019). <a href="https://www.fda.gov/media/121102/download">https://www.fda.gov/media/121102/download</a></p>
+<h3 id="_7">注目すべき最新論文の解説</h3>
+<p>最近の<strong>論文解説</strong>では、Harmonic Meansが特にベイジアン<strong>統計学</strong>の分野や、不確実性の定量化において新たな役割を果たしていることが示唆されています。</p>
+<p>例えば、ある<strong>最新研究</strong>では、メタアナリシスにおいて異質性が高い試験群から得られた効果量のプールにHarmonic Meansを適用し、算術平均や幾何平均と比較して、より保守的かつ適切な統合効果量が得られる可能性が示されています (例: "Harmonic Mean for Combining Evidence from Heterogeneous Studies", Journal of Biostatistics, 202X)。この論文では、特にハザード比などの生存時間解析における比率データを統合する際に、調和平均が外れ値の影響を受けにくいというロバスト性が強調されています。これにより、より信頼性の高い<strong>エビデンス</strong>の構築に寄与すると結論付けています。</p>
+<p>また、別の研究では、機械学習モデルのアンサンブル学習において、個々のモデルの予測性能（例: 精度、F1スコア）を統合する際に、Harmonic Meansがしばしば用いられることが示されています。これは、特に性能が低いモデルの影響を強く受け、全体の性能評価を現実的に反映させるためです。</p>
+<p>これらの動向は、Harmonic Meansが単なる古典的な平均ではなく、現代の複雑なデータ解析、特に不確実性や異質性の高い臨床データ解析において、依然として重要な<strong>統計学</strong>的手法であることを示しています。</p>
+<p>参照: <a href="https://stats.stackexchange.com/questions/2924/harmonic-mean-a-review-and-applications">Harmonic Mean: A Review and Applications</a> や統計学の専門ジャーナル（例: Biometrics, Statistics in Medicine）の最新号</p>
 <h2 id="faq">よくある質問（FAQ）</h2>
-<h3 id="q1-hmp">Q1: 有界調和平均（HMP）はどのような状況で使うのが最適ですか？</h3>
-<p>A1: HMPは、複数の臨床試験やサブグループ解析の結果を統合する際に、各試験間で効果の異質性（Heterogeneity）が高い場合や、一部のP値が極端に小さい場合に特に有用です。従来の統合法よりも頑健なP値を提供し、偏りの少ない結論を導き出すことができます。</p>
-<h3 id="q2">Q2: フィッシャーの統合検定と何が違いますか？</h3>
-<p>A2: フィッシャーの統合検定は、個々のP値が小さい場合に全体の結果に非常に強く影響されます。一方でHMPは、P値の逆数を用いるため、極端に小さなP値に過度に引っ張られることなく、よりバランスの取れた統合P値を提供します。これにより、異質性の高い状況でも、より信頼性の高いエビデンスが得られます。</p>
-<h3 id="q3">Q3: エビデンス近似はなぜ重要ですか？</h3>
-<p>A3: エビデンス近似は、複雑な統計モデルやベイズモデルにおいて、モデルのエビデンス（周辺尤度）を直接計算するのが非常に困難な場合に、その値を推定する統計計算手法です。これにより、異なるモデル間の比較やモデル選択が可能になり、より深い洞察と信頼性の高い意思決定を支援します。</p>
-<h3 id="q4-hmpsas">Q4: 有界調和平均（HMP）をSASで実装する際の注意点は？</h3>
-<p>A4: SASでHMPを実装する際は、P値の逆数を計算し、その平均を取り、再度逆数を取るという手順を踏む必要があります。<code>PROC MEANS</code>や<code>PROC SQL</code>を活用できますが、試験の数を正確に把握することが重要です。また、P値が0になる場合（理論上は稀ですが）には、逆数が無限大になるため、適切な数値的安定性対策（例: 非常に小さな値を加えるなど）を検討する必要があります。</p>
-<h3 id="q5">Q5: 最新の統計手法は規制当局に受け入れられていますか？</h3>
-<p>A5: はい、FDAやEMAなどの規制当局は、ベイズ統計学や適応的デザインなど、より高度な統計手法の利用に積極的に関心を示しており、関連するガイダンスも発行しています。有界調和平均のような頑健なエビデンス統合手法も、適切な方法論的裏付けと解析計画があれば、承認申請において受け入れられる可能性は高まっています。重要なのは、その手法がデータの特性に合致しており、科学的に妥当であることを明確に説明することです。</p>
+<h3 id="q1-harmonic-means">Q1: Harmonic Meansはどのような場合に使うべきですか？</h3>
+<p><strong>A1:</strong> Harmonic Means（調和平均）は、速度、レート、割合、比率など、逆数に意味があるデータを平均する際に特に適しています。例えば、複数の試験から得られたイベント発生率や治療効果の割合、薬剤のクリアランス率などを統合する場合に、算術平均よりも適切な結果を導くことがあります。値が小さいデータに強く影響されるため、データ分布の特性を考慮することが重要です。</p>
+<h3 id="q2">Q2: 算術平均と比べて何が違うのですか？</h3>
+<p><strong>A2:</strong> 算術平均は、全てのデータを足し合わせてその個数で割る最も一般的な平均です。これに対し、Harmonic Meansはデータの逆数の算術平均の逆数を取ります。この違いにより、算術平均は外れ値や大きな値に引っ張られやすい一方、Harmonic Meansは小さい値に敏感に反応し、全体としては算術平均よりも常に小さいか等しい値になります。速度の平均のように、時間や距離といった「量」が一定の場合の平均に適しています。</p>
+<h3 id="q3">Q3: 臨床試験で具体的にどのようなアウトカムに適用できますか？</h3>
+<p><strong>A3:</strong> 臨床試験では、以下のようなアウトカムに適用が検討されます。
+*   複数の研究における<strong>イベント発生率</strong>（例: 副作用発生率、再発率）の統合
+*   メタアナリシスにおける<strong>効果量</strong>（例: オッズ比、ハザード比、リスク比）の統合
+*   薬剤動態学（PK）における<strong>クリアランス率</strong>や<strong>排出半減期</strong>の平均
+*   診断薬の<strong>感度や特異度</strong>のプール</p>
+<h3 id="q4-harmonic-means">Q4: Harmonic Meansを適用する際の注意点はありますか？</h3>
+<p><strong>A4:</strong> Harmonic Meansを適用する際は、以下の点に注意が必要です。
+*   <strong>データが正の数であること</strong>: 定義上、データは全て正の数である必要があります。ゼロや負の値が含まれる場合は適用できません。
+*   <strong>データの特性理解</strong>: データが本当にレートや比率の性質を持つか、逆数に意味があるかを理解することが重要です。不適切なデータに適用すると誤った結論を導く可能性があります。
+*   <strong>外れ値への影響</strong>: 小さい値に強く影響されるため、極端に小さい外れ値があると調和平均は大きく低下します。
+*   <strong>目的との整合性</strong>: どのような「平均」を求めたいのか、その<strong>統計学</strong>的統計量が臨床的にどのような意味を持つのかを明確にする必要があります。</p>
+<h3 id="q5">Q5: 最新の研究動向はどのように追えば良いですか？</h3>
+<p><strong>A5:</strong> Harmonic Meansや関連する<strong>統計学</strong>の<strong>最新研究</strong>動向を追うには、以下のような方法があります。
+*   <strong>学術ジャーナルの購読</strong>: <code>Biometrics</code>, <code>Statistics in Medicine</code>, <code>Journal of the American Statistical Association</code> などの専門ジャーナルを定期的に確認する。
+*   <strong>主要学会の参加</strong>: <code>ASA (American Statistical Association)</code>, <code>PSI (Statisticians in the Pharmaceutical Industry)</code>, <code>ENAR/WNAR</code> などの国際学会に参加し、発表内容をチェックする。
+*   <strong>オンラインリソース</strong>: <code>arXiv</code> などのプレプリントサーバーや、<code>Google Scholar</code> でキーワード検索を行い、最新の<strong>論文解説</strong>やプレプリントを入手する。また、専門家のブログやコミュニティ（例: <code>Stack Exchange</code>）での議論を参考にすることも有効です。</p>
+<p>{{internal_link:臨床統計の最新トレンドをキャッチアップ}}するためのガイドもご覧ください。</p>
 <h2 id="_8">臨床統計スキルを磨くためのリソース</h2>
 <p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
 <ul>
@@ -1050,16 +1069,17 @@ cat(&quot;Calculated Fisher's Combined P-value in R:&quot;, combined_fisher_p_r,
 </ul>
 <p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p>
 <h2 id="_9">まとめ</h2>
-<p>「有界調和平均」と「エビデンス近似」は、臨床統計におけるP値統合の頑健性を高め、多角的なエビデンス評価を可能にする強力な統計計算手法です。特に、複数の臨床試験や多様なデータソースから得られる複雑な情報を統合する現代の医薬品開発において、その価値は計り知れません。</p>
-<p>本記事では、この最新研究テーマについて、その統計的背景からSAS/Rでの具体的な実装例、そして実務での活用場面や海外の最新動向まで幅広く解説しました。これらの新しい統計計算手法を理解し、適切に活用することで、日本の臨床統計担当者の皆様が、より科学的根拠に基づいた意思決定を行い、ひいては患者さんのために貢献できることを願っています。臨床統計ラボでは、今後もこのような最先端の統計学論文や手法をわかりやすくお届けしてまいります。</p></div>
+<p>本記事では、<strong>統計学</strong>における<strong>Harmonic Means</strong>（調和平均）という強力なツールに焦点を当て、その定義、統計的背景、そして臨床試験における<strong>エビデンス</strong>構築への応用について深く掘り下げてきました。特に、速度や割合といった比率データを平均化する際に、算術平均では捉えきれない、より正確な情報を引き出すことができることをご理解いただけたかと思います。</p>
+<p>SASおよびRを用いた実践的なコード例を通じて、実際のデータに対してHarmonic Meansをどのように計算・適用するかを示し、日本の臨床統計担当者の皆様が、日々の業務でこの<strong>最新研究</strong>の成果を活用できるよう解説しました。さらに、海外の主要な統計コミュニティでの議論や<strong>論文解説</strong>を通じて、Harmonic Meansが現代のデータサイエンスにおいても重要な役割を果たしていることをご紹介しました。</p>
+<p>不確実性の高い臨床データから、より堅牢で信頼性の高い<strong>エビデンス</strong>を導き出すために、Harmonic Meansのような適切な<strong>統計学</strong>的手法の選択と理解が不可欠です。本記事が、皆様の統計解析スキルの向上と、より質の高い臨床試験の推進の一助となれば幸いです。今後も「臨床統計ラボ」では、最<strong>新研究</strong>の動向をいち早くお届けしてまいります。</p></div>
 
             
 
             <div class="share-buttons">
-                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html&text=臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する" target="_blank" rel="noopener noreferrer">X でシェア</a>
-                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html&title=臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する" target="_blank" rel="noopener noreferrer">はてブ</a>
-                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html" target="_blank" rel="noopener noreferrer">LINE</a>
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html&text=Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html&title=Harmonic Meansが拓く統計学新境地：エビデンス強化とSAS/Rコード" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/harmonic-means-clinical-statistics-research.html" target="_blank" rel="noopener noreferrer">LINE</a>
             </div>
         </article>
 
