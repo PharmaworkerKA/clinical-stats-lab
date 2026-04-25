@@ -648,6 +648,57 @@
             font-weight: 700;
             font-size: 0.85rem;
         }
+        /* ===== MuscleLove Promo Card ===== */
+        .promo-musclelove { padding: 30px 0 10px; }
+        .promo-musclelove .promo-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 22px 24px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #FFF7E6 0%, #FFE9B0 100%);
+            border: 1.5px solid #F5C842;
+            box-shadow: 0 6px 24px rgba(27, 67, 50, 0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .promo-musclelove .promo-icon { font-size: 2.4rem; line-height: 1; flex-shrink: 0; }
+        .promo-musclelove .promo-body { flex: 1; min-width: 0; }
+        .promo-musclelove .promo-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8B6B1C;
+            margin-bottom: 4px;
+        }
+        .promo-musclelove .promo-body h3 { font-size: 1.08rem; font-weight: 900; color: #1B4332; margin-bottom: 4px; }
+        .promo-musclelove .promo-body p { font-size: 0.88rem; color: #44533E; line-height: 1.55; }
+        .promo-musclelove .promo-cta { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+        .promo-musclelove .btn-promo {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #1B4332;
+            color: #F5C842 !important;
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            text-align: center;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .promo-musclelove .btn-promo:hover { transform: translateY(-1px); opacity: 1; }
+        .promo-musclelove .btn-promo.outline {
+            background: transparent;
+            border: 1.5px solid #1B4332;
+            color: #1B4332 !important;
+        }
+        @media (max-width: 640px) {
+            .promo-musclelove .promo-card { flex-direction: column; align-items: flex-start; text-align: left; }
+            .promo-musclelove .promo-cta { flex-direction: row; flex-wrap: wrap; width: 100%; }
+            .promo-musclelove .btn-promo { flex: 1; }
+        }
     </style>
 </head>
 <body>
@@ -711,7 +762,7 @@
         
         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/生物統計.html" class="tag" style="font-size:0.82rem;padding:0.3em 0.85em;">生物統計 <span style="opacity:0.6;margin-left:0.25em;">(1)</span></a>
         
-        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html" class="tag" style="font-size:0.82rem;padding:0.3em 0.85em;">臨床統計最新ニュース <span style="opacity:0.6;margin-left:0.25em;">(1)</span></a>
+        <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html" class="tag" style="font-size:0.82rem;padding:0.3em 0.85em;">臨床統計最新ニュース <span style="opacity:0.6;margin-left:0.25em;">(2)</span></a>
         
     </div>
     
@@ -730,7 +781,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html">R/admiralで学ぶICH E9(R1) Estimand実践ガイド</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html" class="category-badge">ICH E9(R1) Estimand</a>
                     </div>
@@ -747,7 +798,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/rinladlnm.html">RとINLAで拓くベイズ時系列解析：DLNMによる生物統計・疫学応用</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/生物統計学・応用統計学.html" class="category-badge">生物統計学・応用統計学</a>
                     </div>
@@ -764,7 +815,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html">Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
                     </div>
@@ -781,7 +832,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-statistics-sap-r-inla-bayes-nonlinear-model.html">臨床統計SAPにおけるR/INLA活用術：ベイズ非線形モデル実践ガイド</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/統計解析計画書・SAP.html" class="category-badge">統計解析計画書・SAP</a>
                     </div>
@@ -798,7 +849,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-package-bayesian-time-series-inla-biostatistics-epidemiology.html">Rパッケージで加速するベイジアン時系列解析: 疫学とINLA活用術【生物統計】</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/生物統計.html" class="category-badge">生物統計</a>
                     </div>
@@ -815,7 +866,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-package-inla-bayes-nonlinear-model-clinical-statistics-latest-trends.html">RパッケージINLAで臨床統計のベイズ非線形モデル解析：最新動向と実践</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
                     </div>
@@ -832,7 +883,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/clinical-research-sap-r-bayes-inla-dlnm.html">臨床研究SAP作成：R, ベイズ統計, INLAとDLNM活用</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/統計解析計画書・SAP.html" class="category-badge">統計解析計画書・SAP</a>
                     </div>
@@ -849,7 +900,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-inla-bayesian-distributed-lag-nonlinear-model-bdlnm-biostatistics.html">RとINLAで拓くベイズ分布ラグ非線形モデル(bdlnm)解析：生物統計の最前線</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
                     </div>
@@ -866,7 +917,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-inla-bayesian-nonlinear-models-clinical-stats.html">R言語とINLAで学ぶ臨床統計ベイジアン非線形モデル</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
                     </div>
@@ -883,7 +934,7 @@
                 <div class="card-body">
                     <h2 class="card-title"><a href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html">標本中央値と偏り：歪んだ分布における臨床統計の注意点</a></h2>
                     <div class="card-meta">
-                        <span>2026-04-24</span>
+                        <span>2026-04-25</span>
                         <span class="reading-time">3分で読める</span>
                         <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html" class="category-badge">臨床統計最新ニュース</a>
                     </div>
@@ -931,7 +982,7 @@
                 
                 <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/生物統計.html">生物統計<span class="sidebar-category-count">1</span></a></li>
                 
-                <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース<span class="sidebar-category-count">1</span></a></li>
+                <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース<span class="sidebar-category-count">2</span></a></li>
                 
             </ul>
             
@@ -948,6 +999,40 @@
 
     
     
+
+    
+    <section style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.08));border-top:1px solid var(--border);padding:48px 0;margin-top:40px;">
+        <div class="container" style="text-align:center;">
+            <p style="color:var(--text-muted);font-size:0.78rem;letter-spacing:0.15em;margin-bottom:8px;">― Powered by MuscleLove ―</p>
+            <h3 style="font-size:1.3rem;margin-bottom:14px;">AIで人生を加速する3部作 + ブランド公式</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto;">副業で稼ぎ → 転職で年収UP → 投資で資産を働かせる。AI時代の「お金の戦略」を完成させる姉妹メディア。</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+                <a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🧭 AI副業コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🚀 AI転職コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#0a0e1a;text-decoration:none;font-weight:600;font-size:0.88rem;">💰 AIマネー羅針盤</a>
+                <a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:#0f172a;color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;border:1px solid #334155;">𝕏 @MuscleGirlLove7</a>
+                <a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#ff424d,#ff6b35);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">💪 Patreon</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="promo-musclelove">
+      <div class="container">
+        <div class="promo-card">
+          <div class="promo-icon">💪</div>
+          <div class="promo-body">
+            <div class="promo-eyebrow">PR · 運営メディア / Sponsored</div>
+            <h3>MuscleLove — Muscle Girls &amp; Fitness Media Hub</h3>
+            <p>格闘女子・フィジーク・アームレスリング・筋トレ飯など、40+サイトを展開するMuscleLoveも運営中。X &amp; Patreonで限定コンテンツ配信中 / We also run MuscleLove, a 40+ site fitness network.</p>
+          </div>
+          <div class="promo-cta">
+            <a class="btn-promo" href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">X @MuscleGirlLove7</a>
+            <a class="btn-promo outline" href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">Patreon</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     
     <footer class="site-footer">
@@ -971,7 +1056,7 @@
 
 <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/生物統計.html">生物統計（1）</a></li>
 
-<li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース（1）</a></li>
+<li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース（2）</a></li>
 
 </ul>
                 </div>
@@ -980,6 +1065,16 @@
                     <ul class="footer-links">
                         <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/sitemap.xml">サイトマップ</a></li>
                         <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSSフィード</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>MuscleLove</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener">🧭 AI副業コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener">🚀 AI転職コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener">💰 AIマネー羅針盤</a></li>
+                        <li><a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">𝕏 @MuscleGirlLove7</a></li>
+                        <li><a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">💪 Patreon</a></li>
                     </ul>
                 </div>
             </div>

@@ -6,29 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
-    <title>Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡 | 臨床統計ラボ</title>
+    <title>臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する | 臨床統計ラボ</title>
 
     
     <meta name="description" content="">
     <meta name="author" content="臨床統計ラボ">
-    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html">
 
     
     <meta property="og:site_name" content="臨床統計ラボ">
-    <meta property="og:title" content="Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡">
+    <meta property="og:title" content="臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する">
     <meta property="og:description" content="">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html">
     <meta property="og:locale" content="ja_JP">
 
     
-    <meta property="og:image" content="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡">
+    <meta name="twitter:title" content="臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する">
     <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
 
     
     <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
@@ -58,15 +58,65 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡",
+    "headline": "臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する",
     "description": "",
     "datePublished": "2026-04-25",
     "dateModified": "2026-04-25",
     "author": {"@type": "Organization", "name": "臨床統計ラボ"},
     "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html"}
-    ,"image": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
-    ,"keywords": "R, 臨床試験, データ管理, 監査証跡, admiral"
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html"}
+    ,"image": "https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "臨床統計, 生物統計, 有界調和平均, エビデンス近似, SAS/R"
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "\u6709\u754c\u8abf\u548c\u5e73\u5747\uff08HMP\uff09\u306f\u3069\u306e\u3088\u3046\u306a\u72b6\u6cc1\u3067\u4f7f\u3046\u306e\u304c\u6700\u9069\u3067\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A1: HMP\u306f\u3001\u8907\u6570\u306e\u81e8\u5e8a\u8a66\u9a13\u3084\u30b5\u30d6\u30b0\u30eb\u30fc\u30d7\u89e3\u6790\u306e\u7d50\u679c\u3092\u7d71\u5408\u3059\u308b\u969b\u306b\u3001\u5404\u8a66\u9a13\u9593\u3067\u52b9\u679c\u306e\u7570\u8cea\u6027\uff08Heterogeneity\uff09\u304c\u9ad8\u3044\u5834\u5408\u3084\u3001\u4e00\u90e8\u306eP\u5024\u304c\u6975\u7aef\u306b\u5c0f\u3055\u3044\u5834\u5408\u306b\u7279\u306b\u6709\u7528\u3067\u3059\u3002\u5f93\u6765\u306e\u7d71\u5408\u6cd5\u3088\u308a\u3082\u9811\u5065\u306aP\u5024\u3092\u63d0\u4f9b\u3057\u3001\u504f\u308a\u306e\u5c11\u306a\u3044\u7d50\u8ad6\u3092\u5c0e\u304d\u51fa\u3059\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u30d5\u30a3\u30c3\u30b7\u30e3\u30fc\u306e\u7d71\u5408\u691c\u5b9a\u3068\u4f55\u304c\u9055\u3044\u307e\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A2: \u30d5\u30a3\u30c3\u30b7\u30e3\u30fc\u306e\u7d71\u5408\u691c\u5b9a\u306f\u3001\u500b\u3005\u306eP\u5024\u304c\u5c0f\u3055\u3044\u5834\u5408\u306b\u5168\u4f53\u306e\u7d50\u679c\u306b\u975e\u5e38\u306b\u5f37\u304f\u5f71\u97ff\u3055\u308c\u307e\u3059\u3002\u4e00\u65b9\u3067HMP\u306f\u3001P\u5024\u306e\u9006\u6570\u3092\u7528\u3044\u308b\u305f\u3081\u3001\u6975\u7aef\u306b\u5c0f\u3055\u306aP\u5024\u306b\u904e\u5ea6\u306b\u5f15\u3063\u5f35\u3089\u308c\u308b\u3053\u3068\u306a\u304f\u3001\u3088\u308a\u30d0\u30e9\u30f3\u30b9\u306e\u53d6\u308c\u305f\u7d71\u5408P\u5024\u3092\u63d0\u4f9b\u3057\u307e\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u7570\u8cea\u6027\u306e\u9ad8\u3044\u72b6\u6cc1\u3067\u3082\u3001\u3088\u308a\u4fe1\u983c\u6027\u306e\u9ad8\u3044\u30a8\u30d3\u30c7\u30f3\u30b9\u304c\u5f97\u3089\u308c\u307e\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u30a8\u30d3\u30c7\u30f3\u30b9\u8fd1\u4f3c\u306f\u306a\u305c\u91cd\u8981\u3067\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A3: \u30a8\u30d3\u30c7\u30f3\u30b9\u8fd1\u4f3c\u306f\u3001\u8907\u96d1\u306a\u7d71\u8a08\u30e2\u30c7\u30eb\u3084\u30d9\u30a4\u30ba\u30e2\u30c7\u30eb\u306b\u304a\u3044\u3066\u3001\u30e2\u30c7\u30eb\u306e\u30a8\u30d3\u30c7\u30f3\u30b9\uff08\u5468\u8fba\u5c24\u5ea6\uff09\u3092\u76f4\u63a5\u8a08\u7b97\u3059\u308b\u306e\u304c\u975e\u5e38\u306b\u56f0\u96e3\u306a\u5834\u5408\u306b\u3001\u305d\u306e\u5024\u3092\u63a8\u5b9a\u3059\u308b\u7d71\u8a08\u8a08\u7b97\u624b\u6cd5\u3067\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u7570\u306a\u308b\u30e2\u30c7\u30eb\u9593\u306e\u6bd4\u8f03\u3084\u30e2\u30c7\u30eb\u9078\u629e\u304c\u53ef\u80fd\u306b\u306a\u308a\u3001\u3088\u308a\u6df1\u3044\u6d1e\u5bdf\u3068\u4fe1\u983c\u6027\u306e\u9ad8\u3044\u610f\u601d\u6c7a\u5b9a\u3092\u652f\u63f4\u3057\u307e\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u6709\u754c\u8abf\u548c\u5e73\u5747\uff08HMP\uff09\u3092SAS\u3067\u5b9f\u88c5\u3059\u308b\u969b\u306e\u6ce8\u610f\u70b9\u306f\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A4: SAS\u3067HMP\u3092\u5b9f\u88c5\u3059\u308b\u969b\u306f\u3001P\u5024\u306e\u9006\u6570\u3092\u8a08\u7b97\u3057\u3001\u305d\u306e\u5e73\u5747\u3092\u53d6\u308a\u3001\u518d\u5ea6\u9006\u6570\u3092\u53d6\u308b\u3068\u3044\u3046\u624b\u9806\u3092\u8e0f\u3080\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002`PROC MEANS`\u3084`PROC SQL`\u3092\u6d3b\u7528\u3067\u304d\u307e\u3059\u304c\u3001\u8a66\u9a13\u306e\u6570\u3092\u6b63\u78ba\u306b\u628a\u63e1\u3059\u308b\u3053\u3068\u304c\u91cd\u8981\u3067\u3059\u3002\u307e\u305f\u3001P\u5024\u304c0\u306b\u306a\u308b\u5834\u5408\uff08\u7406\u8ad6\u4e0a\u306f\u7a00\u3067\u3059\u304c\uff09\u306b\u306f\u3001\u9006\u6570\u304c\u7121\u9650\u5927\u306b\u306a\u308b\u305f\u3081\u3001\u9069\u5207\u306a\u6570\u5024\u7684\u5b89\u5b9a\u6027\u5bfe\u7b56\uff08\u4f8b: \u975e\u5e38\u306b\u5c0f\u3055\u306a\u5024\u3092\u52a0\u3048\u308b\u306a\u3069\uff09\u3092\u691c\u8a0e\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u6700\u65b0\u306e\u7d71\u8a08\u624b\u6cd5\u306f\u898f\u5236\u5f53\u5c40\u306b\u53d7\u3051\u5165\u308c\u3089\u308c\u3066\u3044\u307e\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A5: \u306f\u3044\u3001FDA\u3084EMA\u306a\u3069\u306e\u898f\u5236\u5f53\u5c40\u306f\u3001\u30d9\u30a4\u30ba\u7d71\u8a08\u5b66\u3084\u9069\u5fdc\u7684\u30c7\u30b6\u30a4\u30f3\u306a\u3069\u3001\u3088\u308a\u9ad8\u5ea6\u306a\u7d71\u8a08\u624b\u6cd5\u306e\u5229\u7528\u306b\u7a4d\u6975\u7684\u306b\u95a2\u5fc3\u3092\u793a\u3057\u3066\u304a\u308a\u3001\u95a2\u9023\u3059\u308b\u30ac\u30a4\u30c0\u30f3\u30b9\u3082\u767a\u884c\u3057\u3066\u3044\u307e\u3059\u3002\u6709\u754c\u8abf\u548c\u5e73\u5747\u306e\u3088\u3046\u306a\u9811\u5065\u306a\u30a8\u30d3\u30c7\u30f3\u30b9\u7d71\u5408\u624b\u6cd5\u3082\u3001\u9069\u5207\u306a\u65b9\u6cd5\u8ad6\u7684\u88cf\u4ed8\u3051\u3068\u89e3\u6790\u8a08\u753b\u304c\u3042\u308c\u3070\u3001\u627f\u8a8d\u7533\u8acb\u306b\u304a\u3044\u3066\u53d7\u3051\u5165\u308c\u3089\u308c\u308b\u53ef\u80fd\u6027\u306f\u9ad8\u307e\u3063\u3066\u3044\u307e\u3059\u3002\u91cd\u8981\u306a\u306e\u306f\u3001\u305d\u306e\u624b\u6cd5\u304c\u30c7\u30fc\u30bf\u306e\u7279\u6027\u306b\u5408\u81f4\u3057\u3066\u304a\u308a\u3001\u79d1\u5b66\u7684\u306b\u59a5\u5f53\u3067\u3042\u308b\u3053\u3068\u3092\u660e\u78ba\u306b\u8aac\u660e\u3059\u308b\u3053\u3068\u3067\u3059\u3002"
+            }
+        }
+        
+    ]
 }
 </script>
 
@@ -744,28 +794,28 @@
             <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
             <span class="breadcrumb-sep">/</span>
             
-            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials</a>
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース</a>
             <span class="breadcrumb-sep">/</span>
             
-            <span>Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡</span>
+            <span>臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する</span>
         </nav>
 
         <article>
             
             
-            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
                 <div class="article-hero-overlay"></div>
             </div>
             
 
             <header class="article-header">
-                <h1 class="article-title">Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡</h1>
+                <h1 class="article-title">臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する</h1>
                 <div class="article-meta">
                     <span>2026-04-25</span>
                     <span class="reading-time">3分で読める</span>
-                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html" class="category-badge">臨床統計最新ニュース</a>
                 </div>
-                <div class="card-tags mt-1"><span class="tag">R</span><span class="tag">臨床試験</span><span class="tag">データ管理</span><span class="tag">監査証跡</span><span class="tag">admiral</span></div>
+                <div class="card-tags mt-1"><span class="tag">臨床統計</span><span class="tag">生物統計</span><span class="tag">有界調和平均</span><span class="tag">エビデンス近似</span><span class="tag">SAS/R</span></div>
             </header>
 
             
@@ -776,323 +826,221 @@
                 <div class="toc"><span class="toctitle">目次</span><ul>
 <li><a href="#_1">この記事でわかること</a></li>
 <li><a href="#_2">結論から言うと</a></li>
-<li><a href="#r_1">R, データ管理, 臨床試験, データ修正, 監査証跡とは？</a></li>
-<li><a href="#_3">統計的背景・理論</a></li>
+<li><a href="#_3">有界調和平均・エビデンス近似とは？</a></li>
+<li><a href="#_4">統計的背景・理論</a></li>
 <li><a href="#sasr">SAS/Rコード実装</a><ul>
-<li><a href="#sas">SASコード実装例：データ修正とログ記録</a></li>
-<li><a href="#radmiraltidyverse">Rコード実装例：admiralとtidyverseによるデータ修正と監査証跡</a></li>
+<li><a href="#_5">サンプルデータの生成</a></li>
+<li><a href="#phmp">調和平均P値（HMP）の計算</a></li>
 </ul>
 </li>
-<li><a href="#_4">実務での活用場面</a></li>
-<li><a href="#_5">海外の最新動向</a></li>
-<li><a href="#faq">よくある質問（FAQ）</a></li>
-<li><a href="#_6">臨床統計スキルを磨くためのリソース</a></li>
-<li><a href="#_7">まとめ</a></li>
+<li><a href="#_6">実務での活用場面</a></li>
+<li><a href="#_7">海外の最新動向</a></li>
+<li><a href="#faq">よくある質問（FAQ）</a><ul>
+<li><a href="#q1-hmp">Q1: 有界調和平均（HMP）はどのような状況で使うのが最適ですか？</a></li>
+<li><a href="#q2">Q2: フィッシャーの統合検定と何が違いますか？</a></li>
+<li><a href="#q3">Q3: エビデンス近似はなぜ重要ですか？</a></li>
+<li><a href="#q4-hmpsas">Q4: 有界調和平均（HMP）をSASで実装する際の注意点は？</a></li>
+<li><a href="#q5">Q5: 最新の統計手法は規制当局に受け入れられていますか？</a></li>
+</ul>
+</li>
+<li><a href="#_8">臨床統計スキルを磨くためのリソース</a></li>
+<li><a href="#_9">まとめ</a></li>
 </ul>
 </div>
 
             </details>
             
 
-            <div class="article-body"><h1 id="r">Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡</h1>
-<p><img alt="Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡" src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+            <div class="article-body"><h1 id="p">臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する</h1>
+<p><img alt="臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する" src="https://images.unsplash.com/photo-1631549916768-4e9be593fe56?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
 <p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
 <h2 id="_1">この記事でわかること</h2>
 <ul>
-<li>Rを使った臨床試験のデータ管理のベストプラクティス</li>
-<li>データ修正（Data Modification）と監査証跡（Audit Trail）の重要性</li>
-<li><code>admiral</code>パッケージを活用したADaMデータセットの修正・管理方法</li>
-<li>規制要件（FDA/PMDA）を満たすデータ品質維持のポイント</li>
-<li>SASとRによるデータ修正と履歴管理の実装例</li>
+<li>複数の臨床試験結果を統合する新しい統計手法「有界調和平均（Bounded Harmonic Mean）」の概念と利点</li>
+<li>複雑なモデルや複数の情報源から「エビデンス近似（Evidence Approximation）」を用いて統計的証拠を評価する方法</li>
+<li>有界調和平均をSASとRで実装するための具体的なコード例</li>
+<li>これらの最新の統計計算手法が臨床試験の実務でどのように活用できるか、そして海外の最新動向</li>
 </ul>
 <h2 id="_2">結論から言うと</h2>
-<p>臨床試験におけるデータ修正は避けられませんが、その履歴を正確に管理する監査証跡はデータ品質と規制遵守の要です。Rの<code>admiral</code>や<code>tidyverse</code>を活用すれば、透明性の高いデータ修正プロセスと確実な監査証跡を構築でき、信頼性の高い統計解析へと繋がります。</p>
-<h2 id="r_1">R, データ管理, 臨床試験, データ修正, 監査証跡とは？</h2>
-<p>Rは統計解析に広く使われるオープンソース言語ですが、近年では臨床試験における<strong>データ管理</strong>（Data Management）や報告書作成にも活用が広がっています。特に規制当局への提出データ（SDTM/ADaM）作成において、その柔軟性と再現性が注目されています。</p>
-<p><strong>データ修正（Data Modification）</strong>とは、臨床試験の実施中に、データ入力ミス、プロトコル逸脱、あるいは後続の解析方針変更などにより、既存のデータを変更する必要が生じることです。これは臨床試験では避けられないプロセスであり、いかに適切に管理するかが重要となります。</p>
-<p><strong>監査証跡（Audit Trail）</strong>は、データ修正が行われた際、「いつ（When）」、「誰が（Who）」、「何を（What）」、「なぜ（Why）」変更したのか、そして「変更前の値（Old Value）」と「変更後の値（New Value）」が何だったのかを記録する体系的なログを指します。これは<strong>データ整合性（Data Integrity）</strong>を保証し、規制要件（例：FDA 21 CFR Part 11）を満たす上で極めて重要な要素です。</p>
-<p><strong>データ整合性（Data Integrity）</strong>とは、データの正確性、完全性、一貫性、信頼性を指します。ALCOA原則（Attributable: 帰属性, Legible: 可読性, Contemporaneous: 同時性, Original: 原本性, Accurate: 正確性）に代表されるように、医薬品開発においてはデータライフサイクル全体での厳格な管理が求められます。</p>
-<h2 id="_3">統計的背景・理論</h2>
-<p>データ管理における統計的背景は、主にデータ品質と解析の信頼性に直結します。データ修正と監査証跡の管理は、統計解析の前提となるデータの信頼性を確保するための基盤となります。もしデータ修正の履歴が不透明であったり、不正な修正が行われたりした場合、そのデータに基づいた統計解析の結果は全く信頼できなくなります。これは、仮説検定の$P$-valueや信頼区間（Confidence Interval）の解釈に直接影響を及ぼし、医薬品の承認判断を誤らせる可能性さえあります。</p>
-<p>具体的には、以下のような統計的考慮点が背景にあります。
-*   <strong>欠損値（Missing Values）の扱い</strong>: データ修正により欠損値が発生したり、逆に補完されたりする場合があります。これらの変更は、欠損値メカニズム（Missing Data Mechanism）の仮定に影響を与え、統計的推論にバイアス（Bias）を導入する可能性があります。{{internal_link:欠損値補完の統計的手法}}
-*   <strong>外れ値（Outliers）の修正</strong>: データ修正の動機として外れ値の特定と処理がありますが、不適切な修正はデータの分布を歪め、結果として統計モデルの誤った選択や効果量の過大・過小評価に繋がります。
-*   <strong>プロトコル逸脱（Protocol Deviations）とデータ修正</strong>: プロトコル逸脱がデータ修正を引き起こす場合がありますが、これは対象患者群の均質性（Homogeneity）を損ない、統計的検出力（Statistical Power）や一般化可能性（Generalizability）に影響を与えます。監査証跡は、これらの逸脱がデータにどのように反映されたかを追跡する上で不可欠です。</p>
-<p>したがって、監査証跡によって修正の透明性を確保することは、$P$-valueや信頼区間といった統計的指標の解釈に不可欠なデータ品質を保証し、ひいては統計解析結果の信頼性を担保する上で極めて重要なのです。</p>
+<p>複数の臨床試験やサブグループ解析の結果を統合する際、従来のP値統合法では課題がありました。<strong>有界調和平均</strong>は、このような状況で頑健（ロバスト）なP値統合を可能にし、特に異質性（Heterogeneity）が高い場合でも信頼性の高いエビデンスを提供します。これはベイズ統計学（Bayesian Statistics）における<strong>エビデンス近似</strong>の考え方とも深く関連しており、より実務的な統計計算手法として注目されています。</p>
+<h2 id="_3">有界調和平均・エビデンス近似とは？</h2>
+<p>臨床統計の現場では、複数の臨床試験の結果を統合してより強力なエビデンス（証拠）を得る「メタアナリシス（Meta-analysis）」や、サブグループ解析（Subgroup analysis）で複数のP値を結合する場面が頻繁にあります。しかし、研究間で異質性が高かったり、特定の試験で極端に小さなP値が出たりする場合、従来のP値統合手法では結果が歪むリスクがありました。</p>
+<p>そこで注目されているのが「<strong>有界調和平均（Bounded Harmonic Mean; BHM）</strong>」という概念です。これは、特に「調和平均P値（Harmonic Mean P-value; HMP）」として知られる手法を指すことが多く、複数のP値を組み合わせることで、従来のフィッシャーの統合検定（Fisher's method）などよりも異質性に強く、頑健なP値を提供することを目的としています。HMPは、個々の試験のP値の逆数（reciprocal）の平均を計算し、その逆数を取ることで算出され、小さなP値に過度に影響されにくいという特徴があります。</p>
+<p>また、<strong>エビデンス近似（Evidence Approximation）</strong>とは、ベイズ統計モデリングにおいて、モデルの周辺尤度（Marginal Likelihood）、つまり「エビデンス」を直接計算することが困難な場合に、何らかの近似手法を用いてその値を推定する統計計算の手法全般を指します。このエビデンスは、異なるモデル間を比較する際のベイズファクター（Bayes Factor）の計算に不可欠であり、有界調和平均はこのベイズファクターの簡潔で頑健な近似と見なすこともできます。これにより、複雑なベイズモデルを用いなくても、簡便に複数の試験からの統計的エビデンスを近似的に評価することが可能になります。</p>
+<h2 id="_4">統計的背景・理論</h2>
+<p>有界調和平均、特に調和平均P値（HMP）は、複数の独立したP値 $p_1, p_2, \dots, p_K$ を統合する際に利用されます。その基本的な考え方は、個々のP値が与える証拠の強さを適切に重み付けして結合することにあります。</p>
+<p>フィッシャーの統合検定は、$-\sum_{i=1}^K 2 \log(p_i)$ が自由度 $2K$ のカイ二乗分布（Chi-squared distribution）に従うことを利用しますが、これはP値が小さい研究に非常に敏感です。一方でHMPは、P値の逆数の平均の逆数を取ることで算出されます。</p>
+<p>調和平均P値（HMP）は以下の式で定義されます。</p>
+<p>$$P_{HMP} = \frac{K}{\sum_{i=1}^K \frac{1}{p_i}}$$ </p>
+<p>ここで、$K$ は統合するP値の数です。</p>
+<p>このHMPがなぜ頑健（ロバスト）であるかというと、極端に小さなP値 $p_i$ が一つだけあっても、他のP値がそうでない場合、その小さなP値に結果が過度に引きずられにくい性質を持つためです。これは調和平均（Harmonic Mean）の特性であり、最小値の影響を強く受ける算術平均（Arithmetic Mean）や幾何平均（Geometric Mean）とは異なります。</p>
+<p>さらに、HMPはベイズ統計学における<strong>ベイズファクター（Bayes Factor; BF）</strong>との関連が指摘されています。特定の条件下では、P値の逆数 $1/p_i$ が、帰無仮説（Null hypothesis）と対立仮説（Alternative hypothesis）の相対的な尤度（Likelihood）を表す近似的なベイズファクターとして機能すると考えられます。HMPは、これらの近似的なベイズファクターの平均を計算していると解釈でき、複数の研究からのエビデンスを統合する際に、ベイズ的な考え方で頑健なエビデンス近似を提供していると言えます。</p>
+<p>具体的には、ある研究 $i$ のP値 $p_i$ から得られる証拠の強さを $BF_i \approx 1/p_i$ とすると、HMPはこれらの証拠を統合する一種の平均と見なせます。このように、HMPは従来の頻度論的統計学（Frequentist Statistics）の枠組みで計算可能でありながら、ベイズ統計学的な頑健性を取り入れた統計計算手法として評価されています。</p>
 <h2 id="sasr">SAS/Rコード実装</h2>
-<p>ここでは、<strong>臨床試験</strong>データの修正と監査証跡の生成について、SASとRの両方で具体的なコード例を示します。特にRでは<code>admiral</code>パッケージを中心に活用し、ADaMデータセット（Analysis Data Model）の操作を例に挙げます。</p>
-<hr />
-<h3 id="sas"><strong>SASコード実装例：データ修正とログ記録</strong></h3>
-<p>SASでは、データステップや<code>PROC SQL</code>を使ってデータを修正し、同時にその変更を別のデータセットにログとして記録する方法が一般的です。</p>
-<pre><code class="language-sas">/* サンプルデータの生成 */
-data adpc_orig;
-  length USUBJID $10 TRT01A $20 PARAMCD $8 AVALN PCHG $8.2 AVALC $10;
-  input USUBJID $ TRT01A $ PARAMCD $ AVALN PCHG $ AVALC $;
-  datalines;
-SUBJ001 Active Placebo PC     10.5 .     NORMAL
-SUBJ001 Active Placebo PC_PCHG .    15.0  .
-SUBJ002 Active Drug    PC     12.0 .     NORMAL
-SUBJ002 Active Drug    PC_PCHG .    10.0  .
-SUBJ003 Active Drug    PC     9.8  .     HIGH
-SUBJ003 Active Drug    PC_PCHG .    22.5  .
-SUBJ004 Active Placebo PC     11.2 .     NORMAL
-SUBJ004 Active Placebo PC_PCHG .    5.0   .
-SUBJ005 Active Drug    PC     15.0 .     HIGH
-SUBJ005 Active Drug    PC_PCHG .    -5.0  .
+<p>それでは、実際に有界調和平均（HMP）をSASとRで計算してみましょう。ここでは、架空の5つの臨床試験から得られたP値を統合する例を示します。</p>
+<h3 id="_5">サンプルデータの生成</h3>
+<p>まず、SASとRの両方で同じサンプルデータを用意します。ここでは、P値が0.001から0.2の範囲でばらつく5つの試験を想定します。</p>
+<p><strong>SASでのサンプルデータ生成</strong></p>
+<pre><code class="language-sas">data study_pvalues;
+    input StudyID P_value;
+    datalines;
+1 0.001
+2 0.015
+3 0.050
+4 0.120
+5 0.200
 ;
 run;
 
-/* データ修正と監査証跡の記録 */
-/* 例: USUBJID 'SUBJ003' の AVALN を 9.8 から 10.1 に修正 */
-/* 変更履歴を保存するためのデータセットを作成 */
-data audit_trail_sas;
-  length USUBJID $10 PARAMCD $8 VARNAME $32 OLD_VALUE $20 NEW_VALUE $20 
-         CHANGE_DATE : mmddyy10. CHANGED_BY $20 CHANGE_REASON $100;
-  stop;
-run;
-
-data adpc_modified (label=&quot;Analysis Dataset for Pharmacokinetics - Modified&quot;);
-  set adpc_orig;
-
-  /* 修正対象のレコードを特定し、変更を適用 */
-  if USUBJID = 'SUBJ003' and PARAMCD = 'PC' then do;
-    /* 監査証跡に記録するための情報を収集 */
-    call symputx('orig_avaln_val', putn(AVALN, 8.2)); /* 旧値をマクロ変数に格納 */
-    call symputx('new_avaln_val', putn(10.1, 8.2));  /* 新値をマクロ変数に格納 */
-    call symputx('change_by_val', 'Analyst_A');
-    call symputx('change_reason_val', 'Data entry error identified from source document');
-
-    /* データ修正 */
-    AVALN = 10.1; /* 新しい値に更新 */
-  end;
-
-  output; /* 全レコードを出力 */
-run;
-
-/* 監査証跡データセットに修正情報を追加 */
-data audit_trail_sas;
-  set audit_trail_sas;
-  if symget('change_by_val') ne '' then do;
-    USUBJID = 'SUBJ003';
-    PARAMCD = 'PC';
-    VARNAME = 'AVALN';
-    OLD_VALUE = symget('orig_avaln_val');
-    NEW_VALUE = symget('new_avaln_val');
-    CHANGE_DATE = today();
-    CHANGED_BY = symget('change_by_val');
-    CHANGE_REASON = symget('change_reason_val');
-    output;
-  end;
-run;
-
-/* 修正されたデータセットの確認 */
-proc print data=adpc_modified;
-  title &quot;Modified ADPC Dataset&quot;;
-run;
-
-/* 監査証跡の確認 */
-proc print data=audit_trail_sas;
-  title &quot;Audit Trail for ADPC Dataset (SAS)&quot;;
+proc print data=study_pvalues;
+    title 'Sample P-values from 5 Studies (SAS)';
 run;
 </code></pre>
-<p><strong>SASコード解説</strong>:
-1.  <code>adpc_orig</code> データセットで初期のADaM（Analysis Data Model）サンプルを作成します。
-2.  <code>audit_trail_sas</code> データセットは、変更履歴を保存するための空のデータセットとして作成されます。<code>VARNAME</code>, <code>OLD_VALUE</code>, <code>NEW_VALUE</code>, <code>CHANGE_DATE</code>, <code>CHANGED_BY</code>, <code>CHANGE_REASON</code> といった変数が用意されています。
-3.  <code>adpc_modified</code> データステップで実際に<strong>データ修正</strong>を行います。<code>USUBJID='SUBJ003'</code>の<code>PARAMCD='PC'</code>の<code>AVALN</code>値を<code>9.8</code>から<code>10.1</code>に修正しています。修正前に旧値をマクロ変数に格納し、新値と共に変更履歴として収集します。
-4.  その後の<code>audit_trail_sas</code> データステップで、前ステップで収集したマクロ変数の値を使って監査証跡データセットに新しいレコードを追加します。これにより、変更されたレコードの詳細情報が記録されます。
-5.  <code>PROC PRINT</code>で、修正後のデータと監査証跡データセットの内容を確認します。</p>
-<hr />
-<h3 id="radmiraltidyverse"><strong>Rコード実装例：<code>admiral</code>と<code>tidyverse</code>によるデータ修正と監査証跡</strong></h3>
-<p>Rでは<code>admiral</code>パッケージがADaMデータセットの生成・操作に特化しており、<code>tidyverse</code>と組み合わせることで効率的かつ再現性の高い<strong>データ管理</strong>が可能です。ここでは、データ修正機能そのものよりも、修正プロセスを<code>tidyverse</code>で追跡し、<code>admiral</code>で生成されたADaMがどのように変更されたかを記録する方法に焦点を当てます。</p>
-<p><code>admiral</code>は主にADaM生成の「ルール」をコードとして記述することを推奨しており、一度ADaMが生成された後の「修正」については、生成ロジック自体を修正・再実行するか、あるいは別のパッケージでデータ変更のログを管理することが考えられます。ここでは、<code>admiral</code>でADaMを作成した後に、そのデータに対する「特定条件に基づく修正」とその監査証跡の記録に焦点を当てます。</p>
-<pre><code class="language-R"># パッケージの読み込み
-library(tidyverse)
-library(admiral)
-library(admiraldev) # admiral の開発ツール（サンプルのADMIRALデータセット利用のため）
-library(rtables) # レポート生成用
+<p><strong>Rでのサンプルデータ生成</strong></p>
+<pre><code class="language-R"># tidyverseパッケージを読み込みます
+library(dplyr)
 
-# 1. ADaMサンプルデータの準備 (admiralパッケージの機能を利用)
-# adsl (Subject-Level Analysis Dataset)
-adsl &lt;- tribble(
-  ~USUBJID,  ~TRT01A,           ~AGE, ~SEX,
-  &quot;SUBJ001&quot;, &quot;Placebo&quot;,         65,   &quot;F&quot;,
-  &quot;SUBJ002&quot;, &quot;Treatment A&quot;,     52,   &quot;M&quot;,
-  &quot;SUBJ003&quot;, &quot;Treatment A&quot;,     48,   &quot;F&quot;,
-  &quot;SUBJ004&quot;, &quot;Placebo&quot;,         71,   &quot;M&quot;,
-  &quot;SUBJ005&quot;, &quot;Treatment B&quot;,     60,   &quot;M&quot;
+# サンプルデータをデータフレームとして作成します
+study_pvalues_df &lt;- tibble(
+  StudyID = 1:5,
+  P_value = c(0.001, 0.015, 0.050, 0.120, 0.200)
 )
 
-# adpc (Pharmacokinetics Analysis Dataset) のサンプルを作成
-# 実際の臨床試験では、ADaMはSDTMから生成されますが、ここでは簡略化のため直接作成
-adpc_orig &lt;- tribble(
-  ~USUBJID,  ~TRT01A,           ~PARAMCD, ~AVALN, ~PCHG, ~AVALC,
-  &quot;SUBJ001&quot;, &quot;Placebo&quot;,         &quot;PC&quot;,     10.5,   NA,    &quot;NORMAL&quot;,
-  &quot;SUBJ001&quot;, &quot;Placebo&quot;,         &quot;PC_PCHG&quot;, NA,    15.0,  NA,
-  &quot;SUBJ002&quot;, &quot;Treatment A&quot;,     &quot;PC&quot;,     12.0,   NA,    &quot;NORMAL&quot;,
-  &quot;SUBJ002&quot;, &quot;Treatment A&quot;,     &quot;PC_PCHG&quot;, NA,    10.0,  NA,
-  &quot;SUBJ003&quot;, &quot;Treatment A&quot;,     &quot;PC&quot;,     9.8,    NA,    &quot;HIGH&quot;, # この値を修正する
-  &quot;SUBJ003&quot;, &quot;Treatment A&quot;,     &quot;PC_PCHG&quot;, NA,    22.5,  NA,
-  &quot;SUBJ004&quot;, &quot;Placebo&quot;,         &quot;PC&quot;,     11.2,   NA,    &quot;NORMAL&quot;,
-  &quot;SUBJ004&quot;, &quot;Placebo&quot;,         &quot;PC_PCHG&quot;, NA,    5.0,   NA,
-  &quot;SUBJ005&quot;, &quot;Treatment B&quot;,     &quot;PC&quot;,     15.0,   NA,    &quot;HIGH&quot;,
-  &quot;SUBJ005&quot;, &quot;Treatment B&quot;,     &quot;PC_PCHG&quot;, NA,    -5.0,  NA
-) %&gt;%
-  derive_var_merged_ef_ds(dataset_adsl = adsl, by_vars = exprs(USUBJID)) # adslからデータをマージする例
+print(study_pvalues_df)
+</code></pre>
+<h3 id="phmp">調和平均P値（HMP）の計算</h3>
+<p><strong>SASでのHMP計算</strong>
+SASでは、<code>PROC MEANS</code>や<code>PROC SQL</code>を用いてP値の逆数の平均を計算し、その逆数を取ることでHMPを算出できます。</p>
+<pre><code class="language-sas">/* HMPを計算するためのステップ */
+data hmp_calc;
+    set study_pvalues;
+    inv_p_value = 1 / P_value; /* P値の逆数を計算 */
+run;
 
-# 2. データ修正と監査証跡の生成
-# 監査証跡を記録するための関数
-# 実際にはより複雑なロギング機構を構築しますが、ここでは概念的な例を示します。
-record_audit_trail_r &lt;- function(data_orig, data_modified, by_vars, change_meta) {
-  # キー変数を文字列に変換
-  keys_chr &lt;- map_chr(by_vars, as_label)
+proc means data=hmp_calc noprint;
+    var inv_p_value;
+    output out=hmp_result mean=mean_inv_p_value;
+run;
 
-  # 変更されたレコードを特定
-  changed_rows &lt;- anti_join(data_orig, data_modified, by = keys_chr) %&gt;%
-    bind_rows(anti_join(data_modified, data_orig, by = keys_chr)) %&gt;%
-    distinct(!!!by_vars)
+data final_hmp;
+    set hmp_result;
+    num_studies = &amp;SYSNREC; /* 統合する試験の数（マクロ変数&amp;SYSNRECは直前のdataステップのレコード数） */
+    combined_hmp = num_studies / mean_inv_p_value; /* HMPを計算 */
+run;
 
-  if(nrow(changed_rows) == 0) {
-    return(tibble()) # 変更がない場合は空のtibbleを返す
+proc print data=final_hmp;
+    var combined_hmp;
+    title 'Calculated Harmonic Mean P-value (HMP) in SAS';
+run;
+
+/* 参考：フィッシャーの統合検定 */
+data fisher_calc;
+    set study_pvalues;
+    log_p_value = -2 * log(P_value);
+run;
+
+proc means data=fisher_calc noprint;
+    var log_p_value;
+    output out=fisher_result sum=sum_log_p;
+run;
+
+data final_fisher;
+    set fisher_result;
+    num_studies = &amp;SYSNREC;
+    chi_sq_stat = sum_log_p;
+    df = 2 * num_studies;
+    fisher_p_value = 1 - cdf('CHISQ', chi_sq_stat, df);
+run;
+
+proc print data=final_fisher;
+    var fisher_p_value;
+    title 'Calculated Fisher''s Combined P-value in SAS';
+run;
+</code></pre>
+<p><strong>RでのHMP計算</strong>
+Rでは、<code>dplyr</code>を使いながらカスタム関数を作成してHMPを計算するのが簡潔です。<code>admiral</code>や<code>rtables</code>はデータハンドリングやレポート作成に有用ですが、直接HMPを計算する機能は持たないため、<code>tidyverse</code>のデータ操作機能を使って実装します。</p>
+<pre><code class="language-R"># HMPを計算する関数を定義します
+calculate_hmp &lt;- function(p_values) {
+  K &lt;- length(p_values)
+  if (K == 0) {
+    return(NA)
   }
-
-  # 変更された行を元のデータと変更後データから抽出
-  orig_changed &lt;- data_orig %&gt;%
-    semi_join(changed_rows, by = keys_chr) %&gt;%
-    pivot_longer(
-      cols = -all_of(keys_chr),
-      names_to = &quot;VARNAME&quot;,
-      values_to = &quot;OLD_VALUE&quot;
-    )
-
-  mod_changed &lt;- data_modified %&gt;%
-    semi_join(changed_rows, by = keys_chr) %&gt;%
-    pivot_longer(
-      cols = -all_of(keys_chr),
-      names_to = &quot;VARNAME&quot;,
-      values_to = &quot;NEW_VALUE&quot;
-    )
-
-  # 変更された値のみを結合し、監査証跡を作成
-  audit_log &lt;- inner_join(orig_changed, mod_changed, by = c(keys_chr, &quot;VARNAME&quot;)) %&gt;%
-    filter(as.character(OLD_VALUE) != as.character(NEW_VALUE)) %&gt;%
-    mutate(
-      CHANGE_DATE = Sys.Date(),
-      CHANGED_BY = change_meta$changed_by,
-      CHANGE_REASON = change_meta$change_reason
-    ) %&gt;%
-    select(!!!by_vars, VARNAME, OLD_VALUE, NEW_VALUE, CHANGE_DATE, CHANGED_BY, CHANGE_REASON)
-
-  return(audit_log)
+  hmp &lt;- K / sum(1 / p_values)
+  return(hmp)
 }
 
-# 修正メタ情報
-change_meta_info &lt;- list(
-  changed_by = &quot;R Analyst&quot;,
-  change_reason = &quot;Data entry error: AVALN value was incorrectly transcribed from source. Confirmed with DM.&quot;
-)
+# サンプルデータを用いてHMPを計算します
+combined_hmp_r &lt;- calculate_hmp(study_pvalues_df$P_value)
+cat(&quot;Calculated Harmonic Mean P-value (HMP) in R:&quot;, combined_hmp_r, &quot;\
+&quot;)
 
-# adpc_orig のコピーを作成し、修正を適用
-adpc_modified &lt;- adpc_orig %&gt;%
-  mutate(
-    AVALN = case_when(
-      USUBJID == &quot;SUBJ003&quot; &amp; PARAMCD == &quot;PC&quot; ~ 10.1, # 9.8 から 10.1 に修正
-      TRUE ~ AVALN
-    )
-  )
-
-# 監査証跡を生成
-audit_trail_df_r &lt;- record_audit_trail_r(
-  data_orig = adpc_orig,
-  data_modified = adpc_modified,
-  by_vars = exprs(USUBJID, PARAMCD), # レコードを一意に特定するキー
-  change_meta = change_meta_info
-)
-
-# 修正されたデータセットの確認
-message(&quot;\n--- Modified ADPC Dataset ---&quot;)
-print(adpc_modified)
-
-# 監査証跡の確認
-message(&quot;\n--- Audit Trail (R) ---&quot;)
-print(audit_trail_df_r)
-
-# rtablesを使った監査証跡のレポート例 (簡易版)
-# `rtables` は通常、臨床試験のテーブル生成に使われますが、
-# データフレームの内容を整形して表示するのにも使えます。
-# ここでは簡易的な例を示します。
-message(&quot;\n--- Audit Trail Report (rtables) ---&quot;)
-if (nrow(audit_trail_df_r) &gt; 0) {
-  tbl &lt;- basic_table() %&gt;%
-    split_cols_by(&quot;VARNAME&quot;) %&gt;%
-    add_colby_total() %&gt;%
-    add_row_groups(audit_trail_df_r, by_vars = exprs(USUBJID, PARAMCD), 
-                   cf_level = &quot;PARAMCD&quot;, cfn_level = &quot;USUBJID&quot;) %&gt;%
-    build_table(audit_trail_df_r,
-                alt_counts_df = audit_trail_df_r) # カウント表示のためにデータフレームを渡す
-
-  # テーブルの表示 (コンソール出力)
-  print(tbl)
-} else {
-  message(&quot;No changes recorded in audit trail for reporting.&quot;)
+# 参考：フィッシャーの統合検定
+calculate_fisher_p &lt;- function(p_values) {
+  K &lt;- length(p_values)
+  if (K == 0) {
+    return(NA)
+  }
+  chi_sq_stat &lt;- -2 * sum(log(p_values))
+  df &lt;- 2 * K
+  fisher_p &lt;- 1 - pchisq(chi_sq_stat, df=df)
+  return(fisher_p)
 }
 
-# もっと詳細な `rtables` の活用例は {{internal_link:rtablesによる臨床試験レポート作成}} をご覧ください。
+combined_fisher_p_r &lt;- calculate_fisher_p(study_pvalues_df$P_value)
+cat(&quot;Calculated Fisher's Combined P-value in R:&quot;, combined_fisher_p_r, &quot;\
+&quot;)
+
+# rtablesを使った結果表示の例 (直接HMPの計算ではないが、admiral/rtablesの活用例)
+# install.packages(&quot;rtables&quot;) # 必要に応じてインストール
+# library(rtables)
+# 
+# # HMPとFisherの結果をまとめて表示するテーブルを作成
+# lyt &lt;- basic_table() %&gt;%
+#   split_cols_by_var(&quot;Method&quot;) %&gt;%
+#   analyze_vars(&quot;P_value&quot;, .stats = &quot;mean&quot;, .labels = c(mean = &quot;Combined P-value&quot;))
+# 
+# # 結果をデータフレームに結合
+# results_df &lt;- tibble(
+#   Method = c(&quot;HMP&quot;, &quot;Fisher&quot;),
+#   P_value = c(combined_hmp_r, combined_fisher_p_r)
+# )
+# 
+# tbl &lt;- build_table(lyt, results_df)
+# tbl
 </code></pre>
-<p><strong>Rコード解説</strong>:
-1.  <strong>パッケージ読み込み</strong>: <code>tidyverse</code>（データ操作）、<strong><code>admiral</code></strong>（ADaM関連関数）、<strong><code>rtables</code></strong>（レポート生成）を読み込みます。
-2.  <strong>サンプルデータ準備</strong>: <code>adsl</code>と<code>adpc_orig</code>（元のADaMデータ）を<code>tribble</code>で作成します。<code>derive_var_merged_ef_ds</code>は<code>admiral</code>の関数で、adslからUSUBJIDなどをマージする例です。
-3.  <strong>データ修正</strong>: <code>adpc_orig</code>を<code>adpc_modified</code>にコピーし、<code>mutate</code>と<code>case_when</code>を使って特定のレコードの<code>AVALN</code>を修正します。ここでは<code>USUBJID == "SUBJ003"</code>の<code>PARAMCD == "PC"</code>の<code>AVALN</code>を<code>9.8</code>から<code>10.1</code>に変更しています。
-4.  <strong>監査証跡の生成 (<code>record_audit_trail_r</code>関数)</strong>:
-    *   この関数は、元のデータセット(<code>data_orig</code>)と修正後のデータセット(<code>data_modified</code>)を比較し、変更されたレコードと変数を特定します。
-    *   <code>anti_join</code>を使って変更があったレコードのキーを特定し、<code>pivot_longer</code>を使って各変数の変更前後の値を抽出しています。
-    *   <code>CHANGE_DATE</code>, <code>CHANGED_BY</code>, <code>CHANGE_REASON</code>といったメタ情報を付加し、監査証跡データフレーム(<code>audit_log</code>)を作成します。
-5.  <strong>監査証跡の確認</strong>: 生成された<code>adpc_modified</code>と<code>audit_trail_df_r</code>データフレームを<code>print()</code>で表示し、内容を確認します。
-6.  <strong><code>rtables</code>によるレポート</strong>: <strong><code>rtables</code></strong>パッケージを使って、生成された<code>audit_trail_df_r</code>データフレームをより視覚的に分かりやすいテーブル形式で出力する簡易例を示しています。<code>rtables</code>は複雑な臨床試験テーブル作成に非常に強力ですが、ここではデータフレームの表示にも利用できることを示しました。</p>
-<p>このRコードは、データ修正と監査証跡の記録をプログラム的に行う一例です。実際には、データ修正の要請があった場合に、既存のADaM生成スクリプトに修正ロジックを追加し、それをバージョン管理システム（Gitなど）で管理することで、コードレベルでの監査証跡を確保することが一般的です。また、データ修正の申請・承認プロセスと連動させるためのより高度なシステムが必要となるでしょう。</p>
-<h2 id="_4">実務での活用場面</h2>
-<p>臨床試験における<strong>データ修正</strong>と<strong>監査証跡</strong>は、以下のような実務場面で不可欠です。</p>
-<ul>
-<li><strong>データクリーンアップ（Data Cleaning）フェーズ</strong>: CRF（症例報告書）からのデータ入力後、論理チェックや範囲チェックで検出された疑義データ（Query Data）を修正する際に、そのすべての修正を記録します。</li>
-<li><strong>SDTM/ADaMデータセット作成時</strong>: SDTM（Study Data Tabulation Model）やADaM（Analysis Data Model）の変換ルールに誤りがあった場合や、データソースの不備によりデータ修正が必要になった場合に、その変更履歴を詳細に記録します。特にADaMは解析に直結するため、その修正は厳格な管理が求められます。</li>
-<li><strong>規制当局への提出</strong>: FDAやPMDAなどの規制当局は、<strong>臨床試験</strong>データの完全性（Completeness）と信頼性（Reliability）を重視します。監査証跡は、データがどのように変更され、その変更が正当であったかを説明するための重要なエビデンスとなります。監査証跡が不十分であると、データを受け入れてもらえない可能性があります。</li>
-<li><strong>データバリデーション（Data Validation）</strong>: 独立した第三者やシステムによるデータ品質チェック時に、修正履歴の確認はデータの正確性（Accuracy）を保証する上で重要なステップです。</li>
-<li><strong>メディカルレビュー（Medical Review）</strong>: 医師が症例データをレビューする際に、過去のデータ変更履歴を確認することで、患者の状態や治療効果の評価をより正確に行うことができます。</li>
-</ul>
-<p>これらの場面で<strong>R</strong>と<strong><code>admiral</code></strong>を活用することで、データ生成から修正、そして監査証跡の管理までを一貫したコードベースで実施し、<strong>データ管理</strong>プロセスの透明性と再現性を高めることが期待されます。</p>
-<h2 id="_5">海外の最新動向</h2>
-<p>近年の海外の臨床統計コミュニティ、特にPHUSE（Pharmaceutical Users Software Exchange）、ASA Biopharmaceutical Section、PSI（Statisticians in the Pharmaceutical Industry）などでは、<strong>R</strong>の<strong>臨床試験</strong>分野での活用が急速に進んでいます。<strong>データ修正</strong>と<strong>監査証跡</strong>の分野でも、Rベースのソリューションへの関心が高まっています。</p>
+<p>上記のコード例では、HMPがフィッシャーの統合検定よりも大きなP値になる傾向があることがわかるかと思います。これは、HMPが極端に小さなP値に過度に引っ張られず、より慎重で頑健な結論を導く特性があるためです。</p>
+<h2 id="_6">実務での活用場面</h2>
+<p>有界調和平均やエビデンス近似の考え方は、臨床試験の様々な場面でその真価を発揮します。</p>
 <ol>
-<li><strong>Rの規制要件への対応</strong>: FDAやEMAなどの規制当局は、Rを含むオープンソースソフトウェアの利用に肯定的な姿勢を示しており、適切なバリデーションとドキュメンテーションがあれば承認申請に利用可能であると明言しています。これは、Rでデータ修正や監査証跡システムを構築する際の大きな後押しとなっています。<ul>
-<li>参考: FDA R Validation Hub: <a href="https://www.r-consortium.org/r-validation-hub">https://www.r-consortium.org/r-validation-hub</a></li>
-</ul>
-</li>
-<li><strong><code>admiral</code>エコシステムの発展</strong>: <strong><code>admiral</code></strong>パッケージは、ADaMデータセットの生成規範をRで実現することを目的としており、その開発はPHUSEのADaM Teamと密接に連携しています。<code>admiral</code>は、ADaMの生成ロジック自体をコードとして管理することで、データ修正が発生した際にはそのロジックをバージョン管理システム（例：Git）で追跡し、変更の正当性を担保するというアプローチを推奨しています。</li>
-<li><strong>データ整合性（Data Integrity）ガイドラインの強化</strong>: 医薬品規制当局は、データライフサイクル全体にわたるデータ整合性の確保を厳しく求めています。これは、紙媒体での記録から電磁記録への移行が進む中で、<strong>監査証跡</strong>の重要性が一層高まっていることを意味します。Rを用いたデータ管理システムにおいても、ALCOA原則（Attributable, Legible, Contemporaneous, Original, Accurate）に準拠した監査証跡機能の設計が求められています。</li>
-<li><strong>PHUSE/R/SASの共存戦略</strong>: 多くの製薬企業やCROでは、依然としてSASが主要な解析ツールですが、Rの柔軟性と拡張性を活用しようとする動きが加速しています。データ修正や監査証跡の分野でも、SASとRを連携させ、それぞれの強みを活かしたハイブリッドなシステム構築が議論されています。例えば、SASで既存の監査証跡を管理しつつ、Rで新たなデータ生成パイプラインを構築し、その変更履歴をGitで管理するといった戦略です。</li>
-<li><strong>Metadata-drivenなデータ管理</strong>: <strong>データ修正</strong>をより効率的かつ堅牢に行うために、メタデータ（データに関するデータ）を基盤とした<strong>データ管理</strong>手法が注目されています。どの変数が、どのような条件で、誰によって変更されたかといった情報をメタデータとして管理し、自動的に監査証跡を生成するシステムは、将来的なRベースのデータ管理における重要な方向性となるでしょう。</li>
+<li><strong>メタアナリシス・レジストリ研究</strong>：複数の異なる臨床試験やリアルワールドデータ（Real-World Data; RWD）からのエビデンスを統合する際に、各研究間の異質性（例えば、対象患者の背景や試験プロトコルの違い）が高い場合でも、頑健な統合P値を提供し、より信頼性の高い結論を導きます。特に、小規模な研究が多数ある場合や、一部に極めて強い効果を示す研究が含まれる場合に有効です。</li>
+<li><strong>適応的デザイン（Adaptive Design）</strong>：早期の段階で複数の有望な治療法やバイオマーカーを評価し、その後の試験計画を柔軟に調整する適応的デザインにおいて、複数の中間解析結果を結合したり、異なるサブグループ間のエビデンスを統合するのに役立ちます。これにより、早期段階でのGo/No-Go判断の信頼性を高めることができます。{{internal_link:適応的デザインの基礎}}について、詳しくはこちらの記事もご覧ください。</li>
+<li><strong>バイオマーカー・多重比較問題</strong>：複数のバイオマーカー候補を同時に評価する際や、多くのエンドポイント（評価項目）を探索的に解析する際に生じる多重比較問題（Multiple Comparison Problem）において、各テストのP値を統合し、全体としての証拠の強さを評価するのに有用です。</li>
+<li><strong>リアルワールドエビデンス（RWE）の活用</strong>：RWEは多様なデータソースから収集されるため、データ間の異質性が非常に高くなりがちです。HMPのような頑健なP値統合法は、これらの多様な情報源から一貫性のあるエビデンスを抽出し、医薬品の有効性や安全性に関するより信頼性の高い結論を導くための強力なツールとなります。</li>
+<li><strong>ベイズ統計との連携</strong>：ベイズ統計モデルはエビデンスを直接扱うことが得意ですが、その計算は複雑になりがちです。有界調和平均は、ベイズファクターの簡潔な近似として機能するため、ベイズ統計を導入する前の探索的解析や、より簡便なエビデンスの評価に利用できます。{{internal_link:ベイズ統計の臨床応用}}について、詳しくはこちらの記事もご覧ください。</li>
 </ol>
-<p>これらの動向は、<strong>R</strong>が<strong>臨床試験</strong>の<strong>データ管理</strong>と<strong>監査証跡</strong>の領域で、単なる解析ツールを超えた役割を担いつつあることを示しています。</p>
+<h2 id="_7">海外の最新動向</h2>
+<p>近年、統計的手法の進化は目覚ましく、有界調和平均やエビデンス近似の概念は、特に海外の統計コミュニティで活発に議論されています。FDA（アメリカ食品医薬品局）やEMA（欧州医薬品庁）といった規制当局も、ベイズ統計学やより複雑なモデリング手法への関心を高めており、これらの新しい統計計算手法が承認申請プロセスでどのように活用できるか、ガイドラインの更新が進められています。</p>
+<ul>
+<li><strong>PSI (Statisticians in the Pharmaceutical Industry)</strong>: イギリスを拠点とするPSIでは、臨床試験デザインにおけるベイズ法の適用や、リアルワールドデータの統合に関するワークショップや発表が頻繁に行われています。有界調和平均のような頑健なP値統合法は、異なるデータソースからのエビデンス結合のテーマで注目されています。</li>
+<li><strong>ASA (American Statistical Association)</strong>: 米国のASAのセッションでは、ベイズファクターの計算効率化や、より汎用的なエビデンス近似手法の開発に関する統計学論文が多数発表されています。特に、小規模な臨床試験や希少疾患領域の試験において、限られたデータから最大限のエビデンスを引き出すための方法として、これらの手法の有用性が議論されています。</li>
+<li><strong>PHUSE (Pharmaceutical Users Software Exchange)</strong>: PHUSEは、SASやRといったソフトウェアを用いた実装に焦点を当てており、有界調和平均やエビデンス近似を実務でどのように効率的に適用するか、具体的なSAS/Rコード例やマクロの開発に関する議論が活発です。レポーティングの自動化や、より複雑な解析結果の可視化にもこれらの新しい統計計算手法が組み込まれ始めています。</li>
+</ul>
+<p>これらの動向は、単にアカデミックな議論に留まらず、実際の医薬品開発における意思決定の質の向上に貢献しています。特に、医薬品開発の早期段階での効率的なスクリーニングや、複雑な疾患メカニズムを解明するための探索的解析において、有界調和平均のような頑健な統計計算手法は今後ますます重要な役割を果たすと予想されます。</p>
+<p><strong>参考文献・ガイドライン</strong>
+*   Johnson, V. E. (2019). The Bounded Harmonic Mean as a Way to Combine P-values. <em>Frontiers in Psychology</em>, 10, 2035. <a href="https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02035/full">https://www.frontiersin.org/articles/10.3389/fpsyg.2019.02035/full</a>
+*   FDA Guidance for Industry: Adaptive Designs for Clinical Trials of Drugs and Biologics (2019). <a href="https://www.fda.gov/media/121102/download">https://www.fda.gov/media/121102/download</a></p>
 <h2 id="faq">よくある質問（FAQ）</h2>
-<p><strong>Q1: Rで作成したデータセットの監査証跡は、規制当局に提出可能ですか？</strong>
-A1: はい、適切にバリデーションされ、そのプロセスが文書化されていれば可能です。FDA 21 CFR Part 11のような電磁記録に関する規制を遵守し、変更履歴が完全に追跡可能であり、データの整合性が保証されていることを示す必要があります。R ConsortiumのR Validation Hubなどの活動が、Rのバリデーションを支援しています。</p>
-<p><strong>Q2: SASからRへデータ管理ツールを移行するメリットは何ですか？</strong>
-A2: Rはオープンソースであり、ライセンスコストがかかりません。また、<code>tidyverse</code>や<code>admiral</code>のような強力なパッケージエコシステムにより、コードの可読性（Readability）と保守性（Maintainability）が向上します。さらに、最新の統計手法やグラフ作成機能へのアクセスが容易で、柔軟なカスタマイズが可能です。監査証跡に関しては、Gitなどのバージョン管理システムとRスクリプトを組み合わせることで、コードベースでの変更履歴管理を強化できます。</p>
-<p><strong>Q3: データ修正は頻繁に行われますが、Rでの自動化は可能ですか？</strong>
-A3: <strong>データ修正</strong>の自動化は慎重に行う必要がありますが、定型的な修正（例：単位変換、特定コードの置換）であれば<strong>R</strong>のスクリプトで自動化し、その修正ロジック自体をコードとして管理・バージョン管理することで、監査証跡として機能させることが可能です。ただし、個別の手動修正については、人間によるレビューと承認プロセスを伴う形でログを記録する仕組みが必要となります。</p>
-<p><strong>Q4: <code>admiral</code>パッケージはデータ修正機能を持っていますか？</strong>
-A4: <strong><code>admiral</code></strong>は主に、SDTMからADaMを生成するための統一された「派生ルール」を提供することに焦点を当てています。つまり、データの「生成ロジック」を記述するためのものです。一度生成されたADaMを「修正」する直接的な機能は提供していませんが、<code>tidyverse</code>と組み合わせてデータ修正ロジックを記述し、その変更をバージョン管理システムで追跡することで、実質的な監査証跡を構築できます。<code>admiral</code>の設計思想は、データ生成プロセスの透明性と再現性を最大化することにあります。</p>
-<p><strong>Q5: 監査証跡の記録において、どのような情報を含めるべきですか？</strong>
-A5: 一般的に、以下の情報を含めることが推奨されます：
-*   変更日時（When）
-*   変更者（Who）
-*   変更対象のデータ識別子（例：USUBJID, PARAMCD, VISITなど）
-*   変更された変数名（What: Variable Name）
-*   変更前の値（Old Value）
-*   変更後の値（New Value）
-*   変更理由（Why）
-*   変更承認者（承認プロセスがある場合）
-これらの情報が揃っていることで、データの完全性と信頼性を客観的に証明できます。</p>
-<h2 id="_6">臨床統計スキルを磨くためのリソース</h2>
+<h3 id="q1-hmp">Q1: 有界調和平均（HMP）はどのような状況で使うのが最適ですか？</h3>
+<p>A1: HMPは、複数の臨床試験やサブグループ解析の結果を統合する際に、各試験間で効果の異質性（Heterogeneity）が高い場合や、一部のP値が極端に小さい場合に特に有用です。従来の統合法よりも頑健なP値を提供し、偏りの少ない結論を導き出すことができます。</p>
+<h3 id="q2">Q2: フィッシャーの統合検定と何が違いますか？</h3>
+<p>A2: フィッシャーの統合検定は、個々のP値が小さい場合に全体の結果に非常に強く影響されます。一方でHMPは、P値の逆数を用いるため、極端に小さなP値に過度に引っ張られることなく、よりバランスの取れた統合P値を提供します。これにより、異質性の高い状況でも、より信頼性の高いエビデンスが得られます。</p>
+<h3 id="q3">Q3: エビデンス近似はなぜ重要ですか？</h3>
+<p>A3: エビデンス近似は、複雑な統計モデルやベイズモデルにおいて、モデルのエビデンス（周辺尤度）を直接計算するのが非常に困難な場合に、その値を推定する統計計算手法です。これにより、異なるモデル間の比較やモデル選択が可能になり、より深い洞察と信頼性の高い意思決定を支援します。</p>
+<h3 id="q4-hmpsas">Q4: 有界調和平均（HMP）をSASで実装する際の注意点は？</h3>
+<p>A4: SASでHMPを実装する際は、P値の逆数を計算し、その平均を取り、再度逆数を取るという手順を踏む必要があります。<code>PROC MEANS</code>や<code>PROC SQL</code>を活用できますが、試験の数を正確に把握することが重要です。また、P値が0になる場合（理論上は稀ですが）には、逆数が無限大になるため、適切な数値的安定性対策（例: 非常に小さな値を加えるなど）を検討する必要があります。</p>
+<h3 id="q5">Q5: 最新の統計手法は規制当局に受け入れられていますか？</h3>
+<p>A5: はい、FDAやEMAなどの規制当局は、ベイズ統計学や適応的デザインなど、より高度な統計手法の利用に積極的に関心を示しており、関連するガイダンスも発行しています。有界調和平均のような頑健なエビデンス統合手法も、適切な方法論的裏付けと解析計画があれば、承認申請において受け入れられる可能性は高まっています。重要なのは、その手法がデータの特性に合致しており、科学的に妥当であることを明確に説明することです。</p>
+<h2 id="_8">臨床統計スキルを磨くためのリソース</h2>
 <p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
 <ul>
 <li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
@@ -1100,34 +1048,17 @@ A5: 一般的に、以下の情報を含めることが推奨されます：
 <li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
 </ul>
 <p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p>
-<h2 id="_7">まとめ</h2>
-<p><strong>臨床試験</strong>における<strong>R、データ管理、データ修正、監査証跡</strong>は、データ駆動型医薬品開発の信頼性を支える重要な要素です。データ修正は避けられないプロセスですが、そのすべての変更を<strong>監査証跡</strong>として記録し、透明性を確保することは、データ整合性（Data Integrity）と規制遵守の観点から極めて重要です。</p>
-<p>本記事では、SASとR、特に<code>tidyverse</code>や<strong><code>admiral</code> R</strong>といった<strong>臨床試験</strong>用パッケージを活用したデータ修正と監査証跡の具体的な実装例をご紹介しました。Rの柔軟性とオープンソース性は、コードベースでのデータ生成・修正プロセスの透明性を高め、Gitなどのバージョン管理システムと組み合わせることで、強固な監査証跡を構築する可能性を秘めています。</p>
-<p><code>admiral</code>はADaMデータセット生成の標準化を推進し、<strong><code>rtables</code></strong>はデータ品質レポートの作成を支援します。これらのツールは、日本の臨床統計担当者が国際的なデータ提出基準を満たし、より効率的で信頼性の高い<strong>臨床試験</strong>データ管理を実現するための強力な武器となるでしょう。</p>
-<p>未来の臨床試験データ管理は、<strong>R 臨床試験</strong>での活用により、よりオープンで再現性が高く、そして監査に耐えうるものへと進化していきます。ぜひ、Rと最新パッケージの導入を検討し、日々の業務に活かしてみてください。
-{{internal_link:R for Clinical Trialsの基本}}</p>
-<hr />
-<p><strong>参考文献・ガイドライン</strong>
-*   FDA 21 CFR Part 11: Electronic Records; Electronic Signatures
-    *   <a href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=11">https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=11</a>
-*   ICH E6(R2) Good Clinical Practice
-    *   <a href="https://www.ich.org/page/efficacy-guidelines">https://www.ich.org/page/efficacy-guidelines</a>
-*   PHUSE: Emerging Trends in Clinical Data Science
-    *   <a href="https://www.phuse.global/">https://www.phuse.global/</a>
-*   R Consortium: R Validation Hub
-    *   <a href="https://www.r-consortium.org/r-validation-hub">https://www.r-consortium.org/r-validation-hub</a>
-*   <code>admiral</code> package documentation
-    *   <a href="https://cran.r-project.org/web/packages/admiral/index.html">https://cran.r-project.org/web/packages/admiral/index.html</a>
-*   <code>rtables</code> package documentation
-    *   <a href="https://cran.r-project.org/web/packages/rtables/index.html">https://cran.r-project.org/web/packages/rtables/index.html</a></p></div>
+<h2 id="_9">まとめ</h2>
+<p>「有界調和平均」と「エビデンス近似」は、臨床統計におけるP値統合の頑健性を高め、多角的なエビデンス評価を可能にする強力な統計計算手法です。特に、複数の臨床試験や多様なデータソースから得られる複雑な情報を統合する現代の医薬品開発において、その価値は計り知れません。</p>
+<p>本記事では、この最新研究テーマについて、その統計的背景からSAS/Rでの具体的な実装例、そして実務での活用場面や海外の最新動向まで幅広く解説しました。これらの新しい統計計算手法を理解し、適切に活用することで、日本の臨床統計担当者の皆様が、より科学的根拠に基づいた意思決定を行い、ひいては患者さんのために貢献できることを願っています。臨床統計ラボでは、今後もこのような最先端の統計学論文や手法をわかりやすくお届けしてまいります。</p></div>
 
             
 
             <div class="share-buttons">
-                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html&text=Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡" target="_blank" rel="noopener noreferrer">X でシェア</a>
-                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html&title=Rで変わる臨床試験データ管理：修正履歴と監査証跡を完全追跡" target="_blank" rel="noopener noreferrer">はてブ</a>
-                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/r-clinical-trial-data-management-audit-trail.html" target="_blank" rel="noopener noreferrer">LINE</a>
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html&text=臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html&title=臨床統計の最前線：有界調和平均とエビデンス近似でP値を頑健に結合する" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/bounded-harmonic-mean-evidence-approximation-clinical-statistics.html" target="_blank" rel="noopener noreferrer">LINE</a>
             </div>
         </article>
 
