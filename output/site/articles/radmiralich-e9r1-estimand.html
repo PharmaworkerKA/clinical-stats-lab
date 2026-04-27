@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <title>R/admiralで学ぶICH E9(R1) Estimand実践ガイド | 臨床統計ラボ</title>
+
+    
+    <meta name="description" content="">
+    <meta name="author" content="臨床統計ラボ">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html">
+
+    
+    <meta property="og:site_name" content="臨床統計ラボ">
+    <meta property="og:title" content="R/admiralで学ぶICH E9(R1) Estimand実践ガイド">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html">
+    <meta property="og:locale" content="ja_JP">
+
+    
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="R/admiralで学ぶICH E9(R1) Estimand実践ガイド">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSFVD34MKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CSFVD34MKK');
+    </script>
+    
+
+    
+    
+
+    
+    
+    
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "R/admiralで学ぶICH E9(R1) Estimand実践ガイド",
+    "description": "",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html"}
+    ,"image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "自動生成, ブログ, 記事, SEO, 最新"
+}
+</script>
+
+
+
+    <style>
+        /* =============================================
+           CSS変数: テーマカラー（config.THEMEから注入）
+           ============================================= */
+        :root {
+            --color-dark-bg: #0f0a1e;
+            --color-dark-surface: #16213e;
+            --color-primary: #7c3aed;
+            --color-accent: #5b21b6;
+            --color-text-dark: #eeeeee;
+            --color-text-muted-dark: #a0aec0;
+
+            --color-light-bg: #f5f0ff;
+            --color-light-surface: #ffffff;
+            --color-text-light: #1a202c;
+            --color-text-muted-light: #64748b;
+
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --max-width: 1280px;
+            --sidebar-width: 320px;
+            --header-height: 64px;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-pill: 9999px;
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--color-dark-bg);
+            --surface: var(--color-dark-surface);
+            --text: var(--color-text-dark);
+            --text-muted: var(--color-text-muted-dark);
+            --border: rgba(255,255,255,0.08);
+            --code-bg: rgba(255,255,255,0.06);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--color-light-bg);
+            --surface: var(--color-light-surface);
+            --text: var(--color-text-light);
+            --text-muted: var(--color-text-muted-light);
+            --border: rgba(0,0,0,0.08);
+            --code-bg: #f1f5f9;
+        }
+
+        @media (prefers-color-scheme: light) {
+            [data-theme="auto"] {
+                --bg: var(--color-light-bg);
+                --surface: var(--color-light-surface);
+                --text: var(--color-text-light);
+                --text-muted: var(--color-text-muted-light);
+                --border: rgba(0,0,0,0.08);
+                --code-bg: #f1f5f9;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            [data-theme="auto"] {
+                --bg: var(--color-dark-bg);
+                --surface: var(--color-dark-surface);
+                --text: var(--color-text-dark);
+                --text-muted: var(--color-text-muted-dark);
+                --border: rgba(255,255,255,0.08);
+                --code-bg: rgba(255,255,255,0.06);
+            }
+        }
+
+        /* =============================================
+           リセット・基本
+           ============================================= */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* =============================================
+           流体タイポグラフィ
+           ============================================= */
+        h1 { font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem); font-weight: 800; line-height: 1.3; }
+        h2 { font-size: clamp(1.35rem, 1.8vw + 0.8rem, 1.75rem); font-weight: 700; line-height: 1.35; }
+        h3 { font-size: clamp(1.1rem, 1.2vw + 0.6rem, 1.35rem); font-weight: 600; line-height: 1.4; }
+        h4 { font-size: 1.1rem; font-weight: 600; }
+        p { margin-bottom: 1em; }
+
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.2s, opacity 0.2s; }
+        a:hover { opacity: 0.85; text-decoration: underline; }
+        img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
+
+        code {
+            font-family: var(--font-mono);
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 1.25em;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; }
+
+        blockquote {
+            border-left: 4px solid var(--color-accent);
+            padding: 0.75em 1.25em;
+            margin: 1.5em 0;
+            color: var(--text-muted);
+            background: var(--code-bg);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+        th, td { padding: 0.75em 1em; border: 1px solid var(--border); text-align: left; }
+        th { background: var(--code-bg); font-weight: 600; }
+
+        /* =============================================
+           レイアウト
+           ============================================= */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        .layout-main { display: flex; gap: 2.5rem; margin-top: 2rem; margin-bottom: 3rem; }
+        .content-area { flex: 1; min-width: 0; }
+        .sidebar { width: var(--sidebar-width); flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+            .layout-main { flex-direction: column; }
+            .sidebar { width: 100%; }
+        }
+
+        /* =============================================
+           ヘッダー
+           ============================================= */
+        .site-header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+        .site-logo a {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .site-logo a:hover { opacity: 1; text-decoration: none; }
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .site-nav { display: flex; align-items: center; gap: 1.25rem; }
+        .site-nav a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .site-nav a:hover { color: var(--color-accent); text-decoration: none; }
+
+        /* ダークモード切替ボタン */
+        .theme-toggle {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            padding: 6px 10px;
+            font-size: 1.1rem;
+            line-height: 1;
+            color: var(--text);
+            transition: background 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover { background: var(--color-primary); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px auto;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .site-nav {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0; right: 0;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+            }
+            .site-nav.open { display: flex; }
+            .site-nav a { padding: 10px 0; min-height: 44px; display: flex; align-items: center; }
+        }
+
+        /* =============================================
+           Bentoカードグリッド
+           ============================================= */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+
+        .card-thumb {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-thumb-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card-body { padding: 1.25rem 1.5rem; }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-title a { color: var(--text); }
+        .card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+        .card-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .card-excerpt {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+        /* モバイル: カード横型 */
+        @media (max-width: 640px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .card { display: flex; flex-direction: row; }
+            .card-thumb { aspect-ratio: 1 / 1; width: 120px; min-height: 120px; flex-shrink: 0; }
+            .card-body { padding: 1rem; flex: 1; min-width: 0; }
+            .card-title { font-size: 0.95rem; }
+            .card-excerpt { -webkit-line-clamp: 2; }
+        }
+
+        /* =============================================
+           タグ（ピル型バッジ）
+           ============================================= */
+        .tag {
+            display: inline-block;
+            padding: 0.2em 0.65em;
+            font-size: 0.75rem;
+            background: var(--code-bg);
+            color: var(--text-muted);
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .tag:hover { background: var(--color-accent); color: #fff; text-decoration: none; }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+        }
+        .category-badge:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(233,69,96,0.12);
+            color: var(--color-accent);
+            border-radius: var(--radius-pill);
+        }
+
+        /* =============================================
+           パンくず・記事本文・目次
+           ============================================= */
+        .breadcrumb {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+            margin-bottom: 1.5rem; flex-wrap: wrap;
+        }
+        .breadcrumb a { color: var(--text-muted); }
+        .breadcrumb a:hover { color: var(--color-accent); }
+        .breadcrumb-sep { color: var(--text-muted); opacity: 0.5; }
+
+        .article-header { margin-bottom: 2rem; }
+        .article-title {
+            font-size: clamp(1.5rem, 3vw + 0.5rem, 2.2rem);
+            font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem;
+        }
+        .article-meta {
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+            color: var(--text-muted); font-size: 0.88rem;
+        }
+
+        .article-body { font-size: 1rem; line-height: 1.9; }
+        .article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.4em; border-bottom: 2px solid var(--color-accent); }
+        .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+        .article-body ul, .article-body ol { margin: 1em 0; padding-left: 1.5em; }
+        .article-body li { margin-bottom: 0.4em; }
+
+        .toc-container {
+            background: var(--code-bg); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+        }
+        .toc-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-accent); }
+        .toc-container ul { list-style: none; padding-left: 0; margin: 0; }
+        .toc-container li { margin-bottom: 0.3em; }
+        .toc-container ul ul { padding-left: 1.25em; }
+        .toc-container a { color: var(--text-muted); font-size: 0.88rem; }
+        .toc-container a:hover { color: var(--color-accent); }
+
+        /* =============================================
+           SNSシェア・ページネーション
+           ============================================= */
+        .share-buttons { display: flex; gap: 0.6rem; margin: 2rem 0; flex-wrap: wrap; }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5em 1em; border-radius: var(--radius-sm);
+            font-size: 0.82rem; font-weight: 600; color: #fff;
+            text-decoration: none; transition: opacity 0.2s; min-height: 44px;
+        }
+        .share-btn:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+        .share-btn-twitter { background: #1DA1F2; }
+        .share-btn-facebook { background: #1877F2; }
+        .share-btn-hatena { background: #00A4DE; }
+        .share-btn-line { background: #06C755; }
+
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 2.5rem 0; }
+        .pagination a, .pagination span {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 44px; height: 44px; padding: 0 0.5em;
+            border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500;
+            text-decoration: none; transition: background 0.2s, color 0.2s;
+        }
+        .pagination a { color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); }
+        .pagination a:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); text-decoration: none; }
+        .pagination .current { background: var(--color-accent); color: #fff; border: 1px solid var(--color-accent); }
+
+        /* =============================================
+           サイドバー
+           ============================================= */
+        .sidebar-widget {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .sidebar-widget-title {
+            font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-accent);
+        }
+        .sidebar-category-list { list-style: none; padding: 0; }
+        .sidebar-category-list li { margin-bottom: 0.3rem; }
+        .sidebar-category-list a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0; color: var(--text-muted); font-size: 0.88rem;
+            border-bottom: 1px solid var(--border); text-decoration: none; min-height: 44px;
+        }
+        .sidebar-category-list a:hover { color: var(--color-accent); text-decoration: none; }
+        .sidebar-category-count {
+            font-size: 0.78rem; background: var(--code-bg);
+            padding: 0.15em 0.5em; border-radius: var(--radius-pill);
+        }
+
+        .adsense-slot { margin: 1.5rem 0; text-align: center; }
+
+        /* =============================================
+           フッター
+           ============================================= */
+        .site-footer {
+            background: var(--surface); border-top: 1px solid var(--border);
+            padding: 2.5rem 0; margin-top: 3rem;
+        }
+        .footer-inner {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; flex-wrap: wrap; gap: 2rem;
+        }
+        .footer-section h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 0.3rem; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .footer-copyright {
+            text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);
+        }
+
+        /* =============================================
+           ユーティリティ
+           ============================================= */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .empty-state { text-align: center; padding: 4rem 1rem; color: var(--text-muted); }
+        .empty-state p { font-size: 1.1rem; }
+
+        /* =============================================
+           ヒーロー画像（CSS生成・コスト0）
+           ============================================= */
+        .article-hero {
+            position: relative;
+            aspect-ratio: 21 / 9;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .article-hero-emoji {
+            font-size: clamp(4rem, 8vw, 8rem);
+            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            animation: hero-float 3s ease-in-out infinite;
+        }
+        @keyframes hero-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .article-hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(255,255,255,0.06) 0%, transparent 40%);
+            z-index: 1;
+        }
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        /* セクション見出しの絵文字装飾 */
+        .article-body h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 強調ボックス（blockquote内の💡⚠️✅） */
+        .article-body blockquote {
+            position: relative;
+            padding: 1rem 1.5rem;
+            margin: 1.5em 0;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+        .article-body blockquote p { margin-bottom: 0.3em; }
+        .article-body blockquote p:last-child { margin-bottom: 0; }
+
+        /* インデックスカードのサムネイルにも絵文字 */
+        .card-thumb-emoji {
+            font-size: 3rem;
+            z-index: 2;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+
+        /* テーブル装飾強化 */
+        .article-body table {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .article-body th {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #fff;
+            font-weight: 600;
+        }
+        .article-body tr:nth-child(even) td {
+            background: var(--code-bg);
+        }
+
+        /* 番号付きリスト装飾 */
+        .article-body ol {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .article-body ol > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+        }
+        .article-body ol > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        /* ===== MuscleLove Promo Card ===== */
+        .promo-musclelove { padding: 30px 0 10px; }
+        .promo-musclelove .promo-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 22px 24px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #FFF7E6 0%, #FFE9B0 100%);
+            border: 1.5px solid #F5C842;
+            box-shadow: 0 6px 24px rgba(27, 67, 50, 0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .promo-musclelove .promo-icon { font-size: 2.4rem; line-height: 1; flex-shrink: 0; }
+        .promo-musclelove .promo-body { flex: 1; min-width: 0; }
+        .promo-musclelove .promo-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8B6B1C;
+            margin-bottom: 4px;
+        }
+        .promo-musclelove .promo-body h3 { font-size: 1.08rem; font-weight: 900; color: #1B4332; margin-bottom: 4px; }
+        .promo-musclelove .promo-body p { font-size: 0.88rem; color: #44533E; line-height: 1.55; }
+        .promo-musclelove .promo-cta { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+        .promo-musclelove .btn-promo {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #1B4332;
+            color: #F5C842 !important;
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            text-align: center;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .promo-musclelove .btn-promo:hover { transform: translateY(-1px); opacity: 1; }
+        .promo-musclelove .btn-promo.outline {
+            background: transparent;
+            border: 1.5px solid #1B4332;
+            color: #1B4332 !important;
+        }
+        @media (max-width: 640px) {
+            .promo-musclelove .promo-card { flex-direction: column; align-items: flex-start; text-align: left; }
+            .promo-musclelove .promo-cta { flex-direction: row; flex-wrap: wrap; width: 100%; }
+            .promo-musclelove .btn-promo { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="site-logo">
+                <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">臨床統計ラボ</a>
+            </div>
+
+            <div class="header-right">
+                <nav class="site-nav" id="siteNav">
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+                    
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSS</a>
+                </nav>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライト切替">
+                    <span id="themeIcon">&#9790;</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="メニュー" onclick="document.getElementById('siteNav').classList.toggle('open')">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <main class="container">
+        
+<div class="layout-main">
+    <div class="content-area">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html">ICH E9(R1) Estimand</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <span>R/admiralで学ぶICH E9(R1) Estimand実践ガイド</span>
+        </nav>
+
+        <article>
+            
+            
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+                <div class="article-hero-overlay"></div>
+            </div>
+            
+
+            <header class="article-header">
+                <h1 class="article-title">R/admiralで学ぶICH E9(R1) Estimand実践ガイド</h1>
+                <div class="article-meta">
+                    <span>2026-04-25</span>
+                    <span class="reading-time">3分で読める</span>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/ICH E9(R1) Estimand.html" class="category-badge">ICH E9(R1) Estimand</a>
+                </div>
+                <div class="card-tags mt-1"><span class="tag">自動生成</span><span class="tag">ブログ</span><span class="tag">記事</span><span class="tag">SEO</span><span class="tag">最新</span></div>
+            </header>
+
+            
+
+            
+            <details class="toc-container" open>
+                <summary class="toc-title" style="cursor:pointer;user-select:none;">目次</summary>
+                <div class="toc"><span class="toctitle">目次</span><ul>
+<li><a href="#_1">この記事でわかること</a></li>
+<li><a href="#_2">結論から言うと</a></li>
+<li><a href="#ich-e9r1-estimand">ICH E9(R1) Estimandとは？</a></li>
+<li><a href="#_3">統計的背景・理論</a><ul>
+<li><a href="#ies">事象後変量（IEs）に対する戦略</a></li>
+</ul>
+</li>
+<li><a href="#sasr">SAS/Rコード実装</a></li>
+<li><a href="#_8">臨床統計スキルを磨くためのリソース</a></li>
+</ul>
+</div>
+
+            </details>
+            
+
+            <div class="article-body"><h1 id="radmiralich-e9r1-estimand">R/admiralで学ぶICH E9(R1) Estimand実践ガイド</h1>
+<p><img alt="R/admiralで学ぶICH E9(R1) Estimand実践ガイド" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+<p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
+<h2 id="_1">この記事でわかること</h2>
+<ul>
+<li>ICH E9(R1) Estimand（エスティマンド）の基本的な考え方と重要性</li>
+<li>Estimandを構成する5つの属性（治療、対象集団、エンドポイント、事象後変量、集団レベル要約）の詳細</li>
+<li>Treatment Policy（治療方針戦略）やHypothetical Strategy（仮想戦略）などの事象後変量（Intercurrent Events）に対する戦略</li>
+<li>Rの<code>admiral</code>パッケージを活用したEstimandに基づく臨床試験プログラミングの実践例</li>
+<li>臨床試験におけるEstimandの具体的な活用場面と最新の国際動向</li>
+</ul>
+<h2 id="_2">結論から言うと</h2>
+<p><strong>ICH E9(R1) Estimandは、「何を推定したいのか」を明確に定義するための極めて重要なフレームワークです。</strong> 特に、臨床試験中に発生する事象後変量（Intercurrent Events）への対応戦略を事前に定めることで、一貫性のある、かつ解釈しやすい治療効果の推定が可能になります。Rの<code>admiral</code>パッケージは、このEstimandに基づいたCDISC ADaMデータセット作成を効率化し、再現性の高い臨床試験プログラミングを支援します。</p>
+<h2 id="ich-e9r1-estimand">ICH E9(R1) Estimandとは？</h2>
+<p>臨床試験において、私たちは「治療によって何がどれくらい変化したのか？」を知りたいと考えます。しかし、試験期間中には様々な予期せぬ出来事（例えば、副作用による治療中止、併用薬の使用など）が発生し、これが治療効果の評価を複雑にすることがあります。ICH E9(R1) Estimand（エスティマンド）は、このような複雑な状況において、「<strong>試験の目的として、具体的に何を（治療効果として）推定したいのか</strong>」を明確に定義するためのフレームワークです。</p>
+<p>2019年に発効されたICH E9(R1)「Statistical Principles for Clinical Trials: Addendum on Estimands and Sensitivity Analysis in Clinical Trials」は、医薬品開発における統計的解析の透明性と解釈可能性を向上させることを目的としています。このガイドラインの中心概念が「Estimand」であり、臨床試験のプロトコル段階から解析結果の報告までを一貫した論理で結びつける役割を担います。</p>
+<p>Estimandを定義することで、全ての関係者（スポンサー、規制当局、医師、患者など）が、評価すべき治療効果について共通の理解を持つことができます。これにより、曖昧な解釈や誤解を防ぎ、臨床試験の科学的根拠をより強固なものにすることができるのです。</p>
+<h2 id="_3">統計的背景・理論</h2>
+<p>Estimandは、以下の5つの属性を具体的に定義することで構成されます。これらの属性を明確にすることで、「何を測定し、何を比較し、何を結論づけるのか」が詳細に記述されます。</p>
+<ol>
+<li><strong>治療 (Treatment)</strong>: 評価対象となる介入（治療薬、プラセボなど）と、その投与方法や期間を特定します。例えば、「治験薬X 10mg 1日1回投与」や「プラセボ 1日1回投与」といった具体的な内容です。</li>
+<li><strong>対象集団 (Population)</strong>: 治療効果を推定したい患者集団を定義します。これは通常、試験の組み入れ基準・除外基準によって定められる集団です。例えば、「2型糖尿病でHbA1cが7.0%～10.0%の成人患者」などが該当します。</li>
+<li><strong>エンドポイント (Endpoint)</strong>: 治療効果を評価するための測定指標です。例えば、「ベースラインから24週目のHbA1c変化量」や「全生存期間」などがこれにあたります。単一のエンドポイントだけでなく、複合エンドポイントや複数の主要・副次エンドポイントが設定されることもあります。</li>
+<li><strong>事象後変量 (Intercurrent Events; IEs)</strong>: これがEstimandの最も重要な要素の一つです。IEsとは、<strong>無作為化後、かつ治療期間中に発生し、治療効果の解釈を複雑にする可能性のある事象</strong>を指します。具体例としては、以下のようなものが挙げられます。<ul>
+<li>治験薬の服用中止（副作用、効果不足、患者の希望など）</li>
+<li>治療アドヒアランス（服薬遵守）の低下</li>
+<li>規定された治療以外の追加治療（レスキュー薬の使用など）</li>
+<li>規定された治療への非遵守</li>
+<li>その他の重篤な併発疾患の発生
+Estimandフレームワークでは、これらのIEsに対してどのように対処するか（つまり、IEsが発生した場合でも、治療効果をどのように定義し、評価するか）を戦略的に定義します。</li>
+</ul>
+</li>
+<li><strong>集団レベル要約 (Population-level summary)</strong>: 特定の対象集団における治療効果をどのように要約して提示するかを定義します。例えば、「平均変化量の差」「中央値の差」「ハザード比」「オッズ比」など、統計的な指標がこれに当たります。これは、推定量の種類（例: 平均、中央値）と、それを比較する方法（例: 差、比）を指します。</li>
+</ol>
+<h3 id="ies">事象後変量（IEs）に対する戦略</h3>
+<p>IEsへの対処戦略は、Estimandの核心部分であり、ICH E9(R1)では主に以下の4つの戦略が提示されています。</p>
+<ol>
+<li>
+<p><strong>Treatment Policy Strategy (治療方針戦略)</strong>:
+    この戦略では、<strong>IEが発生したとしても、無作為化された最初の治療方針を維持したと仮定して治療効果を評価します。</strong> いわゆる「Intention-To-Treat (ITT) 原則」（治療意図解析）に最も近い考え方です。患者が無作為化された治療アームにとどまり続けた場合の効果を推定します。治療中断や併用薬の使用など、IEが発生しても、その患者を元の治療グループから除外せず、追跡可能な限りデータ収集を続け、解析に含めます。</p>
+<ul>
+<li><strong>例</strong>: 降圧剤の臨床試験で、副作用により治験薬を中断し、別の降圧剤に切り替えた患者がいる場合でも、その患者は治験薬群の一部として解析に含める。</li>
+<li><strong>数式表現</strong>: $E[Y_1 - Y_0]$ （ここで $Y_1$ と $Y_0$ はそれぞれ治療群1と治療群0に無作為化された場合の最終的なアウトカム）</li>
+</ul>
+</li>
+<li>
+<p><strong>Hypothetical Strategy (仮想戦略)</strong>:
+    この戦略では、<strong>「もしIEが発生しなかったら、治療効果はどうなっていたか」という仮想的な状況を仮定して治療効果を評価します。</strong> 例えば、治療アドヒアランスが完璧だったら、あるいはレスキュー薬が使用されなかったら、という状況を想定します。これは、特定のIEを排除または修正した場合の治療効果を推定したい場合に有用です。</p>
+<ul>
+<li><strong>例</strong>: 2型糖尿病の試験で、もし血糖コントロールが悪化してもレスキュー薬が使用されなかった場合の、治験薬の効果を評価する。</li>
+<li><strong>数式表現</strong>: $E[Y_1 | \text{IE non-occurrence}] - E[Y_0 | \text{IE non-occurrence}]$ （特定のIEが発生しなかったという条件下での効果）</li>
+</ul>
+</li>
+<li>
+<p><strong>Principal Stratum Strategy (主層戦略)</strong>:
+    この戦略では、<strong>IEが発生しなかった、あるいは特定のIEの発生様式が共通する患者層（主層）に限定して治療効果を評価します。</strong> この戦略は、IEの発生が患者の治療反応性と関連する場合に特に有用ですが、解析が複雑になる傾向があります。</p>
+<ul>
+<li><strong>例</strong>: 「試験期間中に治療アドヒアランスを維持できた患者」という主層に限定して、その層での治験薬の効果を評価する。</li>
+<li><strong>数式表現</strong>: $E[Y_1 - Y_0 | S=s]$ （IEの発生パターン $s$ を持つ主層 $S$ における効果）</li>
+</ul>
+</li>
+<li>
+<p><strong>Composite Strategy (複合戦略)</strong>:
+    この戦略では、<strong>IEそのものをエンドポイントの一部として組み込みます。</strong> IEの発生を「好ましくないアウトカム」として定義し、元々のエンドポイントと複合させることで、治療効果全体を評価します。</p>
+<ul>
+<li><strong>例</strong>: エンドポイントを「24週目のHbA1c変化量」ではなく、「24週目のHbA1c変化量」または「治療中断」または「レスキュー薬使用」といった複合イベントとして定義する（例: 治療中断が発生した場合は、HbA1c変化量をworst caseに設定するなど）。</li>
+<li><strong>数式表現</strong>: $E[\text{Composite Endpoint}_1 - \text{Composite Endpoint}_0]$ （複合エンドポイントの差）</li>
+</ul>
+</li>
+</ol>
+<p>これらの戦略は、プロトコル作成時に慎重に検討され、主要解析のEstimandとして明記される必要があります。また、主要解析のEstimandとは異なる戦略を用いた感度分析（Sensitivity Analysis）も推奨されており、解析結果の頑健性（Robustness）を示すために不可欠です。</p>
+<h2 id="sasr">SAS/Rコード実装</h2>
+<p>ここでは、Rの<code>admiral</code>パッケージを活用して、Estimandの概念に基づいたCDISC ADaMデータセットの作成例を示します。特に、事象後変量（IE）に対する<code>Hypothetical Strategy</code>を適用する場面を想定し、治療中断が発生した場合の処理に焦点を当てます。</p>
+<p><code>admiral</code>パッケージは、Tidyverse原則に則り、CDISC ADaMデータセットの標準的な導出プロセスを効率化するために設計されています。臨床統計プログラマにとって非常に強力なツールとなっています。</p>
+<p>```R</p>
+<h1 id="_4">必要なパッケージのロード</h1>
+<p>library(tidyverse) # データ操作のための基盤パッケージ
+library(admiral)   # CDISC ADaMデータセット作成のためのパッケージ</p>
+<h1 id="-1-">--- 1. サンプルデータの作成 ---</h1>
+<h1 id="adsl-subject-level-data">臨床試験の主要な情報を含むADSL (Subject-Level Data) を模擬します。</h1>
+<h1 id="trt01a-saffl">TRT01A: 治療群, SAFFL: 有効性評価対象フラグ</h1>
+<p>adsl &lt;- tribble(
+  ~USUBJID, ~TRT01A, ~SEX, ~AGE, ~SAFFL, ~RANDDT,
+  "PAT001", "Treatment A", "M", 45, "Y", "2023-01-01",
+  "PAT002", "Treatment A", "F", 52, "Y", "2023-01-01",
+  "PAT003", "Treatment B", "M", 60, "Y", "2023-01-01",
+  "PAT004", "Treatment B", "F", 38, "Y", "2023-01-01",
+  "PAT005", "Treatment A", "F", 68, "Y", "2023-01-01",
+  "PAT006", "Treatment B", "M", 55, "Y", "2023-01-01"
+) %&gt;%
+  mutate(STUDYID = "STUDY01", RANDDT = as.Date(RANDDT))</p>
+<h1 id="adpc-parameter-level-data-eg-hba1c-measurements">測定値データを含むADPC (Parameter-Level Data - e.g., HbA1c measurements) を模擬します。</h1>
+<h1 id="avisitn-aval">AVISITN: 訪問番号, AVAL: 測定値</h1>
+<p>adpc &lt;- tribble(
+  ~USUBJID, ~AVISIT, ~AVISITN, ~PCTESTCD, ~AVAL, ~ADY,
+  "PAT001", "BASELINE", 0, "HBA1C", 7.5, 1,
+  "PAT001", "WEEK 4",   4, "HBA1C", 7.2, 29,
+  "PAT001", "WEEK 24", 24, "HBA1C", 6.8, 169,
+  "PAT002", "BASELINE", 0, "HBA1C", 8.0, 1,
+  "PAT002", "WEEK 4",   4, "HBA1C", 7.8, 29,
+  "PAT002", "WEEK 12", 12, "HBA1C", 7.9, 85, # PAT002はWEEK 12までで、その後治療中断
+  "PAT003", "BASELINE", 0, "HBA1C", 7.8, 1,
+  "PAT003", "WEEK 4",   4, "HBA1C", 7.6, 29,
+  "PAT003", "WEEK 24", 24, "HBA1C", 7.0, 169,
+  "PAT004", "BASELINE", 0, "HBA1C", 7.2, 1,
+  "PAT004", "WEEK 4",   4, "HBA1C", 7.0, 29,
+  "PAT004", "WEEK 24", 24, "HBA1C", 6.5, 169,
+  "PAT005", "BASELINE", 0, "HBA1C", 8.5, 1,
+  "PAT005", "WEEK 4",   4, "HBA1C", 8.2, 29,
+  "PAT005", "WEEK 24", 24, "HBA1C", 8.0, 169,
+  "PAT006", "BASELINE", 0, "HBA1C", 7.0, 1,
+  "PAT006", "WEEK 4",   4, "HBA1C", 6.9, 29,
+  "PAT006", "WEEK 24", 24, "HBA1C", 6.6, 169
+) %&gt;%
+  mutate(STUDYID = "STUDY01")</p>
+<h1 id="intercurrent-event">事象後変量 (Intercurrent Event) データの作成 (例: 治療中断日)</h1>
+<h1 id="ex-exposure">EX (Exposure) ドメインの情報を模擬し、治療終了日を中断日と仮定します。</h1>
+<p>adex &lt;- tribble(
+  ~USUBJID, ~EXSTDTC, ~EXENDTC, ~EXTRT,
+  "PAT001", "2023-01-01", "2023-06-30", "Treatment A",
+  "PAT002", "2023-01-01", "2023-03-31", "Treatment A", # PAT002は3月末で治療中断
+  "PAT003", "2023-01-01", "2023-06-30", "Treatment B",
+  "PAT004", "2023-01-01", "2023-06-30", "Treatment B",
+  "PAT005", "2023-01-01", "2023-06-30", "Treatment A",
+  "PAT006", "2023-01-01", "2023-06-30", "Treatment B"
+) %&gt;%
+  mutate(
+    STUDYID = "STUDY01",
+    EXSTDTC = as.Date(EXSTDTC),
+    EXENDTC = as.Date(EXENDTC)
+  )</p>
+<h1 id="-2-hypothetical-strategy-">--- 2. Hypothetical Strategyの適用例 (治療中断の場合) ---</h1>
+<h1 id="_5">「もし治療中断がなかったら」という仮想的な状況を考慮するための処理</h1>
+<h1 id="exendtc2023-06-30">治療中断日を特定 (例として、EXENDTCが最終観察日(2023-06-30)より前の場合は中断とみなす)</h1>
+<p>final_obs_date &lt;- max(adpc$ADY) # ADYから最終観察日を決定</p>
+<p>discontinuation_info &lt;- adex %&gt;%
+  # 最終観察日より前に治療が終了している患者を特定
+  filter(EXENDTC &lt; as.Date("2023-01-01") + final_obs_date - 1) %&gt;%
+  select(USUBJID, IE_DATE = EXENDTC) %&gt;%
+  mutate(IE_FLAG = "Y")</p>
+<h1 id="adpc">ADPCデータに治療中断情報をマージ</h1>
+<h1 id="admiral">admiralパッケージのヘルパー関数を使用することも可能ですが、ここでは概念をわかりやすくするために直接操作します。</h1>
+<p>adpp_hypothetical &lt;- adpc %&gt;%
+  # ADSLから無作為化日を結合してADYを正確に計算
+  left_join(adsl %&gt;% select(USUBJID, RANDDT), by = "USUBJID") %&gt;%
+  # 治療中断情報を結合
+  left_join(discontinuation_info, by = "USUBJID") %&gt;%
+  # ADY (試験開始日からの日数) を正確に計算するためにベースライン日を仮定
+  mutate(ADDT = RANDDT + days(ADY - 1)) %&gt;% # ADYは1始まりと仮定
+  # Hypothetical Strategy:
+  # IE発生日 (IE_DATE) 以降の測定値は、Estimandの定義に従って処理します。
+  # ここでは単純に欠損値 (NA) とします (実際には多重補完などを用いることが一般的です)。
+  mutate(
+    AVAL_PROCESSED = if_else(
+      !is.na(IE_FLAG) &amp; ADDT &gt; IE_DATE,
+      NA_real_, # IE発生後の値をNAにする
+      AVAL       # IE発生前の値はそのまま
+    )
+  ) %&gt;%
+  # ベースラインからの変化量を導出
+  group_by(USUBJID, PCTESTCD) %&gt;%
+  mutate(
+    BASE = AVAL_PROCESSED[AVISITN == 0], # ベースライン値を取得
+    CHG = AVAL_PROCESSED - BASE,        # 変化量を計算
+    AVAL_CHG = if_else(AVISITN == 0, NA_real_, CHG) # ベースラインの変化量はNA
+  ) %&gt;%
+  ungroup() %&gt;%
+  # ADaM形式に整形
+  select(STUDYID, USUBJID, AVISIT, AVISITN, ADY, ADDT, PCTESTCD, AVAL, AVAL_PROCESSED, BASE, AVAL_CHG, IE_FLAG, IE_DATE) %&gt;%
+  # ADSL情報をマージ
+  left_join(adsl %&gt;% select(STUDYID, USUBJID, TRT01A, SEX, AGE), by = c("STUDYID", "USUBJID"))</p>
+<h1 id="pat002">結果の確認 (PAT002のデータに注目してください)</h1>
+<h1 id="pat002week-12week-24aval_processedaval_chgna">PAT002はWEEK 12で治療中断しているため、WEEK 24のAVAL_PROCESSEDとAVAL_CHGがNAになります。</h1>
+<h1 id="_6">これは「もし治療中断がなかったら」という仮想的な状況を考慮した結果です。</h1>
+<p>print(adpp_hypothetical %&gt;%
+        filter(USUBJID == "PAT002") %&gt;%
+        select(USUBJID, AVISIT, AVAL, AVAL_PROCESSED, AVAL_CHG, IE_FLAG, IE_DATE), width = Inf)</p>
+<h1 id="-3-admiralestimand-">--- 3. admiralの関数を使ったEstimand関連の変数導出例 ---</h1>
+<h1 id="admiralderive_param_response">admiral::derive_param_response() などを使って、より複雑なエンドポイントや</h1>
+<h1 id="ie">IEを考慮したパラメータを導出することも可能です。</h1>
+<h1 id="_7">例えば、</h1>
+<h2 id="_8">臨床統計スキルを磨くためのリソース</h2>
+<p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
+<ul>
+<li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
+<li><strong><a href="https://www.udemy.com">Udemy SAS/R講座</a></strong> - 動画で学ぶSAS/R統計プログラミング</li>
+<li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
+</ul>
+<p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p></div>
+
+            
+
+            <div class="share-buttons">
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html&text=R/admiralで学ぶICH E9(R1) Estimand実践ガイド" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html&title=R/admiralで学ぶICH E9(R1) Estimand実践ガイド" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/radmiralich-e9r1-estimand.html" target="_blank" rel="noopener noreferrer">LINE</a>
+            </div>
+        </article>
+
+        
+    </div>
+</div>
+
+    </main>
+
+    
+    
+
+    
+    <section style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.08));border-top:1px solid var(--border);padding:48px 0;margin-top:40px;">
+        <div class="container" style="text-align:center;">
+            <p style="color:var(--text-muted);font-size:0.78rem;letter-spacing:0.15em;margin-bottom:8px;">― Powered by MuscleLove ―</p>
+            <h3 style="font-size:1.3rem;margin-bottom:14px;">AIで人生を加速する3部作 + ブランド公式</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto;">副業で稼ぎ → 転職で年収UP → 投資で資産を働かせる。AI時代の「お金の戦略」を完成させる姉妹メディア。</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+                <a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🧭 AI副業コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🚀 AI転職コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#0a0e1a;text-decoration:none;font-weight:600;font-size:0.88rem;">💰 AIマネー羅針盤</a>
+                <a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:#0f172a;color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;border:1px solid #334155;">𝕏 @MuscleGirlLove7</a>
+                <a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#ff424d,#ff6b35);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">💪 Patreon</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="promo-musclelove">
+      <div class="container">
+        <div class="promo-card">
+          <div class="promo-icon">💪</div>
+          <div class="promo-body">
+            <div class="promo-eyebrow">PR · 運営メディア / Sponsored</div>
+            <h3>MuscleLove — Muscle Girls &amp; Fitness Media Hub</h3>
+            <p>格闘女子・フィジーク・アームレスリング・筋トレ飯など、40+サイトを展開するMuscleLoveも運営中。X &amp; Patreonで限定コンテンツ配信中 / We also run MuscleLove, a 40+ site fitness network.</p>
+          </div>
+          <div class="promo-cta">
+            <a class="btn-promo" href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">X @MuscleGirlLove7</a>
+            <a class="btn-promo outline" href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">Patreon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-section">
+                    <h4>臨床統計ラボ</h4>
+                    <p class="text-muted" style="font-size:0.85rem;max-width:300px;">臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>カテゴリ</h4>
+                    <ul class="footer-links"></ul>
+                </div>
+                <div class="footer-section">
+                    <h4>リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/sitemap.xml">サイトマップ</a></li>
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSSフィード</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>MuscleLove</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener">🧭 AI副業コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener">🚀 AI転職コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener">💰 AIマネー羅針盤</a></li>
+                        <li><a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">𝕏 @MuscleGirlLove7</a></li>
+                        <li><a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">💪 Patreon</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">&copy; 2026 臨床統計ラボ. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var toggle = document.getElementById('themeToggle');
+        var icon = document.getElementById('themeIcon');
+        var html = document.documentElement;
+        function getStored() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
+        function setTheme(t) {
+            html.setAttribute('data-theme', t);
+            icon.textContent = t === 'light' ? '\u2600' : '\u263E';
+            try { localStorage.setItem('theme', t); } catch(e) {}
+        }
+        var s = getStored(); if (s) setTheme(s);
+        toggle.addEventListener('click', function() {
+            setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+    })();
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="http"]').forEach(function(l) {
+            if (l.hostname !== window.location.hostname) {
+                l.setAttribute('target', '_blank');
+                l.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

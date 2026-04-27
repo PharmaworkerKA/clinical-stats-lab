@@ -1,0 +1,160 @@
+{
+  "collected_at": "2026-04-06T05:18:03.845543",
+  "total_count": 14,
+  "topics": [
+    {
+      "title": "AGENTS.md, {admiral}, and the AI-Assisted Programmer",
+      "url": "https://www.r-bloggers.com/2026/03/agents-md-admiral-and-the-ai-assisted-programmer/",
+      "summary": "<p>Introduction<br />\nAI coding assistants are becoming a natural part of how clinical R programmers work — autocompleting functions, suggesting test cases, drafting derivations. But out of the box, these agents know nothing about ADaM conventions, CD...</p>\n<strong>Continue reading</strong>: <a hre",
+      "published": "Tue, 31 Mar 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 90,
+      "category": "R for Clinical Trials",
+      "blog_title": "AIと{admiral}で加速する臨床試験プログラミングの未来",
+      "keyword": "admiral, Rパッケージ, AIプログラミング, 臨床試験, ADaM"
+    },
+    {
+      "title": "Same model, better shape: why centering improves MCMC",
+      "url": "https://www.r-bloggers.com/2026/03/same-model-better-shape-why-centering-improves-mcmc/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> The Emergency departments leading the transformation of Alzheimer’s and dementia care (ED-LEAD) study, which I have written about in the past, is approaching the end of its third year. This multifactorial design evaluates three independen",
+      "published": "Mon, 30 Mar 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 90,
+      "category": "混合効果モデル",
+      "blog_title": "MCMCの収束改善テクニック：統計モデルにおけるセンタリングの重要性",
+      "keyword": "MCMC, ベイズ統計, 統計モデリング, センタリング, 生物統計"
+    },
+    {
+      "title": "From question to clarity: how SAS Viya Copilot changes the way we work with data",
+      "url": "https://blogs.sas.com/content/sgf/2026/04/01/sas-viya-copilot-data/",
+      "summary": "<p>Most analytical journeys start the same way – with a question. When did we have the highest profit? Which customers are driving growth? What segment should we look at next? In traditional analytic workflows, turning those questions into answers often requires navigating menus, configuring visuals",
+      "published": "Wed, 01 Apr 2026 14:04:45 +0000",
+      "source": "SAS Blogs",
+      "score": 85,
+      "category": "SAS実践テクニック",
+      "blog_title": "SAS Viya Copilotで臨床データ解析はどう変わる？未来の統計プログラミング",
+      "keyword": "SAS Viya, Copilot, データ解析, 臨床統計, プログラミング"
+    },
+    {
+      "title": "Explaining Time-Series Forecasts with Sensitivity Analysis (ahead::dynrmf and external regressors)",
+      "url": "https://www.r-bloggers.com/2026/03/explaining-time-series-forecasts-with-sensitivity-analysis-aheaddynrmf-and-external-regressors/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> Explaining Time-Series Forecasts with Sensitivity Analysis (ahead::dynrmf and external regressors)</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: both;\"></div>\n<strong>Continue reading</stron",
+      "published": "Sun, 29 Mar 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 85,
+      "category": "R for Clinical Trials",
+      "blog_title": "時系列予測と感度分析：aheadパッケージを用いた臨床データへの応用",
+      "keyword": "時系列解析, 予測モデル, 感度分析, Rパッケージ, 生物統計"
+    },
+    {
+      "title": "A Better R Programming Experience Thanks to Tree-sitter",
+      "url": "https://www.r-bloggers.com/2026/04/a-better-r-programming-experience-thanks-to-tree-sitter/",
+      "summary": "<p>A little bit less than two years ago, building on work by Jim Hester and Kevin Ushey, Davis Vaughan completed a very impactful JavaScript file for the R community: an R grammar for the Tree-sitter parsing generator. He even got a round of applause for...</p>\n<strong>Continue reading</strong>: <a ",
+      "published": "Thu, 02 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 80,
+      "category": "R for Clinical Trials",
+      "blog_title": "Tree-sitterでRプログラミングを劇的に改善：臨床統計家のための開発環境最適化",
+      "keyword": "Rプログラミング, 開発環境, 臨床統計, Tree-sitter"
+    },
+    {
+      "title": "UK monarchs’ longevity against their people: a demographically correct reanalysis",
+      "url": "https://www.r-bloggers.com/2026/03/uk-monarchs-longevity-against-their-people-a-demographically-correct-reanalysis/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>NoteEnd of March is the time when I remember with warm nostalgia the vivid memories of working alongside and learning from Jim Vaupel, who died untimely on 27th March 2022. He was a brilliant demographer and a vital person who radiated",
+      "published": "Mon, 30 Mar 2026 22:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 80,
+      "category": "生存時間解析",
+      "blog_title": "英国君主の寿命分析から学ぶ：生物統計学における生存時間解析の重要性",
+      "keyword": "生存時間解析, デモグラフィ, 再解析, 生物統計"
+    },
+    {
+      "title": "ECMLE on CRAN",
+      "url": "https://www.r-bloggers.com/2026/03/ecmle-on-cran/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> x\n</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: both;\"></div>\n<strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/03/ecmle-on-cran/\">ECMLE on CRAN</a>",
+      "published": "Thu, 26 Mar 2026 23:26:05 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 80,
+      "category": "R for Clinical Trials",
+      "blog_title": "CRANに登場したECMLEパッケージ：Rで複雑な統計モデルを扱う新手法",
+      "keyword": "Rパッケージ, ECMLE, 統計モデリング, CRAN"
+    },
+    {
+      "title": "Meet dataviewR: The View() You Always Wanted",
+      "url": "https://www.r-bloggers.com/2026/03/meet-dataviewr-the-view-you-always-wanted/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Disclaimer: This blog contains opinions that are of the authors alone and do not necessarily reflect the strategy of their respective organizations.</p>\n<p>The humble View() and its limits<br />\nView() has served R programmers well for",
+      "published": "Tue, 31 Mar 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 78,
+      "category": "R for Clinical Trials",
+      "blog_title": "Rパッケージ dataviewR：臨床データレビューを加速する究極のView()関数",
+      "keyword": "Rパッケージ, データレビュー, 臨床データ, dataviewR"
+    },
+    {
+      "title": "Why Learning R is a Good Career Move in 2026",
+      "url": "https://www.r-bloggers.com/2026/03/why-learning-r-is-a-good-career-move-in-2026/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Over the course of my career as a Data Scientist, I’ve worked on projects ranging from simple code reviews, to large application builds. For the most part, I have used R to do this.<br />\nIf you’re getting into coding or data science, ",
+      "published": "Thu, 26 Mar 2026 23:59:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 78,
+      "category": "R for Clinical Trials",
+      "blog_title": "2026年にR言語を学ぶべき理由：臨床統計家としてのキャリアを飛躍させる",
+      "keyword": "R言語, キャリア, 臨床統計, プログラミング"
+    },
+    {
+      "title": "[한국데이터정보과학회 - SAS Korea] 제2회 데이터 분석 경진대회 결과 발표",
+      "url": "https://blogs.sas.com/content/saskorea/2026/04/06/%ed%95%9c%ea%b5%ad%eb%8d%b0%ec%9d%b4%ed%84%b0%ec%a0%95%eb%b3%b4%ea%b3%bc%ed%95%99%ed%9a%8c-sas-korea-%ec%a0%9c2%ed%9a%8c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%eb%b6%84%ec%84%9d-%ea%b2%bd%ec%a7%84%eb%8c%80/",
+      "summary": "<p>안녕하세요? 한국데이터정보과학회가 주관하고 SAS 코리아가 후원하는 '제 2회 데이터 분석 경진대회'에 참가해 주신 모든 분들께 감사드립니다. 130 여 개 팀의 열띤 참가 속에서 1차 심사가 마무리되어 아래에 결과를 발표합니다. [1차 심사 결과] : 결과 보기 &#160; *한국데이터정보과학회 홈페이지 공지사항(경진대회 개요)을 꼭 확인하시고 불이익을 받지 않도록 주의해 주시기 바랍니다. &#160; 앞으로도 계속 [...]</p>\n<p>The post <a href=\"https://blogs.sas.com/content/",
+      "published": "Mon, 06 Apr 2026 00:55:42 +0000",
+      "source": "SAS Blogs",
+      "score": 75,
+      "category": "SAS実践テクニック",
+      "blog_title": "SAS Korea データ分析コンペ結果：臨床統計家が注目すべき点",
+      "keyword": "SAS, データ分析, 競進大会, 臨床統計"
+    },
+    {
+      "title": "February 2026 Top 40 New CRAN Packages",
+      "url": "https://www.r-bloggers.com/2026/03/february-2026-top-40-new-cran-packages/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Two hundred and fifty-five of the new packages submitted to CRAN in February were still there in mid-March. Here are my Top 40 picks in seventeen categories: Artificial Intelligence, Biology, Buddhism, Climate Science, Computational Me",
+      "published": "Thu, 26 Mar 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "2026年2月のCRAN新規パッケージ速報：臨床研究に役立つRツールを探す",
+      "keyword": "Rパッケージ, CRAN, 臨床研究, 最新情報"
+    },
+    {
+      "title": "rOpenSci News Digest, March 2026",
+      "url": "https://www.r-bloggers.com/2026/03/ropensci-news-digest-march-2026/",
+      "summary": "<p>Dear rOpenSci friends, it’s time for our monthly news roundup!  You can read this post on our blog. Now let’s dive into the activity at and around rOpenSci!</p>\n<p>rOpenSci HQ</p>\n<p>rOpenSci Dev Guide 1.0.0: Trilingual and Improved<br />\nrOpenSci Software...</p>\n<strong>Continue reading</strong>",
+      "published": "Mon, 30 Mar 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 70,
+      "category": "R for Clinical Trials",
+      "blog_title": "rOpenSciニュースダイジェスト：臨床研究に役立つRパッケージ最新情報",
+      "keyword": "Rパッケージ, rOpenSci, 臨床研究, 最新情報"
+    },
+    {
+      "title": "One interface, (Almost) Every Classifier: unifiedml v0.2.1",
+      "url": "https://www.r-bloggers.com/2026/04/one-interface-almost-every-classifier-unifiedml-v0-2-1/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> A new version of `unifiedml` is out; available on CRAN. `unifiedml` is an effort to offer a unified interface to R's machine learning models.</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: bo",
+      "published": "Sat, 04 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 65,
+      "category": "海外トレンド翻訳",
+      "blog_title": "統一インターフェースの分類器ツール unifiedmlとは？生物統計への応用可能性",
+      "keyword": "機械学習, 分類器, バイオ統計, ツール"
+    },
+    {
+      "title": "Optimizing inspector assignments using SAS Optimization in federal and state meat processing facilities",
+      "url": "https://blogs.sas.com/content/subconsciousmusings/2026/04/01/sas-optimization-meat-processing/",
+      "summary": "<p>Shahrzad Azizzadeh and team discuss optimizing inspector assignments using SAS Optimization in federal and state meat processing facilities.</p>\n<p>The post <a href=\"https://blogs.sas.com/content/subconsciousmusings/2026/04/01/sas-optimization-meat-processing/\" rel=\"nofollow\">Optimizing inspector",
+      "published": "Wed, 01 Apr 2026 13:45:05 +0000",
+      "source": "SAS Blogs",
+      "score": 60,
+      "category": "SAS実践テクニック",
+      "blog_title": "SAS Optimizationの応用事例：他分野から学ぶ統計的最適化戦略",
+      "keyword": "SAS Optimization, 最適化, SAS事例"
+    }
+  ]
+}

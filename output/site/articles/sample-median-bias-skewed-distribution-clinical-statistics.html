@@ -1,0 +1,1301 @@
+
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <title>標本中央値と偏り：歪んだ分布における臨床統計の注意点 | 臨床統計ラボ</title>
+
+    
+    <meta name="description" content="">
+    <meta name="author" content="臨床統計ラボ">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html">
+
+    
+    <meta property="og:site_name" content="臨床統計ラボ">
+    <meta property="og:title" content="標本中央値と偏り：歪んだ分布における臨床統計の注意点">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html">
+    <meta property="og:locale" content="ja_JP">
+
+    
+    <meta property="og:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="標本中央値と偏り：歪んだ分布における臨床統計の注意点">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSFVD34MKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CSFVD34MKK');
+    </script>
+    
+
+    
+    
+
+    
+    
+    
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "標本中央値と偏り：歪んだ分布における臨床統計の注意点",
+    "description": "",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html"}
+    ,"image": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "標本中央値, 偏り, 歪んだ分布, 臨床統計, 生物統計"
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "\u6a19\u672c\u4e2d\u592e\u5024\u3068\u6a19\u672c\u5e73\u5747\u3001\u3069\u3061\u3089\u3092\u4f7f\u3046\u3079\u304d\u3067\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A1: \u30c7\u30fc\u30bf\u304c\u6b63\u898f\u5206\u5e03\u306b\u8fd1\u3044\u5de6\u53f3\u5bfe\u79f0\u306a\u5206\u5e03\u3092\u793a\u3059\u5834\u5408\u306f\u3001\u6a19\u672c\u5e73\u5747\u304c\u4e00\u822c\u7684\u306b\u52b9\u7387\u7684\u306a\u63a8\u5b9a\u91cf\u3067\u3042\u308a\u3001\u597d\u307e\u308c\u307e\u3059\u3002\u3057\u304b\u3057\u3001\u30c7\u30fc\u30bf\u304c**\u6b6a\u3093\u3060\u5206\u5e03** \u3092\u793a\u3059\u5834\u5408\u3084\u3001\u8457\u3057\u3044\u5916\u308c\u5024\u3092\u542b\u3080\u5834\u5408\u306f\u3001\u5916\u308c\u5024\u306e\u5f71\u97ff\u3092\u53d7\u3051\u306b\u304f\u3044**\u6a19\u672c\u4e2d\u592e\u5024** \u306e\u65b9\u304c\u3001\u30c7\u30fc\u30bf\u306e\u4e2d\u5fc3\u50be\u5411\u3092\u3088\u308a\u9069\u5207\u306b\u8868\u73fe\u3067\u304d\u307e\u3059\u3002\u3069\u3061\u3089\u3092\u9078\u3076\u3079\u304d\u304b\u306f\u3001\u30c7\u30fc\u30bf\u306e\u7279\u6027\u3068\u89e3\u6790\u306e\u76ee\u7684\u306b\u5fdc\u3058\u3066\u614e\u91cd\u306b\u5224\u65ad\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002\u4e21\u65b9\u306e\u7d71\u8a08\u91cf\u3092\u5831\u544a\u3057\u3001\u6bd4\u8f03\u3059\u308b\u3053\u3068\u3082\u6709\u52b9\u306a\u30a2\u30d7\u30ed\u30fc\u30c1\u3067\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u6a19\u672c\u4e2d\u592e\u5024\u306e\u504f\u308a\u306f\u3001\u3069\u306e\u7a0b\u5ea6\u554f\u984c\u306b\u306a\u308a\u307e\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A2: \u6a19\u672c\u4e2d\u592e\u5024\u306e\u504f\u308a\u306f\u3001\u4e3b\u306b\u30b5\u30f3\u30d7\u30eb\u30b5\u30a4\u30ba\u304c\u5c0f\u3055\u3044\u5834\u5408\u3084\u3001\u5206\u5e03\u306e\u6b6a\u307f\u304c\u5927\u304d\u3044\u5834\u5408\u306b\u9855\u8457\u306b\u306a\u308a\u307e\u3059\u3002\u30b5\u30f3\u30d7\u30eb\u30b5\u30a4\u30ba\u304c\u5341\u5206\u306b\u5927\u304d\u304f\u306a\u308b\u3068\u3001\u6a19\u672c\u4e2d\u592e\u5024\u306f\u6f38\u8fd1\u7684\u306b\u4e0d\u504f\u6027\u3092\u6301\u3064\u305f\u3081\u3001\u504f\u308a\u306e\u554f\u984c\u306f\u5c0f\u3055\u304f\u306a\u308a\u307e\u3059\u3002\u3057\u304b\u3057\u3001\u5c0f\u898f\u6a21\u306a\u81e8\u5e8a\u8a66\u9a13\u3067\u306f\u3001\u3053\u306e\u504f\u308a\u304c\u7d50\u679c\u306e\u89e3\u91c8\u306b\u5f71\u97ff\u3092\u4e0e\u3048\u308b\u53ef\u80fd\u6027\u304c\u3042\u308b\u305f\u3081\u3001\u6ce8\u610f\u304c\u5fc5\u8981\u3067\u3059\u3002\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3\u3084\u30d6\u30fc\u30c8\u30b9\u30c8\u30e9\u30c3\u30d7\u6cd5\u306a\u3069\u3092\u6d3b\u7528\u3057\u3066\u3001\u504f\u308a\u306e\u7a0b\u5ea6\u3092\u8a55\u4fa1\u3059\u308b\u3053\u3068\u3082\u691c\u8a0e\u3055\u308c\u307e\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u5c0f\u898f\u6a21\u81e8\u5e8a\u8a66\u9a13\u3067\u4e2d\u592e\u5024\u3092\u4f7f\u3046\u969b\u306e\u6ce8\u610f\u70b9\u306f\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A3: \u5c0f\u898f\u6a21\u81e8\u5e8a\u8a66\u9a13\u3067\u4e2d\u592e\u5024\u3092\u4f7f\u7528\u3059\u308b\u5834\u5408\u3001**\u504f\u308a** \u306e\u554f\u984c\u306b\u52a0\u3048\u3066\u3001\u63a8\u5b9a\u91cf\u306e\u5206\u6563\u304c\u5927\u304d\u3044\uff08\u7cbe\u5ea6\u304c\u4f4e\u3044\uff09\u53ef\u80fd\u6027\u304c\u3042\u308b\u70b9\u306b\u6ce8\u610f\u304c\u5fc5\u8981\u3067\u3059\u3002\u30b5\u30f3\u30d7\u30eb\u30b5\u30a4\u30ba\u304c\u5c0f\u3055\u3044\u3068\u3001\u6a19\u672c\u4e2d\u592e\u5024\u306e\u3070\u3089\u3064\u304d\u304c\u5927\u304d\u304f\u306a\u308a\u3001\u771f\u306e\u6bcd\u4e2d\u592e\u5024\u304b\u3089\u306e\u4fe1\u983c\u533a\u9593\u304c\u5e83\u304f\u306a\u308b\u50be\u5411\u304c\u3042\u308a\u307e\u3059\u3002\u89e3\u6790\u8a08\u753b\u66f8\uff08SAP\uff09\u306b\u306f\u3001\u4e2d\u592e\u5024\u3092\u9078\u629e\u3057\u305f\u7406\u7531\u3068\u3001\u305d\u306e\u7d71\u8a08\u7684\u7279\u6027\uff08\u504f\u308a\u306e\u53ef\u80fd\u6027\u306a\u3069\uff09\u306b\u95a2\u3059\u308b\u8003\u616e\u4e8b\u9805\u3092\u660e\u78ba\u306b\u8a18\u8ff0\u3059\u308b\u3053\u3068\u304c\u91cd\u8981\u3067\u3059\u3002{{internal_link:\u81e8\u5e8a\u8a66\u9a13\u306e\u30b5\u30f3\u30d7\u30eb\u30b5\u30a4\u30ba\u8a08\u7b97}}\u306b\u95a2\u3059\u308b\u77e5\u8b58\u3082\u5f79\u7acb\u3064\u3067\u3057\u3087\u3046\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "\u6b6a\u3093\u3060\u5206\u5e03\u3067\u3082\u4e0d\u504f\u306a\u4e2d\u592e\u5024\u63a8\u5b9a\u65b9\u6cd5\u306f\u3042\u308a\u307e\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A4: \u6b6a\u3093\u3060\u5206\u5e03\u3067\u3042\u3063\u3066\u3082\u3001\u30d6\u30fc\u30c8\u30b9\u30c8\u30e9\u30c3\u30d7\u6cd5\uff08Bootstrap Method\uff09\u306a\u3069\u306e\u518d\u30b5\u30f3\u30d7\u30ea\u30f3\u30b0\u624b\u6cd5\u3092\u7528\u3044\u308b\u3053\u3068\u3067\u3001\u6a19\u672c\u4e2d\u592e\u5024\u306e\u4fe1\u983c\u533a\u9593\u3092\u69cb\u7bc9\u3057\u305f\u308a\u3001\u504f\u308a\u3092\u88dc\u6b63\u3057\u305f\u308a\u3059\u308b\u3053\u3068\u304c\u53ef\u80fd\u3067\u3059\u3002\u307e\u305f\u3001\u5206\u4f4d\u70b9\u56de\u5e30\uff08Quantile Regression\uff09\u306e\u3088\u3046\u306a\u624b\u6cd5\u306f\u3001\u5206\u5e03\u5168\u4f53\u306e\u4e2d\u592e\u5024\u3084\u4ed6\u306e\u5206\u4f4d\u70b9\u306b\u5bfe\u3059\u308b\u5171\u5909\u91cf\u306e\u5f71\u97ff\u3092\u76f4\u63a5\u30e2\u30c7\u30eb\u5316\u3067\u304d\u308b\u305f\u3081\u3001\u5e73\u5747\u5024\u306e\u56de\u5e30\u5206\u6790\u304c\u4e0d\u9069\u5207\u3068\u306a\u308b\u6b6a\u3093\u3060\u5206\u5e03\u30c7\u30fc\u30bf\u306b\u6709\u52b9\u3067\u3059\u3002\u3053\u308c\u3089\u306e\u624b\u6cd5\u306f\u3001**\u751f\u7269\u7d71\u8a08** \u306e\u9ad8\u5ea6\u306a\u89e3\u6790\u30c6\u30af\u30cb\u30c3\u30af\u3068\u3057\u3066\u77e5\u3089\u308c\u3066\u3044\u307e\u3059\u3002"
+            }
+        }
+        
+    ]
+}
+</script>
+
+
+
+    <style>
+        /* =============================================
+           CSS変数: テーマカラー（config.THEMEから注入）
+           ============================================= */
+        :root {
+            --color-dark-bg: #0f0a1e;
+            --color-dark-surface: #16213e;
+            --color-primary: #7c3aed;
+            --color-accent: #5b21b6;
+            --color-text-dark: #eeeeee;
+            --color-text-muted-dark: #a0aec0;
+
+            --color-light-bg: #f5f0ff;
+            --color-light-surface: #ffffff;
+            --color-text-light: #1a202c;
+            --color-text-muted-light: #64748b;
+
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --max-width: 1280px;
+            --sidebar-width: 320px;
+            --header-height: 64px;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-pill: 9999px;
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--color-dark-bg);
+            --surface: var(--color-dark-surface);
+            --text: var(--color-text-dark);
+            --text-muted: var(--color-text-muted-dark);
+            --border: rgba(255,255,255,0.08);
+            --code-bg: rgba(255,255,255,0.06);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--color-light-bg);
+            --surface: var(--color-light-surface);
+            --text: var(--color-text-light);
+            --text-muted: var(--color-text-muted-light);
+            --border: rgba(0,0,0,0.08);
+            --code-bg: #f1f5f9;
+        }
+
+        @media (prefers-color-scheme: light) {
+            [data-theme="auto"] {
+                --bg: var(--color-light-bg);
+                --surface: var(--color-light-surface);
+                --text: var(--color-text-light);
+                --text-muted: var(--color-text-muted-light);
+                --border: rgba(0,0,0,0.08);
+                --code-bg: #f1f5f9;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            [data-theme="auto"] {
+                --bg: var(--color-dark-bg);
+                --surface: var(--color-dark-surface);
+                --text: var(--color-text-dark);
+                --text-muted: var(--color-text-muted-dark);
+                --border: rgba(255,255,255,0.08);
+                --code-bg: rgba(255,255,255,0.06);
+            }
+        }
+
+        /* =============================================
+           リセット・基本
+           ============================================= */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* =============================================
+           流体タイポグラフィ
+           ============================================= */
+        h1 { font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem); font-weight: 800; line-height: 1.3; }
+        h2 { font-size: clamp(1.35rem, 1.8vw + 0.8rem, 1.75rem); font-weight: 700; line-height: 1.35; }
+        h3 { font-size: clamp(1.1rem, 1.2vw + 0.6rem, 1.35rem); font-weight: 600; line-height: 1.4; }
+        h4 { font-size: 1.1rem; font-weight: 600; }
+        p { margin-bottom: 1em; }
+
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.2s, opacity 0.2s; }
+        a:hover { opacity: 0.85; text-decoration: underline; }
+        img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
+
+        code {
+            font-family: var(--font-mono);
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 1.25em;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; }
+
+        blockquote {
+            border-left: 4px solid var(--color-accent);
+            padding: 0.75em 1.25em;
+            margin: 1.5em 0;
+            color: var(--text-muted);
+            background: var(--code-bg);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+        th, td { padding: 0.75em 1em; border: 1px solid var(--border); text-align: left; }
+        th { background: var(--code-bg); font-weight: 600; }
+
+        /* =============================================
+           レイアウト
+           ============================================= */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        .layout-main { display: flex; gap: 2.5rem; margin-top: 2rem; margin-bottom: 3rem; }
+        .content-area { flex: 1; min-width: 0; }
+        .sidebar { width: var(--sidebar-width); flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+            .layout-main { flex-direction: column; }
+            .sidebar { width: 100%; }
+        }
+
+        /* =============================================
+           ヘッダー
+           ============================================= */
+        .site-header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+        .site-logo a {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .site-logo a:hover { opacity: 1; text-decoration: none; }
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .site-nav { display: flex; align-items: center; gap: 1.25rem; }
+        .site-nav a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .site-nav a:hover { color: var(--color-accent); text-decoration: none; }
+
+        /* ダークモード切替ボタン */
+        .theme-toggle {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            padding: 6px 10px;
+            font-size: 1.1rem;
+            line-height: 1;
+            color: var(--text);
+            transition: background 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover { background: var(--color-primary); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px auto;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .site-nav {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0; right: 0;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+            }
+            .site-nav.open { display: flex; }
+            .site-nav a { padding: 10px 0; min-height: 44px; display: flex; align-items: center; }
+        }
+
+        /* =============================================
+           Bentoカードグリッド
+           ============================================= */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+
+        .card-thumb {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-thumb-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card-body { padding: 1.25rem 1.5rem; }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-title a { color: var(--text); }
+        .card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+        .card-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .card-excerpt {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+        /* モバイル: カード横型 */
+        @media (max-width: 640px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .card { display: flex; flex-direction: row; }
+            .card-thumb { aspect-ratio: 1 / 1; width: 120px; min-height: 120px; flex-shrink: 0; }
+            .card-body { padding: 1rem; flex: 1; min-width: 0; }
+            .card-title { font-size: 0.95rem; }
+            .card-excerpt { -webkit-line-clamp: 2; }
+        }
+
+        /* =============================================
+           タグ（ピル型バッジ）
+           ============================================= */
+        .tag {
+            display: inline-block;
+            padding: 0.2em 0.65em;
+            font-size: 0.75rem;
+            background: var(--code-bg);
+            color: var(--text-muted);
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .tag:hover { background: var(--color-accent); color: #fff; text-decoration: none; }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+        }
+        .category-badge:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(233,69,96,0.12);
+            color: var(--color-accent);
+            border-radius: var(--radius-pill);
+        }
+
+        /* =============================================
+           パンくず・記事本文・目次
+           ============================================= */
+        .breadcrumb {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+            margin-bottom: 1.5rem; flex-wrap: wrap;
+        }
+        .breadcrumb a { color: var(--text-muted); }
+        .breadcrumb a:hover { color: var(--color-accent); }
+        .breadcrumb-sep { color: var(--text-muted); opacity: 0.5; }
+
+        .article-header { margin-bottom: 2rem; }
+        .article-title {
+            font-size: clamp(1.5rem, 3vw + 0.5rem, 2.2rem);
+            font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem;
+        }
+        .article-meta {
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+            color: var(--text-muted); font-size: 0.88rem;
+        }
+
+        .article-body { font-size: 1rem; line-height: 1.9; }
+        .article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.4em; border-bottom: 2px solid var(--color-accent); }
+        .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+        .article-body ul, .article-body ol { margin: 1em 0; padding-left: 1.5em; }
+        .article-body li { margin-bottom: 0.4em; }
+
+        .toc-container {
+            background: var(--code-bg); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+        }
+        .toc-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-accent); }
+        .toc-container ul { list-style: none; padding-left: 0; margin: 0; }
+        .toc-container li { margin-bottom: 0.3em; }
+        .toc-container ul ul { padding-left: 1.25em; }
+        .toc-container a { color: var(--text-muted); font-size: 0.88rem; }
+        .toc-container a:hover { color: var(--color-accent); }
+
+        /* =============================================
+           SNSシェア・ページネーション
+           ============================================= */
+        .share-buttons { display: flex; gap: 0.6rem; margin: 2rem 0; flex-wrap: wrap; }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5em 1em; border-radius: var(--radius-sm);
+            font-size: 0.82rem; font-weight: 600; color: #fff;
+            text-decoration: none; transition: opacity 0.2s; min-height: 44px;
+        }
+        .share-btn:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+        .share-btn-twitter { background: #1DA1F2; }
+        .share-btn-facebook { background: #1877F2; }
+        .share-btn-hatena { background: #00A4DE; }
+        .share-btn-line { background: #06C755; }
+
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 2.5rem 0; }
+        .pagination a, .pagination span {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 44px; height: 44px; padding: 0 0.5em;
+            border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500;
+            text-decoration: none; transition: background 0.2s, color 0.2s;
+        }
+        .pagination a { color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); }
+        .pagination a:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); text-decoration: none; }
+        .pagination .current { background: var(--color-accent); color: #fff; border: 1px solid var(--color-accent); }
+
+        /* =============================================
+           サイドバー
+           ============================================= */
+        .sidebar-widget {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .sidebar-widget-title {
+            font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-accent);
+        }
+        .sidebar-category-list { list-style: none; padding: 0; }
+        .sidebar-category-list li { margin-bottom: 0.3rem; }
+        .sidebar-category-list a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0; color: var(--text-muted); font-size: 0.88rem;
+            border-bottom: 1px solid var(--border); text-decoration: none; min-height: 44px;
+        }
+        .sidebar-category-list a:hover { color: var(--color-accent); text-decoration: none; }
+        .sidebar-category-count {
+            font-size: 0.78rem; background: var(--code-bg);
+            padding: 0.15em 0.5em; border-radius: var(--radius-pill);
+        }
+
+        .adsense-slot { margin: 1.5rem 0; text-align: center; }
+
+        /* =============================================
+           フッター
+           ============================================= */
+        .site-footer {
+            background: var(--surface); border-top: 1px solid var(--border);
+            padding: 2.5rem 0; margin-top: 3rem;
+        }
+        .footer-inner {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; flex-wrap: wrap; gap: 2rem;
+        }
+        .footer-section h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 0.3rem; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .footer-copyright {
+            text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);
+        }
+
+        /* =============================================
+           ユーティリティ
+           ============================================= */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .empty-state { text-align: center; padding: 4rem 1rem; color: var(--text-muted); }
+        .empty-state p { font-size: 1.1rem; }
+
+        /* =============================================
+           ヒーロー画像（CSS生成・コスト0）
+           ============================================= */
+        .article-hero {
+            position: relative;
+            aspect-ratio: 21 / 9;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .article-hero-emoji {
+            font-size: clamp(4rem, 8vw, 8rem);
+            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            animation: hero-float 3s ease-in-out infinite;
+        }
+        @keyframes hero-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .article-hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(255,255,255,0.06) 0%, transparent 40%);
+            z-index: 1;
+        }
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        /* セクション見出しの絵文字装飾 */
+        .article-body h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 強調ボックス（blockquote内の💡⚠️✅） */
+        .article-body blockquote {
+            position: relative;
+            padding: 1rem 1.5rem;
+            margin: 1.5em 0;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+        .article-body blockquote p { margin-bottom: 0.3em; }
+        .article-body blockquote p:last-child { margin-bottom: 0; }
+
+        /* インデックスカードのサムネイルにも絵文字 */
+        .card-thumb-emoji {
+            font-size: 3rem;
+            z-index: 2;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+
+        /* テーブル装飾強化 */
+        .article-body table {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .article-body th {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #fff;
+            font-weight: 600;
+        }
+        .article-body tr:nth-child(even) td {
+            background: var(--code-bg);
+        }
+
+        /* 番号付きリスト装飾 */
+        .article-body ol {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .article-body ol > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+        }
+        .article-body ol > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        /* ===== MuscleLove Promo Card ===== */
+        .promo-musclelove { padding: 30px 0 10px; }
+        .promo-musclelove .promo-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 22px 24px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #FFF7E6 0%, #FFE9B0 100%);
+            border: 1.5px solid #F5C842;
+            box-shadow: 0 6px 24px rgba(27, 67, 50, 0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .promo-musclelove .promo-icon { font-size: 2.4rem; line-height: 1; flex-shrink: 0; }
+        .promo-musclelove .promo-body { flex: 1; min-width: 0; }
+        .promo-musclelove .promo-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8B6B1C;
+            margin-bottom: 4px;
+        }
+        .promo-musclelove .promo-body h3 { font-size: 1.08rem; font-weight: 900; color: #1B4332; margin-bottom: 4px; }
+        .promo-musclelove .promo-body p { font-size: 0.88rem; color: #44533E; line-height: 1.55; }
+        .promo-musclelove .promo-cta { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+        .promo-musclelove .btn-promo {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #1B4332;
+            color: #F5C842 !important;
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            text-align: center;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .promo-musclelove .btn-promo:hover { transform: translateY(-1px); opacity: 1; }
+        .promo-musclelove .btn-promo.outline {
+            background: transparent;
+            border: 1.5px solid #1B4332;
+            color: #1B4332 !important;
+        }
+        @media (max-width: 640px) {
+            .promo-musclelove .promo-card { flex-direction: column; align-items: flex-start; text-align: left; }
+            .promo-musclelove .promo-cta { flex-direction: row; flex-wrap: wrap; width: 100%; }
+            .promo-musclelove .btn-promo { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="site-logo">
+                <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">臨床統計ラボ</a>
+            </div>
+
+            <div class="header-right">
+                <nav class="site-nav" id="siteNav">
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+                    
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSS</a>
+                </nav>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライト切替">
+                    <span id="themeIcon">&#9790;</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="メニュー" onclick="document.getElementById('siteNav').classList.toggle('open')">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <main class="container">
+        
+<div class="layout-main">
+    <div class="content-area">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html">臨床統計最新ニュース</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <span>標本中央値と偏り：歪んだ分布における臨床統計の注意点</span>
+        </nav>
+
+        <article>
+            
+            
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+                <div class="article-hero-overlay"></div>
+            </div>
+            
+
+            <header class="article-header">
+                <h1 class="article-title">標本中央値と偏り：歪んだ分布における臨床統計の注意点</h1>
+                <div class="article-meta">
+                    <span>2026-04-25</span>
+                    <span class="reading-time">3分で読める</span>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/臨床統計最新ニュース.html" class="category-badge">臨床統計最新ニュース</a>
+                </div>
+                <div class="card-tags mt-1"><span class="tag">標本中央値</span><span class="tag">偏り</span><span class="tag">歪んだ分布</span><span class="tag">臨床統計</span><span class="tag">生物統計</span></div>
+            </header>
+
+            
+
+            
+            <details class="toc-container" open>
+                <summary class="toc-title" style="cursor:pointer;user-select:none;">目次</summary>
+                <div class="toc"><span class="toctitle">目次</span><ul>
+<li><a href="#_2">この記事でわかること</a></li>
+<li><a href="#_3">結論から言うと</a></li>
+<li><a href="#_4">標本中央値とは？</a></li>
+<li><a href="#_5">統計的背景・理論</a><ul>
+<li><a href="#unbiasednessbias">不偏性（Unbiasedness）と偏り（Bias）</a></li>
+<li><a href="#_6">標本中央値の不偏性：対称分布と歪んだ分布</a></li>
+</ul>
+</li>
+<li><a href="#sasr">SAS/Rコード実装</a><ul>
+<li><a href="#_7">サンプルデータ生成とシミュレーションの考え方</a></li>
+<li><a href="#sas">SASコードによるシミュレーション</a></li>
+<li><a href="#r">Rコードによるシミュレーションと可視化</a></li>
+</ul>
+</li>
+<li><a href="#_8">実務での活用場面</a></li>
+<li><a href="#_9">海外の最新動向</a><ul>
+<li><a href="#ich-e9r1-estimands">ICH E9(R1) 統計的原則への追補：Estimandsと感度分析</a></li>
+<li><a href="#fdaemapro">FDA/EMAのガイダンスと患者報告アウトカム（PRO）</a></li>
+</ul>
+</li>
+<li><a href="#faq">よくある質問（FAQ）</a><ul>
+<li><a href="#q1">Q1: 標本中央値と標本平均、どちらを使うべきですか？</a></li>
+<li><a href="#q2">Q2: 標本中央値の偏りは、どの程度問題になりますか？</a></li>
+<li><a href="#q3">Q3: 小規模臨床試験で中央値を使う際の注意点は？</a></li>
+<li><a href="#q4">Q4: 歪んだ分布でも不偏な中央値推定方法はありますか？</a></li>
+</ul>
+</li>
+<li><a href="#_10">臨床統計スキルを磨くためのリソース</a></li>
+<li><a href="#_11">まとめ</a></li>
+</ul>
+</div>
+
+            </details>
+            
+
+            <div class="article-body"><h1 id="_1">標本中央値と偏り：歪んだ分布における臨床統計の注意点</h1>
+<p><img alt="標本中央値と偏り：歪んだ分布における臨床統計の注意点" src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+<p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
+<p>臨床統計ラボへようこそ！生物統計の専門家である私が、臨床試験データ解析の現場で役立つ実践的な情報をお届けします。今回は、特に <strong>歪んだ分布</strong> のデータ解析において重要な、<strong>標本中央値</strong> の特性とその <strong>偏り</strong> について深掘りします。なぜ中央値が平均値よりも優れた代表値となる場合があるのか、しかしどのような落とし穴があるのかを、SAS/Rコードと共に詳しく解説していきます。日本の臨床統計担当者の皆様が、より正確で信頼性の高い解析結果を導き出すための一助となれば幸いです。</p>
+<h2 id="_2">この記事でわかること</h2>
+<ul>
+<li>標本中央値が持つ統計的特性と、その偏り（バイアス）の概念を理解できます。</li>
+<li>歪んだ分布データにおける標本中央値と標本平均値の使い分けが明確になります。</li>
+<li>臨床試験データ解析で標本中央値を適切に活用するための実務的なポイントを習得できます。</li>
+<li>SASおよびRを用いた、標本中央値の計算と偏りの評価方法を実践的に学べます。</li>
+<li>海外の最新ガイダンスに基づく、臨床統計の実践的アプローチとその日本の臨床現場への影響を把握できます。</li>
+</ul>
+<h2 id="_3">結論から言うと</h2>
+<p>歪んだ分布を示す臨床試験データでは、外れ値の影響を受けにくい標本中央値が、標本平均値よりもロバストな代表値となります。しかし、標本中央値は小規模なサンプルサイズや歪みが大きい分布では、真の母中央値に対する偏り（バイアス）を持つことが知られています。この偏りの存在を理解し、その統計的特性を踏まえた上で適切な解析戦略を立てることが、<strong>生物統計</strong> の観点から極めて重要です。本記事では、この標本中央値の特性と実務での活用場面、そしてSAS/Rによる実践的な解析手法を詳しく解説し、日本の臨床統計担当者の皆様が正確なデータ解釈を行えるよう支援します。</p>
+<h2 id="_4">標本中央値とは？</h2>
+<p>まず、<strong>標本中央値</strong>（Sample Median）が一体何であるか、その基本的な概念から確認していきましょう。</p>
+<p>標本中央値とは、観測されたデータ（標本）を小さい順（または大きい順）に並べたときに、ちょうど真ん中に位置する値のことです。例えば、5つのデータ「10, 20, 30, 40, 100」があった場合、これらを並べ替えて「10, 20, 30, 40, 100」となり、真ん中の値である「30」が標本中央値となります。データ数が偶数の場合は、真ん中に位置する2つの値の平均を中央値とします。例えば「10, 20, 30, 40」の場合、20と30の平均である25が標本中央値です。</p>
+<p>これに対し、最も一般的に用いられる代表値である <strong>標本平均値</strong>（Sample Mean）は、全てのデータを合計し、その個数で割った値です。上記の例「10, 20, 30, 40, 100」の場合、標本平均値は (10+20+30+40+100) / 5 = 200 / 5 = 40 となります。この例でわかるように、データの中に「100」のような極端に大きな値（外れ値）があると、標本平均値は大きく影響を受け、データの中心を適切に表せなくなることがあります。しかし、標本中央値は外れ値の影響を受けにくく、データの頑健な（ロバストな）代表値として機能します。この特性から、<strong>歪んだ分布</strong> のデータや外れ値を含むデータでは、標本中央値が好まれることがあります。</p>
+<p>臨床試験の分野では、患者さんの痛みスコア（VASスケール）、QOL（生活の質）評価、特定の薬物濃度、血中マーカーの測定値など、様々なデータが必ずしも左右対称の正規分布を示すわけではありません。むしろ、多くの場合で歪んだ分布を示すことが一般的です。このような状況で、データの中心傾向を適切に把握するために、標本中央値の理解と活用は不可欠となります。</p>
+<h2 id="_5">統計的背景・理論</h2>
+<p>標本中央値が臨床統計においてなぜ重要であり、またどのような統計的課題を抱えているのかを、<strong>偏り</strong>（Bias）の概念と合わせて掘り下げていきましょう。</p>
+<h3 id="unbiasednessbias">不偏性（Unbiasedness）と偏り（Bias）</h3>
+<p>統計的推定において、<strong>不偏性</strong>（Unbiasedness）とは、ある統計量（推定量）の期待値（E[・]）が、推定したい真の母数（母集団の特性値）に等しい性質を指します。例えば、標本平均 $\bar{X}$ は母平均 $\mu$ の不偏推定量です。これは、$E[\bar{X}] = \mu$ が成り立つことを意味します。つまり、同じ母集団から何度も標本を抽出し、そのたびに標本平均を計算すると、その標本平均たちの平均は真の母平均に近づくということです。</p>
+<p>一方、<strong>偏り</strong>（Bias）は、推定量の期待値と真の母数との差を示します。$\text{Bias}(\hat{\theta}) = E[\hat{\theta}] - \theta$ と表され、この差が0でない場合に「偏りのある（biased）推定量」とみなされます。</p>
+<h3 id="_6">標本中央値の不偏性：対称分布と歪んだ分布</h3>
+<p>標本中央値は、分布が左右対称である場合には母中央値の不偏推定量となります。例えば、正規分布（ベル型曲線を描く左右対称の分布）のようなケースでは、母平均、母中央値、最頻値がすべて一致するため、標本中央値も母中央値（および母平均）の不偏推定量として機能します。</p>
+<p>しかし、現実の臨床試験データでは、左右対称でない <strong>歪んだ分布</strong>（Skewed Distribution）が頻繁に現れます。歪んだ分布には、大きく分けて以下の2種類があります。</p>
+<ul>
+<li><strong>正の歪み（右に裾が長い分布、Right Skewed Distribution）</strong>：データが小さい値に集中し、大きな値に少数の外れ値が広がる分布。平均値 &gt; 中央値 &gt; 最頻値となる傾向があります。例：薬物濃度、所得、一部の疾患の症状スコア。</li>
+<li><strong>負の歪み（左に裾が長い分布、Left Skewed Distribution）</strong>：データが大きい値に集中し、小さな値に少数の外れ値が広がる分布。平均値 &lt; 中央値 &lt; 最頻値となる傾向があります。例：試験の成績（多くの人が高得点）、反応時間データ。</li>
+</ul>
+<p>このような歪んだ分布の場合、<strong>標本中央値は一般的に母中央値の不偏推定量ではありません</strong>。特にサンプルサイズが小さい場合、その偏りは無視できないものとなることがあります。例えば、正の歪みを持つ分布から標本を抽出すると、標本中央値は真の母中央値よりもわずかに小さくなる傾向があります（負の偏り）。これは、小さい値にデータが集中し、大きい値側の裾が長く伸びる特性が、サンプリング時に中央値の計算に影響を与えるためです。</p>
+<p>母中央値 $M$ は、確率変数 $X$ について $P(X \le M) = 0.5$ を満たす値として定義されます。標本中央値 $\tilde{X}$ は、順序統計量 $X_{(k)}$ を用いて、サンプルサイズ $n$ が奇数の場合は $X_{((n+1)/2)}$、偶数の場合は $(X_{(n/2)} + X_{(n/2+1)})/2$ と定義されます。歪んだ分布における標本中央値の期待値 $E[\tilde{X}]$ は、一般に母中央値 $M$ とは一致せず、$E[\tilde{X}] \neq M$ となるため、偏りが発生するのです。</p>
+<p>この偏りは、特にデータが極端に歪んでいる場合や、サンプルサイズが非常に小さい場合に顕著になります。臨床試験では、希少疾患の試験や探索的な早期相試験でサンプルサイズが限られることが多いため、標本中央値を用いる際にはこの偏りに十分注意を払う必要があります。</p>
+<h2 id="sasr">SAS/Rコード実装</h2>
+<p>ここでは、指数分布（代表的な正に歪んだ分布）からデータをシミュレーション抽出し、標本中央値がどのように偏りを持つかを確認するSASおよびRのコード例をご紹介します。このシミュレーションを通じて、<strong>標本中央値</strong> の統計的挙動を直感的に理解しましょう。</p>
+<h3 id="_7">サンプルデータ生成とシミュレーションの考え方</h3>
+<p>母集団として、尺度パラメータ $\lambda=1$ の指数分布（Exponential distribution）を仮定します。この分布の母中央値は $\text{ln}(2) \cdot \lambda \approx 0.693$ です。私たちはこの母集団から小さな標本（例えば $n=5$ や $n=10$）を繰り返し抽出し、各標本の中央値を計算します。これらの標本中央値の平均値が、真の母中央値からどれだけ離れているかを見ることで、偏りの程度を評価します。</p>
+<h3 id="sas">SASコードによるシミュレーション</h3>
+<p>SASでは <code>PROC IML</code> を用いることで、効率的にシミュレーションを実行できます。<code>PROC IML</code> は行列言語であり、ループ処理や統計関数の適用に優れています。</p>
+<pre><code class="language-sas">/* ------------------------------------------------------------------ */
+/* SASコード：標本中央値の偏りシミュレーション (指数分布)           */
+/* ------------------------------------------------------------------ */
+
+/* 1. PROC IML を用いたシミュレーション */
+PROC IML;
+  /* シミュレーション設定 */
+  call randseed(12345); /* 乱数シードの固定 */
+  lambda = 1;          /* 指数分布の尺度パラメータ */
+  true_median = log(2) * lambda; /* 母中央値の計算 */
+  print &quot;真の母中央値 = &quot; true_median;
+
+  num_simulations = 10000; /* シミュレーション繰り返し回数 */
+  sample_size_small = 5;   /* 小さいサンプルサイズ */
+  sample_size_large = 100; /* 大きいサンプルサイズ */
+
+  /* 結果を格納する行列 */
+  median_small = j(num_simulations, 1, .);
+  median_large = j(num_simulations, 1, .);
+
+  /* シミュレーションループ */
+  do i = 1 to num_simulations;
+    /* 小さいサンプルサイズで指数分布データを生成 */
+    data_small = rand(&quot;EXPONENTIAL&quot;, lambda, sample_size_small, 1);
+    median_small[i] = quantile(data_small, 0.5); /* 標本中央値を計算 */
+
+    /* 大きいサンプルサイズで指数分布データを生成 */
+    data_large = rand(&quot;EXPONENTIAL&quot;, lambda, sample_size_large, 1);
+    median_large[i] = quantile(data_large, 0.5); /* 標本中央値を計算 */
+  end;
+
+  /* 結果の集計と表示 */
+  mean_median_small = mean(median_small);
+  bias_small = mean_median_small - true_median;
+  print &quot;\n--- サンプルサイズ n=&quot; sample_size_small &quot; ---&quot;;
+  print &quot;シミュレートされた標本中央値の平均 = &quot; mean_median_small;
+  print &quot;偏り (Bias) = &quot; bias_small;
+
+  mean_median_large = mean(median_large);
+  bias_large = mean_median_large - true_median;
+  print &quot;\n--- サンプルサイズ n=&quot; sample_size_large &quot; ---&quot;;
+  print &quot;シミュレートされた標本中央値の平均 = &quot; mean_median_large;
+  print &quot;偏り (Bias) = &quot; bias_large;
+QUIT;
+
+/* 簡略化のため、ここではIMLのprint出力で結果を確認 */
+/* より本格的な可視化はRコードで示します */
+</code></pre>
+<p><strong>SASコードの解説:</strong></p>
+<ul>
+<li><code>PROC IML;</code>: 行列言語モードに入ります。</li>
+<li><code>call randseed(12345);</code>: 乱数シードを固定することで、常に同じ結果を再現できるようにします。<strong>生物統計</strong> におけるシミュレーションでは再現性が重要です。</li>
+<li><code>lambda = 1; true_median = log(2) * lambda;</code>: 指数分布のパラメータと真の母中央値を定義します。<code>log</code>関数は自然対数を計算します。</li>
+<li><code>num_simulations</code>: シミュレーションを10,000回繰り返します。これにより、標本中央値の期待値をより正確に推定できます。</li>
+<li><code>sample_size_small</code>, <code>sample_size_large</code>: 比較のため、小さいサンプルサイズと大きいサンプルサイズを設定します。</li>
+<li><code>rand("EXPONENTIAL", lambda, sample_size, 1);</code>: 指数分布に従う乱数を指定されたサンプルサイズで生成します。</li>
+<li><code>quantile(data, 0.5);</code>: データの50パーセンタイル、すなわち標本中央値を計算します。SASの <code>quantile</code> 関数はパーセンタイルを計算するのに便利です。</li>
+<li><code>mean(median_small);</code>: 10,000回のシミュレーションで得られた標本中央値の平均を計算します。これが標本中央値の期待値の推定値となります。</li>
+<li><code>bias_small = mean_median_small - true_median;</code>: シミュレーションから得られた標本中央値の平均と真の母中央値との差が「偏り」です。</li>
+</ul>
+<p>このSASコードを実行すると、小さいサンプルサイズ ($n=5$) では標本中央値の平均が真の母中央値 ($0.693$) よりも小さくなる（負の偏りがある）ことが確認できます。一方、大きいサンプルサイズ ($n=100$) では、偏りが大幅に減少していることがわかるでしょう。これは、<strong>標本中央値</strong> の漸近的不偏性を示唆しています。</p>
+<h3 id="r">Rコードによるシミュレーションと可視化</h3>
+<p>Rでは <code>tidyverse</code> パッケージ群を使用し、データ操作と可視化を効率的に行います。<code>purrr</code> パッケージで繰り返し処理を行い、<code>ggplot2</code> で結果をグラフ化します。</p>
+<pre><code class="language-R"># ------------------------------------------------------------------ #
+# Rコード：標本中央値の偏りシミュレーション (指数分布)               #
+# ------------------------------------------------------------------ #
+
+# 必要なパッケージをロード
+library(tidyverse)
+
+# シミュレーション設定
+set.seed(12345) # 乱数シードの固定
+lambda &lt;- 1     # 指数分布の尺度パラメータ
+true_median &lt;- log(2) * lambda # 母中央値の計算
+cat(&quot;真の母中央値 = &quot;, true_median, &quot;\n\n&quot;)
+
+num_simulations &lt;- 10000 # シミュレーション繰り返し回数
+sample_sizes &lt;- c(5, 10, 100) # 異なるサンプルサイズ
+
+# シミュレーション関数の定義
+run_simulation &lt;- function(n_samples) {
+  # 指定されたサンプルサイズでデータを生成し、標本中央値を計算する関数
+  replicate(num_simulations, {
+    data_exp &lt;- rexp(n_samples, rate = 1/lambda) # 指数分布データを生成 (rate = 1/lambda)
+    median(data_exp) # 標本中央値を計算
+  })
+}
+
+# 各サンプルサイズでシミュレーションを実行
+sim_results &lt;- map_dfr(sample_sizes, ~ {
+  medians &lt;- run_simulation(.x)
+  tibble(
+    sample_size = .x,
+    simulated_median = medians
+  )
+}) %&gt;%
+  # 各シミュレーション結果の要約を計算
+  group_by(sample_size) %&gt;%
+  summarise(
+    mean_sim_median = mean(simulated_median),
+    bias = mean_sim_median - true_median,
+    .groups = 'drop'
+  )
+
+print(sim_results)
+
+# シミュレーション結果の可視化
+# 各サンプルサイズにおける標本中央値の分布を表示
+plot_data &lt;- map_dfr(sample_sizes, ~ {
+  medians &lt;- run_simulation(.x)
+  tibble(
+    sample_size = factor(.x), # グラフ表示用に因子型に変換
+    simulated_median = medians
+  )
+})
+
+ggplot(plot_data, aes(x = simulated_median, fill = sample_size)) +
+  geom_density(alpha = 0.6) +
+  geom_vline(aes(xintercept = true_median), linetype = &quot;dashed&quot;, color = &quot;red&quot;, size = 1) +
+  facet_wrap(~ sample_size, scales = &quot;free_y&quot;) +
+  labs(
+    title = &quot;指数分布における標本中央値の分布と偏り&quot;,
+    subtitle = paste0(&quot;真の母中央値 = &quot;, round(true_median, 3)),
+    x = &quot;シミュレートされた標本中央値&quot;,
+    y = &quot;密度&quot;,
+    fill = &quot;サンプルサイズ&quot;
+  ) +
+  theme_minimal() +
+  theme(legend.position = &quot;bottom&quot;)
+
+# admiral/rtablesの活用例 (記述統計表の作成)
+# 例えば、架空の臨床試験データで治療群ごとの中央値を記述統計表として出力する
+# まず、架空の臨床試験データを生成
+set.seed(42)
+patient_data &lt;- tibble(
+  USUBJID = paste0(&quot;PAT&quot;, 1:100),
+  TRT01A = sample(c(&quot;Placebo&quot;, &quot;Drug A&quot;, &quot;Drug B&quot;), 100, replace = TRUE, prob = c(0.3, 0.4, 0.3)),
+  AVAL = c(rexp(30, rate = 1/1), # Placebo: lambda=1
+           rexp(40, rate = 1/0.8), # Drug A: lambda=0.8 (slightly lower median)
+           rexp(30, rate = 1/0.9)) # Drug B: lambda=0.9
+) %&gt;%
+  mutate(AVAL = round(AVAL, 1))
+
+# rtablesを使って記述統計表を作成
+# rtablesはclinical trial reportingに適したテーブルを生成します
+library(rtables)
+
+# 統計量の計算関数
+median_sd_n &lt;- function(x) {
+  list(Median = median(x, na.rm = TRUE),
+       SD = sd(x, na.rm = TRUE),
+       N = length(x[!is.na(x)]))
+}
+
+# rtablesのレイアウト定義
+tbl &lt;- basic_table() %&gt;%
+  split_cols_by(&quot;TRT01A&quot;) %&gt;%
+  add_colcounts() %&gt;%
+  analyze(vars = &quot;AVAL&quot;,
+          afun = median_sd_n,
+          format = &quot;xx.x (xx.x) [xx]&quot;, # Median (SD) [N]
+          table_names = &quot;aval_stats&quot;)
+
+# テーブルの生成
+result_table &lt;- build_table(tbl, patient_data)
+
+# テーブル表示
+result_table
+</code></pre>
+<p><strong>Rコードの解説:</strong></p>
+<ul>
+<li><code>library(tidyverse)</code>: <code>dplyr</code>, <code>ggplot2</code>, <code>purrr</code> などの主要パッケージをまとめてロードします。</li>
+<li><code>set.seed(12345)</code>: SASと同様に乱数シードを固定し、再現性を確保します。</li>
+<li><code>true_median &lt;- log(2) * lambda</code>: 真の母中央値を計算します。</li>
+<li><code>run_simulation</code> 関数: 指定されたサンプルサイズで <code>num_simulations</code> 回、指数分布からデータを抽出し、各標本の標本中央値を計算するヘルパー関数です。</li>
+<li><code>map_dfr()</code>: <code>purrr</code> パッケージの関数で、<code>sample_sizes</code> の各要素に対して <code>run_simulation</code> を実行し、結果をデータフレームとして結合します。<code>tidyverse</code> スタイルのデータ処理の強力な例です。</li>
+<li><code>group_by() %&gt;% summarise()</code>: シミュレーション結果をサンプルサイズごとに集計し、標本中央値の平均値と偏りを計算します。</li>
+<li><code>ggplot()</code>: <code>ggplot2</code> を使って、各サンプルサイズでの標本中央値の分布を密度プロットで可視化します。赤い破線が真の母中央値を示しており、小さいサンプルサイズほど分布の中心が赤い破線からずれている（偏りがある）ことが視覚的に確認できます。</li>
+<li><strong><code>admiral</code>/<code>rtables</code>の活用例</strong>: 臨床試験の報告書作成に特化したパッケージ <code>rtables</code> を用いて、治療群ごとの記述統計表（中央値、標準偏差、N数）を作成する例を示します。これにより、実際の<strong>臨床統計</strong> レポートでどのように中央値情報が提示されるかを示唆します。<code>basic_table()</code>, <code>split_cols_by()</code>, <code>analyze()</code> といった関数をパイプ (<code>%&gt;%</code>) でつなげて、柔軟にテーブルレイアウトを定義できるのが特徴です。</li>
+</ul>
+<p>これらのコードを実行することで、サンプルサイズが小さいほど標本中央値に偏りが見られ、サンプルサイズが大きくなると偏りが減少していく、という統計的性質を実感できます。</p>
+<h2 id="_8">実務での活用場面</h2>
+<p><strong>臨床統計</strong> の現場では、<strong>標本中央値</strong> が以下のような場面で特に有用となります。</p>
+<ol>
+<li>
+<p><strong>歪んだ分布を示すエンドポイントの解析</strong>: 臨床試験で測定される多くのバイオマーカー（例：CRP、肝酵素、サイトカインなど）や、患者報告アウトカム（PROs; Patient-Reported Outcomes）である痛みスコア（Visual Analog Scale: VAS）、QOL（Quality of Life）スコアなどは、しばしば正規分布から大きく逸脱し、<strong>歪んだ分布</strong> を示します。このようなデータに対しては、外れ値の影響を受けやすい標本平均値よりも、標本中央値の方がデータの中心傾向をより適切に代表する指標となります。</p>
+<ul>
+<li><strong>具体例</strong>: 潰瘍性大腸炎の臨床試験で、疾患活動性スコア（Mayo Scoreなど）の改善度を評価する場合。多くの患者が軽度から中等度の改善を示す一方で、一部の患者が劇的な改善を示すような分布であれば、中央値が全体の傾向をよりよく表す可能性があります。</li>
+</ul>
+</li>
+<li>
+<p><strong>生存時間解析</strong>: 抗がん剤の臨床試験などで主要評価項目となる「無増悪生存期間（Progression-Free Survival, PFS）」や「全生存期間（Overall Survival, OS）」などの生存時間データは、その性質上、右に大きく歪んだ分布を示します。これらのデータでは、カプラン・マイヤー曲線から推定される「中央生存期間（Median Survival Time）」が治療効果の主要な指標として広く用いられます。これは本質的に、生存時間の中央値を推定していることになります。{{internal_link:生存時間解析の基礎}}のような詳細なトピックも参照してください。</p>
+</li>
+<li>
+<p><strong>薬物動態（PK）パラメータの記述</strong>: 薬物の血中濃度推移から算出される最高血中濃度（Cmax）や血中濃度曲線下面積（AUC）などの薬物動態パラメータも、個体差が大きいためしばしば歪んだ分布を示します。特に、治療薬物モニタリング（TDM）の目的で個々の患者の曝露量を評価する際には、中央値と範囲（最小値、最大値、四分位範囲など）が、その変動性をより適切に記述するために用いられます。</p>
+</li>
+<li>
+<p><strong>小規模な探索的臨床試験</strong>: 希少疾患を対象とした試験や、早期相（Phase I/IIa）の臨床試験では、被験者数が限られることが一般的です。このような小規模データでは、たった一つの外れ値が標本平均値に与える影響が大きくなるため、データの安定した代表値として標本中央値が選択されることがあります。ただし、前述の通り、小規模なデータでは標本中央値自体も偏りを持つ可能性があるため、その解釈には慎重さが求められます。</p>
+</li>
+<li>
+<p><strong>規制当局への提出資料</strong>: FDAやPMDAなどの規制当局は、主要評価項目の解析において、適切な統計量の選択を求めています。歪んだ分布の場合には、標本中央値を用いた解析結果が受け入れられるケースも増えてきています。特に、患者報告アウトカムや一部の生物学的エンドポイントにおいては、中央値が主要な記述統計量または効果量として採用されることがあります。比較表として、平均値と中央値の特性を整理しておきましょう。</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;">標本平均値（Sample Mean）</th>
+<th style="text-align: left;">標本中央値（Sample Median）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">計算方法</td>
+<td style="text-align: left;">全てのデータの合計を個数で割る</td>
+<td style="text-align: left;">データを並べたときの中央の値</td>
+</tr>
+<tr>
+<td style="text-align: left;">外れ値の影響</td>
+<td style="text-align: left;">非常に受けやすい（Sensitive）</td>
+<td style="text-align: left;">受けにくい（Robust）</td>
+</tr>
+<tr>
+<td style="text-align: left;">分布の形状</td>
+<td style="text-align: left;">正規分布（左右対称）で最適</td>
+<td style="text-align: left;">歪んだ分布で特に有用</td>
+</tr>
+<tr>
+<td style="text-align: left;">不偏性（対称分布）</td>
+<td style="text-align: left;">不偏推定量である</td>
+<td style="text-align: left;">不偏推定量である</td>
+</tr>
+<tr>
+<td style="text-align: left;">不偏性（歪んだ分布）</td>
+<td style="text-align: left;">不偏推定量である（大きなサンプルサイズで）</td>
+<td style="text-align: left;">一般に偏りを持つ（特に小規模サンプルで）</td>
+</tr>
+<tr>
+<td style="text-align: left;">適用場面</td>
+<td style="text-align: left;">連続変数、正規分布に近いデータ</td>
+<td style="text-align: left;">順序尺度データ、歪んだ分布、外れ値が多いデータ</td>
+</tr>
+</tbody>
+</table>
+<p>このように、標本中央値は多くの臨床試験の場面で、非常に強力なツールとなり得ますが、その統計的特性、特に偏りを理解した上で、適切に使いこなすことが<strong>生物統計</strong> のプロフェッショナルには求められます。</p>
+<h2 id="_9">海外の最新動向</h2>
+<p><strong>臨床統計</strong> の分野では、国際的な会議やガイドラインを通じて、統計解析手法の標準化と進化が常に議論されています。<strong>標本中央値</strong> の役割と適切な利用についても、PSI (Statisticians in the Pharmaceutical Industry)、ASA (American Statistical Association)、PHUSE (Pharmaceutical Users Software Exchange) といった主要な国際コミュニティで活発な議論が交わされています。</p>
+<h3 id="ich-e9r1-estimands">ICH E9(R1) 統計的原則への追補：Estimandsと感度分析</h3>
+<p>特に注目すべきは、ICH E9 Addendum on Estimands and Sensitivity Analysis in Clinical Trials (R1) です。これは2019年に最終化されたガイドラインであり、臨床試験の主要評価項目（Primary Endpoint）を定義する上で、何が推定対象であるか（<strong>Estimand</strong>）を明確にすることの重要性を強調しています。このガイドラインでは、連続変数の集団レベルの要約として、平均値だけでなく、<strong>中央値</strong> やその他の分位点も推定の対象となりうると明記されています。</p>
+<ul>
+<li>ICH E9(R1) Draft (2019) のセクション3.2.1では、「For a continuous variable, examples of population-level summaries include the mean, median, standard deviation, and quantiles.」と述べられています。これは、平均値だけが主要な統計量ではないという認識が国際的に広がっていることを示しており、<strong>歪んだ分布</strong> のデータに対して中央値を用いる解析の正当性を裏付けるものです。</li>
+<li>このガイダンスは、日本のPMDAを含む各国の規制当局が採用しているため、日本の臨床統計担当者も、中央値をEstimandの一部として適切に定義し、解析計画書（SAP; Statistical Analysis Plan）に明記する重要性が高まっています。</li>
+</ul>
+<p><a href="https://www.ich.org/page/efficacy-guidelines">ICH E9 R1ガイドラインに関する詳細情報はこちら</a></p>
+<h3 id="fdaemapro">FDA/EMAのガイダンスと患者報告アウトカム（PRO）</h3>
+<p>FDA（米国食品医薬品局）やEMA（欧州医薬品庁）の統計関連ガイダンスでも、特定の疾患領域や評価項目において、中央値が重要な記述統計量として、あるいは主要評価項目の一部として受け入れられる事例が増えています。</p>
+<ul>
+<li><strong>患者報告アウトカム (PRO)</strong>: 患者さんの主観的な症状（痛み、倦怠感、QOLなど）を評価するPROデータは、しばしば歪んだ分布を示します。FDAやEMAは、PROデータを主要評価項目とする場合、中央値や分位点を用いた解析を推奨することがあります。これは、患者さんの体験をより正確に反映する指標として、中央値が平均値よりも優れていると判断されるためです。<ul>
+<li><strong>例</strong>: 慢性疼痛治療薬の臨床試験において、患者さんが報告する痛みの強さの改善度を評価する際に、中央値の変化が主要な効果指標となることがあります。</li>
+</ul>
+</li>
+<li><strong>希少疾患や小児科領域</strong>: サンプルサイズが非常に小さいこれらの領域の臨床試験では、平均値が外れ値によって大きく変動するリスクがあるため、中央値のようなロバストな統計量が重視される傾向にあります。</li>
+</ul>
+<p><a href="https://www.fda.gov/drugs/guidance-compliance-regulatory-information/guidances-drugs">FDAの統計関連ガイダンスはこちら</a></p>
+<p><a href="https://www.ema.europa.eu/en/human-regulatory/research-development/scientific-guidelines/biostatistics">EMAの統計関連ガイダンスはこちら</a></p>
+<p>これらの動向は、<strong>生物統計</strong> の専門家が、データの特性に応じて柔軟かつ適切な統計量を選択し、その選択の根拠を明確に説明する能力がますます求められていることを示しています。<strong>臨床統計</strong> の現場では、平均値一辺倒の解析から脱却し、多様な統計量を適切に活用する視点が不可欠となっています。</p>
+<h2 id="faq">よくある質問（FAQ）</h2>
+<h3 id="q1">Q1: 標本中央値と標本平均、どちらを使うべきですか？</h3>
+<p>A1: データが正規分布に近い左右対称な分布を示す場合は、標本平均が一般的に効率的な推定量であり、好まれます。しかし、データが<strong>歪んだ分布</strong> を示す場合や、著しい外れ値を含む場合は、外れ値の影響を受けにくい<strong>標本中央値</strong> の方が、データの中心傾向をより適切に表現できます。どちらを選ぶべきかは、データの特性と解析の目的に応じて慎重に判断する必要があります。両方の統計量を報告し、比較することも有効なアプローチです。</p>
+<h3 id="q2">Q2: 標本中央値の偏りは、どの程度問題になりますか？</h3>
+<p>A2: 標本中央値の偏りは、主にサンプルサイズが小さい場合や、分布の歪みが大きい場合に顕著になります。サンプルサイズが十分に大きくなると、標本中央値は漸近的に不偏性を持つため、偏りの問題は小さくなります。しかし、小規模な臨床試験では、この偏りが結果の解釈に影響を与える可能性があるため、注意が必要です。シミュレーションやブートストラップ法などを活用して、偏りの程度を評価することも検討されます。</p>
+<h3 id="q3">Q3: 小規模臨床試験で中央値を使う際の注意点は？</h3>
+<p>A3: 小規模臨床試験で中央値を使用する場合、<strong>偏り</strong> の問題に加えて、推定量の分散が大きい（精度が低い）可能性がある点に注意が必要です。サンプルサイズが小さいと、標本中央値のばらつきが大きくなり、真の母中央値からの信頼区間が広くなる傾向があります。解析計画書（SAP）には、中央値を選択した理由と、その統計的特性（偏りの可能性など）に関する考慮事項を明確に記述することが重要です。{{internal_link:臨床試験のサンプルサイズ計算}}に関する知識も役立つでしょう。</p>
+<h3 id="q4">Q4: 歪んだ分布でも不偏な中央値推定方法はありますか？</h3>
+<p>A4: 歪んだ分布であっても、ブートストラップ法（Bootstrap Method）などの再サンプリング手法を用いることで、標本中央値の信頼区間を構築したり、偏りを補正したりすることが可能です。また、分位点回帰（Quantile Regression）のような手法は、分布全体の中央値や他の分位点に対する共変量の影響を直接モデル化できるため、平均値の回帰分析が不適切となる歪んだ分布データに有効です。これらの手法は、<strong>生物統計</strong> の高度な解析テクニックとして知られています。</p>
+<h2 id="_10">臨床統計スキルを磨くためのリソース</h2>
+<p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
+<ul>
+<li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
+<li><strong><a href="https://www.udemy.com">Udemy SAS/R講座</a></strong> - 動画で学ぶSAS/R統計プログラミング</li>
+<li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
+</ul>
+<p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p>
+<h2 id="_11">まとめ</h2>
+<p>本記事では、<strong>標本中央値</strong> の概念から始まり、その統計的特性、特に<strong>歪んだ分布</strong> における<strong>偏り</strong> の重要性について深く掘り下げてきました。<strong>生物統計</strong> および<strong>臨床統計</strong> の専門家として、私は以下の点を強調したいと思います。</p>
+<ol>
+<li><strong>標本中央値のロバスト性</strong>: 外れ値や歪んだ分布に対して、標本中央値は標本平均値よりも安定した代表値を提供します。</li>
+<li><strong>偏りの理解</strong>: 特に小規模なサンプルサイズでは、標本中央値が真の母中央値に対して偏りを持つ可能性があることを認識し、その影響を考慮した上で解釈を行う必要があります。</li>
+<li><strong>SAS/Rによる実践</strong>: SASの<code>PROC IML</code>やRの<code>tidyverse</code> (<code>ggplot2</code>, <code>purrr</code>)、<code>rtables</code>を活用することで、標本中央値の特性をシミュレーションで確認し、また実データ解析で記述統計量として適切に利用できることを示しました。</li>
+<li><strong>国際的動向への対応</strong>: ICH E9(R1)などの最新の国際ガイダンスでは、平均値だけでなく中央値もEstimandとして認められており、日本の臨床統計担当者もこのような動向を理解し、解析戦略に反映させることが求められています。</li>
+</ol>
+<p>臨床試験のデータ解析において、単に平均値のみに注目するのではなく、データの特性を深く理解し、標本中央値のようなロバストな統計量を適切に活用する視点は、より正確で信頼性の高い結論を導き出すために不可欠です。この記事が、皆様の<strong>臨床統計</strong> の知識とスキル向上の一助となれば幸いです。</p></div>
+
+            
+
+            <div class="share-buttons">
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html&text=標本中央値と偏り：歪んだ分布における臨床統計の注意点" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html&title=標本中央値と偏り：歪んだ分布における臨床統計の注意点" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/sample-median-bias-skewed-distribution-clinical-statistics.html" target="_blank" rel="noopener noreferrer">LINE</a>
+            </div>
+        </article>
+
+        
+    </div>
+</div>
+
+    </main>
+
+    
+    
+
+    
+    <section style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.08));border-top:1px solid var(--border);padding:48px 0;margin-top:40px;">
+        <div class="container" style="text-align:center;">
+            <p style="color:var(--text-muted);font-size:0.78rem;letter-spacing:0.15em;margin-bottom:8px;">― Powered by MuscleLove ―</p>
+            <h3 style="font-size:1.3rem;margin-bottom:14px;">AIで人生を加速する3部作 + ブランド公式</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto;">副業で稼ぎ → 転職で年収UP → 投資で資産を働かせる。AI時代の「お金の戦略」を完成させる姉妹メディア。</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+                <a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🧭 AI副業コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🚀 AI転職コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#0a0e1a;text-decoration:none;font-weight:600;font-size:0.88rem;">💰 AIマネー羅針盤</a>
+                <a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:#0f172a;color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;border:1px solid #334155;">𝕏 @MuscleGirlLove7</a>
+                <a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#ff424d,#ff6b35);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">💪 Patreon</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="promo-musclelove">
+      <div class="container">
+        <div class="promo-card">
+          <div class="promo-icon">💪</div>
+          <div class="promo-body">
+            <div class="promo-eyebrow">PR · 運営メディア / Sponsored</div>
+            <h3>MuscleLove — Muscle Girls &amp; Fitness Media Hub</h3>
+            <p>格闘女子・フィジーク・アームレスリング・筋トレ飯など、40+サイトを展開するMuscleLoveも運営中。X &amp; Patreonで限定コンテンツ配信中 / We also run MuscleLove, a 40+ site fitness network.</p>
+          </div>
+          <div class="promo-cta">
+            <a class="btn-promo" href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">X @MuscleGirlLove7</a>
+            <a class="btn-promo outline" href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">Patreon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-section">
+                    <h4>臨床統計ラボ</h4>
+                    <p class="text-muted" style="font-size:0.85rem;max-width:300px;">臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>カテゴリ</h4>
+                    <ul class="footer-links"></ul>
+                </div>
+                <div class="footer-section">
+                    <h4>リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/sitemap.xml">サイトマップ</a></li>
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSSフィード</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>MuscleLove</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener">🧭 AI副業コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener">🚀 AI転職コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener">💰 AIマネー羅針盤</a></li>
+                        <li><a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">𝕏 @MuscleGirlLove7</a></li>
+                        <li><a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">💪 Patreon</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">&copy; 2026 臨床統計ラボ. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var toggle = document.getElementById('themeToggle');
+        var icon = document.getElementById('themeIcon');
+        var html = document.documentElement;
+        function getStored() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
+        function setTheme(t) {
+            html.setAttribute('data-theme', t);
+            icon.textContent = t === 'light' ? '\u2600' : '\u263E';
+            try { localStorage.setItem('theme', t); } catch(e) {}
+        }
+        var s = getStored(); if (s) setTheme(s);
+        toggle.addEventListener('click', function() {
+            setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+    })();
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="http"]').forEach(function(l) {
+            if (l.hostname !== window.location.hostname) {
+                l.setAttribute('target', '_blank');
+                l.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

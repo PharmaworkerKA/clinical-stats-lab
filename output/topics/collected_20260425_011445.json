@@ -1,0 +1,116 @@
+{
+  "collected_at": "2026-04-25T01:14:45.786926",
+  "total_count": 10,
+  "topics": [
+    {
+      "title": "“Approximating evidence via bounded harmonic means” is out! [in Statistics and Computing]",
+      "url": "https://www.r-bloggers.com/2026/04/approximating-evidence-via-bounded-harmonic-means-is-out-in-statistics-and-computing/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n</div>\n<div style=\"width: 40%; display: inline-block; float: right;\"></div>\n<div style=\"clear: both;\"></div>\n<strong>Continue reading</strong>: <a href=\"https://www.r-bloggers.com/2026/04/approximating-evidence-via-bounded-harmonic-means-",
+      "published": "Thu, 23 Apr 2026 22:26:26 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 95,
+      "category": "臨床統計最新ニュース",
+      "blog_title": "統計計算における「有界調和平均によるエビデンス近似」とは？最新研究解説",
+      "keyword": "有界調和平均, エビデンス近似, 統計計算, 最新研究, 臨床統計, 生物統計, 統計学論文"
+    },
+    {
+      "title": "The sample median is a biased estimator for skewed distributions",
+      "url": "https://blogs.sas.com/content/iml/2026/04/20/sample-median-bias.html",
+      "summary": "<p>Did you know that, for skewed distributions, the sample median is a biased estimator of the population median? You can show this in two ways. For any distribution, you can run a Monte Carlo simulation that reveals the bias. And, for some distributions (such as the exponential distribution), you c",
+      "published": "Mon, 20 Apr 2026 09:21:21 +0000",
+      "source": "SAS Blogs",
+      "score": 90,
+      "category": "臨床統計最新ニュース",
+      "blog_title": "歪んだ分布における標本中央値の推定バイアスを理解する",
+      "keyword": "標本中央値, バイアス, 歪んだ分布, 推定量, 臨床統計, 生物統計, 統計的推論"
+    },
+    {
+      "title": "Stage II OSCC — Health Economics Model",
+      "url": "https://www.r-bloggers.com/2026/04/stage-ii-oscc-health-economics-model/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>Most health care economics models are constructed from the perspective of a managed health care system such as those offered in Canada and several European countries, or from the perspective of some other third party such as an insuran",
+      "published": "Thu, 16 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 90,
+      "category": "統計解析計画書・SAP",
+      "blog_title": "ステージII口腔扁平上皮癌における医療経済モデルの構築と評価",
+      "keyword": "医療経済, 臨床試験, 統計モデル, OSCC, 生物統計, 費用対効果分析, 予後予測"
+    },
+    {
+      "title": "Dealing with correlation in designed field experiments: part II",
+      "url": "https://www.r-bloggers.com/2026/04/dealing-with-correlation-in-designed-field-experiments-part-ii-4/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>With field experiments, studying the correlation between the observed traits may not be an easy task. For example, we can consider a genotype experiment, laid out in randomised complete blocks, with 27 wheat genotypes and three replica",
+      "published": "Wed, 15 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 90,
+      "category": "統計解析計画書・SAP",
+      "blog_title": "臨床試験デザインにおける相関の取り扱い：高度な統計手法を学ぶ",
+      "keyword": "相関, 実験計画, 臨床試験デザイン, 統計解析, 混合効果モデル, 生物統計, 複雑系データ"
+    },
+    {
+      "title": "Visualize the placement of knots for regression splines",
+      "url": "https://blogs.sas.com/content/iml/2026/04/22/viz-knots-splines.html",
+      "summary": "<p>Splines are useful tools for fitting regression models to data. A spline replaces a single variable (call it X) with several other variables, which are a spline basis for X. When using a spline basis, the shape and location of the basis functions depend on the placement of knots. Knots [...]</p>\n",
+      "published": "Wed, 22 Apr 2026 09:29:19 +0000",
+      "source": "SAS Blogs",
+      "score": 85,
+      "category": "R for Clinical Trials",
+      "blog_title": "回帰スプラインのノット配置を可視化するテクニック",
+      "keyword": "回帰スプライン, ノット, 統計モデリング, 可視化, R統計, SAS統計"
+    },
+    {
+      "title": "Why Most Time Series Models Fail Before They Start",
+      "url": "https://www.r-bloggers.com/2026/04/why-most-time-series-models-fail-before-they-start/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>1 A model can run and still be fundamentally wrong<br />\nMany time series models fail before they even begin. Not because the software crashes. Not because the code is wrong. But because the data entering the model violate one of the m",
+      "published": "Wed, 15 Apr 2026 21:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 85,
+      "category": "統計解析計画書・SAP",
+      "blog_title": "臨床試験における時系列モデルの落とし穴：失敗を避けるための考察",
+      "keyword": "時系列モデル, 統計モデリング, 臨床試験データ, 失敗要因, 生物統計, 予測モデル, 縦断データ"
+    },
+    {
+      "title": "reviser: Analyzing Real-Time Data Revisions in R",
+      "url": "https://www.r-bloggers.com/2026/04/reviser-analyzing-real-time-data-revisions-in-r/",
+      "summary": "<p>Economic data are rarely static.<br />\nGross domestic product (GDP), inflation, employment, and other official statistics arrive as early estimates, then get revised as new source data arrive, seasonal adjustment is updated, or benchmarking changes are appl...</p>\n<strong>Continue reading</strong",
+      "published": "Mon, 13 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 80,
+      "category": "R for Clinical Trials",
+      "blog_title": "臨床試験におけるリアルタイムデータ修正をRで追跡・分析する「reviser」パッケージ",
+      "keyword": "Rパッケージ, データ修正, リアルタイムデータ, 臨床データ管理, データ監査, データ品質"
+    },
+    {
+      "title": "What’s new in R 4.6.0?",
+      "url": "https://www.r-bloggers.com/2026/04/whats-new-in-r-4-6-0/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>R 4.6.0 (“Because it was There”) is set for release on April 24th 2026. Here we summarise some of<br />\nthe more interesting changes that have been introduced. In previous blog posts, we have discussed<br />\nthe new features introduced",
+      "published": "Thu, 16 Apr 2026 23:59:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 78,
+      "category": "R for Clinical Trials",
+      "blog_title": "R 4.6.0の新機能と臨床統計家への影響",
+      "keyword": "R統計, Rアップデート, 新機能, 臨床統計家, データ解析"
+    },
+    {
+      "title": "Schotter Plots in R",
+      "url": "https://www.r-bloggers.com/2026/04/schotter-plots-in-r/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\"> Translating things between languages reveals how each language approaches<br />\ndifferent design trade-offs, and I believe it’s a useful exercise. Having<br />\nsomething to translate is the first step. I found a plot I wanted to generate,",
+      "published": "Fri, 17 Apr 2026 00:00:00 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "RでSchotter Plotを使ってデータを視覚的に探索する",
+      "keyword": "R統計, 可視化, データ探索, Schotter Plot"
+    },
+    {
+      "title": "logrittr: A Verbose Pipe Operator for Logging dplyr Pipelines",
+      "url": "https://www.r-bloggers.com/2026/04/logrittr-a-verbose-pipe-operator-for-logging-dplyr-pipelines/",
+      "summary": "<div style=\"width: 60%; display: inline-block; float: left;\">\n<p>  dplyr verbs are descriptive: let’s make them more verbose!</p>\n<p>  Yet another pipe for R.</p>\n<p>Motivation</p>\n<p>In SAS, every DATA step prints a log:</p>\n<p>NOTE: There were 120000 observations read from WORK.SALES.<br />\nNOTE: ",
+      "published": "Wed, 15 Apr 2026 08:05:50 +0000",
+      "source": "R-bloggers Clinical",
+      "score": 75,
+      "category": "R for Clinical Trials",
+      "blog_title": "dplyrパイプラインのログを効率的に記録するRパッケージ「logrittr」",
+      "keyword": "Rパッケージ, dplyr, パイプ処理, ログ, データ処理, 臨床データ, 再現性"
+    }
+  ]
+}

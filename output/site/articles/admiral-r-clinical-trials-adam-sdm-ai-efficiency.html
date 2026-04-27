@@ -1,0 +1,1221 @@
+
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <title>admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング | 臨床統計ラボ</title>
+
+    
+    <meta name="description" content="">
+    <meta name="author" content="臨床統計ラボ">
+    <link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html">
+
+    
+    <meta property="og:site_name" content="臨床統計ラボ">
+    <meta property="og:title" content="admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html">
+    <meta property="og:locale" content="ja_JP">
+
+    
+    <meta property="og:image" content="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80">
+
+    
+    <link rel="alternate" type="application/rss+xml" title="臨床統計ラボ" href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSFVD34MKK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CSFVD34MKK');
+    </script>
+    
+
+    
+    
+
+    
+    
+    
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング",
+    "description": "",
+    "datePublished": "2026-04-25",
+    "dateModified": "2026-04-25",
+    "author": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "publisher": {"@type": "Organization", "name": "臨床統計ラボ"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html"}
+    ,"image": "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80"
+    ,"keywords": "admiral, Rパッケージ, 臨床試験, ADaM, 効率化"
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "admiral\u3092\u4f7f\u3046\u6700\u5927\u306e\u30e1\u30ea\u30c3\u30c8\u306f\u4f55\u3067\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A1: **admiral**\u306e\u6700\u5927\u306e\u30e1\u30ea\u30c3\u30c8\u306f\u3001**\u81e8\u5e8a\u8a66\u9a13**\u306e**ADaM**\u30c7\u30fc\u30bf\u30bb\u30c3\u30c8\u4f5c\u6210\u3092CDISC\u6a19\u6e96\u306b\u6e96\u62e0\u3057\u305f\u5f62\u3067**\u52b9\u7387\u5316**\u3057\u3001\u304b\u3064\u518d\u73fe\u6027\u3092\u9ad8\u3081\u308b\u70b9\u306b\u3042\u308a\u307e\u3059\u3002\u691c\u8a3c\u6e08\u307f\u306e\u95a2\u6570\u3092\u4f7f\u3046\u3053\u3068\u3067\u3001\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u306e\u52b4\u529b\u3092\u524a\u6e1b\u3057\u3001\u54c1\u8cea\u7ba1\u7406\u3092\u5bb9\u6613\u306b\u3057\u307e\u3059\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "SAS\u304b\u3089R (admiral) \u3078\u306e\u79fb\u884c\u306f\u96e3\u3057\u3044\u3067\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A2: SAS\u306e\u7d4c\u9a13\u304c\u3042\u308b\u65b9\u304cR\u306e`tidyverse`\u306e\u8003\u3048\u65b9\u306b\u6163\u308c\u308b\u307e\u3067\u306b\u306f\u5b66\u7fd2\u66f2\u7dda\u304c\u3042\u308a\u307e\u3059\u304c\u3001`admiral`\u306f`tidyverse`\u306e\u8a18\u6cd5\u3092\u30d9\u30fc\u30b9\u306b\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u6bd4\u8f03\u7684\u30b9\u30e0\u30fc\u30ba\u306b\u79fb\u884c\u3067\u304d\u307e\u3059\u3002\u7279\u306b\u3001\u65e2\u5b58\u306eSAS\u30b3\u30fc\u30c9\u3092R\u3067\u66f8\u304d\u63db\u3048\u308b\u969b\u306e\u5f37\u529b\u306a\u30c4\u30fc\u30eb\u3068\u306a\u308a\u307e\u3059\u3002{{internal_link:SAS\u30d7\u30ed\u30b0\u30e9\u30de\u30fc\u306e\u305f\u3081\u306eR\u5165\u9580}}\u306e\u3088\u3046\u306a\u8a18\u4e8b\u3082\u53c2\u8003\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "admiral\u306f\u672c\u5f53\u306bCDISC\u6a19\u6e96\u306b\u5b8c\u5168\u306b\u6e96\u62e0\u3057\u3066\u3044\u307e\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A3: \u306f\u3044\u3001**admiral**\u306fCDISC ADaMIG\uff08ADaM Implementation Guide\uff09\u306b\u6cbf\u3063\u3066\u8a2d\u8a08\u30fb\u958b\u767a\u3055\u308c\u3066\u304a\u308a\u3001CDISC\u6a19\u6e96\u3078\u306e\u6e96\u62e0\u3092\u5f37\u304f\u610f\u8b58\u3057\u3066\u3044\u307e\u3059\u3002\u305f\u3060\u3057\u3001\u500b\u5225\u306e**\u81e8\u5e8a\u8a66\u9a13**\u306e\u8981\u4ef6\u3084\u898f\u5236\u5f53\u5c40\u306e\u6700\u65b0\u30ac\u30a4\u30c0\u30f3\u30b9\u306b\u5f93\u3046\u305f\u3081\u306b\u306f\u3001\u5229\u7528\u8005\u304c\u9069\u5207\u306a\u5224\u65ad\u3068\u8abf\u6574\u3092\u884c\u3046\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002{{internal_link:CDISC\u3068\u306f\uff1f\u57fa\u672c\u3068\u5f79\u5272}}\u3067\u8a73\u7d30\u3092\u3054\u78ba\u8a8d\u304f\u3060\u3055\u3044\u3002"
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "AI\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0\u306f\u5177\u4f53\u7684\u306bADaM\u4f5c\u6210\u306b\u3069\u3046\u6d3b\u7528\u3067\u304d\u308b\u306e\u3067\u3059\u304b\uff1f",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A4: **AI\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0**\u3001\u7279\u306b\u5927\u898f\u6a21\u8a00\u8a9e\u30e2\u30c7\u30eb\uff08LLM\uff09\u306e\u6d3b\u7528\u306f\u3001**ADaM**\u5c0e\u51fa\u30ed\u30b8\u30c3\u30af\u306e\u81ea\u7136\u8a00\u8a9e\u8a18\u8ff0\u304b\u3089\u306eR\u30b3\u30fc\u30c9\u81ea\u52d5\u751f\u6210\u3001\u65e2\u5b58\u30b3\u30fc\u30c9\u306e\u30ec\u30d3\u30e5\u30fc\u3068\u6700\u9069\u5316\u3001\u54c1\u8cea\u7ba1\u7406\u306b\u304a\u3051\u308b\u7570\u5e38\u691c\u77e5\u306a\u3069\u306b\u5f79\u7acb\u3061\u307e\u3059\u3002\u3053\u308c\u306b\u3088\u308a\u3001\u30d7\u30ed\u30b0\u30e9\u30de\u30fc\u306f\u3088\u308a\u6226\u7565\u7684\u306a\u30bf\u30b9\u30af\u306b\u96c6\u4e2d\u3067\u304d\u308b\u3088\u3046\u306b\u306a\u308a\u3001**\u52b9\u7387\u5316**\u304c\u56f3\u3089\u308c\u307e\u3059\u3002"
+            }
+        }
+        
+    ]
+}
+</script>
+
+
+
+    <style>
+        /* =============================================
+           CSS変数: テーマカラー（config.THEMEから注入）
+           ============================================= */
+        :root {
+            --color-dark-bg: #0f0a1e;
+            --color-dark-surface: #16213e;
+            --color-primary: #7c3aed;
+            --color-accent: #5b21b6;
+            --color-text-dark: #eeeeee;
+            --color-text-muted-dark: #a0aec0;
+
+            --color-light-bg: #f5f0ff;
+            --color-light-surface: #ffffff;
+            --color-text-light: #1a202c;
+            --color-text-muted-light: #64748b;
+
+            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --max-width: 1280px;
+            --sidebar-width: 320px;
+            --header-height: 64px;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-pill: 9999px;
+
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--color-dark-bg);
+            --surface: var(--color-dark-surface);
+            --text: var(--color-text-dark);
+            --text-muted: var(--color-text-muted-dark);
+            --border: rgba(255,255,255,0.08);
+            --code-bg: rgba(255,255,255,0.06);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--color-light-bg);
+            --surface: var(--color-light-surface);
+            --text: var(--color-text-light);
+            --text-muted: var(--color-text-muted-light);
+            --border: rgba(0,0,0,0.08);
+            --code-bg: #f1f5f9;
+        }
+
+        @media (prefers-color-scheme: light) {
+            [data-theme="auto"] {
+                --bg: var(--color-light-bg);
+                --surface: var(--color-light-surface);
+                --text: var(--color-text-light);
+                --text-muted: var(--color-text-muted-light);
+                --border: rgba(0,0,0,0.08);
+                --code-bg: #f1f5f9;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+            [data-theme="auto"] {
+                --bg: var(--color-dark-bg);
+                --surface: var(--color-dark-surface);
+                --text: var(--color-text-dark);
+                --text-muted: var(--color-text-muted-dark);
+                --border: rgba(255,255,255,0.08);
+                --code-bg: rgba(255,255,255,0.06);
+            }
+        }
+
+        /* =============================================
+           リセット・基本
+           ============================================= */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* =============================================
+           流体タイポグラフィ
+           ============================================= */
+        h1 { font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem); font-weight: 800; line-height: 1.3; }
+        h2 { font-size: clamp(1.35rem, 1.8vw + 0.8rem, 1.75rem); font-weight: 700; line-height: 1.35; }
+        h3 { font-size: clamp(1.1rem, 1.2vw + 0.6rem, 1.35rem); font-weight: 600; line-height: 1.4; }
+        h4 { font-size: 1.1rem; font-weight: 600; }
+        p { margin-bottom: 1em; }
+
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.2s, opacity 0.2s; }
+        a:hover { opacity: 0.85; text-decoration: underline; }
+        img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
+
+        code {
+            font-family: var(--font-mono);
+            background: var(--code-bg);
+            padding: 0.15em 0.4em;
+            border-radius: 4px;
+            font-size: 0.88em;
+        }
+        pre {
+            background: var(--code-bg);
+            padding: 1.25em;
+            border-radius: var(--radius-sm);
+            overflow-x: auto;
+            margin-bottom: 1.5em;
+            border: 1px solid var(--border);
+        }
+        pre code { background: none; padding: 0; }
+
+        blockquote {
+            border-left: 4px solid var(--color-accent);
+            padding: 0.75em 1.25em;
+            margin: 1.5em 0;
+            color: var(--text-muted);
+            background: var(--code-bg);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-bottom: 1.5em; }
+        th, td { padding: 0.75em 1em; border: 1px solid var(--border); text-align: left; }
+        th { background: var(--code-bg); font-weight: 600; }
+
+        /* =============================================
+           レイアウト
+           ============================================= */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+        .layout-main { display: flex; gap: 2.5rem; margin-top: 2rem; margin-bottom: 3rem; }
+        .content-area { flex: 1; min-width: 0; }
+        .sidebar { width: var(--sidebar-width); flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+            .layout-main { flex-direction: column; }
+            .sidebar { width: 100%; }
+        }
+
+        /* =============================================
+           ヘッダー
+           ============================================= */
+        .site-header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: var(--header-height);
+        }
+        .site-logo a {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        .site-logo a:hover { opacity: 1; text-decoration: none; }
+        .header-right { display: flex; align-items: center; gap: 1.5rem; }
+        .site-nav { display: flex; align-items: center; gap: 1.25rem; }
+        .site-nav a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .site-nav a:hover { color: var(--color-accent); text-decoration: none; }
+
+        /* ダークモード切替ボタン */
+        .theme-toggle {
+            background: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            padding: 6px 10px;
+            font-size: 1.1rem;
+            line-height: 1;
+            color: var(--text);
+            transition: background 0.2s;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover { background: var(--color-primary); }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px auto;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .site-nav {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0; right: 0;
+                background: var(--surface);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+            }
+            .site-nav.open { display: flex; }
+            .site-nav a { padding: 10px 0; min-height: 44px; display: flex; align-items: center; }
+        }
+
+        /* =============================================
+           Bentoカードグリッド
+           ============================================= */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+
+        .card-thumb {
+            aspect-ratio: 16 / 9;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card-thumb-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.15);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .card-body { padding: 1.25rem 1.5rem; }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-title a { color: var(--text); }
+        .card-title a:hover { color: var(--color-accent); text-decoration: none; }
+
+        .card-meta {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .card-excerpt {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+        /* モバイル: カード横型 */
+        @media (max-width: 640px) {
+            .card-grid { grid-template-columns: 1fr; }
+            .card { display: flex; flex-direction: row; }
+            .card-thumb { aspect-ratio: 1 / 1; width: 120px; min-height: 120px; flex-shrink: 0; }
+            .card-body { padding: 1rem; flex: 1; min-width: 0; }
+            .card-title { font-size: 0.95rem; }
+            .card-excerpt { -webkit-line-clamp: 2; }
+        }
+
+        /* =============================================
+           タグ（ピル型バッジ）
+           ============================================= */
+        .tag {
+            display: inline-block;
+            padding: 0.2em 0.65em;
+            font-size: 0.75rem;
+            background: var(--code-bg);
+            color: var(--text-muted);
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .tag:hover { background: var(--color-accent); color: #fff; text-decoration: none; }
+
+        .category-badge {
+            display: inline-block;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+        }
+        .category-badge:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+
+        .reading-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+            padding: 0.2em 0.7em;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(233,69,96,0.12);
+            color: var(--color-accent);
+            border-radius: var(--radius-pill);
+        }
+
+        /* =============================================
+           パンくず・記事本文・目次
+           ============================================= */
+        .breadcrumb {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 0.85rem; color: var(--text-muted);
+            margin-bottom: 1.5rem; flex-wrap: wrap;
+        }
+        .breadcrumb a { color: var(--text-muted); }
+        .breadcrumb a:hover { color: var(--color-accent); }
+        .breadcrumb-sep { color: var(--text-muted); opacity: 0.5; }
+
+        .article-header { margin-bottom: 2rem; }
+        .article-title {
+            font-size: clamp(1.5rem, 3vw + 0.5rem, 2.2rem);
+            font-weight: 800; line-height: 1.3; margin-bottom: 0.75rem;
+        }
+        .article-meta {
+            display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+            color: var(--text-muted); font-size: 0.88rem;
+        }
+
+        .article-body { font-size: 1rem; line-height: 1.9; }
+        .article-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.4em; border-bottom: 2px solid var(--color-accent); }
+        .article-body h3 { margin-top: 2rem; margin-bottom: 0.75rem; }
+        .article-body ul, .article-body ol { margin: 1em 0; padding-left: 1.5em; }
+        .article-body li { margin-bottom: 0.4em; }
+
+        .toc-container {
+            background: var(--code-bg); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem;
+        }
+        .toc-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--color-accent); }
+        .toc-container ul { list-style: none; padding-left: 0; margin: 0; }
+        .toc-container li { margin-bottom: 0.3em; }
+        .toc-container ul ul { padding-left: 1.25em; }
+        .toc-container a { color: var(--text-muted); font-size: 0.88rem; }
+        .toc-container a:hover { color: var(--color-accent); }
+
+        /* =============================================
+           SNSシェア・ページネーション
+           ============================================= */
+        .share-buttons { display: flex; gap: 0.6rem; margin: 2rem 0; flex-wrap: wrap; }
+        .share-btn {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5em 1em; border-radius: var(--radius-sm);
+            font-size: 0.82rem; font-weight: 600; color: #fff;
+            text-decoration: none; transition: opacity 0.2s; min-height: 44px;
+        }
+        .share-btn:hover { opacity: 0.85; color: #fff; text-decoration: none; }
+        .share-btn-twitter { background: #1DA1F2; }
+        .share-btn-facebook { background: #1877F2; }
+        .share-btn-hatena { background: #00A4DE; }
+        .share-btn-line { background: #06C755; }
+
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 2.5rem 0; }
+        .pagination a, .pagination span {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 44px; height: 44px; padding: 0 0.5em;
+            border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500;
+            text-decoration: none; transition: background 0.2s, color 0.2s;
+        }
+        .pagination a { color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); }
+        .pagination a:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); text-decoration: none; }
+        .pagination .current { background: var(--color-accent); color: #fff; border: 1px solid var(--color-accent); }
+
+        /* =============================================
+           サイドバー
+           ============================================= */
+        .sidebar-widget {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1.5rem;
+        }
+        .sidebar-widget-title {
+            font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 2px solid var(--color-accent);
+        }
+        .sidebar-category-list { list-style: none; padding: 0; }
+        .sidebar-category-list li { margin-bottom: 0.3rem; }
+        .sidebar-category-list a {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.5rem 0; color: var(--text-muted); font-size: 0.88rem;
+            border-bottom: 1px solid var(--border); text-decoration: none; min-height: 44px;
+        }
+        .sidebar-category-list a:hover { color: var(--color-accent); text-decoration: none; }
+        .sidebar-category-count {
+            font-size: 0.78rem; background: var(--code-bg);
+            padding: 0.15em 0.5em; border-radius: var(--radius-pill);
+        }
+
+        .adsense-slot { margin: 1.5rem 0; text-align: center; }
+
+        /* =============================================
+           フッター
+           ============================================= */
+        .site-footer {
+            background: var(--surface); border-top: 1px solid var(--border);
+            padding: 2.5rem 0; margin-top: 3rem;
+        }
+        .footer-inner {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; flex-wrap: wrap; gap: 2rem;
+        }
+        .footer-section h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 0.3rem; }
+        .footer-links a { color: var(--text-muted); font-size: 0.85rem; }
+        .footer-links a:hover { color: var(--color-accent); }
+        .footer-copyright {
+            text-align: center; margin-top: 2rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted);
+        }
+
+        /* =============================================
+           ユーティリティ
+           ============================================= */
+        .text-center { text-align: center; }
+        .text-muted { color: var(--text-muted); }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .empty-state { text-align: center; padding: 4rem 1rem; color: var(--text-muted); }
+        .empty-state p { font-size: 1.1rem; }
+
+        /* =============================================
+           ヒーロー画像（CSS生成・コスト0）
+           ============================================= */
+        .article-hero {
+            position: relative;
+            aspect-ratio: 21 / 9;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .article-hero-emoji {
+            font-size: clamp(4rem, 8vw, 8rem);
+            z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+            animation: hero-float 3s ease-in-out infinite;
+        }
+        @keyframes hero-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .article-hero-pattern {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 60% 80%, rgba(255,255,255,0.06) 0%, transparent 40%);
+            z-index: 1;
+        }
+        .article-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.3) 100%);
+            z-index: 1;
+        }
+
+        /* セクション見出しの絵文字装飾 */
+        .article-body h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* 強調ボックス（blockquote内の💡⚠️✅） */
+        .article-body blockquote {
+            position: relative;
+            padding: 1rem 1.5rem;
+            margin: 1.5em 0;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+        }
+        .article-body blockquote p { margin-bottom: 0.3em; }
+        .article-body blockquote p:last-child { margin-bottom: 0; }
+
+        /* インデックスカードのサムネイルにも絵文字 */
+        .card-thumb-emoji {
+            font-size: 3rem;
+            z-index: 2;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+        }
+
+        /* テーブル装飾強化 */
+        .article-body table {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .article-body th {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #fff;
+            font-weight: 600;
+        }
+        .article-body tr:nth-child(even) td {
+            background: var(--code-bg);
+        }
+
+        /* 番号付きリスト装飾 */
+        .article-body ol {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .article-body ol > li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+        }
+        .article-body ol > li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+        /* ===== MuscleLove Promo Card ===== */
+        .promo-musclelove { padding: 30px 0 10px; }
+        .promo-musclelove .promo-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 22px 24px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #FFF7E6 0%, #FFE9B0 100%);
+            border: 1.5px solid #F5C842;
+            box-shadow: 0 6px 24px rgba(27, 67, 50, 0.08);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .promo-musclelove .promo-icon { font-size: 2.4rem; line-height: 1; flex-shrink: 0; }
+        .promo-musclelove .promo-body { flex: 1; min-width: 0; }
+        .promo-musclelove .promo-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8B6B1C;
+            margin-bottom: 4px;
+        }
+        .promo-musclelove .promo-body h3 { font-size: 1.08rem; font-weight: 900; color: #1B4332; margin-bottom: 4px; }
+        .promo-musclelove .promo-body p { font-size: 0.88rem; color: #44533E; line-height: 1.55; }
+        .promo-musclelove .promo-cta { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+        .promo-musclelove .btn-promo {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #1B4332;
+            color: #F5C842 !important;
+            font-weight: 800;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            text-align: center;
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .promo-musclelove .btn-promo:hover { transform: translateY(-1px); opacity: 1; }
+        .promo-musclelove .btn-promo.outline {
+            background: transparent;
+            border: 1.5px solid #1B4332;
+            color: #1B4332 !important;
+        }
+        @media (max-width: 640px) {
+            .promo-musclelove .promo-card { flex-direction: column; align-items: flex-start; text-align: left; }
+            .promo-musclelove .promo-cta { flex-direction: row; flex-wrap: wrap; width: 100%; }
+            .promo-musclelove .btn-promo { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="site-logo">
+                <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">臨床統計ラボ</a>
+            </div>
+
+            <div class="header-right">
+                <nav class="site-nav" id="siteNav">
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+                    
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSS</a>
+                </nav>
+
+                <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替" title="ダーク/ライト切替">
+                    <span id="themeIcon">&#9790;</span>
+                </button>
+
+                <button class="menu-toggle" aria-label="メニュー" onclick="document.getElementById('siteNav').classList.toggle('open')">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    
+    <main class="container">
+        
+<div class="layout-main">
+    <div class="content-area">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/index.html">ホーム</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html">R for Clinical Trials</a>
+            <span class="breadcrumb-sep">/</span>
+            
+            <span>admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング</span>
+        </nav>
+
+        <article>
+            
+            
+            <div class="article-hero" style="background: url('https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80') center/cover no-repeat;">
+                <div class="article-hero-overlay"></div>
+            </div>
+            
+
+            <header class="article-header">
+                <h1 class="article-title">admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング</h1>
+                <div class="article-meta">
+                    <span>2026-04-25</span>
+                    <span class="reading-time">3分で読める</span>
+                    <a href="https://pharmaworkerka.github.io/clinical-stats-lab/category/R for Clinical Trials.html" class="category-badge">R for Clinical Trials</a>
+                </div>
+                <div class="card-tags mt-1"><span class="tag">admiral</span><span class="tag">Rパッケージ</span><span class="tag">臨床試験</span><span class="tag">ADaM</span><span class="tag">効率化</span></div>
+            </header>
+
+            
+
+            
+            <details class="toc-container" open>
+                <summary class="toc-title" style="cursor:pointer;user-select:none;">目次</summary>
+                <div class="toc"><span class="toctitle">目次</span><ul>
+<li><a href="#_1">この記事でわかること</a></li>
+<li><a href="#_2">結論から言うと</a></li>
+<li><a href="#admiral">admiralとは？</a><ul>
+<li><a href="#admiral_1">admiralの主要な特徴</a></li>
+</ul>
+</li>
+<li><a href="#_3">統計的背景・理論</a><ul>
+<li><a href="#adam">ADaMの重要性とトレーサビリティ</a></li>
+</ul>
+</li>
+<li><a href="#sasr">SAS/Rコード実装</a><ul>
+<li><a href="#1-rsdtm">1. 必要なRパッケージのロードとサンプルSDTMデータの準備</a></li>
+<li><a href="#2-adsl-subject-level-analysis-dataset">2. ADSL (Subject-Level Analysis Dataset) の作成</a></li>
+<li><a href="#3-rtables">3. rtablesによる解析結果テーブルの生成</a></li>
+</ul>
+</li>
+<li><a href="#_4">実務での活用場面</a></li>
+<li><a href="#_5">海外の最新動向</a><ul>
+<li><a href="#r-in-clinical-trials">R in Clinical Trialsの推進</a></li>
+<li><a href="#aiadmiral">AIプログラミングとadmiralの連携</a></li>
+</ul>
+</li>
+<li><a href="#faq">よくある質問（FAQ）</a><ul>
+<li><a href="#q1-admiral">Q1: admiralを使う最大のメリットは何ですか？</a></li>
+<li><a href="#q2-sasr-admiral">Q2: SASからR (admiral) への移行は難しいですか？</a></li>
+<li><a href="#q3-admiralcdisc">Q3: admiralは本当にCDISC標準に完全に準拠していますか？</a></li>
+<li><a href="#q4-aiadam">Q4: AIプログラミングは具体的にADaM作成にどう活用できるのですか？</a></li>
+</ul>
+</li>
+<li><a href="#_6">臨床統計スキルを磨くためのリソース</a></li>
+<li><a href="#_7">まとめ</a></li>
+</ul>
+</div>
+
+            </details>
+            
+
+            <div class="article-body"><h1 id="admiral-radamsdtmai">admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング</h1>
+<p><img alt="admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング" src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&amp;h=630&amp;fit=crop&amp;auto=format&amp;q=80" /></p>
+<p><em>Photo from <a href="https://unsplash.com/">Unsplash</a></em></p>
+<p>皆さん、こんにちは！臨床統計ラボへようこそ。臨床試験のデータ解析において、ADaM（Analysis Data Model）データセットの作成は非常に重要な工程でありながら、多くの時間と労力を要する作業ですよね。特に、SDTM（Study Data Tabulation Model）からADaMへの変換作業は、臨床統計担当者やSASプログラマーにとって大きな負担となることがあります。</p>
+<p>しかし、近年Rコミュニティで開発が進むRパッケージ「<strong>admiral</strong>」は、この課題に対する強力なソリューションを提供しています。<strong>admiral</strong>は、<strong>臨床試験</strong>の<strong>ADaM</strong>データセット作成を<strong>効率化</strong>するために特化して設計されており、<strong>SDTM</strong>データを活用して標準化された分析データセットを迅速に生成することを可能にします。本記事では、この<strong>admiral Rパッケージ</strong>の基本から、具体的なコード例、さらには<strong>AIプログラミング</strong>との連携によるさらなる<strong>効率化</strong>の可能性まで、臨床統計のエキスパートとして詳しく解説していきます。</p>
+<h2 id="_1">この記事でわかること</h2>
+<ul>
+<li>Rの<strong>admiralパッケージ</strong>が<strong>臨床試験</strong>の<strong>ADaM</strong>データセット作成をどう<strong>効率化</strong>するのか</li>
+<li><strong>SDTM</strong>データから<strong>ADaM</strong>への変換ロジックをRで実装する方法</li>
+<li><strong>admiral</strong>、tidyverse、<strong>rtables</strong>を活用した実践的なRコードの書き方</li>
+<li><strong>AIプログラミング</strong>と<strong>admiral</strong>を組み合わせた将来的なデータ解析ワークフロー</li>
+<li>国内外の<strong>admiral</strong>に関する最新動向とコミュニティ情報</li>
+</ul>
+<h2 id="_2">結論から言うと</h2>
+<p><strong>admiral Rパッケージ</strong>は、<strong>臨床試験</strong>における<strong>ADaM</strong>データセットの作成を劇的に<strong>効率化</strong>します。<strong>SDTM</strong>から<strong>ADaM</strong>への変換を標準化された関数群で支援し、再現性の高いプログラミングを可能にすることで、解析担当者の負担を大幅に軽減します。特に、tidyverseエコシステムとの親和性が高く、現代のデータサイエンス手法と組み合わせることで、データ解析の自動化・効率化を加速させるでしょう。</p>
+<h2 id="admiral">admiralとは？</h2>
+<p><strong>admiral</strong>は、<strong>Rパッケージ</strong>の一つで、<strong>臨床試験</strong>における<strong>ADaM</strong>データセット（解析用データセット）の作成に特化したオープンソースプロジェクトです。CDISC（Clinical Data Interchange Standards Consortium）のADaMIG（ADaM Implementation Guide）に準拠したデータセットを効率的かつ標準的に作成できるよう設計されています。</p>
+<p>従来の<strong>ADaM</strong>データセット作成は、SASプログラミングが主流でしたが、<strong>admiral</strong>はR言語の強み、特にtidyverse（データ操作のためのRパッケージ群）の概念を取り入れることで、より直感的で記述性の高いコードでのデータ変換を可能にしました。<strong>SDTM</strong>（Study Data Tabulation Model）データから<strong>ADaM</strong>データセットへ変換する際の様々な導出（例: 年齢計算、ベースライン値の特定、期間算出など）を、検証済みの関数として提供しています。</p>
+<h3 id="admiral_1">admiralの主要な特徴</h3>
+<ul>
+<li><strong>CDISC ADaMIG準拠</strong>: ADaMデータセットの構造や変数導出ルールに則った関数を提供し、規制当局への提出要件を満たしやすい設計です。</li>
+<li><strong>Tidyverseベース</strong>: <code>dplyr</code>のパイプ演算子（<code>%&gt;%</code>）と親和性が高く、データフローが追いやすいコードを書くことができます。</li>
+<li><strong>再現性と標準化</strong>: 共通のロジックを関数として提供することで、プロジェクト間でのコードの標準化を促進し、解析の再現性を高めます。</li>
+<li><strong>コミュニティ駆動</strong>: グローバルなオープンソースコミュニティによって開発・維持されており、活発な議論と機能改善が進んでいます。</li>
+</ul>
+<h2 id="_3">統計的背景・理論</h2>
+<p><strong>ADaM</strong>データセットは、<strong>臨床試験</strong>の解析において非常に重要な役割を担います。その主要な目的は、SDTMという報告用の標準データセットから、統計解析に適した形式へとデータを変換し、トレーサビリティ（追跡可能性）を確保することにあります。</p>
+<h3 id="adam">ADaMの重要性とトレーサビリティ</h3>
+<p><strong>ADaM</strong>は、規制当局（FDAやPMDAなど）への申請において、統計解析の結果を裏付ける重要な証拠となります。ADaMIGでは、以下の3つの主要な原則が求められています。</p>
+<ol>
+<li><strong>Traceability（追跡可能性）</strong>: SDTMデータからADaMデータ、そして最終的な解析結果（Tables, Listings, Figures; TLFs）まで、データの変換経路が明確に追跡できること。これは、解析の透明性と信頼性を保証するために不可欠です。</li>
+<li><strong>Clarity（明確性）</strong>: ADaMデータセットの構造や変数の導出ロジックが明確であること。外部のレビューアが容易に理解できる必要があります。</li>
+<li><strong>Integrity（完全性）</strong>: データ変換プロセスにおいて、データの完全性が維持されていること。不適切なデータの変更や削除がないことを意味します。</li>
+</ol>
+<p><strong>admiral</strong>は、これらの原則、特にトレーサビリティをRの関数を通じてサポートします。例えば、<code>derive_vars_merged()</code>のような関数は、どのデータセットからどの変数をマージしたかをコード上で明確にし、また、<code>derive_vars_extreme_flag()</code>のような関数は、ベースライン値などの導出ロジックを標準化することで、解析担当者が複雑な導出ルールを自力で実装する手間を省きつつ、一貫したアプローチを提供します。</p>
+<h2 id="sasr">SAS/Rコード実装</h2>
+<p>ここでは、<strong>admiral Rパッケージ</strong>を使って、<strong>SDTM</strong>データから<strong>ADaM</strong>-ADSL（被験者レベル分析データセット）を作成する具体的なコード例をご紹介します。<strong>ADaM</strong>データセットの中でも、ADSLは最も基本的なもので、他のADaMデータセットのベースとなるため、その作成は非常に重要です。</p>
+<h3 id="1-rsdtm">1. 必要なRパッケージのロードとサンプルSDTMデータの準備</h3>
+<p>まず、<code>tidyverse</code>（データ操作の基本）、<code>admiral</code>（ADaM作成）、<code>rtables</code>（解析結果の表作成）をロードします。次に、解析の基礎となるSDTMデータセット（ここではDM: 被験者デモグラフィック、VS: バイタルサイン を簡略化して作成）を用意します。</p>
+<pre><code class="language-R"># 必要なRパッケージのロード
+library(tidyverse) # データ操作の基本
+library(admiral)   # ADaMデータセット作成の中核パッケージ
+library(admiraldev) # admiral開発用のヘルパー関数。ここでは日付変換に使用
+library(rtables)   # 解析結果の表（Tables）作成パッケージ
+
+# サンプルSDTM DMデータセットの作成
+# DM (Demographics) データセットは被験者のデモグラフィック情報を含みます
+dm &lt;- tibble::tribble(
+  ~STUDYID, ~USUBJID, ~SUBJID, ~SITEID, ~BRTHDTC, ~SEX, ~ARMCD, ~ARM, ~ACTARMCD, ~ACTARM, ~DTHDTC, ~DTHFL,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-001&quot;, &quot;001&quot;, &quot;S001&quot;, &quot;1980-01-15&quot;, &quot;F&quot;, &quot;ARM A&quot;, &quot;Treatment A&quot;, &quot;ARM A&quot;, &quot;Treatment A&quot;, NA, NA,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-002&quot;, &quot;002&quot;, &quot;S001&quot;, &quot;1975-03-20&quot;, &quot;M&quot;, &quot;ARM B&quot;, &quot;Treatment B&quot;, &quot;ARM B&quot;, &quot;Treatment B&quot;, NA, NA,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-003&quot;, &quot;003&quot;, &quot;S002&quot;, &quot;1988-11-01&quot;, &quot;M&quot;, &quot;ARM A&quot;, &quot;Treatment A&quot;, &quot;ARM A&quot;, &quot;Treatment A&quot;, NA, NA,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-004&quot;, &quot;004&quot;, &quot;S002&quot;, &quot;1965-06-25&quot;, &quot;F&quot;, &quot;ARM C&quot;, &quot;Placebo&quot;, &quot;ARM C&quot;, &quot;Placebo&quot;, &quot;2023-01-10&quot;, &quot;Y&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-005&quot;, &quot;005&quot;, &quot;S003&quot;, &quot;1992-09-10&quot;, &quot;M&quot;, &quot;ARM B&quot;, &quot;Treatment B&quot;, &quot;ARM B&quot;, &quot;Treatment B&quot;, NA, NA
+) %&gt;%
+  # 参照開始日 (Reference Start Date) と終了日 (Reference End Date) を仮で追加
+  mutate(
+    RFSTDTC = &quot;2020-01-01&quot;,
+    RFENDTC = &quot;2020-06-30&quot;
+  )
+
+# サンプルSDTM VSデータセットの作成 (バイタルサイン)
+# VS (Vital Signs) データセットはバイタルサイン情報を含みます
+vs &lt;- tibble::tribble(
+  ~STUDYID, ~USUBJID, ~VSSEQ, ~VSDTC, ~VSTESTCD, ~VSTEST, ~VSSTRESN, ~VSSTRESU, ~VISIT,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-001&quot;, 1, &quot;2020-01-01T10:00&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 70, &quot;mmHg&quot;, &quot;SCREENING&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-001&quot;, 2, &quot;2020-01-15T09:00&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 72, &quot;mmHg&quot;, &quot;WEEK 2&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-002&quot;, 1, &quot;2020-01-05T11:00&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 75, &quot;mmHg&quot;, &quot;SCREENING&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-002&quot;, 2, &quot;2020-01-19T10:00&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 78, &quot;mmHg&quot;, &quot;WEEK 2&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-003&quot;, 1, &quot;2020-01-02T08:00&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 68, &quot;mmHg&quot;, &quot;SCREENING&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-003&quot;, 2, &quot;2020-01-16T08:30&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 70, &quot;mmHg&quot;, &quot;WEEK 2&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-004&quot;, 1, &quot;2020-01-03T12:00&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 80, &quot;mmHg&quot;, &quot;SCREENING&quot;,
+  &quot;CDISCPILOT&quot;, &quot;CDISCPILOT-005&quot;, 1, &quot;2020-01-04T10:30&quot;, &quot;DIABP&quot;, &quot;Diastolic Blood Pressure&quot;, 73, &quot;mmHg&quot;, &quot;SCREENING&quot;
+)
+
+# 日付/時間変数をISO 8601形式のDate/Datetimeオブジェクトに変換（admiral処理のために推奨）
+# convert_dtc_to_dt() は、日付文字列 (DTC) をDateオブジェクト (DT) に変換するadmiraldev関数です。
+dm &lt;- convert_dtc_to_dt(dm, vars(BRTHDTC, DTHDTC, RFSTDTC, RFENDTC))
+vs &lt;- convert_dtc_to_dt(vs, vars(VSDTC))
+</code></pre>
+<h3 id="2-adsl-subject-level-analysis-dataset">2. ADSL (Subject-Level Analysis Dataset) の作成</h3>
+<p>次に、<code>admiral</code>の関数を使ってADSLデータセットを作成します。ADSLには、被験者のデモグラフィック情報、治験薬投与情報、主要なイベント（死亡など）に関する情報が含まれます。</p>
+<pre><code class="language-R"># ADSLデータセットの作成
+adsl &lt;- dm %&gt;%
+  # 被験者レベルの参照開始日と終了日をderive (導出)
+  # derive_vars_dt() はDTC形式の日付文字列からDT形式の日付変数を導出します。
+  derive_vars_dt(
+    dtc = RFSTDTC,
+    new_vars_prefix = &quot;RFST&quot; # 新しい変数名の接頭辞
+  ) %&gt;%
+  derive_vars_dt(
+    dtc = RFENDTC,
+    new_vars_prefix = &quot;RFEN&quot;
+  ) %&gt;%
+  # 年齢を計算 (ADSLでは年齢 (AGE) が必要)
+  # derive_vars_age() は生年月日と基準日から年齢を計算します。
+  derive_vars_age(
+    new_var = AGE,
+    date_var = RFSTDTC,     # 参照開始日時点の年齢を計算
+    birth_date_var = BRTHDT,
+    unit = &quot;years&quot;,
+    type = &quot;continuous&quot;
+  ) %&gt;%
+  # 死亡フラグ (DTHFL) をderive
+  # derive_vars_event_flag() は特定のイベントに基づいてフラグ変数を導出します。
+  derive_vars_event_flag(
+    dataset_adsl = .,       # ADSLデータセットをパイプで渡す
+    dataset_source = dm,    # ソースデータセットとしてDMを使用
+    filter_source = DTHFL == &quot;Y&quot;, # DMのDTHFLが'Y'の場合に死亡と判断
+    new_var = DTHFL
+  ) %&gt;%
+  # 投与開始日 (TRTSDT) を仮で参照開始日と同じとする
+  mutate(TRTSDT = RFSTDTC) %&gt;%
+  # 治療期間に関する変数 (TRT01P: 計画治療, TRT01A: 実際の治療) を導出
+  # ADaMIGに沿って適切なラベルやコードを割り当てるのが一般的です。
+  mutate(TRT01P = ARM, TRT01A = ACTARM) %&gt;%
+  # 変数ラベルの追加
+  # set_variable_labels() はADaM変数のラベルを設定します。
+  set_variable_labels(
+    USUBJID = &quot;Unique Subject Identifier&quot;,
+    BRTHDT = &quot;Date of Birth&quot;,
+    AGE = &quot;Age (Years)&quot;,
+    SEX = &quot;Sex&quot;,
+    ARM = &quot;Planned Arm&quot;,
+    ACTARM = &quot;Actual Arm&quot;,
+    DTHFL = &quot;Death Flag&quot;,
+    TRT01P = &quot;Planned Treatment&quot;,
+    TRT01A = &quot;Actual Treatment&quot;
+  )
+
+# 作成されたADSLデータセットの表示
+print(adsl)
+</code></pre>
+<h3 id="3-rtables">3. rtablesによる解析結果テーブルの生成</h3>
+<p><code>rtables</code>パッケージは、<strong>臨床試験</strong>の報告書で求められるような高品質なテーブルをRで生成するために設計されています。ここでは、作成したADSLデータセットから被験者の特性（年齢、性別）を要約した簡単なテーブルを作成する例を示します。</p>
+<pre><code class="language-R"># rtablesを使ってADSLから簡単な被験者特性サマリーテーブルを作成
+
+# テーブルレイアウトの定義
+table &lt;- rtables::build_table(
+  basic_table() %&gt;% # 基本的なテーブル構造を開始
+    split_cols_by(&quot;TRT01A&quot;) %&gt;% # 実際の治療群 (TRT01A) で列を分割
+    add_overall_col(&quot;Overall&quot;) %&gt;% # 全体列を追加
+    # 年齢 (AGE) と性別 (SEX) の変数を解析
+    analyze(vars = c(&quot;AGE&quot;, &quot;SEX&quot;),
+            fns = list(
+              AGE = rtables::r_stats_summary(mean = mean, sd = sd, digits = 1), # 年齢は平均と標準偏差
+              SEX = rtables::r_count_pct(denom = &quot;N_col&quot;) # 性別は度数と割合
+            )) %&gt;%
+    append_topleft(c(&quot;Characteristic&quot;, &quot;N&quot;)) %&gt;% # 左上に項目名とN数を追加
+    # N=() の形式でN数を表示
+    append_topleft(paste0(&quot;N=&quot;, formatC(ncol_source_value(.), big.mark = &quot;,&quot;))),
+  df = adsl # 作成したADSLデータフレームをテーブルのデータソースとして渡す
+)
+
+# 生成されたテーブルの表示
+print(table)
+</code></pre>
+<p>このコード例は、<strong>admiral</strong>が<strong>SDTM</strong>から<strong>ADaM</strong>への変換をいかに効率的かつ標準的に行うかを具体的に示しています。また、<code>rtables</code>を組み合わせることで、ADaM作成から解析結果の可視化までの一連のワークフローをRでシームレスに実現できることがお分かりいただけたかと思います。</p>
+<h2 id="_4">実務での活用場面</h2>
+<p><strong>admiral</strong>やその他のRパッケージは、<strong>臨床試験</strong>の様々なフェーズでその真価を発揮します。</p>
+<ol>
+<li><strong>プロトコル（治験計画書）策定段階でのシミュレーション</strong>: 計画段階で仮のSDTMデータを生成し、<strong>admiral</strong>を使って<strong>ADaM</strong>作成のロジックを事前に検討・検証できます。これにより、解析計画の実現可能性を評価し、プロトコルや統計解析計画書（SAP）の記述をより具体的にできます。</li>
+<li><strong>データクリーニングと検証</strong>: <strong>SDTM</strong>データが完成した後、<strong>admiral</strong>を使って<strong>ADaM</strong>を生成し、その導出結果を検証することで、データの問題点や逸脱を早期に発見できます。</li>
+<li><strong>統計解析計画書（SAP）の実行</strong>: SAPに記述された解析手法に従い、必要な<strong>ADaM</strong>データセットを<strong>admiral</strong>で一貫して作成します。これにより、統計解析担当者はデータの準備作業に費やす時間を削減し、本来の解析業務に集中できます。</li>
+<li><strong>治験薬承認申請（NDA/MAA）</strong>: 規制当局への提出データとして、CDISC標準に準拠した<strong>ADaM</strong>データセットは必須です。<strong>admiral</strong>は、この要件を満たす高品質なデータセット作成を支援します。</li>
+<li><strong>変更管理と再現性</strong>: 治験中にプロトコルが変更された場合でも、<strong>admiral</strong>のコードベースはモジュール化されているため、変更箇所の特定と修正が容易です。これにより、一貫性と再現性を保ちながら、効率的にデータセットを更新できます。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">項目</th>
+<th style="text-align: left;">SASプログラミング</th>
+<th style="text-align: left;">R + admiralパッケージ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>学習コスト</strong></td>
+<td style="text-align: left;">比較的高い（SAS言語特有の記法）</td>
+<td style="text-align: left;">比較的低い（tidyverseユーザーには馴染みやすい）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>再現性</strong></td>
+<td style="text-align: left;">マクロや手動コード管理に依存、属人化しやすい</td>
+<td style="text-align: left;">関数型プログラミングで高い再現性、パイプ演算子で視覚的にも追跡しやすい</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>標準化</strong></td>
+<td style="text-align: left;">独自マクロやテンプレートで実現、監査が複雑になることも</td>
+<td style="text-align: left;">admiralパッケージがCDISC標準を意識した関数を提供し、標準化を強力に推進</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>効率性</strong></td>
+<td style="text-align: left;">コード量が多くなりがち、変更に手間がかかる</td>
+<td style="text-align: left;">パッケージ関数で少ないコード量、変更・保守が容易、CI/CDとの連携も容易</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>コミュニティ</strong></td>
+<td style="text-align: left;">製薬企業・CROに強い、商業サポートが充実</td>
+<td style="text-align: left;">オープンソースコミュニティが活発、進化が早い</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>費用</strong></td>
+<td style="text-align: left;">ライセンス費用が発生</td>
+<td style="text-align: left;">基本的に無料（オープンソース）</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>統合性</strong></td>
+<td style="text-align: left;">既存のSASエコシステムと連携</td>
+<td style="text-align: left;">Rのエコシステム（Shiny、Quartoなど）とシームレスに連携</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">海外の最新動向</h2>
+<p><strong>R</strong>言語と<strong>admiral</strong>のような<strong>Rパッケージ</strong>は、海外の<strong>臨床試験</strong>コミュニティ、特にPSI（Statisticians in the Pharmaceutical Industry）、ASA Biopharmaceutical Section、PHUSE（Pharmaceutical Users Software Exchange）などで活発に議論されています。</p>
+<h3 id="r-in-clinical-trials">R in Clinical Trialsの推進</h3>
+<p>数年前まではSASが圧倒的多数を占めていましたが、近年はRの利用が急速に拡大しています。特に、PHUSEやR Consortiumが主催する「R in Clinical Trials」プロジェクトは、Rを<strong>臨床試験</strong>の環境で利用するためのガイドライン策定やツールの開発を推進しています。<strong>admiral</strong>もこの動きの一環として開発され、公式なCDISC標準への対応や規制当局への提出における課題を解決するための主要なツールの一つと認識されています。</p>
+<h3 id="aiadmiral">AIプログラミングとadmiralの連携</h3>
+<p>「<strong>AIプログラミング</strong>」というキーワードは、今後の<strong>臨床試験</strong>のデータ解析を大きく変える可能性を秘めています。具体的には、以下のような連携が期待されています。</p>
+<ol>
+<li><strong>コード生成の自動化</strong>: 大規模言語モデル（LLM）のようなAIが、自然言語で書かれた<strong>ADaM</strong>導出ルールや解析計画を解釈し、<strong>admiral</strong>の関数を使ったRコードを自動生成する。これにより、プログラマーの作業負荷を軽減し、初学者でも高品質なコードを書けるようになります。</li>
+<li><strong>品質管理（QC）の強化</strong>: AIが<strong>admiral</strong>で生成された<strong>ADaM</strong>データセットと既存のCDISC標準、または過去の承認済みデータセットを比較し、潜在的なエラーや逸脱を自動的に検出する。これにより、QCプロセスが大幅に<strong>効率化</strong>されます。</li>
+<li><strong>データフローの最適化</strong>: 複雑な<strong>SDTM</strong>から<strong>ADaM</strong>への変換パスにおいて、AIが最も効率的なデータ処理フローを提案し、最適な<strong>admiral</strong>関数の組み合わせを推奨する。</li>
+</ol>
+<p>これらの動向は、<strong>臨床試験</strong>のデータ解析プロセス全体を再構築し、より迅速かつ高品質な医薬品開発に貢献するでしょう。<strong>admiral</strong>は、その中心的なツールとして進化を続けています。</p>
+<p>関連する海外コミュニティのウェブサイト:
+*   <strong>R Consortium</strong>: <a href="https://www.r-consortium.org/">https://www.r-consortium.org/</a>
+*   <strong>PHUSE</strong>: <a href="https://www.phuse.global/">https://www.phuse.global/</a>
+*   <strong>admiral GitHub</strong>: <a href="https://github.com/pharmaverse/admiral">https://github.com/pharmaverse/admiral</a></p>
+<h2 id="faq">よくある質問（FAQ）</h2>
+<h3 id="q1-admiral">Q1: admiralを使う最大のメリットは何ですか？</h3>
+<p>A1: <strong>admiral</strong>の最大のメリットは、<strong>臨床試験</strong>の<strong>ADaM</strong>データセット作成をCDISC標準に準拠した形で<strong>効率化</strong>し、かつ再現性を高める点にあります。検証済みの関数を使うことで、プログラミングの労力を削減し、品質管理を容易にします。</p>
+<h3 id="q2-sasr-admiral">Q2: SASからR (admiral) への移行は難しいですか？</h3>
+<p>A2: SASの経験がある方がRの<code>tidyverse</code>の考え方に慣れるまでには学習曲線がありますが、<code>admiral</code>は<code>tidyverse</code>の記法をベースにしているため、比較的スムーズに移行できます。特に、既存のSASコードをRで書き換える際の強力なツールとなります。{{internal_link:SASプログラマーのためのR入門}}のような記事も参考にしてください。</p>
+<h3 id="q3-admiralcdisc">Q3: admiralは本当にCDISC標準に完全に準拠していますか？</h3>
+<p>A3: はい、<strong>admiral</strong>はCDISC ADaMIG（ADaM Implementation Guide）に沿って設計・開発されており、CDISC標準への準拠を強く意識しています。ただし、個別の<strong>臨床試験</strong>の要件や規制当局の最新ガイダンスに従うためには、利用者が適切な判断と調整を行う必要があります。{{internal_link:CDISCとは？基本と役割}}で詳細をご確認ください。</p>
+<h3 id="q4-aiadam">Q4: AIプログラミングは具体的にADaM作成にどう活用できるのですか？</h3>
+<p>A4: <strong>AIプログラミング</strong>、特に大規模言語モデル（LLM）の活用は、<strong>ADaM</strong>導出ロジックの自然言語記述からのRコード自動生成、既存コードのレビューと最適化、品質管理における異常検知などに役立ちます。これにより、プログラマーはより戦略的なタスクに集中できるようになり、<strong>効率化</strong>が図られます。</p>
+<h2 id="_6">臨床統計スキルを磨くためのリソース</h2>
+<p>この記事の内容をさらに深めるために、以下のリソースが役立ちます。</p>
+<ul>
+<li><strong><a href="https://www.amazon.co.jp?tag=musclelove07-22">Amazon 統計学書籍</a></strong> - 臨床統計・生物統計の参考書</li>
+<li><strong><a href="https://www.udemy.com">Udemy SAS/R講座</a></strong> - 動画で学ぶSAS/R統計プログラミング</li>
+<li><strong><a href="https://www.rakuten.co.jp">楽天 統計書籍</a></strong> - 統計学・データサイエンスの参考書</li>
+</ul>
+<p><em>上記リンクからご利用いただくと、サイト運営の支援になります。</em></p>
+<h2 id="_7">まとめ</h2>
+<p>本記事では、<strong>Rパッケージ</strong>「<strong>admiral</strong>」が<strong>臨床試験</strong>の<strong>ADaM</strong>データセット作成をいかに<strong>効率化</strong>し、<strong>SDTM</strong>からの変換プロセスを標準化するかについて、詳細な解説と実践的なRコード例を交えてご紹介しました。<strong>admiral</strong>は、CDISC標準への準拠、高い再現性、そして活発なコミュニティサポートにより、現代の<strong>臨床統計</strong>解析における必須ツールとなりつつあります。</p>
+<p>さらに、<strong>AIプログラミング</strong>との連携は、将来の<strong>臨床試験</strong>データ解析のワークフローを根本から変革する可能性を秘めています。解析担当者は、手動でのコーディング作業から解放され、より高度な統計学的洞察や臨床的解釈に集中できるようになるでしょう。<strong>臨床統計ラボ</strong>では、これからも<strong>admiral</strong>のような革新的なツールや{{internal_link:rtablesで解析結果を自動生成}}といった関連技術に関する最新情報をお届けし、日本の<strong>臨床統計</strong>担当者の皆様が最先端の技術を活用できるようサポートしてまいります。</p>
+<p>ぜひ、皆さんの<strong>臨床試験</strong>データ解析の現場で<strong>admiral</strong>を試してみてください。その<strong>効率化</strong>と標準化の力に驚かれることでしょう。</p></div>
+
+            
+
+            <div class="share-buttons">
+                <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html&text=admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング" target="_blank" rel="noopener noreferrer">X でシェア</a>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a class="share-btn share-btn-hatena" href="https://b.hatena.ne.jp/add?mode=confirm&url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html&title=admiral Rで臨床試験ADaMを効率化！SDTMからAIプログラミング" target="_blank" rel="noopener noreferrer">はてブ</a>
+                <a class="share-btn share-btn-line" href="https://social-plugins.line.me/lineit/share?url=https://pharmaworkerka.github.io/clinical-stats-lab/articles/admiral-r-clinical-trials-adam-sdm-ai-efficiency.html" target="_blank" rel="noopener noreferrer">LINE</a>
+            </div>
+        </article>
+
+        
+    </div>
+</div>
+
+    </main>
+
+    
+    
+
+    
+    <section style="background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.08));border-top:1px solid var(--border);padding:48px 0;margin-top:40px;">
+        <div class="container" style="text-align:center;">
+            <p style="color:var(--text-muted);font-size:0.78rem;letter-spacing:0.15em;margin-bottom:8px;">― Powered by MuscleLove ―</p>
+            <h3 style="font-size:1.3rem;margin-bottom:14px;">AIで人生を加速する3部作 + ブランド公式</h3>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;max-width:600px;margin-left:auto;margin-right:auto;">副業で稼ぎ → 転職で年収UP → 投資で資産を働かせる。AI時代の「お金の戦略」を完成させる姉妹メディア。</p>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px;">
+                <a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🧭 AI副業コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">🚀 AI転職コンパス</a>
+                <a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#0a0e1a;text-decoration:none;font-weight:600;font-size:0.88rem;">💰 AIマネー羅針盤</a>
+                <a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:#0f172a;color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;border:1px solid #334155;">𝕏 @MuscleGirlLove7</a>
+                <a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener" style="display:inline-block;padding:10px 18px;border-radius:999px;background:linear-gradient(135deg,#ff424d,#ff6b35);color:#fff;text-decoration:none;font-weight:600;font-size:0.88rem;">💪 Patreon</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="promo-musclelove">
+      <div class="container">
+        <div class="promo-card">
+          <div class="promo-icon">💪</div>
+          <div class="promo-body">
+            <div class="promo-eyebrow">PR · 運営メディア / Sponsored</div>
+            <h3>MuscleLove — Muscle Girls &amp; Fitness Media Hub</h3>
+            <p>格闘女子・フィジーク・アームレスリング・筋トレ飯など、40+サイトを展開するMuscleLoveも運営中。X &amp; Patreonで限定コンテンツ配信中 / We also run MuscleLove, a 40+ site fitness network.</p>
+          </div>
+          <div class="promo-cta">
+            <a class="btn-promo" href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">X @MuscleGirlLove7</a>
+            <a class="btn-promo outline" href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">Patreon</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-section">
+                    <h4>臨床統計ラボ</h4>
+                    <p class="text-muted" style="font-size:0.85rem;max-width:300px;">臨床試験の統計解析手法をSAS/Rのコード付きで毎日更新。海外の最新統計手法・ICH E9(R1) Estimandフレームワーク等を日本語で翻訳・要約し実践的に解説。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>カテゴリ</h4>
+                    <ul class="footer-links"></ul>
+                </div>
+                <div class="footer-section">
+                    <h4>リンク</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/sitemap.xml">サイトマップ</a></li>
+                        <li><a href="https://pharmaworkerka.github.io/clinical-stats-lab/feed.xml">RSSフィード</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>MuscleLove</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://musclelove-777.github.io/ai-fukugyo-compass/" target="_blank" rel="noopener">🧭 AI副業コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-tenshoku-compass/" target="_blank" rel="noopener">🚀 AI転職コンパス</a></li>
+                        <li><a href="https://musclelove-777.github.io/ai-money-compass/" target="_blank" rel="noopener">💰 AIマネー羅針盤</a></li>
+                        <li><a href="https://x.com/MuscleGirlLove7" target="_blank" rel="noopener">𝕏 @MuscleGirlLove7</a></li>
+                        <li><a href="https://www.patreon.com/MuscleLove" target="_blank" rel="noopener">💪 Patreon</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-copyright">&copy; 2026 臨床統計ラボ. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        var toggle = document.getElementById('themeToggle');
+        var icon = document.getElementById('themeIcon');
+        var html = document.documentElement;
+        function getStored() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
+        function setTheme(t) {
+            html.setAttribute('data-theme', t);
+            icon.textContent = t === 'light' ? '\u2600' : '\u263E';
+            try { localStorage.setItem('theme', t); } catch(e) {}
+        }
+        var s = getStored(); if (s) setTheme(s);
+        toggle.addEventListener('click', function() {
+            setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+    })();
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[href^="http"]').forEach(function(l) {
+            if (l.hostname !== window.location.hostname) {
+                l.setAttribute('target', '_blank');
+                l.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
