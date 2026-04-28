@@ -62,13 +62,14 @@ jobs:
       - name: Inject llms.txt into site output
         if: always()
         run: |
-        if [ -f static_assets/llms.txt ]; then
-          mkdir -p output/site
-          cp static_assets/llms.txt output/site/llms.txt
-          echo 'Injected static_assets/llms.txt -> output/site/llms.txt'
-        else
-          echo 'No static_assets/llms.txt; skipping'
-        fi
+          if [ -f static_assets/llms.txt ]; then
+            mkdir -p output/site
+            cp static_assets/llms.txt output/site/llms.txt
+            echo 'Injected static_assets/llms.txt -> output/site/llms.txt'
+          else
+            echo 'No static_assets/llms.txt; skipping'
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
