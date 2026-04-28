@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICH E9(R1) Estimand実装の現場対応：Treatment Policy戦略とIntercurrent Eventハンドリングの実務 | 臨床統計ラボ</title>
+<meta name="description" content="ICH E9(R1)で導入されたEstimand frameworkを現場で実装する際の論点を、Treatment Policy戦略を軸にIntercurrent Eventの定義・SAP記載・データキャプチャ設計まで踏み込んで解説します。">
+<link rel="canonical" href="https://pharmaworkerka.github.io/clinical-stats-lab/articles/2026-04-29-estimand-implementation-treatment-policy-intercurrent.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ICH E9(R1) Estimand実装の現場対応">
+<meta property="og:description" content="Treatment Policy戦略を軸にIntercurrent Eventの扱いを実務に落とし込みます。">
+<meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&auto=format&q=80">
+<meta property="og:url" content="https://pharmaworkerka.github.io/clinical-stats-lab/articles/2026-04-29-estimand-implementation-treatment-policy-intercurrent.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&auto=format&q=80">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"ICH E9(R1) Estimand実装の現場対応","image":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&auto=format&q=80","datePublished":"2026-04-29","author":{"@type":"Organization","name":"臨床統計ラボ"}}</script>
+<link rel="stylesheet" href="../assets/style.css">
+</head><body>
+<div data-tag="ml-pr-bar-v1" style="background:#fef3c7;color:#78350f;padding:6px 12px;text-align:center;font-size:12px;border-bottom:1px solid #fcd34d;font-family:system-ui,sans-serif;line-height:1.4">当サイトの記事には広告（アフィリエイトリンク）が含まれる場合があります。掲載順位や紹介内容は当サイトの編集方針に基づきます。</div>
+<nav class="filter-nav"><a href="../index.html" class="filter-btn">← トップに戻る</a></nav>
+<main class="article-body">
+<img class="article-hero-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop&auto=format&q=80" alt="Estimand framework実装">
+<p class="article-meta">📅 2026-04-29 · 🏷️ 臨床統計・解析</p>
+<h1>ICH E9(R1) Estimand実装の現場対応：Treatment Policy戦略とIntercurrent Eventハンドリングの実務</h1>
+<p>ICH E9(R1) Addendumが採択されてから数年が経過し、2026年時点では多くのフェーズ3試験プロトコルでEstimand frameworkが必須記載となっています。一方で「概念は理解しているが、現場のSAPやADaMにどう落とすか」で悩むケースは依然として多く見られます。本稿ではTreatment Policy戦略を中心に、Intercurrent Eventの定義から解析データセット設計までを実務目線で整理します。</p>
+
+<h2>Estimandの5要素を「文章」ではなく「設計指示」として書く</h2>
+<p>Estimandは（1）Treatment、（2）Population、（3）Endpoint（Variable）、（4）Intercurrent Event戦略、（5）Population-level summaryの5要素で記述します。R1原文の例文をコピペして埋めるだけで終わるプロトコルが散見されますが、SAP・ADaMチームから見ると「実際にどう扱うか」が読み取れず、後工程で迷走します。</p>
+<p>例えば「Treatmentは試験薬群」と書くだけでなく、「ランダム化された治療群への割付に基づき、用量変更・休薬・救済治療の発生にかかわらずその群として取り扱う」といった運用ルールまで書くことで、ADaMのTRT01P/TRT01A、SAFFLの定義ロジックに直接接続できます。プロトコル段階でSAPの執筆者が一度レビューに入る運用を強く推奨します。</p>
+
+<h2>Treatment Policy戦略を選んだときの実務上の意味</h2>
+<p>Treatment Policy戦略は、Intercurrent Event（治療中止、救済治療、用量変更等）の発生にかかわらず、ランダム化された治療群として解析するアプローチで、規制提出試験で最も採用例が多い戦略です。実務上、次のような点を抑える必要があります。</p>
+<ul>
+<li><b>データ収集の継続：</b>治療中止後もエンドポイント測定を継続するスケジュール（PRO・検査値・画像評価等）を治験実施計画に組み込む。</li>
+<li><b>欠測対応：</b>Treatment Policyは「データが取れていれば理想」を前提とするため、収集できなかったケースの欠測ハンドリング（Multiple Imputation、Mixed Model等）を補助的に定義しておく。</li>
+<li><b>ADSLフラグ：</b>解析対象集団（FAS、PPS等）の定義をEstimandの選択と整合させる。Treatment Policyを取るなら基本はFAS/ITTベース。</li>
+</ul>
+<p>Treatment Policyは概念としてはシンプルですが、データキャプチャ設計を間違えると「測定が取れていない＝事実上のHypothetical」になりかねません。プロトコル設計段階でデータマネジメントとも目線を合わせることが重要です。</p>
+
+<h2>Intercurrent Eventをどこに記録し、ADaMでどう参照するか</h2>
+<p>Intercurrent Event（IE）は、Estimandごとに「どの戦略で扱うか」を決める対象であり、その情報をADaMでフラグとして持っておく必要があります。実装パターンとしては以下の3つが現場で多く採用されています。</p>
+<ol>
+<li><b>SDTM起点で派生：</b>EX、AE、CM、DSなどから条件抽出してADSLにIE発生有無のフラグを派生する方式。トレーサビリティが取りやすい。</li>
+<li><b>専用IEドメインを新設：</b>SDTMにカスタムドメインや補助データセットとしてIEを保持し、ADaMから参照する方式。複雑なIE定義が複数ある場合に有効。</li>
+<li><b>ADaMで集約派生：</b>ADSLや解析データセット内でIEフラグを直接派生する方式。簡易だがDefine-XMLでの説明責任が増える。</li>
+</ol>
+<p>いずれの方式でも、Define-XMLにIEの定義ロジック（どのSDTM変数の組合せでIE「発生」と判定したか）を明記することが必須です。このロジック記述が曖昧だと、レビュー時の照会対応コストが跳ね上がります。</p>
+
+<h2>SAPに必ず書くべき「感度分析」の構成</h2>
+<p>Estimandを採用する場合、Primary Estimandに対する感度分析（Sensitivity Analysis）と補助解析（Supplementary Analysis）をSAPで明確に区別する必要があります。Treatment Policyを主戦略とする場合、典型的には次の構成になります。</p>
+<ul>
+<li><b>感度分析：</b>Tipping Point Analysis、Multiple ImputationのMNAR仮定下分析等、Primaryの仮定変化に対する頑健性を評価。</li>
+<li><b>補助解析：</b>Hypothetical Estimand（IE発生がなかったとした場合）やComposite Estimand（IEを失敗イベントとみなす）等、別Estimandでの参考解析。</li>
+<li><b>サブグループ：</b>Estimandの定義は維持しつつ、Population層別での結果提示。</li>
+</ul>
+<p>規制当局からの照会では「PrimaryとSensitivity/Supplementaryの結果が大きく乖離している場合の解釈」を聞かれる場面が増えています。SAPの段階で乖離した場合の解釈ルールを言語化しておくと審査対応が滑らかになります。</p>
+
+<h2>まとめ</h2>
+<p>ICH E9(R1) Estimandは「書き方ガイド」ではなく「試験設計の言語」です。Treatment Policy戦略を採用するなら、データキャプチャ設計、ADaMでのIE扱い、感度分析の構成までを一気通貫で設計する必要があります。プロトコル・SAP・ADaM Specの3点をEstimandの定義から逆引きで整合させ、Define-XMLに派生ロジックを正確に記述することで、規制当局のレビューに耐える解析パッケージが完成します。Estimandは統計家だけの仕事ではなく、メディカル・DM・プログラマー全員で共有すべき設計言語であることを意識してください。</p>
+
+<p style="color:#6b7280;font-size:0.8rem;margin-top:40px;">本記事は情報提供を目的としており、規制要件の最終確認は各国規制当局の公式ドキュメントを参照してください。実務適用の判断は読者の責任で行ってください。</p>
+<a href="../index.html" class="back-link">← 他の記事を見る</a>
+</main>
+<footer class="site-footer"><div class="footer-inner">
+<p class="copyright">© 2026 臨床統計ラボ</p>
+</div></footer>
+</body></html>
